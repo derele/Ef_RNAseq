@@ -1,3 +1,5 @@
+## all simple functions go here
+
 ## adjusted functions from ballgown
 
 library(ballgown)
