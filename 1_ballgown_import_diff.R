@@ -3,7 +3,7 @@
 
 
 library(ballgown)
-setwd("/data/Eimeria_Totta/")
+setwd("~/Ef_RNAseq")
 
 ## IMPORT DATA USING BALLGOWN IMPORT
 if(!exists("rnaseq.bg")) {

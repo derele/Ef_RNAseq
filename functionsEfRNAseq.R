@@ -1,5 +1,24 @@
 ## all simple functions go here
 
+TOGO.all.onto <- function (ontology, allgenes, gene.set, annot) {
+  g <- factor(as.integer( allgenes%in%gene.set ))
+  names(g) <- allgenes
+  toGO <-  new("topGOdata", ontology = ontology, allGenes = g, annot = annFUN.gene2GO,
+               gene2GO = annot)
+  resultFis <- runTest(toGO, algorithm = "classic", statistic = "fisher")
+  list(toGO, resultFis) ## returns a list first data then result
+}
+
+
+gene.table.topGO <- function(TOGO.list, pval=0.01){
+    all <- GenTable(TOGO.list[[1]], TOGO.list[[2]], topNodes=100)
+    ##    all$fdr <- p.adjust(all$result1, method="BH")
+    names(all)[names(all)%in%"result1"] <- "p.value"
+    return(all[all$p.value<pval,])
+}
+
+
+
 ## adjusted functions from ballgown
 
 library(ballgown)
