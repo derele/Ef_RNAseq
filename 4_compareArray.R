@@ -9,6 +9,11 @@ library(Biobase)
 library(RSvgDevice)
 library(GGally)
 
+
+if(!exists("ALL.top")){
+    source("2_edgeR_diff.R")
+}
+
 targets <- readTargets("/data/Mouse_arrays/2012_arrays/targets.txt", sep=";")
 
 RG <- read.maimages(targets, path= "/data/Mouse_arrays/2012_arrays/", source = "agilent", 
@@ -85,8 +90,8 @@ fit2.g <- eBayes(fit2.g)
 
 Array.logFC <- topTable(fit2.g, n=400000)[, c("X24h", "X144h")]
 
-RNAseq.logFC <- ALL.top.ALT[, c("logFC.N3vs0", "logFC.N5vs0",
-                                "logFC.N7vs0", "logFC.B5vs0", "logFC.R5vs0" )]
+RNAseq.logFC <- ALL.top[, c("logFC.N3vs0", "logFC.N5vs0",
+                            "logFC.N7vs0", "logFC.B5vs0", "logFC.R5vs0" )]
 RNAseq.logFC <- merge(RNAseq.logFC, id2name, by.x = 0, by.y = "gene_ids")
 
 RNAseq.Array.logFC <- merge(RNAseq.logFC, Array.logFC, by.x = "gene_names", by.y = 0)

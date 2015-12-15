@@ -7,10 +7,11 @@ setwd("~/Ef_RNAseq")
 
 ## IMPORT DATA USING BALLGOWN IMPORT
 if(!exists("rnaseq.bg")) {
-    rnaseq.bg = ballgown(dataDir="tablemaker_060815", samplePattern = "*")
+    rnaseq.bg = ballgown(dataDir="/data/Eimeria_Totta/tablemaker_060815/",
+        samplePattern = "*")
 }
 
-source("srcEH/functionsEfRNAseq.R")
+source("functionsEfRNAseq.R")
 
 ########################
 

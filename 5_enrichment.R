@@ -1,6 +1,16 @@
 library(topGO)
 
+if(!exists("chalGids")){
+    source("1_ballgown_import_diff.R")
+}
 
+if(!exists("gene.list")){
+    source("2_edgeR_diff.R")
+}
+
+if(!exists("gene2GO")){
+    source("3_annotations.R")
+}
 
 
 chalGids <- get.annotation.for.xloc(chal_genes)[[2]]

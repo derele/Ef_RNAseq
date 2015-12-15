@@ -3,7 +3,11 @@
 ## LIBRARIES
 library(edgeR)
 library(ggplot2)
+library(GGally)
 
+if(!exists("mouse.bg")){
+    source("1_ballgown_import_diff.R")
+}
 
 raw.counts.4.bg <- function(bg){
 exon.raw.count <- eexpr(bg, "ucount")
@@ -34,17 +38,20 @@ return(list(exon.raw.count,
 
 mouse.RC <- raw.counts.4.bg(mouse.bg)
 
-
-pdf("figures/rep_pairs_mouseG.pdf", width = 30, height=30)
+pdf("figures/rep_pairs_mouseG.pdf", width = 100, height=100)
 ggpairs(mouse.RC[[3]])
 dev.off()
 
-design <- model.matrix(~pData(mouse.bg)$infection +
-                           pData(mouse.bg)$mouse.strain +
-                               pData(mouse.bg)$timepoint)
+## use the alternate design like recommended by the EdgR manual (or
+## eg. here: https://support.bioconductor.org/p/66952/) and specifiy
+## interactions as contrasts!
+design <- model.matrix(~0+pData(mouse.bg)$grouped)
 
-colnames(design)  <- gsub("pData\\(mouse.bg\\)\\$", "",
-                          colnames(design))
+colnames(design)  <- gsub("pData\\(mouse.bg\\)\\$grouped", "",
+                             colnames(design))
+## just to have the standard point delimitor
+colnames(design)  <- gsub("_", ".",
+                             colnames(design))
 
 GM <- DGEList(mouse.RC[[3]], group = pData(mouse.bg)$grouped)
 GM <- calcNormFactors(GM)
@@ -64,28 +71,7 @@ dev.off()
 fitM <- glmFit(GM, design) 
 fitLRT.list <- lapply(1:6, function (i) glmLRT(fitM, coef=i))
 
-list.of.top.genesM <- lapply(fitLRT.list, topTags, 1000000)
-
-names(list.of.top.genesM) <- unlist(lapply(list.of.top.genesM, 
-                                    function(x) x@.Data[[3]]))
-
-list.of.diff.genes <- lapply(list.of.top.genesM, function(x) {
-                                 d  <- x[[1]]
-                                 rownames(d[d$FDR<0.05,])
-                             })
-
-## use the alternate design like recommended by the EdgR manual (or
-## eg. here: https://support.bioconductor.org/p/66952/) and specifiy
-## interactions as contrasts!
-designALT <- model.matrix(~0+pData(mouse.bg)$grouped)
-
-colnames(designALT)  <- gsub("pData\\(mouse.bg\\)\\$grouped", "",
-                             colnames(designALT))
-## just to have the standard point delimitor
-colnames(designALT)  <- gsub("_", ".",
-                             colnames(designALT))
-
-fitMALT <- glmFit(GM, designALT) 
+fitM <- glmFit(GM, design) 
 
 my.contrasts <- makeContrasts(
     ## just infections in NMRI
@@ -106,22 +92,22 @@ my.contrasts <- makeContrasts(
     ## GO on here:
     ## differences in infection over time
     ## differences in 1st vs. 2nd depending on mouse strain
-    levels=designALT)
+    levels=design)
 
-fitLRT.ALT <- glmLRT(fitMALT, contrast = my.contrasts)
+fitLRT <- glmLRT(fitM, contrast = my.contrasts)
 
-ALL.top.ALT <- topTags(fitLRT.ALT, 1000000)[[1]]
+ALL.top <- topTags(fitLRT, 1000000)[[1]]
 
-fitLRT.ALT.list <- lapply(colnames(my.contrasts),
-                          function (x) glmLRT(fitMALT, contrast = my.contrasts[,x]))
-names(fitLRT.ALT.list) <- colnames(my.contrasts)
+fitLRT.list <- lapply(colnames(my.contrasts),
+                          function (x) glmLRT(fitM, contrast = my.contrasts[,x]))
+names(fitLRT.list) <- colnames(my.contrasts)
 
-top.ALT.list <- lapply(fitLRT.ALT.list, function (x){
+top.list <- lapply(fitLRT.list, function (x){
                            topTags(x, 1000000)[[1]]
                        })
-names(top.ALT.list) <- colnames(my.contrasts)
+names(top.list) <- colnames(my.contrasts)
 
-gene.ALT.list <- lapply(top.ALT.list, function(x) {
+gene.list <- lapply(top.list, function(x) {
                             rownames(x[x$FDR<0.05,])
                         })
 
