@@ -14,6 +14,10 @@ if(!exists("ALL.top")){
     source("2_edgeR_diff.R")
 }
 
+if(!exists("id2name")){
+    source("3_annotations.R")
+}
+
 targets <- readTargets("/data/Mouse_arrays/2012_arrays/targets.txt", sep=";")
 
 RG <- read.maimages(targets, path= "/data/Mouse_arrays/2012_arrays/", source = "agilent", 
@@ -99,9 +103,14 @@ RNAseq.Array.logFC <- merge(RNAseq.logFC, Array.logFC, by.x = "gene_names", by.y
 
 ## Very interesting...
 cor(RNAseq.Array.logFC[,3:9])
+cor(RNAseq.Array.logFC[,3:9], method="spearman")
 
+
+pdf("figures/Array_vs_RNAseq_pairs.pdf")
 ggpairs(RNAseq.Array.logFC[, 3:9], alpha=0.2) + theme_bw()
+dev.off()
 
+pdf("figures/Array144_vs_RNAseqN7.pdf")
 ggplot(RNAseq.Array.logFC, aes(logFC.N7vs0, X144h)) +
     geom_point(alpha=0.8) +
         stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          bins=10, geom="polygon") +
@@ -109,6 +118,15 @@ ggplot(RNAseq.Array.logFC, aes(logFC.N7vs0, X144h)) +
                 scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
                     stat_smooth() +
                         theme_bw()
+dev.off()
+
+
+A.low.R.high <-
+    RNAseq.Array.logFC$Row.names[
+                                 abs(RNAseq.Array.logFC$X144h)<1 &
+                                     abs(RNAseq.Array.logFC$logFC.N7vs0)>4.5
+                                 ]
+
 
 ## ... for a distinct subset of highly DE genes in RNAseq the DE was
 ## not found on Array
