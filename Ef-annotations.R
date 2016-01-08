@@ -1,10 +1,5 @@
 # Annotations Eimeria falciformis
 
-#name2SY <- as.list(org.Mm.egSYMBOL2EG) # get 5 digit symbol from XLOC
-#SY2Lname<- as.list(org.Mm.egGENENAME) # use 5 digit symbol to get long name for gene
-#SY2GO <- as.list(org.Mm.egGO) # get gene ontology annotations
-#SY2GO <- SY2GO[!is.na(SY2GO)]
-
 # csv.files taken from Heitlinger et al. on Ef genome
 #gene.gtf.info <- gffRead("/data/Eimeria_Totta/reference_genomes/merged_mm9_Ef.gtf") 
 # gffRead() not in available libraries - could not find it - hand-built?
