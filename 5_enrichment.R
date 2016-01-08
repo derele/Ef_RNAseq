@@ -44,8 +44,7 @@ gene.table.topGO(AR.fail.MF)
 
 AR.fail.BP <- TOGO.all.onto("BP", Array.universe,
                             A.R.fail, gene2GO)
-gene.table.topGO(AR.fail.BP)
-
+gene.table.topGO(AR.fail.MF)
 
 topKEGG(kegga(A.R.fail, species = "Mm"), n=30)
 topGO(goana(A.R.fail, species = "Mm"), n=30)
