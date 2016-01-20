@@ -26,10 +26,10 @@ gene2GO <- by(GO.df, GO.df$gene_id, function(x) as.character(x$GOID))
 
 ## subset for only those genes known that have been tested to create
 ## the suitable universe to search enrichment against
-
-all.genes <- unique(select.from.stats.results(stat_results_strain, mouse.bg,
+all.genes.E <- unique(select.from.stats.results(stat_results_strain, Ef.bg,
                                               qval = 2))
 
-all.genes <- get.annotation.for.xloc(all.genes)[[2]]
-gene2GO <- gene2GO[names(gene2GO)%in%all.genes]
+## adjust this for Ef
+#all.genes <- get.annotation.for.xloc(all.genes)[[2]]
+#gene2GO <- gene2GO[names(gene2GO)%in%all.genes]
 

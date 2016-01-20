@@ -43,7 +43,7 @@ mouse.bg <- subset(rnaseq.bg, grepl('^XLOC.*', geneIDs(rnaseq.bg)),
 mouse.bg <- subset(mouse.bg, !is.na(pData(mouse.bg)$timepoint),
                    genomesubset=FALSE) # 
 
-## Subset only infected samples 
+## Subset only infected samples
 inf.mouse.bg <- subset(mouse.bg, !pData(mouse.bg)$timepoint==0,
                        genomesubset=FALSE)
 
@@ -61,7 +61,9 @@ dpi5.mouse.bg <- subset(mouse.bg,
                         pData(mouse.bg)$timepoint==5,
                         genomesubset=FALSE)
 
+##################################################
 ## Create Eimeria only object and remove day zero
+##################################################
 Ef.bg <- subset(rnaseq.bg,
                 grepl('^EfaB.*', geneIDs(rnaseq.bg)),
                 genomesubset=TRUE)
