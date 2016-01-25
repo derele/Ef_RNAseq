@@ -1,19 +1,6 @@
 # Annotations Eimeria falciformis
 
-# csv.files taken from Heitlinger et al. on Ef genome
-#gene.gtf.info <- gffRead("/data/Eimeria_Totta/reference_genomes/merged_mm9_Ef.gtf") 
-# gffRead() not in available libraries - could not find it - hand-built?
-#gff.attr.list <- strsplit(gene.gtf.info$attributes, " ")
-
-#gene_ids <- unlist(lapply(gff.attr.list, function (x) x[[4]]))
-#gene_names <- unlist(lapply(gff.attr.list, function (x) x[[6]]))
-
-#gene_ids <- gsub("\"(.*)\";$", "\\1", gene_ids)
-#gene_names <- gsub("\"(.*)\";$", "\\1", gene_names)
-
-#id2name <-as.data.frame(cbind(gene_ids, gene_names))
-
-#id2name <- unique(id2name)
+go_Ef <- read.csv("~/12864_2014_6777_GO-annot.csv")
 
 
 ############ below line does not worki#################
@@ -22,12 +9,30 @@
 #GO.df <- as.data.frame(do.call("rbind", flat.GO))
 #GO.df$gene_id <- rep(names(flat.GO), times = unlist(lapply(flat.GO, nrow)))
 
-gene2GO <- by(GO.df, GO.df$gene_id, function(x) as.character(x$GOID))
+gene2GO_Ef <- by(go_Ef, go_Ef$gene, function(x) as.character(x$go))
 
 ## subset for only those genes known that have been tested to create
 ## the suitable universe to search enrichment against
-all.genes.E <- unique(select.from.stats.results(stat_results_strain, Ef.bg,
+all.genes.E <- unique(select.from.stats.results(stat_results_time, Ef.bg,
                                               qval = 2))
+
+##### NOTES ################
+# What do I need from the 12....csv files in the home folder?
+# Are the GO:ids enough for the enrichment tests
+# Is the format correct now?
+# Where do the _1 _2 come from and how do we deal with them?
+# Why don't the .pdf rep-pair-comparisons work? (png mouse is fine) 
+# How to implement the FCS(?) method
+
+#### Stuff to consider - but also potential
+#### time thieves:
+# Plot No. of zero read genes VS total?
+# Compare distributions in microarray VS RNAseq?
+#### SO:
+# Play with the 100-threshold differently
+# for mouse and Eimeria.
+# If necessary: invest more in finding comments
+# about edgeR and bimodal distributions/the neg. binom distr. 
 
 ## adjust this for Ef
 #all.genes <- get.annotation.for.xloc(all.genes)[[2]]

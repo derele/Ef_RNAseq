@@ -28,8 +28,8 @@ colnames(designE)  <- gsub("pData\\(Ef.bg\\)\\$grouped", "",
 ## just to have the standard point delimitor
 colnames(designE)  <- gsub("_", ".",
                              colnames(designE))
-
-keep <- rowSums(Ef.RC[[3]])>100 ## filter lowly expressed
+#### lower number for Ef, higher for mouse?? Play
+keep <- rowSums(Ef.RC[[3]])>5 ## filter lowly expressed raw counts
 GM.E <- DGEList(Ef.RC[[3]][keep,], group = pData(Ef.bg)$grouped)
 
 GM.E <- calcNormFactors(GM.E)
@@ -50,42 +50,30 @@ pdf("figures/Ef_genes_hclust.pdf")
 plot(hclust(dist(t(cpm(GM.E)))))
 dev.off()
 
-fitE <- glmFit(GM.E, designE) 
+fitE <- glmFit(GM.E, designE) # Is it correct to take the dispersions as input here??
 
 my.contrastsE <- makeContrasts(
-    ## just infections in NMRI
-#    N3vs0 = NMRI.1stInf.3dpi-NMRI.1stInf.0dpi,
-#    N5vs0 = NMRI.1stInf.5dpi-NMRI.1stInf.0dpi,
-#    N7vs0 = NMRI.1stInf.7dpi-NMRI.1stInf.0dpi,
-    ## just infections in Black and Rag
-#    B5vs0 = C57BL6.1stInf.5dpi- C57BL6.0dpi ,
-#    R5vs0 = Rag.1stInf.5dpi - Rag.0dpi,
-    ## differences in 1st vs 2nd infection
-#    N0.1stvsN0.2nd = NMRI.1stInf.0dpi - NMRI.2ndInf.0dpi,
-    N3.1stvsN3.2nd = NMRI.1stInf.3dpi-NMRI.2ndInf.3dpi,
-    N5.1stvsN5.2nd = NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi,
-    N7.1stvsN7.2nd = NMRI.1stInf.7dpi-NMRI.2ndInf.7dpi,
-    B5.1stvsB5.2nd = C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi,
-    R5.1stvsR2.2nd = Rag.1stInf.5dpi-Rag.2ndInf.5dpi,
-    ## differences in mouse strains
-#        NvsB=NMRI.1stInf.0dpi-C57BL6.0dpi, 
-#        NvsR=NMRI.1stInf.0dpi-Rag.0dpi,
-#        RvsB=Rag.0dpi-C57BL6.0dpi,
-    ## GO on here:
+    ## differences in 1st vs 2nd infection, (0dpi excluded)
+    N3.1stvsN3.2nd = NMRI.1stInf.3dpi-NMRI.2ndInf.3dpi, # 10 returned from topTags
+    N5.1stvsN5.2nd = NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi, # nothing
+    N7.1stvsN7.2nd = NMRI.1stInf.7dpi-NMRI.2ndInf.7dpi, # nothing
+    B5.1stvsB5.2nd = C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi, # nothing
+    R5.1stvsR2.2nd = Rag.1stInf.5dpi-Rag.2ndInf.5dpi, # nothing
     ## differences in infection over time
-    N3vsN5 = NMRI.1stInf.3dpi-NMRI.1stInf.5dpi,
-    N5vsN7 = NMRI.1stInf.5dpi-NMRI.1stInf.7dpi,
-    N3vsN7 = NMRI.1stInf.3dpi-NMRI.1stInf.7dpi,
+    N3vsN5 = NMRI.1stInf.3dpi-NMRI.1stInf.5dpi, # 47 returned
+    N5vsN7 = NMRI.1stInf.5dpi-NMRI.1stInf.7dpi, # 2684 returned
+    N3vsN7 = NMRI.1stInf.3dpi-NMRI.1stInf.7dpi, # 2227 returned -> day 3 and 7 more alike than 5 and 7?
     ## differences in 1st vs. 2nd depending on mouse strain
     N5.1stvsN52ndVSB5.1stvsB52nd = (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi)-
-        (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),
+        (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi), # nothing
     R5.1stvsR52ndVSB5.1stvsB52nd = (Rag.1stInf.5dpi-Rag.2ndInf.5dpi)-
-        (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),
+        (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),  # nothing. 
     R5.1stvsR52ndVSN5.1stvsN52nd = (Rag.1stInf.5dpi-Rag.2ndInf.5dpi)-
-        (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi),
+        (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi), # nothing
     levels=designE)
 
-fitLRT <- glmLRT(fitE, contrast = my.contrastsE)
+fitLRT <- glmLRT(fitE, contrast = my.contrastsE) # when contrasts are given,
+						 # tests the likelihood that that two contrasts are equal (H-null)
 
 ALL.top <- topTags(fitLRT, 1000000)
 
@@ -98,6 +86,9 @@ top.list <- lapply(fitLRT.list, function (x){
                        })
 names(top.list) <- colnames(my.contrastsE)
 
+######## How to deal with duplicates: _1, _2, _3..? Searched for Tophat,
+	#  Bowtie and Cufflinks add suffix to id(gene_id/_id but did not find explanation yet.
 gene.list.E <- lapply(top.list, function(x) {
-                            rownames(x[x$FDR<0.01,])
+                            rownames(x[x$FDR<0.05,])
                         })
+
