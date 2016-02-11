@@ -12,12 +12,44 @@ pdf("figures/rep_pairs_EfG.pdf", width = 70, height=70) # So far not working - b
 ggpairs(Ef.RC[[3]])
 dev.off()
 
-## use the alternate designE like recommended by the EdgR manual (or
+## use the alternate designE like .... the EdgR manual (or
 ## eg. here: https://support.bioconductor.org/p/66952/) and specifiy
 ## interactions as contrasts!
 #MOUSE: design <- model.matrix(~0+pData(Ef.bg)$grouped)
 
-## For EIMERIA:
+##################### For EIMERIA: #################################
+
+## Summary table of transcript counts per sample
+## MOUSE table
+tableM <- as.data.frame(colSums(mouse.RC[[3]]))
+#colnames(tableM)[,2] <- "Read.number"
+## MOUSE w/o day 0 
+tableM$Samples <- rownames(tableM)
+library(stringr)
+tableMsmall <- tableM[!(str_detect(rownames(tableM),"^.*0dpi.*$")), ]
+
+## EIMERIA table
+tableEf <- as.data.frame(colSums(Ef.RC[[3]]))
+#colnames(tableEf)[,1] <- "Read.number" - doesnt work?
+#tableEf$Samples <- colnames(Ef.RC[[3]])
+#print.xtable(tableEf, type = "latex", file = "tableEf-reads.tex")
+tableEf$Samples <- rownames(tableEf)
+## EIMERIA table w/o oocysts and sporozoites, for mouse comparison
+tableEfsmall <- tableEf[!(str_detect(tableEf$Samples, "^NMRI_(oocysts|sporozoites)$")), ]
+
+## ADD EIMERIA % to EIMERIAsmall table
+tableEfsmall$percent.Ef.reads <- (tableEfsmall[,1]/tableMsmall[,1])*100
+
+library(scales)
+ggplot()+
+	geom_point(data = tableEf, aes(x = Samples, y = as.numeric(colSums(Ef.RC[[3]])))) +
+	scale_y_log10(labels = comma) +
+	ylab("Number of reads") +
+	theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+#geom_point(data = tableM, aes(x = , y = as.numeric(colSums(Ef.RC[[3]])))
+
+##############################
 ## day 0 rm from pData and designE
 designE <- model.matrix(~0+pData(Ef.bg)$grouped)# 0+ in the model formula is an
 						# instruction not to include an intercept column and
