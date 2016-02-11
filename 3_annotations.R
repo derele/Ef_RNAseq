@@ -49,8 +49,3 @@ all.genes <- unique(select.from.stats.results(stat_results_strain, mouse.bg,
 
 all.genes <- get.annotation.for.xloc(all.genes)[[2]]
 gene2GO <- gene2GO[names(gene2GO)%in%all.genes]
-
-
-
-
-
