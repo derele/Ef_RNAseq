@@ -1,0 +1,33 @@
+\documentclass{article}
+\begin{document}
+
+% latex table generated in R 3.2.2 by xtable 1.8-0 package
+% 
+\begin{center}
+\begin{tabular}{ c c c c }
+  \hline
+ & Transcripts & Samples & Percent.Eimeria.transcripts \\ 
+  \hline
+1 & 238168.0 & C57BL6\_1stInf\_5dpi\_rep1 & 0.2 \\ 
+  2 & 275347.0 & C57BL6\_1stInf\_5dpi\_rep2 & 0.6 \\ 
+  3 & 339444.0 & C57BL6\_2ndInf\_5dpi\_rep1 & 0.4 \\ 
+  4 & 897425.0 & NMRI\_1stInf\_3dpi\_rep1 & 0.3 \\ 
+  5 & 985763.0 & NMRI\_1stInf\_3dpi\_rep2 & 0.1 \\ 
+  6 & 20364349.0 & NMRI\_1stInf\_5dpi\_rep1 & 6.3 \\ 
+  7 & 1780061.0 & NMRI\_1stInf\_5dpi\_rep2 & 0.4 \\ 
+  8 & 93014856.0 & NMRI\_1stInf\_7dpi\_rep1 & 506.9 \\ 
+  9 & 177106284.0 & NMRI\_1stInf\_7dpi\_rep2 & 122.0 \\ 
+  10 & 6114.0 & NMRI\_2ndInf\_3dpi\_rep1 & 0.0 \\ 
+  11 & 38243.0 & NMRI\_2ndInf\_3dpi\_rep2 & 0.0 \\ 
+  12 & 4148084.0 & NMRI\_2ndInf\_5dpi\_rep1 & 0.5 \\ 
+  13 & 14143.0 & NMRI\_2ndInf\_5dpi\_rep2 & 0.0 \\ 
+  14 & 11342304.0 & NMRI\_2ndInf\_7dpi\_rep1 & 7.6 \\ 
+  15 & 52620.0 & NMRI\_2ndInf\_7dpi\_rep2 & 0.0 \\ 
+  16 & 80014.0 & Rag\_1stInf\_5dpi\_rep1 & 0.1 \\ 
+  17 & 126181.0 & Rag\_1stInf\_5dpi\_rep2 & 0.1 \\ 
+  18 & 245385.0 & Rag\_2ndInf\_5dpi\_rep1 & 0.2 \\ 
+   \hline
+\end{tabular}
+\setlength{\tabcolsep}{2cm}
+\end{center}
+\end{document}

@@ -53,7 +53,8 @@ colnames(design)  <- gsub("pData\\(mouse.bg\\)\\$grouped", "",
 colnames(design)  <- gsub("_", ".",
                              colnames(design))
 
-keep <- rowSums(mouse.RC[[3]])>100 ## filter lowly expressed
+keep <- rowSums(mouse.RC[[3]])>5000 ## filter: with 2000 as cutoff, bimodal distr. almost not visible
+## tried 100, 1000, 5000. Latter is slightly better, but not much by visual inspection.
 GM <- DGEList(mouse.RC[[3]][keep,], group = pData(mouse.bg)$grouped)
 
 GM <- calcNormFactors(GM)
