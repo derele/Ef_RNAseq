@@ -26,13 +26,17 @@ row.names(tableEfsmall) <- seq(1:18)
 ## ADD EIMERIA % to EIMERIAsmall table
 tableEfsmall$percent.Ef.reads <- (tableEfsmall[,1]/tableMsmall[,1])*100
 
+ef.percentage <- ggplot() +
+	
+
 ef.read.number <- ggplot()+
-	geom_point(data = tableEf, aes(x = Samples, y = as.numeric(colSums(Ef.RC[[3]])))) +
+	geom_point(data = tableEf, aes(x = Samples, y = as.numeric(colSums(Ef.RC[[3]])), color = pData(Ef.bg)[ , 7] )) +
 	scale_y_log10(labels = comma) +
 	ylab("Number of Eimeria reads") +
-	ggtitle("Sequences per samples for Eimeria") +
+	ggtitle("Sequences per samples for Eimeria - immune-status") +
 	theme(axis.text.x = element_text(angle = 45, hjust = 1))
-ggsave("ef.read.numbers.png", ef.read.number, path = "figures", width = 40)#, hight = 40, dpi = 300)
+ggsave("ef.read.numbers-immune-status.png", ef.read.number, path = "figures", width = 40)#, hight = 40, dpi = 300)
+dev.off()
 #geom_point(data = tableM, aes(x = , y = as.numeric(colSums(Ef.RC[[3]])))
 
 
