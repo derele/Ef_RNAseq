@@ -24,17 +24,32 @@ tableEfsmall <- tableEf[!(str_detect(tableEf$Samples, "^NMRI_(oocysts|sporozoite
 row.names(tableEfsmall) <- seq(1:18)
 
 ## ADD EIMERIA % to EIMERIAsmall table
+colnames(tableEfsmall)[1] <- "Transcripts"
 tableEfsmall$percent.Ef.reads <- (tableEfsmall[,1]/tableMsmall[,1])*100
+tableEfsmall <- format(tableEfsmall, scientific =F, digits=1)
 
+
+## put percentage into table (plot not ideal due to outliers)
+
+
+
+## plotting parasite percentage of reads
 ef.percentage <- ggplot() +
+  geom_point(data = tableEfsmall, aes(x = Samples, y = percent.Ef.reads)) + #, color = pData(Ef.bg)[, 7])) +
+  scale_y_continuous(limits = c(0, 10)) +
+  ylab("Percentage of reads mapping to Eimeria genome") +
+  ggtitle("Eimeria fraction of total sequences per sample - 2 samples rm") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+ggsave("ef.percentage-cutoff10perc.png", ef.percentage, path = "figures", width = 40)
+dev.off()
 	
-
+## plot number of parasite reads
 ef.read.number <- ggplot()+
-	geom_point(data = tableEf, aes(x = Samples, y = as.numeric(colSums(Ef.RC[[3]])), color = pData(Ef.bg)[ , 7] )) +
-	scale_y_log10(labels = comma) +
-	ylab("Number of Eimeria reads") +
-	ggtitle("Sequences per samples for Eimeria - immune-status") +
-	theme(axis.text.x = element_text(angle = 45, hjust = 1))
+  geom_point(data = tableEf, aes(x = Samples, y = as.numeric(colSums(Ef.RC[[3]])), color = pData(Ef.bg)[ , 7] )) +
+  scale_y_log10(labels = comma) +
+  ylab("Number of Eimeria reads") +
+  ggtitle("Sequences per samples for Eimeria - immune-status") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ggsave("ef.read.numbers-immune-status.png", ef.read.number, path = "figures", width = 40)#, hight = 40, dpi = 300)
 dev.off()
 #geom_point(data = tableM, aes(x = , y = as.numeric(colSums(Ef.RC[[3]])))
