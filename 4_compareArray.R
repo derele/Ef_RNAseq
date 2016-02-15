@@ -79,12 +79,6 @@ RG.g <- RG.MA(MA.g)
 ES.g <- build.eset(RG.g, targets, makePLOT=FALSE,
                    annotation.package="mgug4122a.db")
 
-biolrep <- targets$SampleNumber
-
-design <- modelMatrix(targets, ref="Uninf")
-cont.matrix <- makeContrasts("X24h" , "X144h", "X24h-X144h",
-                             levels=design)
-
 corfit.g <- duplicateCorrelation(MA.g, design=design, ndups=1, block=biolrep)
 
 fit.g <- lmFit(MA.g, design=design, block=biolrep, cor=corfit.g$consensus)
@@ -98,27 +92,47 @@ RNAseq.logFC <- ALL.top[, c("logFC.N3vs0", "logFC.N5vs0",
                             "logFC.N7vs0", "logFC.B5vs0", "logFC.R5vs0" )]
 RNAseq.logFC <- merge(RNAseq.logFC, id2name, by.x = 0, by.y = "gene_ids")
 
+RNAseq.logFC.ruved <- ALL.top.ruved[, c("logFC.N3vs0", "logFC.N5vs0",
+                                        "logFC.N7vs0", "logFC.B5vs0", "logFC.R5vs0" )]
+RNAseq.logFC.ruved <- merge(RNAseq.logFC.ruved, id2name, by.x = 0, by.y = "gene_ids")
+
 RNAseq.Array.logFC <- merge(RNAseq.logFC, Array.logFC, by.x = "gene_names", by.y = 0)
 
+RNAseq.Array.logFC <- merge(RNAseq.Array.logFC, RNAseq.logFC.ruved, by = c("Row.names","gene_names"))
+
+names(RNAseq.Array.logFC) <- gsub(".x", ".plain", names(RNAseq.Array.logFC))
+
+names(RNAseq.Array.logFC) <- gsub(".y", ".ruved", names(RNAseq.Array.logFC))
 
 ## Very interesting...
-cor(RNAseq.Array.logFC[,3:9])
-cor(RNAseq.Array.logFC[,3:9], method="spearman")
-
+cor(RNAseq.Array.logFC[,3:14])
+cor(RNAseq.Array.logFC[,3:14], method="spearman")
 
 pdf("figures/Array_vs_RNAseq_pairs.pdf")
-ggpairs(RNAseq.Array.logFC[, 3:9], alpha=0.2) + theme_bw()
+ggpairs(RNAseq.Array.logFC[, 3:14], alpha=0.2) + theme_bw()
 dev.off()
 
 pdf("figures/Array144_vs_RNAseqN7.pdf")
-ggplot(RNAseq.Array.logFC, aes(logFC.N7vs0, X144h)) +
+ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
     geom_point(alpha=0.8) +
-        stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          bins=10, geom="polygon") +
+        stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +
             scale_fill_gradient(low = "yellow", high = "red") +
                 scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
                     stat_smooth() +
                         theme_bw()
 dev.off()
+
+pdf("figures/Array144_vs_RNAseqN7_ruved.pdf")
+ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.ruved)) +
+    geom_point(alpha=0.8) +
+        stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +
+            scale_fill_gradient(low = "yellow", high = "red") +
+                scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
+                    stat_smooth() +
+                        theme_bw()
+dev.off()
+
+
 
 
 A.low.R.high <-

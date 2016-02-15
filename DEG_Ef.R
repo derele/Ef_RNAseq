@@ -41,11 +41,13 @@ tableEfsmall <- tableEf[!(str_detect(tableEf$Samples, "^NMRI_(oocysts|sporozoite
 tableEfsmall$percent.Ef.reads <- (tableEfsmall[,1]/tableMsmall[,1])*100
 
 library(scales)
+
 ggplot()+
-	geom_point(data = tableEf, aes(x = Samples, y = as.numeric(colSums(Ef.RC[[3]])))) +
+    geom_point(data = tableEf, aes(x = Samples,
+                   y = as.numeric(colSums(Ef.RC[[3]])))) +
 	scale_y_log10(labels = comma) +
-	ylab("Number of reads") +
-	theme(axis.text.x = element_text(angle = 45, hjust = 1))
+            ylab("Number of reads") +
+                theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 #geom_point(data = tableM, aes(x = , y = as.numeric(colSums(Ef.RC[[3]])))
 

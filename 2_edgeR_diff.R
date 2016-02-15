@@ -10,30 +10,30 @@ if(!exists("mouse.bg")){
 }
 
 raw.counts.4.bg <- function(bg){
-exon.raw.count <- eexpr(bg, "ucount")
-## the linkage data
-e2t <- bg@indexes$e2t
-t2g <- bg@indexes$t2g 
-e2t2g <- merge(e2t, t2g)
-all.count <- merge(e2t2g, exon.raw.count,
-                   by.x = "e_id", by.y = 0)
-## sum up for transcripts
-transcript.raw.count <-
-    do.call("rbind",
-            by(all.count, all.count$t_id,
-               function(x) colSums(x[, 4:ncol(x)])))
-## sum up for genes
-gene.raw.count <-
-    do.call("rbind",
-            by(all.count, all.count$g_id,
-               function(x) colSums(x[, 4:ncol(x)])))
-colnames(transcript.raw.count) <-
-    as.character(pData(bg)$samples)
-colnames(gene.raw.count) <-
-    as.character(pData(bg)$samples)
-return(list(exon.raw.count,
-            transcript.raw.count,
-            gene.raw.count))
+    exon.raw.count <- eexpr(bg, "ucount")
+    ## the linkage data
+    e2t <- bg@indexes$e2t
+    t2g <- bg@indexes$t2g 
+    e2t2g <- merge(e2t, t2g)
+    all.count <- merge(e2t2g, exon.raw.count,
+                       by.x = "e_id", by.y = 0)
+    ## sum up for transcripts
+    transcript.raw.count <-
+        do.call("rbind",
+                by(all.count, all.count$t_id,
+                   function(x) colSums(x[, 4:ncol(x)])))
+    ## sum up for genes
+    gene.raw.count <-
+        do.call("rbind",
+                by(all.count, all.count$g_id,
+                   function(x) colSums(x[, 4:ncol(x)])))
+    colnames(transcript.raw.count) <-
+        as.character(pData(bg)$samples)
+    colnames(gene.raw.count) <-
+        as.character(pData(bg)$samples)
+    return(list(exon.raw.count,
+                transcript.raw.count,
+                gene.raw.count))
 }
 
 mouse.RC <- raw.counts.4.bg(mouse.bg)
@@ -51,9 +51,10 @@ colnames(design)  <- gsub("pData\\(mouse.bg\\)\\$grouped", "",
                              colnames(design))
 ## just to have the standard point delimitor
 colnames(design)  <- gsub("_", ".",
-                             colnames(design))
+                          colnames(design))
 
-keep <- rowSums(mouse.RC[[3]])>5000 ## filter: with 2000 as cutoff, bimodal distr. almost not visible
+keep <- rowSums(mouse.RC[[3]])>2000 ## filter: with 2000 as cutoff, bimodal distr. almost not visible
+
 ## tried 100, 1000, 5000. Latter is slightly better, but not much by visual inspection.
 GM <- DGEList(mouse.RC[[3]][keep,], group = pData(mouse.bg)$grouped)
 
@@ -68,7 +69,7 @@ ggpairs(cpm(GM))
 dev.off()
 
 pdf("figures/Mouse_genes_mds.pdf")
-plotMDS(GM, )
+plotMDS(GM)
 dev.off()
 
 pdf("figures/Mouse_genes_hclust.pdf")
@@ -127,4 +128,28 @@ gene.list <- lapply(top.list, function(x) {
                             rownames(x[x$FDR<0.01,])
                         })
 
+### Now the data with RUV normalization:
 
+GM.ruved.disp <- estimateGLMCommonDisp(counts(Mm.RUVset.groups),
+                                       design, offset=-offst(Mm.RUVset.groups))
+
+fitM.ruved <- glmFit(counts(Mm.RUVset.groups), design, GM.ruved.disp,
+                     offset=-offst(Mm.RUVset.groups))
+
+fitLRT.ruved <- glmLRT(fitM.ruved, contrast = my.contrasts)
+
+ALL.top.ruved <- topTags(fitLRT.ruved, 1000000)
+
+fitLRT.ruved.list <- lapply(colnames(my.contrasts),
+                            function (x) glmLRT(fitM.ruved, contrast = my.contrasts[,x]))
+
+names(fitLRT.ruved.list) <- colnames(my.contrasts)
+
+top.list.ruved <- lapply(fitLRT.ruved.list, function (x){
+                             topTags(x, 1000000)[[1]]
+                         })
+names(top.list.ruved) <- colnames(my.contrasts)
+
+gene.list.ruved <- lapply(top.list.ruved, function(x) {
+                              rownames(x[x$FDR<0.01,])
+                          })

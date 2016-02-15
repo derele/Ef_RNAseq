@@ -1,0 +1,210 @@
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.13)  12 FEB 2016 13:38
+entering extended mode
+ %&-line parsing enabled.
+**\input file1_data_curation.tex
+(./file1_data_curation.tex (/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2005/09/16 v1.4f Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size10.clo
+File: size10.clo 2005/09/16 v1.4f Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+(/usr/share/texmf/tex/latex/graphics/graphics.sty
+Package: graphics 2006/02/20 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texmf/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 90.
+
+(/usr/share/texmf/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2007/01/08 v0.04d Graphics/color for pdfTeX
+\Gread@gobject=\count87
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+(/usr/share/texmf/tex/latex/placeins/placeins.sty
+Package: placeins 2005/04/18  v 2.2
+)
+No file file1_data_curation.aux.
+\openout1 = `file1_data_curation.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 49.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 49.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 49.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <7> on input line 52.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 52.
+<distributions_mouseNocutoff.png, id=1, 1806.75pt x 1053.9375pt>
+File: distributions_mouseNocutoff.png Graphic file (type png)
+
+<use distributions_mouseNocutoff.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<distributions_normmouseNocutoff.png, id=2, 1806.75pt x 1053.9375pt>
+File: distributions_normmouseNocutoff.png Graphic file (type png)
+
+<use distributions_normmouseNocutoff.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<distributions_normmouse100.png, id=3, 1806.75pt x 1053.9375pt>
+File: distributions_normmouse100.png Graphic file (type png)
+
+<use distributions_normmouse100.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<distributions_normmouse2000.png, id=4, 1806.75pt x 1053.9375pt>
+File: distributions_normmouse2000.png Graphic file (type png)
+
+<use distributions_normmouse2000.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<distributions_normmouse5000.png, id=5, 1806.75pt x 1053.9375pt>
+File: distributions_normmouse5000.png Graphic file (type png)
+
+<use distributions_normmouse5000.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<distributions_mouse5000.png, id=6, 1806.75pt x 1053.9375pt>
+File: distributions_mouse5000.png Graphic file (type png)
+
+<use distributions_mouse5000.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<distributions_normmouse10000.png, id=7, 1806.75pt x 1053.9375pt>
+File: distributions_normmouse10000.png Graphic file (type png)
+
+<use distributions_normmouse10000.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[1
+
+{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2 <./distributions_mous
+eNocutoff.png (PNG copy)> <./distributions_normmouseNocutoff.png (PNG copy)>] [
+3 <./distributions_normmouse100.png (PNG copy)> <./distributions_normmouse2000.
+png (PNG copy)>] [4 <./distributions_normmouse5000.png (PNG copy)> <./distribut
+ions_mouse5000.png (PNG copy)>] [5 <./distributions_normmouse10000.png (PNG cop
+y)>] <distributions_Ef5.png, id=34, 1806.75pt x 1053.9375pt>
+File: distributions_Ef5.png Graphic file (type png)
+
+<use distributions_Ef5.png>
+<distributions_Efnorm5.png, id=35, 1806.75pt x 1053.9375pt>
+File: distributions_Efnorm5.png Graphic file (type png)
+
+<use distributions_Efnorm5.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<distributions_Ef50000.png, id=36, 1806.75pt x 1053.9375pt>
+File: distributions_Ef50000.png Graphic file (type png)
+
+<use distributions_Ef50000.png>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<distributions_Efnorm50000.png, id=37, 1806.75pt x 1053.9375pt>
+File: distributions_Efnorm50000.png Graphic file (type png)
+
+<use distributions_Efnorm50000.png>
+Underfull \hbox (badness 1728) in paragraph at lines 257--257
+\OT1/cmr/m/n/10 vi-sual in-spec-tion dis-tri-bu-tions in most sam-ples ap-pear 
+smooth. Non-
+ []
+
+
+Underfull \hbox (badness 4805) in paragraph at lines 257--257
+\OT1/cmr/m/n/10 (NMRI[]2ndInf[]3dpi[]rep1, NMRI[]2ndInf[]3dpi[]rep2, NMRI[]2ndI
+nf[]5dpi[]rep2
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 257--257
+\OT1/cmr/m/n/10 and NMRI[]2ndInf[]7dpi[]rep2). Sam-ples Rag[]1stInf[]5dpi[]rep1
+ and
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[6
+
+ <./distributions_Ef5.png (PNG copy)>] [7 <./distributions_Efnorm5.png (PNG cop
+y)>] [8 <./distributions_Ef50000.png (PNG copy)>] [9 <./distributions_Efnorm500
+00.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 268--279
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 280--297
+
+ []
+
+[10
+
+] (./file1_data_curation.aux) ) 
+Here is how much of TeX's memory you used:
+ 659 strings out of 256214
+ 9006 string characters out of 1916999
+ 60460 words of memory out of 1500000
+ 3981 multiletter control sequences out of 10000+200000
+ 8274 words of font info for 29 fonts, out of 1200000 for 2000
+ 645 hyphenation exceptions out of 8191
+ 25i,6n,19p,846b,244s stack positions out of 5000i,500n,6000p,200000b,15000s
+</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.
+pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmcsc10.pfb></usr/share/texmf/font
+s/type1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.pf
+b></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/ty
+pe1/bluesky/cm/cmr17.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr7.pfb></us
+r/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/b
+luesky/cm/cmti10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmti12.pfb>
+Output written on file1_data_curation.pdf (10 pages, 765103 bytes).
+PDF statistics:
+ 86 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 131072)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+

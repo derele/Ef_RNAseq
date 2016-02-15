@@ -15,7 +15,6 @@ if(!exists("gene2GO")){
 ## the universe of genes which were tested at all:
 exp.universe <- get.annotation.for.xloc(gene.list[[2]])[[2]]
 
-
 ## The CHALLENGE in NMRI DAY 7 
 N7.1stvsN7.2nd.GID <-
     get.annotation.for.xloc(gene.list[["N7.1stvsN7.2nd"]])[[2]]
