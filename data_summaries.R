@@ -2,6 +2,7 @@
 ## E.g. raw counts, percetage Eimeria reads... etc
 
 library(scales)
+library(xtable)
 library(stringr)
 
 ## Summary table of transcript counts per sample
@@ -34,7 +35,6 @@ tableEfsmall$percent.Ef.reads <- (tableEfsmall[,1]/tableMsmall[,1])*100
 colnames(tableEfsmall) <- c("Transcripts", "Samples", "Percent.Eimeria.transcripts")
 
 #tableEfsmall <- format(tableEfsmall, scientific =F, digits=1, justify = "centre")
-library(xtable)
 efsmall <- xtable(tableEfsmall, align = c("c", "c", "c", "c"), digits = 1)
 print(efsmall, type = "latex", file = "figures/tableEfsmall.tex")
 ## put percentage into table (plot not ideal due to outliers)
