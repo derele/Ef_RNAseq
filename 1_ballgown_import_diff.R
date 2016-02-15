@@ -30,8 +30,17 @@ add.pdata <- function (ballgown.obj){
     ## variables to summarize other variables sith mutliple levels into two levels ##
     immune.status <- ifelse(mouse.strain %in% "Rag", "Rag", "competent")
     late.early <- ifelse(timepoint < 7 , "early", "late")
+    batch <- c(3, 3, 3, 3, 3, 1, 1, 100, 1, 2, 1, 100, 2, 3, 3, 3, 2, 3, 3, 3, 1, 1, 3, 3, 3, 3, 3)
+    seq.method <- c("hiseq", "hiseq", "hiseq", "hiseq", "hiseq",
+               "non.hiseq", "non.hiseq", "non.hiseq", "non.hiseq", "non.hiseq", "non.hiseq", "non.hiseq", "non.hiseq",
+               "hiseq", "hiseq", "hiseq",
+               "non.hiseq",
+               "hiseq", "hiseq", "hiseq",
+               "non.hiseq", "non.hiseq",
+               "hiseq", "hiseq", "hiseq", "hiseq", "hiseq")
     ##                                       ##
-    data.frame(samples, grouped, infection, rep, mouse.strain, timepoint, immune.status, late.early)
+    data.frame(samples, grouped, infection, rep, mouse.strain, timepoint, immune.status, late.early, batch, seq.method)
+    
 }
 
 pData(rnaseq.bg) <- add.pdata(rnaseq.bg)

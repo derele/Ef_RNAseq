@@ -115,14 +115,14 @@ fitLRT.list <- lapply(colnames(my.contrastsE),
                           function (x) glmLRT(fitE, contrast = my.contrastsE[,x]))
 names(fitLRT.list) <- colnames(my.contrastsE)
 
-top.list <- lapply(fitLRT.list, function (x){
+top.listE <- lapply(fitLRT.list, function (x){
                            topTags(x, 1000000)[[1]]
                        })
-names(top.list) <- colnames(my.contrastsE)
+names(top.listE) <- colnames(my.contrastsE)
 
 ######## How to deal with duplicates: _1, _2, _3..? Searched for Tophat,
 	#  Bowtie and Cufflinks add suffix to id(gene_id/_id but did not find explanation yet.
-gene.list.E <- lapply(top.list, function(x) {
+gene.list.E <- lapply(top.listE, function(x) {
                             rownames(x[x$FDR<0.05,])
                         })
 
