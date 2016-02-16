@@ -13,21 +13,20 @@ if(!exists("gene2GO")){
 }
 
 ## the universe of genes which were tested at all:
-exp.universe <- get.annotation.for.xloc(gene.list[[2]])[[2]]
+exp.universe <- names(gene2GO.Mm)
 
 ## The CHALLENGE in NMRI DAY 7 
-N7.1stvsN7.2nd.GID <-
-    get.annotation.for.xloc(gene.list[["N7.1stvsN7.2nd"]])[[2]]
-
 MF.N7.chal <- TOGO.all.onto("MF", exp.universe,
-                            N7.1stvsN7.2nd.GID, gene2GO)
+                            gene.list[["N7.1stvsN7.2nd"]], gene2GO.Mm)
+
 gene.table.topGO(MF.N7.chal)
 
 BP.N7.chal <- TOGO.all.onto("BP", exp.universe, 
-                            N7.1stvsN7.2nd.GID, gene2GO)
+                            gene.list.ruved[["N7.1stvsN7.2nd"]], gene2GO.Mm)
+
 gene.table.topGO(BP.N7.chal)
 
-topKEGG(kegga(N7.1stvsN7.2nd.GID, species = "Mm"), n=30)
+topKEGG(kegga(gene.list.ruved[["N7.1stvsN7.2nd"]], species = "Mm"), n=30)
 topGO(goana(N7.1stvsN7.2nd.GID, species = "Mm"), n=30)
 
 

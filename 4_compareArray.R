@@ -133,14 +133,11 @@ ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.ruved)) +
 dev.off()
 
 
-
-
 A.low.R.high <-
     RNAseq.Array.logFC$Row.names[
                                  abs(RNAseq.Array.logFC$X144h)<1 &
                                      abs(RNAseq.Array.logFC$logFC.N7vs0)>4.5
                                  ]
-
 
 ## ... for a distinct subset of highly DE genes in RNAseq the DE was
 ## not found on Array
