@@ -43,14 +43,22 @@ annot.frame <- .get.annot.frame()
 cuff2GO.Mm <- by(annot.frame, annot.frame$cuff_ids,
                  function(x) as.character(x$go_id))
 ## define the universe of tested genes
-cuff2GO.Mm <- cuff2GO.Mm[names(cuff2GO.Mm)%in%rownames(ALL.top)]
+cuff2GO.Mm <- cuff2GO.Mm[names(cuff2GO.Mm)%in%rownames(ALL.top.Mm)]
 
 ## overwrite the cuff2name creator function to turn it into a subsetter function
 get.cuff2name <- function(cuff_ids){
     cuffsubset <- cuff2name[cuff2name$cuff_ids%in%cuff_ids , "gene_names"]
     return(as.character(cuffsubset))
 }
-    
+
+go_Ef <- read.csv("data/12864_2014_6777_GO-annot.csv")
+
+gene2GO.Ef <- by(go_Ef, go_Ef$gene, function(x) as.character(x$go))
+
+## subset for only those genes known that have been tested to create
+## the suitable universe to search enrichment against
+
+
 ## objects created here for further use:
 
 ## 1. cuff2name - a data frame linking gene ids

@@ -1,3 +1,6 @@
+## still open question: How to implement the FCS(?) method
+
+
 library(topGO)
 
 if(!exists("chalGids")){
@@ -8,7 +11,7 @@ if(!exists("gene.list")){
     source("2_edgeR_diff.R")
 }
 
-if(!exists("gene2GO")){
+if(!exists("gene2GO.Mm")){
     source("3_annotations.R")
 }
 

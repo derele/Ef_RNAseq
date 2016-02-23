@@ -9,12 +9,11 @@ library(Biobase)
 library(RSvgDevice)
 library(GGally)
 
-
-if(!exists("ALL.top")){
+if(!exists("ALL.top.Mm")){
     source("2_edgeR_diff.R")
 }
 
-if(!exists("id2name")){
+if(!exists("cuff2GO.Mm")){
     source("3_annotations.R")
 }
 
@@ -88,11 +87,11 @@ fit2.g <- eBayes(fit2.g)
 
 Array.logFC <- topTable(fit2.g, n=400000)[, c("X24h", "X144h")]
 
-RNAseq.logFC <- ALL.top[, c("logFC.N3vs0", "logFC.N5vs0",
+RNAseq.logFC <- ALL.top.Mm[, c("logFC.N3vs0", "logFC.N5vs0",
                             "logFC.N7vs0", "logFC.B5vs0", "logFC.R5vs0" )]
 RNAseq.logFC <- merge(RNAseq.logFC, id2name, by.x = 0, by.y = "gene_ids")
 
-RNAseq.logFC.ruved <- ALL.top.ruved[, c("logFC.N3vs0", "logFC.N5vs0",
+RNAseq.logFC.ruved <- Mm.ALL.top.ruved[, c("logFC.N3vs0", "logFC.N5vs0",
                                         "logFC.N7vs0", "logFC.B5vs0", "logFC.R5vs0" )]
 RNAseq.logFC.ruved <- merge(RNAseq.logFC.ruved, id2name, by.x = 0, by.y = "gene_ids")
 
