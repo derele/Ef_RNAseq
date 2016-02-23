@@ -6,6 +6,9 @@ if(!exists("raw.counts.4.bg")){
 	source("2_edgeR_diff.R")
         }
 
+library(scales)
+library(stringr)
+
 Ef.RC <- raw.counts.4.bg(Ef.bg)
 
 pdf("figures/rep_pairs_EfG.pdf", width = 70, height=70) # So far not working - because R interrupt?
@@ -17,6 +20,7 @@ dev.off()
 ## interactions as contrasts!
 #MOUSE: design <- model.matrix(~0+pData(Ef.bg)$grouped)
 
+<<<<<<< HEAD
 ##################### For EIMERIA: #################################
 
 ## Summary table of transcript counts per sample
@@ -42,6 +46,8 @@ tableEfsmall$percent.Ef.reads <- (tableEfsmall[,1]/tableMsmall[,1])*100
 
 library(scales)
 
+=======
+>>>>>>> Totta_working
 ggplot()+
     geom_point(data = tableEf, aes(x = Samples,
                    y = as.numeric(colSums(Ef.RC[[3]])))) +
@@ -76,10 +82,100 @@ pdf("figures/rep_pairs_NORM_EfG.pdf", width = 70, height=70)
 ggpairs(cpm(GM.E)) #ggpairs makes matrix of plots
 dev.off()
 
-pdf("figures/Ef_genes_mds.pdf")
-plotMDS(GM.E, )
+###################################################################
+## COLORS FOR pDATA() GROUPS 
+###################################################################
+
+### Show all the RColorBrewer colour schemes available
+display.brewer.all()
+####
+
+day.colors = c("#1b9e77", "#1b9e77", "#1b9e77", 
+               "#d95f02", "#d95f02", 
+               "#1b9e77", "#1b9e77", 
+               "#474747", "#474747",
+               "#d95f02", "#d95f02", 
+               "#1b9e77", "#1b9e77",
+               "#474747", "#474747",
+               "#1b9e77","#1b9e77", "#1b9e77")
+
+strain.colors = c("#1b9e77", "#1b9e77", "#1b9e77",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#d95f02", "#d95f02", "#d95f02") 
+
+batch.colors = c("#1b9e77", "#1b9e77", "#1b9e77", # 3
+                  "#d95f02", # 1
+                  "#003366", # 100
+                  "#d95f02", # 1
+                  "#9150f9", # 2
+                  "#d95f02", # 1
+                  "#003366", # 100
+                  "#1b9e77", "#1b9e77", # 3
+                  "#9150f9", # 2
+                  "#1b9e77", "#1b9e77", "#1b9e77", # 3
+                  "#d95f02", # 1
+                  "#1b9e77", "#1b9e77", "#1b9e77") # 3
+
+seq.colors = c("#474747", "#474747", "#474747",
+                "#1b9e77", "#1b9e77", "#1b9e77",
+                "#1b9e77", "#1b9e77", "#1b9e77",
+                "#474747", "#474747",
+                "#1b9e77",
+                "#474747", "#474747","#474747",
+                "#1b9e77", "#1b9e77",
+                "#474747", "#474747","#474747")
+
+#################################################################
+# CLUSTERING, 4 DIFFERENT COLORINGS, EIMERIA
+#################################################################
+pdf("figures/Ef_4-mds.pdf")
+#plotMDS(GM.E, )
+par(mfrow = c(2,2), mai = c(0.6, 0.5, 0.4, 0.4))
+
+plotMDS(GM.E, labels = pData(Ef.bg)$timepoint,  
+              col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
+              col = day.colors,
+              xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2",
+              mgp = c(2,1,0))
+#mai = c(1, 0.1, 0.1, 0.1)
+title("Day p.i.", line = 0.7)
+
+plotMDS(GM.E, labels = pData(Ef.bg)$mouse.strain, 
+              col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
+              col = strain.colors,
+              xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2",
+              mgp = c(2,1,0))
+#mai = c(1, 0.1, 0.1, 0.1)
+title("Mouse strain", line = 0.7)
+
+plotMDS(GM.E, labels = pData(Ef.bg)$batch,
+              col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
+              col = batch.colors,
+              xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2",
+              mgp = c(2,1,0))
+#mai = c(1, 0.1, 0.1, 0.1)
+title("Batch", line = 0.7)
+
+plotMDS(GM.E, labels = pData(Ef.bg)$seq.method,          
+              col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
+              col = seq.colors,
+              xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2",
+              mgp = c(2,1,0))
+#mai = c(1, 0.1, 0.1, 0.1))
+title("Sequnecing method", line = 0.7)
 dev.off()
 
+
+
+######################################
+
+######################################
 pdf("figures/Ef_genes_hclust.pdf")
 plot(hclust(dist(t(cpm(GM.E)))))
 dev.off()
