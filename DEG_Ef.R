@@ -74,8 +74,72 @@ pdf("figures/rep_pairs_NORM_EfG.pdf", width = 70, height=70)
 ggpairs(cpm(GM.E)) #ggpairs makes matrix of plots
 dev.off()
 
-pdf("figures/Ef_genes_mds.pdf")
-plotMDS(GM.E, )
+############## COLORS FOR pDATA() GROUPS ##################
+
+### Show all the RColorBrewer colour schemes available
+display.brewer.all()
+####
+
+day.colors = c("#1b9e77", "#1b9e77", "#1b9e77", 
+               "#d95f02", "#d95f02", 
+               "#1b9e77", "#1b9e77", 
+               "#474747", "#474747",
+               "#d95f02", "#d95f02", 
+               "#1b9e77", "#1b9e77",
+               "#474747", "#474747",
+               "#1b9e77","#1b9e77", "#1b9e77")
+
+strain.colors = c("#1b9e77", "#1b9e77", "#1b9e77",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#474747", "#474747",
+                "#d95f02", "#d95f02", "#d95f02") 
+
+batch.colors = c("#1b9e77", "#1b9e77", "#1b9e77", # 3
+                  "#d95f02", # 1
+                  "#003366", # 100
+                  "#d95f02", # 1
+                  "#9150f9", # 2
+                  "#d95f02", # 1
+                  "#003366", # 100
+                  "#1b9e77", "#1b9e77", # 3
+                  "#9150f9", # 2
+                  "#1b9e77", "#1b9e77", "#1b9e77", # 3
+                  "#d95f02", # 1
+                  "#1b9e77", "#1b9e77", "#1b9e77") # 3
+
+seq.colors = c("#474747", "#474747", "#474747",
+                "#1b9e77", "#1b9e77", "#1b9e77",
+                "#1b9e77", "#1b9e77", "#1b9e77",
+                "#474747", "#474747",
+                "#1b9e77",
+                "#474747", "#474747","#474747",
+                "#1b9e77", "#1b9e77",
+                "#474747", "#474747","#474747")
+
+pdf("figures/Ef_4-mds.pdf")
+#plotMDS(GM.E, )
+par(mfrow = c(2,2))
+plotMDS(GM.E, labels = pData(Ef.bg)$timepoint, main = "Day p.i.", 
+               col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
+               col = day.colors,
+                xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2")
+plotMDS(GM.E, labels = pData(Ef.bg)$mouse.strain, main = "Mouse strain", 
+               col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
+                col = strain.colors,
+                xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2")
+plotMDS(GM.E, labels = pData(Ef.bg)$batch, main = "Batch",
+               col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
+                col = batch.colors,
+                xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2")
+plotMDS(GM.E, labels = pData(Ef.bg)$seq.method, main = "Sequencing method",
+               col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
+                col = seq.colors,
+                xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2")
 dev.off()
 
 pdf("figures/Ef_genes_hclust.pdf")
