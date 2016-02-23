@@ -7,7 +7,7 @@ library(RColorBrewer)
 ########## USE THIS #######################
 ########## PHEATMAP() specifying distance and method ############
 pheatmap(cpm(Ef.RC[[3]][unlist(gene.list.E),]),
-  color = brewer.pal(n = 8, name = "RdBu"),
+  color = brewer.pal(n = 11, name = "BrBG"),
   scale = "row",
  # kmeans_k = NA,
  # cluster_rows = T,
@@ -17,9 +17,9 @@ pheatmap(cpm(Ef.RC[[3]][unlist(gene.list.E),]),
  #annotation_names_row = F,
   annotation_row = NA,
   show_rownames = F,
-  main = "E. falciformis, (complete, euclidean)",
+  main = "E. falciformis DE genes clustered",
  #cols = brewer.pal(n = 8, name = "PuOr"),
-  filename = "figures/pheatmap_Ef_DEGy.pdf"
+  filename = "figures/pheatmap_Ef_DEG.pdf"
   )
 dev.off()
 
@@ -60,9 +60,4 @@ dev.off()
 #  col = brewer.pal(n = 8, name = "RdBu"))
 #dev.off()
 
-# Define custom layout for heatmap - can probably be removed
-#mylmat = rbind(c(0,3,0),c(2,1,0),c(0,4,0)) # creates 3x3 table with location of heatmap elements defined
-#mylwid = c(1.5,4,0.5)
-#mylhei = c(1.5,4,1)
-# lmat = mylmat, lwid = mylwid, lhei = mylhei, # to allow key (color legend) to be next to map
 
