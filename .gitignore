@@ -1,4 +1,5 @@
-*~/IsFeatPopnOL.txt
+*~
+/IsFeatPopnOL.txt
 /IsFeatPopnOL.txt
 /IsNOTWellAboveBG.txt
 /RawDataNOCtrl.txt
@@ -13,3 +14,4 @@
 /RUVseq.R~
 /2b_edgeR_diff.R~
 /data_curataion.R~
+/figures/*
