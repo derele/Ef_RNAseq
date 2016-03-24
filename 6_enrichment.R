@@ -3,7 +3,7 @@ library(topGO)
 library(xtable)
 
 if(!exists("hcluster")){
-    source("clustering.R")
+    source("5_clustering.R")
 }
 
 if(!exists("gene2GO")){
