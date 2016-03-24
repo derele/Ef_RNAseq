@@ -1,104 +1,50 @@
 ## still open question: How to implement the FCS(?) method
-
-
 library(topGO)
+library(xtable)
 
-if(!exists("chalGids")){
-    source("1_ballgown_import_diff.R")
+if(!exists("hcluster")){
+    source("clustering.R")
 }
 
-if(!exists("gene.list")){
-    source("2_edgeR_diff.R")
-}
-
-if(!exists("gene2GO.Mm")){
+if(!exists("gene2GO")){
     source("3_annotations.R")
 }
 
 ## the universe of genes which were tested at all:
-exp.universe <- names(gene2GO.Mm)
-
-## The CHALLENGE in NMRI DAY 7 
-MF.N7.chal <- TOGO.all.onto("MF", exp.universe,
-                            gene.list[["N7.1stvsN7.2nd"]], gene2GO.Mm)
-
-gene.table.topGO(MF.N7.chal)
-
-BP.N7.chal <- TOGO.all.onto("BP", exp.universe, 
-                            gene.list.ruved[["N7.1stvsN7.2nd"]], gene2GO.Mm)
-
-gene.table.topGO(BP.N7.chal)
-
-topKEGG(kegga(gene.list.ruved[["N7.1stvsN7.2nd"]], species = "Mm"), n=30)
-topGO(goana(N7.1stvsN7.2nd.GID, species = "Mm"), n=30)
+exp.universe <- list()
+exp.universe[["Mm"]] <- names(gene2GO[["Mm"]])
+exp.universe[["Ef"]] <- names(gene2GO[["Ef"]])
 
 
-## the genes not detected as DE  on the array but in RNA seq:
-Array.universe <-
-    get.annotation.for.xloc(RNAseq.Array.logFC$Row.names)[[2]]
+#### We search for enrichment of genes from clustering 
+######## Clustering #############
 
-A.R.fail <- get.annotation.for.xloc(A.low.R.high)[[2]]
+to.test <- as.data.frame(rbind(
+    ## Eimeria
+    cbind(cluster=2,type="oocysts", species="Ef"),
+    cbind(cluster=5,type="sporozoites", species="Ef"),
+    cbind(cluster=1,type="day7", species="Ef"),
+    ## Mouse
+    cbind(cluster=2,type="7dpiUp", species="Mm"),
+    cbind(cluster=3,type="7dpiDown", species="Mm"),
+    cbind(cluster=1,type="EarlyUp", species="Mm"),
+    cbind(cluster=4,type="allInfDown", species="Mm")
+    ))
 
-AR.fail.MF <- TOGO.all.onto("MF", Array.universe,
-                            A.R.fail, gene2GO)
-gene.table.topGO(AR.fail.MF)
-
-AR.fail.BP <- TOGO.all.onto("BP", Array.universe,
-                            A.R.fail, gene2GO)
-gene.table.topGO(AR.fail.MF)
-
-topKEGG(kegga(A.R.fail, species = "Mm"), n=30)
-topGO(goana(A.R.fail, species = "Mm"), n=30)
-
-
-
-
-
-
-chalGids <- get.annotation.for.xloc(chal_genes)[[2]]
-
-MF.chal <- TOGO.all.onto("MF", names(gene2GO), 
-                         chalGids, gene2GO)
-gene.table.topGO(MF.chal)
-
-BP.chal <- TOGO.all.onto("BP", names(gene2GO), 
-                         chalGids , gene2GO)
-head(gene.table.topGO(BP.chal), n=20)
-
-
-
-chalGidsI <- get.annotation.for.xloc(chal_genesI)[[2]]
-
-MF.chalI <- TOGO.all.onto("MF", names(gene2GO), 
-                         chalGidsI, gene2GO)
-gene.table.topGO(MF.chalI)
-
-BP.chalI <- TOGO.all.onto("BP", names(gene2GO), 
-                          chalGidsI , gene2GO)
-head(gene.table.topGO(BP.chalI, 1), n=20)
-
-
-
-strainGids5 <- get.annotation.for.xloc(strain_genes5)[[2]]
-
-MF.strain5 <- TOGO.all.onto("MF", names(gene2GO), 
-                            strainGids5, gene2GO)
-gene.table.topGO(MF.strain5)
-
-BP.strain5 <- TOGO.all.onto("BP", names(gene2GO), 
-                            strainGids5, gene2GO)
-head(gene.table.topGO(BP.strain5), n=20)
-
-
-strainGidsI <- get.annotation.for.xloc(strain_genesI)[[2]]
-
-MF.strainI <- TOGO.all.onto("MF", names(gene2GO), 
-                            strainGidsI, gene2GO)
-gene.table.topGO(MF.strainI)
-
-BP.strainI <- TOGO.all.onto("BP", names(gene2GO), 
-                            strainGidsI, gene2GO)
-head(gene.table.topGO(BP.strainI), n=20)
-
-
+apply(to.test, 1, function (x){
+          clus = x[[1]]
+          type = x[[2]]
+          species = x[[3]]
+          g2G = gene2GO[[species]]
+          hcl = hcluster[[species]]
+          file.path=("~/Ef_RNAseq/additional_files/tex/cluster")
+          sapply(c("MF", "BP"), function (onto){
+                     res <- TOGO.all.onto(onto, exp.universe[[species]],
+                                          names(hcl[hcl%in%clus]),g2G)
+                     file.detail= paste(clus, "_", onto, "_",
+                         species, "_", type, ".tex", sep="")
+                     capture.output(print(xtable(gene.table.topGO(res)),
+                                          file=paste(file.path, file.detail, sep="")))
+                 })
+      })
 

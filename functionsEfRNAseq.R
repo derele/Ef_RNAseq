@@ -14,17 +14,11 @@ gene.table.topGO <- function(TOGO.list, pval=0.01){
     all <- GenTable(TOGO.list[[1]], TOGO.list[[2]], topNodes=100)
     ##    all$fdr <- p.adjust(all$result1, method="BH")
     names(all)[names(all)%in%"result1"] <- "p.value"
+    all$p.value <- gsub(" ?< ?", "", all$p.value)
+    all$p.value <- as.numeric(all$p.value)
+    all$adj.p <- round(p.adjust(all$p.value, method="BH"), 4)
     return(all[all$p.value<pval,])
 }
-
-###### SHOULD THIS FUNCTION SIT HERE INSTEAD OF 1_ballgown...?
-#select.from.stats.results <- function (stats.results, bg.obj, qval=0.05){
-#    diff_id <- stats.results[which(stats.results$qval<qval), "id"]
-#    diff_id <- as.character(diff_id)
-#    diff_genes <- bg.obj@indexes$t2g[bg.obj@indexes$t2g$t_id%in%diff_id,
-#                                     "g_id"]
-#    return(as.character(diff_genes))
-#}
 
 
 ## adjusted functions from ballgown

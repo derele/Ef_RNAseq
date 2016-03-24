@@ -1,63 +1,80 @@
 ## Making heatmaps and other clusters of gene expression data
 
+library(pheatmap)
 library(made4)
 library(RColorBrewer)
 
 
 ########## USE THIS #######################
 ########## PHEATMAP() specifying distance and method ############
-pheatmap(cpm(Ef.RC[[3]][unlist(gene.list.E),]),
-  color = brewer.pal(n = 11, name = "BrBG"),
-  scale = "row",
- # kmeans_k = NA,
- # cluster_rows = T,
- # cluster_cols = T,
- # clustering_distance_rows = "euclidean", --> has no influence on clustering
- # clustering_method = "complete",         --> has no influence on clustering
- #annotation_names_row = F,
-  annotation_row = NA,
+
+union.of.Ef.cycle.diff.top.100 <-
+    unique(unlist(lapply(Ef.1st.pass.model[[3]][1:10], head, n=500)))
+
+Ef.cycle.diff.top.100.data <-
+    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.cycle.diff.top.100,]
+
+get.scaled.and.clustered <- function(data){
+    rMeans <- rowMeans(data)
+    rSD <- apply(data, 1, sd)
+    scaled.data <- scale(t(data), rMeans, rSD)
+    hclustered <- hclust(dist(t(scaled.data)))
+    return(hclustered)
+}
+
+Ef.hclustered <- get.scaled.and.clustered(Ef.cycle.diff.top.100.data)
+
+hcluster <- list()
+hcluster[["Ef"]] <- cutree(Ef.hclustered, k= 5) ## h=7.2)
+
+Ef.hclustered.df <- as.data.frame(hcluster[["Ef"]])
+names(Ef.hclustered.df) <- "Cluster"
+Ef.hclustered.df$Cluster <- as.factor(Ef.hclustered.df$Cluster)
+
+pdf("/home/ele/Dropbox/Totta_tmp_Efposter/Ef_most_sig_lifecycle_heatmap.pdf",
+    height = 8, width = 8)
+pheatmap(Ef.cycle.diff.top.100.data,
+         color = brewer.pal(n = 11, name = "BrBG"), 
+         scale = "row",
+         cluster_rows = T, ## hc.high,
+         cluster_cols = T,
+         annotation_row = Ef.hclustered.df,
+         ## annotation_names_row = F,
+         cutree_rows = 5, 
   show_rownames = F,
-  main = "E. falciformis DE genes clustered",
- #cols = brewer.pal(n = 8, name = "PuOr"),
-  filename = "figures/pheatmap_Ef_DEG.pdf"
-  )
+         main = expression(paste(italic("E. falciformis"),
+             " genes differentially expressed between lifecycle stages")))
 dev.off()
 
-########### MAKE SUBSET OF DEG dataset for testing heatmap functions #############
-#set.seed(111) #to get same output from sample
-#efsample <- sapply(c(10:15, 20:25), function (e) rnbinom(20, size=e, prob = 0.05))
-#rownames(efsample) <- 1:nrow(efsample)
-#colnames(efsample) <- 1:ncol(efsample)
 
-#pheatmap(efsample)
-#heatmap(efsample)
-### CONCLUSION:
-# heatmap calls as.dendrogram() and reorderfun() (internal function?) before plotting, whereas pheatmap plots the
-# hclust object without it. 
-# as.dendrogram() does some kind of sorting (or is it reorderfun() only?) - find out what!
+## mouse 
+union.of.Mm.cycle.diff.top.100 <-
+    unique(unlist(lapply(Mm.1st.pass.model[[3]][c(1:3, 12:14)], head, n=500)))
 
-### OBJECT TO USE FOR HEATMAPS AND PHEATMAPS, but doesn't work (yet?)
-#Efdist <- dist(efsample) #[unlist(gene.list.E),]))
-#Efhclust <- hclust(Efdist) # because heatmap functions require numberic matrix
-#Efdend <- as.dendrogram(Efhclust)
-#plot(Efdend, horiz=TRUE)
+Mm.cycle.diff.top.100.data <-
+    cpm(Mm.1st.pass.model[[4]])[union.of.Mm.cycle.diff.top.100,]
 
-#pheatmap(cpm(Ef.RC[[3]][unlist(gene.list.E),]), clustering_distance_rows = Efdist, clustering_distance_cols = t(Efdist))
+Mm.hclustered <- get.scaled.and.clustered(Mm.cycle.diff.top.100.data)
 
-################## HEATMAP() as comparison ##################
-#pdf("figures/heatmap_Ef_DEGa.pdf",
-#  width = 10,
-#  height= 10)  
-## heatmap() uses hclust (default 'complete') and dist (default 'euclidean')
-#heatmap(cpm(Ef.RC[[3]][unlist(gene.list.E), ]), 
-#  hclustfun = Efdist
-#  Rowv = NA, Colv = NA,
-#  scale = "row",
-#  margin = c(15, 5),
-#  #cexRow = 10,
-#  labRow = NA, # NA to hide rownames
-#  main = "heatmap(), Ef, 'complete', 'euclidean'",
-#  col = brewer.pal(n = 8, name = "RdBu"))
-#dev.off()
+hcluster[["Mm"]] <- cutree(Mm.hclustered, k= 4) ## h=7.2)
 
+Mm.hclustered.df <- as.data.frame(hcluster[["Mm"]])
+
+names(Mm.hclustered.df) <- "Cluster"
+Mm.hclustered.df$Cluster <- as.factor(Mm.hclustered.df$Cluster)
+
+pdf("/home/ele/Dropbox/Totta_tmp_Efposter/Mm_most_sig_lifecycle_heatmap.pdf",
+    height = 8, width = 8)
+pheatmap(Mm.cycle.diff.top.100.data,
+         color = brewer.pal(n = 11, name = "BrBG"), 
+         scale = "row",
+         cluster_rows = T, ## hc.high,
+         cluster_cols = T,
+         annotation_row = Mm.hclustered.df,
+         ## annotation_names_row = F,
+         cutree_rows = 4, 
+         show_rownames = F,
+         main = expression(paste(italic("M. musculus"),
+             " genes differentially expressed at different dpi ")))
+dev.off()
 

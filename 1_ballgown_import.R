@@ -5,7 +5,7 @@ setwd("~/Ef_RNAseq")
 
 ## IMPORT DATA USING BALLGOWN IMPORT
 if(!exists("All.bg")) {
-    All.bg = ballgown(dataDir="/data/Eimeria_Totta/tablemaker_060815/",
+    All.bg = ballgown(dataDir="/SAN/Eimeria_Totta/backup/tablemaker_060815.0/",
         samplePattern = "*")
 }
 
@@ -45,7 +45,7 @@ pData(All.bg) <- add.pdata(All.bg)
 ########################################
 ## Create mouse only object and remove sporozoite and oocyst samples
 ## from mouse data
-Mm.bg <- subset(All.bg, grepl('^XLOC.*', geneIDs(rnaseq.bg)),
+Mm.bg <- subset(All.bg, grepl('^XLOC.*', geneIDs(All.bg)),
                 genomesubset=TRUE)
 Mm.bg <- subset(Mm.bg, !is.na(pData(Mm.bg)$timepoint),
                 genomesubset=FALSE) # 

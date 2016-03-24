@@ -8,12 +8,13 @@ library(Agi4x44PreProcess)
 library(Biobase)
 library(RSvgDevice)
 library(GGally)
+library(ggplot2)
 
-if(!exists("ALL.top.Mm")){
+if(!exists("Mm.1st.pass.model")){
     source("2_edgeR_diff.R")
 }
 
-if(!exists("cuff2GO.Mm")){
+if(!exists("gene2GO")){
     source("3_annotations.R")
 }
 
@@ -87,17 +88,24 @@ fit2.g <- eBayes(fit2.g)
 
 Array.logFC <- topTable(fit2.g, n=400000)[, c("X24h", "X144h")]
 
-RNAseq.logFC <- ALL.top.Mm[, c("logFC.N3vs0", "logFC.N5vs0",
-                            "logFC.N7vs0", "logFC.B5vs0", "logFC.R5vs0" )]
-RNAseq.logFC <- merge(RNAseq.logFC, id2name, by.x = 0, by.y = "gene_ids")
+RNAseq.logFC <- Mm.1st.pass.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
+                                           "logFC.N7vs0", "logFC.B5vs0",
+                                           "logFC.R5vs0" )]
 
-RNAseq.logFC.ruved <- Mm.ALL.top.ruved[, c("logFC.N3vs0", "logFC.N5vs0",
-                                        "logFC.N7vs0", "logFC.B5vs0", "logFC.R5vs0" )]
-RNAseq.logFC.ruved <- merge(RNAseq.logFC.ruved, id2name, by.x = 0, by.y = "gene_ids")
+RNAseq.logFC <- merge(RNAseq.logFC, cuff2name, by.x = 0, by.y = "cuff_ids")
 
-RNAseq.Array.logFC <- merge(RNAseq.logFC, Array.logFC, by.x = "gene_names", by.y = 0)
+RNAseq.logFC.ruved <- Mm.RUVg.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
+                                             "logFC.N7vs0", "logFC.B5vs0",
+                                             "logFC.R5vs0" )]
 
-RNAseq.Array.logFC <- merge(RNAseq.Array.logFC, RNAseq.logFC.ruved, by = c("Row.names","gene_names"))
+RNAseq.logFC.ruved <- merge(RNAseq.logFC.ruved, cuff2name,
+                            by.x = 0, by.y = "cuff_ids")
+
+RNAseq.Array.logFC <- merge(RNAseq.logFC, Array.logFC,
+                            by.x = "gene_names", by.y = 0)
+
+RNAseq.Array.logFC <- merge(RNAseq.Array.logFC, RNAseq.logFC.ruved,
+                            by = c("Row.names","gene_names"))
 
 names(RNAseq.Array.logFC) <- gsub(".x", ".plain", names(RNAseq.Array.logFC))
 
@@ -132,11 +140,3 @@ ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.ruved)) +
 dev.off()
 
 
-A.low.R.high <-
-    RNAseq.Array.logFC$Row.names[
-                                 abs(RNAseq.Array.logFC$X144h)<1 &
-                                     abs(RNAseq.Array.logFC$logFC.N7vs0)>4.5
-                                 ]
-
-## ... for a distinct subset of highly DE genes in RNAseq the DE was
-## not found on Array
