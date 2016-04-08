@@ -1,3 +1,4 @@
+## RNAseq - Microarray Comparison
 ## read the array data as done for Schmidt et al.  "Eimeria
 ## falciformis infection of the mouse caecum identifies opposing roles
 ## of IFNg-regulated host pathways for the parasite development"
@@ -110,15 +111,21 @@ RNAseq.Array.logFC <- merge(RNAseq.Array.logFC, RNAseq.logFC.ruved,
 names(RNAseq.Array.logFC) <- gsub(".x", ".plain", names(RNAseq.Array.logFC))
 
 names(RNAseq.Array.logFC) <- gsub(".y", ".ruved", names(RNAseq.Array.logFC))
-
 ## Very interesting...
 cor(RNAseq.Array.logFC[,3:14])
 cor(RNAseq.Array.logFC[,3:14], method="spearman")
 
 pdf("figures/Array_vs_RNAseq_pairs.pdf")
-ggpairs(RNAseq.Array.logFC[, 3:14], alpha=0.2) + theme_bw()
+#ggpairs(RNAseq.Array.logFC[, 3:14], alpha=0.2) + theme_bw()
+ggpairs(RNAseq.Array.logFC[, 3:14], mapping=aes(alpha=0.2)) + theme_bw()
 dev.off()
 
+##Warning messages when script is run:
+##2: In ggpairs(RNAseq.Array.logFC[, 3:14], alpha = 0.2) :
+## Extra arguments: 'alpha' are being ignored.  
+## If these are meant to be aesthetics, submit them using the 'mapping' variable within 
+## ggpairs with ggplot2::aes or ggplot2::aes_string.
+##
 pdf("figures/Array144_vs_RNAseqN7.pdf")
 ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
     geom_point(alpha=0.8) +

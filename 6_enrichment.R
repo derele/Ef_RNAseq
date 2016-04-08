@@ -35,8 +35,9 @@ apply(to.test, 1, function (x){
           clus = x[[1]]
           type = x[[2]]
           species = x[[3]]
-          g2G = gene2GO[[species]]
-          hcl = hcluster[[species]]
+          g2G = gene2GO[[species]] # gene2GO object created in 3_annotations script
+          hcl = hcluster[[species]] # hcluster object created in 5_clustering script
+          ## creates first part of filename for each cluster
           file.path=("~/Ef_RNAseq/additional_files/tex/cluster")
           sapply(c("MF", "BP"), function (onto){
                      res <- TOGO.all.onto(onto, exp.universe[[species]],

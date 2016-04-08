@@ -4,7 +4,9 @@ library(pheatmap)
 library(made4)
 library(RColorBrewer)
 
-
+if(!exists("RNAseq.Array.logFC")){
+    source("4_compareArray.R")
+}
 ########## USE THIS #######################
 ########## PHEATMAP() specifying distance and method ############
 
@@ -25,14 +27,14 @@ get.scaled.and.clustered <- function(data){
 Ef.hclustered <- get.scaled.and.clustered(Ef.cycle.diff.top.100.data)
 
 hcluster <- list()
-hcluster[["Ef"]] <- cutree(Ef.hclustered, k= 5) ## h=7.2)
+hcluster[["Ef"]] <- cutree(Ef.hclustered, k= 7) ## TK changed k from 5 ## h=7.2)
 
 Ef.hclustered.df <- as.data.frame(hcluster[["Ef"]])
 names(Ef.hclustered.df) <- "Cluster"
 Ef.hclustered.df$Cluster <- as.factor(Ef.hclustered.df$Cluster)
 
-pdf("/home/ele/Dropbox/Totta_tmp_Efposter/Ef_most_sig_lifecycle_heatmap.pdf",
-    height = 8, width = 8)
+pdf("/figures/Ef_most_sig_lifecycle_heatmap.pdf")
+#    height = 8, width = 8)
 pheatmap(Ef.cycle.diff.top.100.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
          scale = "row",
@@ -41,9 +43,11 @@ pheatmap(Ef.cycle.diff.top.100.data,
          annotation_row = Ef.hclustered.df,
          ## annotation_names_row = F,
          cutree_rows = 5, 
-  show_rownames = F,
+         show_rownames = F,
          main = expression(paste(italic("E. falciformis"),
-             " genes differentially expressed between lifecycle stages")))
+             " mRNAs differently abundant between lifecycle stages")),
+         width = 8,
+         height = 8)
 dev.off()
 
 
@@ -63,7 +67,7 @@ Mm.hclustered.df <- as.data.frame(hcluster[["Mm"]])
 names(Mm.hclustered.df) <- "Cluster"
 Mm.hclustered.df$Cluster <- as.factor(Mm.hclustered.df$Cluster)
 
-pdf("/home/ele/Dropbox/Totta_tmp_Efposter/Mm_most_sig_lifecycle_heatmap.pdf",
+pdf("/figures/Mm_most_sig_lifecycle_heatmap.pdf",
     height = 8, width = 8)
 pheatmap(Mm.cycle.diff.top.100.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -75,6 +79,6 @@ pheatmap(Mm.cycle.diff.top.100.data,
          cutree_rows = 4, 
          show_rownames = F,
          main = expression(paste(italic("M. musculus"),
-             " genes differentially expressed at different dpi ")))
+             " mRNAs differently abundant at different dpi ")))
 dev.off()
 
