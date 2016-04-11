@@ -33,7 +33,7 @@ Ef.hclustered.df <- as.data.frame(hcluster[["Ef"]])
 names(Ef.hclustered.df) <- "Cluster"
 Ef.hclustered.df$Cluster <- as.factor(Ef.hclustered.df$Cluster)
 
-pdf("/figures/Ef_most_sig_lifecycle_heatmap.pdf")
+pdf("figures/Ef_most_sig_lifecycle_heatmap.pdf")
 #    height = 8, width = 8)
 pheatmap(Ef.cycle.diff.top.100.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -67,7 +67,7 @@ Mm.hclustered.df <- as.data.frame(hcluster[["Mm"]])
 names(Mm.hclustered.df) <- "Cluster"
 Mm.hclustered.df$Cluster <- as.factor(Mm.hclustered.df$Cluster)
 
-pdf("/figures/Mm_most_sig_lifecycle_heatmap.pdf",
+pdf("figures/Mm_most_sig_lifecycle_heatmap.pdf",
     height = 8, width = 8)
 pheatmap(Mm.cycle.diff.top.100.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
