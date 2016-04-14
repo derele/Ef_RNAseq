@@ -1,0 +1,296 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% University/School Laboratory Report
+% LaTeX Template
+% Version 3.1 (25/3/14)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Original author:
+% Linux and Unix Users Group at Virginia Tech Wiki 
+% (https://vtluug.org/wiki/Example_LaTeX_chem_lab_report)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%
+%% Totta:
+%% This collection aims to provide an overview of the enriched GO-terms in the
+%% different clusters in the heatmaps. 
+%% We include both mouse and Eimeria data
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+%\usepackage[version=3]{mhchem} % Package for chemical equation typesetting
+%\usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
+\usepackage{graphicx} % Required for the inclusion of images
+\usepackage[section]{placeins}
+\usepackage[hscale=0.8,vscale=0.8]{geometry}
+%\usepackage{natbib} % Required to change bibliography style to APA
+%\usepackage{amsmath} % Required for some math elements 
+
+\setlength\parindent{0pt} % Removes all indentation from paragraphs
+
+\renewcommand{\labelenumi}{\alph{enumi}.} % Make numbering in the enumerate environment by letter rather than number (e.g. section 6)
+
+%\usepackage{times} % Uncomment to use the Times New Roman font
+
+%----------------------------------------------------------------------------------------
+%	DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{GO-terms enriched in heatmap gene clusters for mouse and \textit{Eimeria falciformis}} % Title
+
+\author{Totta \textsc{Kasemo}} % Author name
+
+\date{\today} % Date for the report
+
+\begin{document}
+
+\maketitle % Insert the title, author and date
+
+\begin{center}
+\begin{tabular}{l r}
+%Date Performed: & January 1, 2012 \\ % Date the experiment was performed
+%Partners: & James Smith \\ % Partner names
+%& Mary Smith \\
+%Instructor: & Professor Smith % Instructor/supervisor
+\end{tabular}
+\end{center}
+
+% If you wish to include an abstract, uncomment the lines below
+% \begin{abstract}
+% Abstract text
+% \end{abstract}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 1
+%----------------------------------------------------------------------------------------
+
+\section{Objective}
+bla bla bla
+\newpage
+%\begin{center}\ce{}\end{center}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 2 
+%----------------------------------------------------------------------------------------
+
+\section{Results for \textit{E. falciformis}}
+  Cluster 1, BP, Ef.
+  Overrepresented GO biological process terms among parasite genes which are 
+  highly abundant on day 7 p.i.. Compared to cluster 2, which also have a high
+  abundance on day 7, these genes cluster more closely with genes in cluster 4, 
+  which are highly expressed in oocysts.\\
+  %\newpage
+  \input{../cluster1_BP_Ef_Day7Up_1.tex}
+
+  Cluster 2, BP, Ef.
+  Overrepresented GO biological process terms among parasite genes which are 
+  highly abundant on day 7 p.i.. Compared to cluster 1, which is also upregulated 
+  on day 7 p.i., these genes cluster more closely with cluster 6, which contains
+  genes highly abundant in sporozoites.\\
+  \input{../cluster2_BP_Ef_Day7Up_2.tex}
+
+  Cluster 1, MF, Ef.\\
+  Overrepresented GO molecular function terms among parasite genes which are 
+  highly abundant on day 7 p.i.. Compared to cluster 2, which also have a high
+  abundance on day 7, these genes cluster more closely with genes in cluster 4, 
+  which are highly expressed in oocysts.\\
+  \input{../cluster1_MF_Ef_Day7Up_1.tex}
+  
+  Cluster 2, MF, Ef.
+  Overrepresented GO molecular function terms among parasite genes which are 
+  highly abundant on day 7 p.i.. Compared to cluster 1, which is also upregulated 
+  on day 7 p.i., these genes cluster more closely with cluster 6, which contains
+  genes highly abundant in sporozoites.\\
+  \input{../cluster2_MF_Ef_Day7Up_2.tex}
+  
+  Cluster 3, BP, Ef.
+  Overrepresented GO biological process terms among parasite genes which have a low
+  abundance in sporulated oocysts and sporozoites. In mouse stages, i.e., day 3, 5, and 7 samples
+  there is a tendency to upregulation among these genes.\\
+  \input{../cluster3_BP_Ef_OocSporDown.tex}
+  
+  Cluster 3, MF, Ef.
+  Overrepresented GO molecular function terms among parasite genes which have a low
+  abundance in sporulated oocysts and sporozoites. In mouse stages, i.e., day 3, 5, and 7 samples
+  there is a tendency to upregulation among these genes.\\
+  \input{../cluster3_MF_Ef_OocSporDown.tex}
+  
+  Cluster 4, BP, Ef.
+  Overrepresented GO biological process terms among parasite genes which are highly abundant in
+  sporulated oocysts. These genes cluster most closely with cluster 1, in which genes are highly
+  abundant on day 7 p.i.. In cluster 4, genes have below average abundance in all day 3 and 5 samples.\\
+  \input{../cluster4_BP_Ef_OocystsUp.tex}
+  
+  Cluster 4, MF, Ef.
+  Overrepresented GO molecular function terms among parasite genes which are highly abundant in
+  sporulated oocysts. These genes cluster most closely with cluster 1, in which genes are highly
+  abundant on day 7 p.i.. In cluster 4, genes have below average abundance in all day 3 and 5 samples.\\
+  \input{../cluster4_MF_Ef_OocystsUp.tex}
+  
+  Cluster 5, BP, Ef.
+  Overrepresented GO biological process terms among parasite genes which have low abundance
+  in sporulated oocysts, sporozoites and on day 7 p.i.. These genes seem to increase in abundance
+  upon infection and decrease late in infection, i.e., on day 7.\\
+  \input{../cluster5_BP_Ef_OoSpoDown_day5Up.tex}
+  
+  Cluster 5, MF, Ef.
+  Overrepresented GO molecular function terms among parasite genes which have low abundance
+  in sporulated oocysts, sporozoites and on day 7 p.i.. These genes seem to increase in abundance
+  upon infection and decrease late in infection, i.e., on day 7.\\
+  \input{../cluster5_MF_Ef_OoSpoDown_day5Up.tex}
+  
+  Cluster 6, BP, Ef.
+  Overrepresented GO biological process terms among parasite genes which are highly abundant in sporozoites
+  but mainly downregulated in sporulated oocysts, apart from a few genes in the cluster.
+  This cluster seems to distinguish sporozoites from sporulated oocysts and have an average mRNA abundance in
+  all other samples.\\
+  \input{../cluster6_BP_Ef_SporozoitesUp.tex}
+  
+  Cluster 6, MF, Ef.
+  Overrepresented GO molecular function terms among parasite genes which are highly abundant in sporozoites
+  but mainly downregulated in sporulated oocysts, apart from a few genes in the cluster.
+  This cluster seems to distinguish sporozoites from sporulated oocysts and have an average mRNA abundance in
+  all other samples.\\
+  \input{../cluster6_MF_Ef_SporozoitesUp.tex}
+  
+  Cluster 7, BP, Ef.
+  Overrepresented GO biological process terms among parasite genes which have low abundance in sporulated oocysts.
+  In sporozoites and early in infection, i.e., day 3 and 5 p.i., some of these genes are highly abundant. On day
+  7 p.i. these mRNAs have a below average abundance.\\
+  \input{../cluster7_BP_Ef_Day7OocyDown_SporoUP.tex}
+  
+  Cluster 7, MF, Ef.
+  Overrepresented GO molecular function terms among parasite genes which have low abundance in sporulated oocysts.
+  In sporozoites and early in infection, i.e., day 3 and 5 p.i., some of these genes are highly abundant. On day
+  7 p.i. these mRNAs have a below average abundance.\\
+  \input{../cluster7_MF_Ef_Day7OocyDown_SporoUP.tex}
+
+\newpage
+
+\section{Results for mouse}
+  Cluster 1, BP, Mm
+  Overrepresented GO biological process terms among mouse genes which have low abundance pre infection and 
+  become more abundant in most day 3 and 5 samples from immunecompetent mice, but less in immune deficient Rag1-/- mice. 
+  The upregulation trend is most clear in three first infection day 5 samples, which also form a separate
+  sample cluster. On day 7, most of these genes are not differentially abundant, or below average, i.e., they
+  seem to peak on day 5 p.i..\\
+  \input{../cluster1_BP_Mm_EarlyUp.tex}
+
+  Cluster 1, MF, Mm.
+  Overrepresented GO molecular function terms among mouse genes which have low abundance pre infection and 
+  become more abundant in most day 3 and 5 samples from immunecompetent mice, but less in immune deficient Rag1-/- mice. 
+  The upregulation trend is most clear in three first infection day 5 samples, which also form a separate
+  sample cluster. On day 7, most of these genes are not differentially abundant, or below average, i.e., they
+  seem to peak on day 5 p.i..\\
+  \input{../cluster1_MF_Mm_EarlyUp.tex}
+  
+  Cluster 2, BP, Mm.
+  Overrepresented GO biological process terms among mouse genes which are downregulated on day 7 p.i. and
+  upregulated pre infection, i.e., these genes become more and more downregulated during infection.\\
+  \input{../cluster2_BP_Mm_7dpiUp.tex}
+
+  Cluster 2, MF, Mm.
+  Overrepresented GO molecular function terms among mouse genes which are downregulated on day 7 p.i. and
+  upregulated pre infection, i.e., these genes become more and more downregulated during infection.\\
+  \input{../cluster2_MF_Mm_7dpiUp.tex}
+ 
+  Cluster 3, BP, Mm.
+  Overrepresented GO biological process terms among mouse genes which are upregulated pre infection and
+  downregulated on day 7 p.i., except in one NMRI second infection sample, possibly indicating no or
+  poor infection in this sample. As in cluster 2, these mRNAs are most highly abundant before infection and
+  become less abundant over the course of infection.\\
+  \input{../cluster3_BP_Mm_7dpiDown.tex}
+  
+  Cluster 3, MF, Mm.
+  Overrepresented GO molecular function terms among mouse genes which are upregulated pre infection and
+  downregulated on day 7 p.i., except in one NMRI second infection sample, possibly indicating no or
+  poor infection in this sample. As in cluster 2, these mRNAs are most highly abundant before infection and
+  become less abundant over the course of infection.\\
+  \input{../cluster3_MF_Mm_7dpiDown.tex}
+  
+  Cluster 4, BP, Mm.
+  Overrepresented GO biological process terms among mouse genes which are highly abundant on day 7 p.i.. 
+  There is overall no clear difference between pre infection and days 3 or 5 among these genesi. A slight
+  tendency to higher abundance in second infection samples can be seen among these genes.\\
+  \input{../cluster4_BP_Mm_allInfDown.tex}
+  
+  Cluster 4, MF, Mm.
+  Overrepresented GO molecular function terms among mouse genes which are highly abundant on day 7 p.i.. 
+  There is overall no clear difference between pre infection and days 3 or 5 among these genesi. A slight
+  tendency to higher abundance in second infection samples can be seen among these genes.\\
+  \input{../cluster4_MF_Mm_allInfDown.tex}
+% figure 1
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics[width=0.8\textwidth]{distributions_mouseNocutoff} % Include the image placeholder.png
+%\caption{Density distribution of raw transcript counts (log10) for all
+%  mouse samples in analysis. All samples share the same bimodal
+%  distribution trend by visual inspection. The first density peak
+%  occur at $1 - 10^2$ transcripts, \textit{i.e.} transcripts which are
+%  detected between 1 and 100 times in that sample. The second density
+%  peak occurs in the range of $10^3 - 10^4$.}
+%\end{center}
+%\end{figure}
+
+%----------------------------------------------------------------------------------------
+%	SECTION 5
+%----------------------------------------------------------------------------------------
+
+\section{Conclusions}
+
+Mouse\\
+
+Parasite\\
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION 6
+%----------------------------------------------------------------------------------------
+
+%\section{Answers to Definitions}
+
+%\begin{enumerate}
+%\begin{item}
+%  The \emph{atomic weight of an element} is the relative weight of
+%  one of its atoms compared to C-12 with a weight of
+%  12.0000000$\ldots$, hydrogen with a weight of 1.008, to oxygen with
+%  a weight of 16.00. Atomic weight is also the average weight of all
+%  the atoms of that element as they occur in nature.
+%\end{item}
+%\begin{item}
+%  The \emph{units of atomic weight} are two-fold, with an identical
+%  numerical value. They are g/mole of atoms (or just g/mol) or
+%  amu/atom.
+%\end{item}
+%\begin{item}
+%  \emph{Percentage discrepancy} between an accepted (literature)
+%  value and an experimental value is
+%\begin{equation*}
+%\frac{\mathrm{experimental\;result} - \mathrm{accepted\;result}}{\mathrm{accepted\;result}}
+%\end{equation*}
+%\end{item}
+%\end{enumerate}
+
+%----------------------------------------------------------------------------------------
+%	BIBLIOGRAPHY
+%----------------------------------------------------------------------------------------
+
+%\bibliographystyle{apalike}
+
+%\bibliography{sample}
+
+%----------------------------------------------------------------------------------------
+
+
+\end{document}
