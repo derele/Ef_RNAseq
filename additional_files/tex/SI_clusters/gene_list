@@ -1,0 +1,167 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 2 EIMERIA BP
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_12616.g1112 Dynein heavy chain (motor protein) + hypothetical
+EfaB_MINUS_16742.g1482 lactate/malate dehydrogenase (glycolysis (also in Mt?))
+EfaB_MINUS_24074.g2051 Calmodulin (Toxo) or kinesin heavy chain (Eimeria --> 
+                       ATP dependent motor protein on microtubule filaments)
+EfaB_MINUS_32574.g2470 phosphoglycerate kinase --> glycolysis/gluconeogenesis 
+EfaB_MINUS_34010.g2551 Dynein chain + hypothetical
+EfaB_MINUS_40565.g2659 tubulin delta chain AND P-type ATPase PMA1  
+EfaB_MINUS_7742.g778   Trehalose-6-phosphate synthase (step after glu-6-P) OR Glycosyltransferase
+EfaB_PLUS_1001.g99     Growth arrest specific protein 8, Gas8, suggested to be important for sperm 
+                       motility in mice (Yeh02)
+EfaB_PLUS_20371.g1647  NO HIT TOXODB
+EfaB_PLUS_30201.g2268  cyclin domain containing protein --> cell cycle regulation??
+EfaB_PLUS_42996.g2596  Dynein heavy chain + hypothetical
+EfaB_PLUS_56725.g2794  Dynein heavy chain + hypothetical
+EfaB_PLUS_7742.g730    Dynein light chain
+EfaB_MINUS_15899.g1468 protein transport protein Sec23 --> suggested role in ER/Golgi vesicle transport in yeast       
+EfaB_MINUS_19717.g1721 Very short, no orthologs reported
+EfaB_MINUS_31151.g2377 transporter, cation channel family protein
+EfaB_MINUS_33184.g2500 NO HIT TOXODB
+EfaB_MINUS_39892.g2652 glucose-6-phosphate isomerase
+EfaB_MINUS_49504.g2824 leucine rich repeat-containing protein --> forms horseshoe shape... common in different
+                       protein families....
+EfaB_MINUS_800.g72     NO HIT TOXODB
+EfaB_PLUS_1974.g218    adenylyl cyclase, putative --> ATP to cAMP
+EfaB_PLUS_23210.g1938  thioredoxin, putative --> response to ROS?
+EfaB_PLUS_40565.g2564  nucleoside diphosphate kinase --> ATP or DNA/RNA generation?
+EfaB_PLUS_49504.g2695  NO HIT TOXODB
+EfaB_PLUS_7739.g729    (some: mitochondrial) alternative NADH dehydrogenase 1, putative 
+EfaB_PLUS_800.g67      Dynein heavy chain 3 or 10, related  
+EfaB_MINUS_14978.g1276 NO HIT TOXODB 
+EfaB_MINUS_19717.g1718 Dynein heavy chain 3 or 10, related  
+EfaB_MINUS_2526.g306   guanylate kinase (ATP + GMP --> ADP + GDP) (very short)
+EfaB_MINUS_32658.g2478 transport protein Sec24, putative --> suggested role in ER/Golgi vesicle transport in yeast 
+EfaB_MINUS_39892.g2651 glucose-6-phosphate isomerase, (putative/related/none) Toxo: GPI addition to gluc-6-phos??
+EfaB_MINUS_49504.g2799 glyceraldehyde-3-phosphate dehydrogenase, putative  --> glycolysis
+EfaB_MINUS_7742.g788   RNA polymerase II transcription initiation/nucleotide excision repair 
+                    factor TFIIH, related (E. tenella) Toxo: general transcription factor IIH polypeptide 3 GTF2H3 
+EfaB_PLUS_19717.g1633 kinesin motor domain-containing protein (3A in Toxo, non-put), putative 
+EfaB_PLUS_21566.g1780 Kinesin-like protein KIF1B, related or kinesin motor domain cointaining protein, putative
+EfaB_PLUS_38801.g2533 Kinesin-like protein KIF1B, related or kinesin motor domain cointaining protein, putative
+EfaB_PLUS_43533.g2635 Fructose-bisphosphate aldolase, related 
+EfaB_PLUS_6743.g634   Ras family domain-containing protein, putative
+
+Dynein and kinesin (/calmodulin in 1 case) and tubulin chain: 12 genes excluding Gas8, the "mouse sperm gene" 
+Glycolysis: 6 genes
+ATP, GTP, cAMP conversions: 
+Other (Ras family, RNA polymerase, Sec23 and Sec24)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 2 EIMERIA MF largest group (37 genes, term GO:0005515)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_12367.g1090 NO orthologs 
+EfaB_MINUS_13222.g1150 ankyrin repeat-containing protein ("related" in Eimeria)
+                    --> one of the most common protein-protein interaction motifs
+                    --> non-specific function (TF, cell cycle regul.,...)
+                    --> seems to be based on structure and not sequence (no specific 
+                    binding sequence) --> all UniProt
+EfaB_MINUS_14667.g1233 WD domain, G-beta repeat-containing protein, putative (Eimeria)
+                       flagellar associated protein (Toxo)
+EfaB_MINUS_15648.g1396 no orthologs
+EfaB_MINUS_19717.g1720 ankyrin repeat-containing protein (putative) (see above)
+EfaB_MINUS_19717.g1722 intraflagellar transport 80 family protein (Toxo)
+EfaB_MINUS_26136.g2220 Trichohyalin, putative --> hair follicle stuff in mammals
+                       but reported T. cruzei paper (and they say it's reported
+                       in L. major and T. brucei. (Ferella09)  OR
+                       WD domain, G-beta repeat-containing protein --> WD40 often
+                       scaffold protein, in different settings (transcr. regulation....,
+                       signaling....) 
+EfaB_MINUS_27383.g2277 intraflagellar transport particle protein, putative (Eimeria)
+                       tetratricopeptide repeat-containing protein (Toxo) (scaffolding protein
+                       for prot-prot int.)
+EfaB_MINUS_31151.g2373 hypothetical protein (Neospora)
+EfaB_MINUS_3222.g323   NO orthologs
+EfaB_MINUS_34010.g2530 NO HITS TOXODB 
+EfaB_MINUS_35028.g2568 Leucine-rich repeat and guanylate 
+                       kinase domain-containing protein, related
+EfaB_MINUS_36188.g2588 putative 14-3-3 domain protein (Toxo) 
+EfaB_MINUS_38801.g2634 GCC2 and GCC3 domain-containing protein (Toxo)
+                       Cytadherence high molecular weight protein 2, related  (Eimeria)
+EfaB_MINUS_42416.g2686 Alpha amylase, catalytic domain containing protein, putative
+EfaB_MINUS_42416.g2690 Leucine rich repeat protein, putative
+EfaB_MINUS_45403.g2785 NO HITS TOXODB
+EfaB_MINUS_49504.g2824 Leucine rich repeat protein, putative
+EfaB_MINUS_54020.g2900 dynein intermediate chain, putative (Eimeria)
+                       WD domain, G-beta repeat-containing protein (Toxo) 
+EfaB_MINUS_6097.g570   Ankyrin-3, related
+EfaB_MINUS_6097.g574   NO HITS TOXODB
+EfaB_MINUS_7048.g641   WD domain, G-beta repeat-containing protein, putative 
+EfaB_PLUS_17096.g1462  NO HITS TOXODB
+EfaB_PLUS_20412.g1710  hypothetical
+EfaB_PLUS_21566.g1780  Kinesin-like protein KIF1B, related
+EfaB_PLUS_26415.g2158  U3 small nucleolar ribonucleoprotein protein MPP10, putative 
+                       PAN domain-containing protein, putative
+                       ankyrin repeat-containing protein, putative
+                       transcription regulatory protein SNF2, putative                     
+                       plectin, putative
+                       (Eimeria annotations; hypothetical in Toxo)
+EfaB_PLUS_26831.g2182  tetratricopeptide repeat-containing protein/
+                       TPR domain-containing protein, putative
+EfaB_PLUS_30201.g2268  cyclin domain containing protein, putative
+EfaB_PLUS_37748.g2506  tetratricopeptide repeat-containing protein/  
+                       TPR domain-containing protein, putative
+EfaB_PLUS_37748.g2517  tetratricopeptide repeat-containing protein/ 
+EfaB_PLUS_38801.g2533  kinesin-like protein KIF1B, related 
+EfaB_PLUS_42996.g2597  NO HITS TOXODB
+EfaB_PLUS_56725.g2794  Dynein heavy chain 10 (or 3) axonemal, related
+EfaB_PLUS_5788.g528    NO HITS TOXODB 
+EfaB_PLUS_5788.g538    ankyrin repeat-containing protein, putative
+EfaB_PLUS_5792.g568    dynein intermediate chain, putative
+EfaB_PLUS_800.g97      Leucine-rich repeat-containing protein 23, related
+%%%%%%%%%%%%5
+%% adding uniqe genes from GO:0005509 
+EfaB_MINUS_26831.g2258 NOT IN TOXODB
+EfaB_MINUS_20412.g1828 caltractin (centrin), putative (Eimeria spp.) AND
+                       EF hand domain-containing protein (Toxo) (same, same...) -->
+                       CETN2 gene in humans binds centrosome, involved in structure &
+                       function of microtubuli
+EfaB_MINUS_2526.g307   EF hand domain-containing protein, putative
+EfaB_MINUS_27413.g2281 NOT IN TOXODB
+EfaB_MINUS_49504.g2810 hypothetical protein (EF hand domains - SUPERFAMILY DB) 
+EfaB_MINUS_8664.g853   troponin C, putative AND EF hand domain-containing protein (Toxo) -->
+                       troponin is involved in muscle maintenance and possibly 
+                       cytoskeletal functions (InterPro)
+EfaB_PLUS_1307.g160    CAM kinase, CDPK family, putative (calcium dependent kinase)
+EfaB_PLUS_13222.g1094  Centrin-1, related (Eimeria spp.) / centrin family protein (Toxo)
+EfaB_PLUS_27413.g2205  calnexin, putative (Eimeria spp.) / calreticulin family protein (Toxo) 
+                  -->  Calreticulin plays role in secretion in Leishmania. Parasite
+                       survival decreased in KO (Debrabant03). Calnexin is similar (ER 
+                       chaperone)
+EfaB_PLUS_30201.g2266  NOT IN TOXODB
+EfaB_PLUS_56725.g2790  NOT IN TOXODB
+%%%%%%%%%%%%%%
+%% unique from GO:0008603
+EfaB_MINUS_2526.g306   guanylate kinase (Sacocystis only) 
+EfaB_PLUS_20371.g1647  NOT IN TOXODB
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 1 EIMERIA MF - NOTE!!!! All adj.p-val = 0.14
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+              %%%% first GO term, 8 genes %%%%
+EfaB_MINUS_19717.g1715 glycogen phosphorylase family protein 1 in Toxo, (Eimeria:putative)
+EfaB_MINUS_25458.g2209 6-phosphogluconate dehydrogenase (Eimeria: putative) 
+EfaB_PLUS_15576.g1284  NO HIT TOXODB
+EfaB_PLUS_18869.g1591  NAD/NADP octopine/nopaline dehydrogenase, alpha-helical 
+                       domain-containing protein (Toxo). (Anaerobic alternative to lactate dehydrogenase?)
+EfaB_PLUS_25458.g2103  UDP-glucose 4-epimerase (Toxo, putative in Eimeria). -->
+                       catalyzes UDP-galactose to UDP-glucose, a precursor for glycogen, 
+                       sucrose lipopolysaccharides, and glycosphingolipids
+EfaB_PLUS_3469.g355    amiloride-sensitive amine oxidase (put.) (MAM domain) -->
+                       also in E. tenella paper. They speculate oocyst wall formation function... 
+EfaB_PLUS_43143.g2627  oxidoreductase --> also in tenella paper
+EfaB_PLUS_6743.g628    No ortholog; "Hypothetical protein" but -->
+                       "Acyl CoA binding protein" in Babesia for ProteinDataBank. No EC number.
+
+              %%%% second and thrid GO terms, 2 genes (same) %%%%
+
+EfaB_MINUS_43533.g2732 many orthologs... fatty acid synthase common annotation, AMP-binding domain another
+EfaB_PLUS_39892.g2546 L-aminoadipate-semialdehyde dehydrogenase large subunit, related -->
+                      oxidoreductase family. Lysine metabolism.
+
+              %%%% fourth GO term, 6 genes, all in first GO term in list %%%%
+
