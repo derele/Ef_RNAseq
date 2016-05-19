@@ -1,3 +1,386 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 7 all BP and MF genes  ----- not in text-------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_11414.g1019  WD-repeat membrane protein, putative
+EfaB_MINUS_13227.g1168  methyltransferase TRM13
+EfaB_MINUS_15576.g1338  isoleucyl-tRNA synthetase, putative
+EfaB_MINUS_15576.g1339  isoleucyl-tRNA synthetase, putative
+EfaB_MINUS_17195.g1549  NOL1/NOP2/sun family domain-containing protein, putative
+EfaB_MINUS_17907.g1609  NAD-dependent DNA ligase OB-fold domain containing protein, putative
+EfaB_MINUS_24117.g2079  DNA polymerase zeta catalytic subunit, putative
+EfaB_MINUS_26415.g2237  Leucyl tRNA synthase , related
+EfaB_MINUS_32574.g2473  Ca2+ transporting ATPase, related (P-type)
+EfaB_MINUS_33184.g2482  phosphoribosylpyrophosphate synthetase, putative
+EfaB_MINUS_7742.g733    adenylate and guanylate cyclase catalytic domain-containing protein, putative
+EfaB_PLUS_13626.g1191   DNA-directed rna polymerase I largest subunit, putative
+EfaB_PLUS_25052.g2047   RNA-binding region RNP-1 domain-containing protein, related
+                        PWI domain-containing protein
+
+EfaB_PLUS_27413.g2197   Dihydrouridine synthase 3-like, related (DUS)
+EfaB_PLUS_31498.g2308   phenylalanyl-tRNA synthetase beta chain, putative
+EfaB_PLUS_33184.g2389   DNA topoisomerase III beta-1, putative
+EfaB_PLUS_33854.g2431   histidyl-tRNA synthetase, putative
+EfaB_PLUS_36188.g2492   (Sarcocystis only) gar1 naf1 rna-binding region protein
+EfaB_PLUS_4714.g434     DNA-directed RNA polymerase III RPC6 (POLR3F)
+EfaB_PLUS_53301.g2769   Prolyl-tRNA synthetase, related
+EfaB_MINUS_20371.g1736  phosphatidylinositol-4-phosphate 5-kinase, putative
+EfaB_MINUS_39892.g2646  Phosphatidylinositol-4-phosphate 5-kinase 9, related
+EfaB_PLUS_31151.g2273   1-phosphatidylinositol-4-phosphate 5-kinase, putative
+EfaB_PLUS_56725.g2806   endonuclease/exonuclease/phosphatase domain-containing protein, putative
+EfaB_PLUS_49504.g2716   dual specificity phosphatase, catalytic domain-containing protein, putative
+
+EfaB_MINUS_12534.g1103  DEAD/DEAH box helicase, putative
+EfaB_MINUS_22450.g1925  helicase, putative
+EfaB_MINUS_36188.g2579  ATP-dependent RNA helicase, putative
+                        DEAD/DEAH box helicase domain-containing protein
+EfaB_MINUS_5727.g484    ATP-dependent nucleolar RNA helicase, putative
+                        DEAD/DEAH box helicase domain-containing protein
+EfaB_MINUS_7742.g783    ATP-dependent RNA helicase, putative
+EfaB_PLUS_2336.g256     ATP-dependent RNA helicase, putative
+EfaB_PLUS_50054.g2720   DEAD/DEAH box helicase, putative
+
+EfaB_MINUS_58361.g2985  lipase domain-containing protein, putative
+EfaB_PLUS_18869.g1603   lipase domain-containing protein, putative
+EfaB_PLUS_8832.g869     peptidyl-tRNA hydrolase PTH2 domain-containing protein, putative
+
+EfaB_PLUS_8664.g828     hypothetical protein, conserved
+EfaB_MINUS_37942.g2611  hypothetical protein, conserved
+EfaB_MINUS_15899.g1461  hypothetical protein (E. tenella)
+EfaB_MINUS_13227.g1159  hypothetical protein, conserved
+
+EfaB_PLUS_25177.g2051   No orthologs on ToxoDB
+
+EfaB_MINUS_42996.g2713  NOT IN TOXODB
+EfaB_MINUS_6035.g565    NOT IN TOXODB
+EfaB_MINUS_22284.g1904  NOT IN TOXODB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 6 all BP and MF genes ----- not in text-------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_15899.g1477  Ras family domain containing protein, putative
+EfaB_MINUS_25052.g2124  cAMP-specific 3',5'-cyclic phosphodiesterase, putative
+EfaB_PLUS_33184.g2400   adenylate cyclase, putative
+
+EfaB_MINUS_36188.g2575  diacylglycerol kinase, putative
+EfaB_MINUS_7048.g670    diacylglycerol kinase, putative
+
+EfaB_PLUS_11789.g1012   WD domain, G-beta repeat-containing protein
+EfaB_PLUS_1711.g193     phospholipase C delta 1, putative (PIPLC)
+EfaB_PLUS_20371.g1667   Sec7 domain-containing protein
+
+EfaB_MINUS_15576.g1321  apical membrane antigen, putative
+EfaB_PLUS_16835.g1425   apical membrane antigen 1, putative
+
+EfaB_MINUS_53301.g2878  DNA mismatch repair protein, putative
+EfaB_MINUS_12367.g1092  PH domain-containing protein, putative
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 5 all BP and MF genes ----- not in text-------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_25019.g2112  phosphofructokinase, putative
+EfaB_MINUS_5504.g461    fructose-1,6-bisphosphate aldolase, putative
+EfaB_PLUS_13227.g1156   pyruvate kinase PyK1 (putative Eimeria)
+EfaB_MINUS_15899.g1457  Amylo-alpha-1,6-glucosidase
+EfaB_PLUS_37942.g2519   Ubiquinol-cytochrome c reductase complex 14 kDa protein, putative
+EfaB_PLUS_12065.g1041   vacuolar ATP synthase catalytic subunit A, putative
+EfaB_PLUS_2336.g253     GMP synthase, putative
+EfaB_PLUS_34010.g2448   aspartate aminotransferase, putative
+EfaB_MINUS_17096.g1521  Rhoptry kinase family protein ROP38, putative
+                        (ROP41 in Toxo)
+
+EfaB_MINUS_25177.g2143  Tyrosine kinase-like (TKL) protein, putative
+EfaB_MINUS_56725.g2903  dual specificity protein phosphatase CDC14A, putative
+                        serine/threonine specific protein phosphatase
+
+EfaB_PLUS_228.g25       CAM kinase, SNF1 family, putative
+EfaB_MINUS_13222.g1139  transporter, cation channel family protein
+EfaB_MINUS_14978.g1254  ATP-binding cassette protein subfamily B member 2, putative
+                        Multidrug/pheromone exporter, MDR family, ABC transporter family, related
+ 
+EfaB_MINUS_5788.g497    manganese resistance 1 protein, putative
+EfaB_PLUS_2387.g292     mitochondrial carrier domain-containing protein, putative
+EfaB_MINUS_22284.g1910  orotidine-monophosphate-decarboxylase, putative
+EfaB_PLUS_15745.g1371   cytosol aminopeptidase, putative (LAP in Toxo)
+EfaB_PLUS_40637.g2583   prolidase, putative
+                        peptidase D, putative
+
+EfaB_MINUS_20371.g1786  No orthologs. Protein domains indicate (threonine) 
+                        protein kinase
+
+EfaB_MINUS_14978.g1255  NOT IN TOXODB
+EfaB_PLUS_6743.g603     NOT IN TOXODB
+EfaB_MINUS_17901.g1597  NOT IN TOXODB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 4 all BP and MF genes ----- not in text-------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_17195.g1552 (p=0.1) Serine hydroxymethyltransferase, related (1 annotation
+                               as mitochondrial) (Eimeria spp.)
+EfaB_PLUS_24701.g2015 (p=0.1)  Cystathionine beta-synthase, putative (Eimeria spp.)
+                               Pyridoxal-phosphate dependent superfamily protein OR
+                               CBS family protein (Toxo)
+EfaB_MINUS_20437.g1846         Acyl-CoA dehydrogenase, middle domain-containing protein (Toxo)
+                               Acyl-coenzyme A oxidase, putative (Eimeria) (same thing...(?))
+EfaB_MINUS_6929.g630           MmgE/PrpD family domain containing protein, putative (Eimeria)
+                          -->  PrpD important for proprionate catabolism in E. coli 
+EfaB_MINUS_31746.g2436         NOT IN TOXODB
+EfaB_MINUS_4114.g412           Sushi domain-containing protein / (same as SCR repeat) 
+                               SCR repeat-containing protein (Toxo), same putative (Eimeria)
+EfaB_PLUS_1425.g183            Thrombospondin type 1 domain-containing protein, putative (Eimeria) -->
+                               MIC proteins in Tomley et al (2001)
+                               Sushi domain (scr repeat) domain-containing protein (Toxo)
+
+EfaB_MINUS_2336.g262           cDNA FLJ33690 fis, clone BRAWH2002967, highly similar to Mitogen-activated 
+                               protein kinase 3, related (Neospora caninum only)
+EfaB_MINUS_2526.g312           3-methyl-2-oxobutanoate dehydrogenase (lipoamide) kinase, putative
+                               ATPase/histidine kinase/DNA gyrase B/HSP90 domain-containing protein 
+EfaB_MINUS_58361.g2998         Patched family domain containing protein, putative (Eimeria spp.)
+                               Patched family protein (Toxo)
+EfaB_MINUS_11233.g986          LCCL domain-containing protein / 
+                               F5/8 type C domain-containing protein, putative 
+EfaB_MINUS_14978.g1265         alkyl sulfatase, putative (Eimeria spp.)
+                               metallo-beta-lactamase domain-containing protein (Toxo)
+EfaB_MINUS_15697.g1401         Aminopeptidase N, related
+EfaB_MINUS_17907.g1638         X-Pro dipeptidyl-peptidase domain-containing protein, putative (Eimeria spp.)
+                               hydrolase CocE/NonD family protein (Toxo)
+EfaB_MINUS_25398.g2169         Nicalin-1, related (Eimeria spp.)
+                               M28 family peptidase (Toxo)  
+EfaB_MINUS_26415.g2240         Aminopeptidase N, related
+EfaB_MINUS_26792.g2256         Aminopeptidase N, related 
+EfaB_MINUS_56725.g2976         (eukaryotic) aspartyl protease, putative
+EfaB_PLUS_1048.g110            hypothetical protein, conserved (E. maxima, only entry) 
+EfaB_MINUS_11882.g1049         GMC oxidoreductase (Toxo)
+EfaB_MINUS_2336.g257           Mannitol-1-phosphate dehydrogenase, related (Eimeria spp.)
+                               YNR073C-like protein, related (Eimeria spp.)
+EfaB_MINUS_27413.g2293         Glucose-6-phosphate 1-dehydrogenase (related in Eimeria spp.) 
+
+EfaB_MINUS_5792.g537           D-3-phosphoglycerate dehydrogenase (putative in Eimeria spp.)
+EfaB_MINUS_22450.g1946         phosphoserine aminotransferase, putative 
+EfaB_MINUS_31746.g2423         Aminotransferase, putative
+EfaB_MINUS_33184.g2487         ornithine aminotransferase, putative (Eimera spp.)
+                               putative ornithine aminotransferase, mitochondrial precursor (Toxo)  
+EfaB_MINUS_43533.g2771         transhydrogenase, putative (Eimeryotic aspartyl protease, putative Eimeria spp.)
+                               alanine dehydrogenase, putative  (Eimeria spp.)
+                               Protein NNT-1, related (Eimeria spp.)
+                               NAD(P) transhydrogenase subunit beta, putative (Toxo; 
+                               in addition to above Eimeria annotations)
+
+EfaB_PLUS_16835.g1429   NOT IN TOXODB
+EfaB_PLUS_21840.g1792   NOT IN TOXODB
+EfaB_PLUS_15765.g1388   NOT IN TOXODB
+EfaB_PLUS_7048.g679     NOT IN TOXODB
+EfaB_PLUS_32574.g2361   NOT IN TOXODB
+EfaB_PLUS_11124.g944    NOT IN TOXODB
+EfaB_PLUS_40565.g2570   NOT IN TOXODB
+EfaB_PLUS_5792.g542     NOT IN TOXODB
+EfaB_PLUS_800.g89       NOT IN TOXODB
+EfaB_PLUS_800.g90       NOT IN TOXODB
+EfaB_PLUS_21840.g1793   NOT IN TOXODB
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 3 EIMERIA BP and MF
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_720.g53      adenylate kinase superfamily protein (no Eimeria annot.
+                      --> 2 ADP <-> AMP + ATP)
+EfaB_MINUS_11414.g1016  ATP-dependent Clp endopeptidase, proteolytic subunit ClpP 
+                        domain-containing protein (Toxo)
+EfaB_MINUS_34020.g2562  ATP synthase beta chain, putative
+EfaB_MINUS_7048.g635    ATP synthase lipid-binding protein, putative
+EfaB_PLUS_15899.g1399   ATP synthase, putative
+EfaB_PLUS_4114.g407     ATP-dependent chaperone ClpB, related, related 
+                        heat shock protein, putative
+EfaB_MINUS_28261.g2334  ATPase, AAA family domain-containing protein, putative 
+EfaB_MINUS_15899.g1462  adenosine monophosphate, AMP, deaminase, putative
+EfaB_MINUS_31498.g2414  Adenosine/AMP deaminase domain-containing protein (no Eimeria annot.)
+
+EfaB_MINUS_37748.g2604  pyruvate kinase, putative
+EfaB_PLUS_24701.g2010   pyruvate dehydrogenase E1 beta subunit, putative
+
+EfaB_MINUS_12302.g1078  poly(ADP-ribose) glycohydrolase, putative
+                        60S ribosomal protein L23, putative
+                        ribosomal protein L14p/L2 domain containing protein, putative
+
+EfaB_MINUS_13222.g1154  60S ribosomal protein L19, putative
+EfaB_MINUS_15745.g1419 
+EfaB_MINUS_17907.g1635  40S ribosomal protein S18, putative
+EfaB_MINUS_18869.g1679  elongation factor G, putative
+EfaB_MINUS_19222.g1687  60S ribosomal protein L18a, putative
+EfaB_MINUS_22450.g1954  elongation factor 1-alpha, putative
+EfaB_MINUS_24117.g2056  Eukaryotic translation initiation factor 3 subunit 9, putative 
+EfaB_PLUS_1048.g120     eukaryotic initiation factor-4E, putative (no Eimeria annot.)
+EfaB_PLUS_11882.g1019   60S ribosomal protein L33-A, putative
+EfaB_PLUS_15648.g1330
+EfaB_PLUS_16835.g1437   small ribosomal subunit Rsm22 protein (Eimera hypothetical prot)
+EfaB_PLUS_24117.g1983   40S ribosomal protein S19, putative
+EfaB_PLUS_33184.g2416   ribosomal protein L23a, putative
+EfaB_PLUS_7048.g687     60S acidic ribosomal protein P0, putative
+EfaB_MINUS_22450.g1930  No ortholog, domain in ToxoDB blast identified as 60S ribosomal protein L16(A)
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% PROTEIN PROCESSING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_15349.g1300  proteasome subunit alpha type 3, putative
+EfaB_MINUS_50714.g2850  chaperonin CPN10, mitochondrial, putative
+EfaB_MINUS_228.g16      Proteasome subunit beta type , related
+EfaB_PLUS_15648.g1311   cell division protein 48, putative
+                      --> collects ubiquitinated proteins and involved in 
+                        quality control of proteins
+EfaB_MINUS_33184.g2481  Bcs1 protein, putative
+                      --> protein transclocase and chaperone in yeast (SGD)
+EfaB_MINUS_24117.g2083  Trypsin, putative
+                      --> metacaspase in Leishmania? (doi: 10.1128/EC.00123-07)
+    OR                  DegPtype protease, related 
+                      --> aka HtrA in Streptococcus? --> important for stress response
+                        and suggested essential for virulence in "many pathogens"
+                        (doi:  10.1128/IAI.72.3.1618-1625.2004)
+EfaB_MINUS_43533.g2773  cell division protein, putative
+                        membrane protein FtsH1 (Toxo)
+                    --> "The main function of FtsHs identified thus far is to maintain quality control 
+                  by degrading misassembled and damaged membrane proteins" (karnataki09)
+EfaB_MINUS_20412.g1838  Heat shock protein Hsp90, related --> protein stabilization upon (heat) stress
+EfaB_MINUS_33854.g2518  heat shock protein 60, putative --> protein stabilization upon (heat) stress
+EfaB_MINUS_20412.g1804  DnaJ domain-containing protein, putative
+                      --> member of HSP40 family
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% BIOSYNTHESIS / TRANSCRIPTION / TRANSLATION %%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_13222.g1134  general transcription factor IIH polypeptide 2, putative
+EfaB_PLUS_56725.g2804   DEAD/DEAH box helicase, putative 
+                        ATP-dependent RNA helicase, putative
+EfaB_MINUS_15576.g1330  tryptophanyl-tRNA synthetase, putative
+EfaB_MINUS_25398.g2165  RNA methyltransferase, TrmH family domain-containing protein, putative
+EfaB_MINUS_7780.g820    leucyl-tRNA synthetase, putative
+EfaB_PLUS_15648.g1327   tyrosine-tRNA ligase 
+EfaB_PLUS_38343.g2530   tyrosyl-tRNA synthetase, putative 
+EfaB_MINUS_13222.g1138  tRNA methyltransferase domain-containing protein, putative
+EfaB_PLUS_17096.g1479   tRNA (guanine-N(7)-)-methyltransferase, putative
+EfaB_PLUS_17400.g1510   DNA-directed RNA polymerases I and III subunit RPAC2, putative
+EfaB_PLUS_17702.g1521   RNA polymerase Rpb3/Rpb11 dimerisation domain-containing protein, putative
+EfaB_PLUS_53301.g2778   queuine tRNA-ribosyltransferase
+EfaB_PLUS_6253.g590     RNA helicase, putative
+                        DEAD/DEAH box helicase, putative
+EfaB_MINUS_53301.g2894  DNA repair protein, putative
+EfaB_MINUS_10843.g944   Minichromosome maintenance protein 5 (Cell division control protein 46)
+                        DNA replication licensing factor, putative
+EfaB_MINUS_20412.g1811  tudor / staphylococcal nuclease domain-containing protein, putative (SND1 in Toxo)
+                     --> ribonucleoprotein in Drosophila
+
+EfaB_PLUS_24117.g1980   acetyl-CoA carboxylase, putative 
+EfaB_MINUS_11882.g1040  orotidine-monophosphate-decarboxylase, putative
+EfaB_PLUS_12302.g1055   uroporphyrinogen decarboxylase, putative
+
+EfaB_PLUS_15724.g1356   haloacid dehalogenase-like hydrolase domain-containing protein, putative
+EfaB_PLUS_32601.g2378   haloacid dehalogenase-like hydrolase domain-containing protein, putative
+EfaB_PLUS_3833.g380     haloacid dehalogenase-like hydrolase domain-containing protein, putative
+
+EfaB_MINUS_26415.g2236  Coronin binding protein, related
+EfaB_MINUS_27413.g2290  phosphoglycerate kinase, putative 
+EfaB_MINUS_30201.g2347  pantoate--beta-alanine ligase, putative
+EfaB_MINUS_31498.g2397  enolase 2, putative
+EfaB_MINUS_34010.g2539  DAHP synthetase, putative
+EfaB_MINUS_53301.g2879  pyrroline-5-carboxylate reductase, putative
+EfaB_MINUS_7780.g819    3-oxoacyl-[acyl-carrier-protein] synthase, putative
+EfaB_MINUS_800.g101     citrate synthase, putative
+EfaB_PLUS_15724.g1357   phosphofructokinase, putative
+EfaB_PLUS_17096.g1473
+EfaB_PLUS_1903.g204     3-oxoacyl-(acyl-carrier-protein) synthase III family protein, putative
+EfaB_PLUS_19717.g1617   cystathionine beta-lyase, putative
+EfaB_PLUS_39892.g2558   malate:quinone oxidoreductase, putative
+EfaB_PLUS_56725.g2829   hexokinase, putative
+
+EfaB_PLUS_50054.g2729   nucleoside diphosphate kinase, putative
+                      --> "provide NTPs for nucleic acid synthesis, CTP for lipid synthesis, UTP for polysaccharide 
+                      synthesis and GTP for protein elongation, signal transduction and microtubule polymerisation"
+                        (InterPro)
+
+EfaB_PLUS_2074.g239     thymidylate kinase, putative
+                      --> thymidine kinase is lacking in Toxo and P. falciparum, but has been described in C. parvum.
+                      --> presence stated as "highly unusual" compared to absense in Toxo and Pf
+                      --> enables pyrimidine (T and C) synthesis (if true --> only putative)
+                        (weissandkim14, Toxobook, p. 690)
+
+EfaB_PLUS_4993.g466     WD domain, G-beta repeat-containing protein
+                      --> WD40 common in scaffolding proteins
+EfaB_MINUS_11414.g1002  peroxidoxin 2 / peroxiredoxin, putative 
+                      --> dealing with oxidative stress
+                      --> E. tenella paper: perhaps contributing to oocyst wall formation 
+                      and expression in gamete stage
+
+EfaB_MINUS_14978.g1252  glyceraldehyde-3-phosphate dehydrogenase, putative --> glycolysis
+                        MIF4G domain-containing protein, putative --> NMD pathway to degrade nonsense mRNA
+
+
+
+EfaB_MINUS_34020.g2561  Galactosyltransferase, related, related
+                        Fringe-like family protein, related
+                      --> carbon metabolsim(?)
+
+%%%%%%%%%%%%%%%%%%%%%%%% CALCIUM SIGNALLING  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_MINUS_5792.g530    CAM kinase, CDPK family, putative
+                        EF hand domain-containing protein, putative
+                     --> EF hand domains sense calcium in apicomplexan parasites (wernimont10)
+                     --> calcium dependent kinase, (domain homologous to calmodulin kinase domain, but calmodulin kinase is not calcium regulated) (wernimont10)
+                     --> Bilker (billker09) review: calcium signalling in apicomplexa -->
+                    calcium signalling linked to adhesin secretion, gliding motility, cell invasion and egress
+
+
+%%%%%%%%%%%%%%%%%%%%%%%% COFACTOR Q and PABA  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_PLUS_1068.g136     para-aminobenzoate synthase, putative
+                     --> para-aminobenzoate aka 4-Aminobenzoic acid aka PABA
+                     --> PABA is a precursor for folate (vitamin B9)
+EfaB_PLUS_12302.g1057   hexaprenyl pyrophosphate synthetase protein, putative
+                    --> involved in cofactor Q biosynthesis in ubiquinone biosynthesis pathway (UniProt)
+                  PABA (above) is substrate for cofactor Q synthesis in yeast/bacteria (meganathan01)
+-->
+-->Drug atovaquone + proguanol (Malarone) are used to treat human malaria. Atovaquone is a structural analogue 
+of Coenzyme Q/CoQ/ubinuinone and atovaquone disrupts mitochondrial memrane potential. (weiisandkim14, Toxobook)
+
+%%%%%%%%%%%%%%%%%%%%%%%% TRYPTOPHAN CATABOLISM %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_PLUS_22732.g1893   amine oxidase, flavin-containing domain-containing protein, putative
+                  --> Flavin-containing amine oxidoreductase AKA tryptophan 2-monooxygenase (UniProt)
+                    --> "FAD-containing tryptophan 2-monooxygenase enzyme catalyses the oxidation 
+of tryptophan to indoleacetamide, carbon dioxide, and water" 
+                    --> Tryptophan catabolism
+(http://europepmc.org/abstract/MED/14636050)
+PABA can counteract some anticoccidial drugs: https://books.google.de/books?id=jmqMp92bipkC&pg=PA184&lpg=PA184&dq=folate+in+eimeria&source=bl&ots=4Nw0NZPJpz&sig=9kN1rQ7zEAqkDX2K7CHvy8wBsiw&hl=en&sa=X&ved=0ahUKEwiivaCfuuHMAhVBD8AKHdQYAWcQ6AEIMTAD#v=onepage&q=folate%20in%20eimeria&f=false
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%% LIPIDS %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+EfaB_PLUS_36188.g2485   Phosphatidate cytidylyltransferase , related
+                      --> Produces CDP-DAG (diacylglycerol)
+EfaB_MINUS_3469.g362    glycerol-3-phosphate acyltransferase, putative
+                      --> Initiates glycerolipid synthesis (wendel09)
+
+
+%%%%%%%%%%%%%%%%%%%%% OXIDOREDUCTASES --> response to ROS ??  %%%%%%%%%%%%%
+EfaB_PLUS_228.g23       mitochondrial alternative NADH dehydrogenase 1, putative 
+                        pyridine nucleotide-disulphide oxidoreductase, putative
+                      --> oxidoreductases --> superficially: anabolism?
+EfaB_PLUS_2336.g249     NADH-cytochrome b5 reductase, putative 
+                      --> oxidoreductase, electron transport, similar to ferrodoxin(?)
+EfaB_PLUS_5792.g548     ferredoxin NADP+ oxidoreductase, putative 
+                      --> redox couple with NADPH in apicoplast. Drug target.
+EfaB_PLUS_22732.g1894   Zgc:110343, related
+                        peroxiredoxin PRX3
+EfaB_MINUS_3088.g319    PKC-interacting cousin of thioredoxin, putative (aka PICOT)
+                      --> In humans involved in signalling (T cells, MAPK), no
+                        enzymatic activity. Not in SGD.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+EfaB_PLUS_1425.g167  
+EfaB_MINUS_22450.g1947 
+EfaB_PLUS_31498.g2325
+EfaB_PLUS_7742.g784  
+
+
+EfaB_PLUS_24117.g1977   putative transmembrane protein (Toxo)
+
+EfaB_PLUS_13222.g1104   hypothetical protein, conserved (has Superfamily "S-adenosyl-L-
+EfaB_PLUS_20371.g1694   hypothetical protein, conserved
+EfaB_PLUS_31498.g2306   hypothetical protein, conserved 
+                        methionine-dependent methyltransferases" domain)
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% CLUSTER 2 EIMERIA BP
@@ -164,4 +547,44 @@ EfaB_PLUS_39892.g2546 L-aminoadipate-semialdehyde dehydrogenase large subunit, r
                       oxidoreductase family. Lysine metabolism.
 
               %%%% fourth GO term, 6 genes, all in first GO term in list %%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% CLUSTER 1 EIMERIA BP - No overlap with MF terms 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%% 8 GO terms
+EfaB_MINUS_34010.g2532 Micronemal protein MIC4, related (E. tenella) +
+                       PAN domain-containing protein (Toxo),  
+EfaB_PLUS_22284.g1821  NOT IN TOXODB
+EfaB_PLUS_23143.g1929  Micronemal protein MIC4, related (Eimeria spp.) 
+                       PAN domain-containing protein (Toxo)
+%%%% 2 GO terms
+EfaB_MINUS_13398.g1204 DNA replication licensing factor Mcm7, (putative in Toxo, w/o Mcm7 in Eimeria spp.)
+                       Mcm = minichromosome maintenance protein
+EfaB_MINUS_21549.g1860 Putative DNA polymerase epsilon catalytic subunit (Eimeria spp.) 
+EfaB_MINUS_53301.g2887 MCM2/3/5 family protein (Toxo)
+EfaB_PLUS_17096.g1465  DNA replication licensing factor, putative
+EfaB_PLUS_2074.g241    DNA replication licensing factor, putative
+EfaB_PLUS_33184.g2383  DNA polymerase alpha catalytic subunit, putative (Eimeria spp.)
+                       DNA polymerase (pol2) superfamily protein  (Toxo) 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
