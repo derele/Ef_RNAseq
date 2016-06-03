@@ -33,8 +33,8 @@ Ef.hclustered.df <- as.data.frame(hcluster[["Ef"]])
 names(Ef.hclustered.df) <- "Cluster"
 Ef.hclustered.df$Cluster <- as.factor(Ef.hclustered.df$Cluster)
 
-pdf("figures/Ef_most_sig_lifecycle_heatmap.pdf")
-#    height = 8, width = 8)
+pdf("figures/Ef_most_sig_lifecycle_heatmap.pdf",
+    height = 8, width = 8)
 pheatmap(Ef.cycle.diff.top.100.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
          scale = "row",
@@ -42,12 +42,10 @@ pheatmap(Ef.cycle.diff.top.100.data,
          cluster_cols = T,
          annotation_row = Ef.hclustered.df,
          ## annotation_names_row = F,
-         cutree_rows = 5, 
+         cutree_rows = 7, # 5 in EH script 
          show_rownames = F,
          main = expression(paste(italic("E. falciformis"),
-             " mRNAs differently abundant between lifecycle stages")),
-         width = 8,
-         height = 8)
+             " mRNAs differently abundant between lifecycle stages")))
 dev.off()
 
 

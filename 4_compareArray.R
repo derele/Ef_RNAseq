@@ -93,20 +93,23 @@ RNAseq.logFC <- Mm.1st.pass.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
                                            "logFC.N7vs0", "logFC.B5vs0",
                                            "logFC.R5vs0" )]
 
-RNAseq.logFC <- merge(RNAseq.logFC, cuff2name, by.x = 0, by.y = "cuff_ids")
+RNAseq.logFC <- merge(RNAseq.logFC, annot.frame, by.x = 0, by.y = "ensembl_id")
+#RNAseq.logFC <- merge(RNAseq.logFC, cuff2name, by.x = 0, by.y = "cuff_ids")
 
 RNAseq.logFC.ruved <- Mm.RUVg.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
                                              "logFC.N7vs0", "logFC.B5vs0",
                                              "logFC.R5vs0" )]
 
-RNAseq.logFC.ruved <- merge(RNAseq.logFC.ruved, cuff2name,
-                            by.x = 0, by.y = "cuff_ids")
+RNAseq.logFC.ruved <- merge(RNAseq.logFC.ruved, annot.frame,
+                            by.x = 0, by.y = "ensembl_id")
+#RNAseq.logFC.ruved <- merge(RNAseq.logFC.ruved, cuff2name,
+#                            by.x = 0, by.y = "cuff_ids")
 
 RNAseq.Array.logFC <- merge(RNAseq.logFC, Array.logFC,
-                            by.x = "gene_names", by.y = 0)
+                            by.x = "gene_name", by.y = 0) # NOTE!!!! gene_name or gene_names
 
 RNAseq.Array.logFC <- merge(RNAseq.Array.logFC, RNAseq.logFC.ruved,
-                            by = c("Row.names","gene_names"))
+                            by = c("Row.names","gene_name"))
 
 names(RNAseq.Array.logFC) <- gsub(".x", ".plain", names(RNAseq.Array.logFC))
 
