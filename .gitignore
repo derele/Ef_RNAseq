@@ -14,7 +14,7 @@
 /RUVseq.R~
 /2b_edgeR_diff.R~
 /data_curataion.R~
-/figures/*
+figures/*
 .4_compareArray.R.swp
 .5_clustering.R.swp
 .6_enrichment.R.swp

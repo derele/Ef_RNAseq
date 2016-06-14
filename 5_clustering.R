@@ -9,12 +9,28 @@ if(!exists("RNAseq.Array.logFC")){
 }
 ########## USE THIS #######################
 ########## PHEATMAP() specifying distance and method ############
-
+## 1:10 refers to the Ef.contrast object and the first ten 
+## comparisons in it.
+############# LIFE CYCLE SELECTION ##################
 union.of.Ef.cycle.diff.top.100 <-
     unique(unlist(lapply(Ef.1st.pass.model[[3]][1:10], head, n=500)))
 
 Ef.cycle.diff.top.100.data <-
     cpm(Ef.1st.pass.model[[4]])[union.of.Ef.cycle.diff.top.100,]
+
+############# 1st VERSUS 2nd INFECTION ##################
+union.of.Ef.1st2nd.top <-
+    unique(unlist(lapply(Ef.1st.pass.model[[3]][11:15], head, n=500)))
+
+Ef.1st2nd.top.data <-
+    cpm(Ef.1st.pass.model[[4]])[union.of.1st2nd.top,]
+
+######## EIMERIA DEVELOPMENT IN DIFFERENT MOUSE STRAINS (day 5 only) ##################
+union.of.Ef.strain.depend.top <-
+    unique(unlist(lapply(Ef.1st.pass.model[[3]][16:18], head, n=500)))
+
+Ef.strain.depend.top.data <-
+    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.strain.depend.top,]
 
 get.scaled.and.clustered <- function(data){
     rMeans <- rowMeans(data)
@@ -25,6 +41,9 @@ get.scaled.and.clustered <- function(data){
 }
 
 Ef.hclustered <- get.scaled.and.clustered(Ef.cycle.diff.top.100.data)
+Ef.hclustered.first.second <- get.scaled.and.clustered(Ef.1st2nd.top.data) 
+Ef.hclustered.strain <- get.scaled.and.clustered(Ef.strain.depend.top.data )
+
 
 hcluster <- list()
 hcluster[["Ef"]] <- cutree(Ef.hclustered, k= 7) ## TK changed k from 5 ## h=7.2)
