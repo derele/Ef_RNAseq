@@ -4,8 +4,16 @@
 ## of IFNg-regulated host pathways for the parasite development"
 ## DOI:10.1038/mi.2013.115
 
+# Check checkpoint package for package control.
+if(!require(Biobase)) biocLite("Biobase") # Imports package if user does not have it
+if(!require(RSvgDevice)) biocLite("RSvgDevice") # Imports package if user does not have it
+if(!require(GGally)) biocLite("GGally") # Imports package if user does not have it
+if(!require(ggplot2)) biocLite("ggplot2") # Imports package if user does not have it
+## For below package does not always work: then manual import is necessary
+if(!require(mgug4122a.db)) biocLite("mgug4122a.db") # Imports package if user does not have it
+
 library(mgug4122a.db)
-library(Agi4x44PreProcess)
+library(Agi4x44PreProcess) # !!!! NOT available for R 3.3.0 - NOT on Bioconductor anymore
 library(Biobase)
 library(RSvgDevice)
 library(GGally)

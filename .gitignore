@@ -1,4 +1,6 @@
 *~
+*.aux
+*.swp
 /IsFeatPopnOL.txt
 /IsFeatPopnOL.txt
 /IsNOTWellAboveBG.txt

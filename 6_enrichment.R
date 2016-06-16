@@ -1,4 +1,9 @@
 ## still open question: How to implement the FCS(?) method
+# Check checkpoint package for package control.
+if(!require(topGO)) biocLite("topGO") # Imports package if user does not have it
+if(!require(xtable)) biocLite("xtable") # Imports package if user does not have it
+if(!require(AnnotationDbi)) biocLite("AnnotationDbi") # Imports package if user does not have it
+
 library(topGO)
 library(xtable)
 library(AnnotationDbi)

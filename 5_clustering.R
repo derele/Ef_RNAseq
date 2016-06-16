@@ -1,5 +1,10 @@
 ## Making heatmaps and other clusters of gene expression data
 
+# Check checkpoint package for package control.
+if(!require(pheatmap)) biocLite("pheatmap") # Imports package if user does not have it
+if(!require(made4)) biocLite("made4") # Imports package if user does not have it
+if(!require(RColorBrewer)) biocLite("RColorBrewer") # Imports package if user does not have it
+
 library(pheatmap)
 library(made4)
 library(RColorBrewer)
