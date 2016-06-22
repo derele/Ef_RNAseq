@@ -4,14 +4,14 @@
 library(reshape2)
 ############## MOUSE ##################
 ## rearrange GM.E for ggplot format
-long.Mcounts <- melt(GM$counts)
-long.counts$strain <- gsub("_.*", "", long.Mcounts$Var2)
-long.Mcounts$strain <- gsub("_.*", "", 
-		long.Mcounts$Var2)
+long.Mcounts <- melt(Mm.RC[[3]])
+#long.counts$strain <- gsub("_.*", "", long.Mcounts$Var2)
+#long.Mcounts$strain <- gsub("_.*", "", 
+#		long.Mcounts$Var2)
 
-long.normMcounts <- melt(cpm(GM))
-long.normMcounts$strain <- gsub("_.*", "", 
-		long.normMcounts$Var2)
+long.normMcounts <- melt(cpm(Mm.RC[[3]]))
+#long.normMcounts$strain <- gsub("_.*", "", 
+#		long.normMcounts$Var2)
 
 ## RAW MOUSE DISTRIBUTION
 pdf("figures/distributions_mouse5000.pdf", 
@@ -43,13 +43,13 @@ dev.off()
 
 ############## PARASITE ###################
 long.Ecounts <- melt(GM.E$counts)
-long.Ecounts$strain <- gsub("_.*", "", long.Ecounts$Var2)
-long.Ecounts$strain <- gsub("_.*", "", 
-		long.Ecounts$Var2)
+#long.Ecounts$strain <- gsub("_.*", "", long.Ecounts$Var2)
+#long.Ecounts$strain <- gsub("_.*", "", 
+#		long.Ecounts$Var2)
 
 long.normEcounts <- melt(cpm(GM.E))
-long.normEcounts$strain <- gsub("_.*", "", 
-		long.normEcounts$Var2)
+#long.normEcounts$strain <- gsub("_.*", "", 
+#		long.normEcounts$Var2)
 
 excludedE <- long.normEcounts[long.normEcounts$Var2%in%
 		c("NMRI_2ndInf_7dpi_rep2",

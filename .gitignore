@@ -47,4 +47,13 @@ figures/pheatmap_Ef_DEG.pdf
 figures/pheatmap_Ef_DEG.png
 figures/pheatmap_Ef_DEG_PuOr.pdf
 figures/pheatmap_Ef_DEG_test.png
+additional_files/tex/SI_clusters/table_rawcounts.log
+additional_files/tex/SI_clusters/table_rawcounts.pdf
+manuscript/tex_bmc_format/.manuscript_rnaseq.tex.swo
+manuscript_rnaseq.log
+.2_edgeR_diff.R.swo
+.4_compareArray.R.swo
+.5_clustering.R.swo
+.display.txt
+EfMm_4-mds.png
 

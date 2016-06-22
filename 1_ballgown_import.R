@@ -66,7 +66,7 @@ Ef.bg <- subset(Ef.bg,
                 pData(Ef.bg)$timepoint != 0 | is.na(pData(Ef.bg)$timepoint),
                 genomesubset=FALSE)
 
-## A function to et raw coungs for exons, transcripts and genes out of
+## A function to get raw coungs for exons, transcripts and genes out of
 ## the ballgown objects
 
 raw.counts.4.bg <- function(bg){

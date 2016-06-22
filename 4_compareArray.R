@@ -4,6 +4,7 @@
 ## of IFNg-regulated host pathways for the parasite development"
 ## DOI:10.1038/mi.2013.115
 
+source("https://bioconductor.org/biocLite.R")
 # Check checkpoint package for package control.
 if(!require(Biobase)) biocLite("Biobase") # Imports package if user does not have it
 if(!require(RSvgDevice)) biocLite("RSvgDevice") # Imports package if user does not have it

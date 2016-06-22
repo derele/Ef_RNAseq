@@ -22,6 +22,7 @@ gene.table.topGO <- function(TOGO.list, pval=0.01){
 
 
 ## adjusted functions from ballgown
+if(!require(GenomicRanges)) biocLite("GenomicRanges")
 
 library(ballgown)
 library(GenomicRanges) # needed for elementMetadata()

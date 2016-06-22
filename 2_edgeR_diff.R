@@ -2,17 +2,20 @@
 
 ## needed from data import script are two raw count objects 
 
+source("https://bioconductor.org/biocLite.R")
 if(!exists("Mm.RC")|!exists("Ef.RC")){
     source("1_ballgown_import.R")
 }
 
 # Check checkpoint package for package control.
-if(!require(edgeR)) biocLite("edgeR") # Imports package if user does not have it
+source("http://bioconductor.org/biocLite.R")
+if(!require(edgeR)) BiocInstaller::biocLite("edgeR") # Imports package if user does not have it
 if(!require(GGally)) biocLite("GGally") # Imports package if user does not have it
-if(!require(RUVSeq)) biocLite("RUVSeq") # Imports package if user does not have it
+if(!require(RUVSeq)) BiocInstaller::biocLite("RUVSeq") # Imports package if user does not have it
 if(!require(reshape)) biocLite("reshape") # Imports package if user does not have it
+if(!require(statmod)) biocLite("statmod") # Imports package if user does not have it
 
-
+library(statmod)
 library(edgeR)
 library(GGally)
 library(RUVSeq)

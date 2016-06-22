@@ -1,51 +1,59 @@
-controlsc## Summarize and create plots or tables for data
+#### WRONG
+## Something is wrong here: use "A_data_curation.R" instead!!!!!!! 
+
+#controlsc## Summarize and create plots or tables for data
 ## E.g. raw counts, percetage Eimeria reads... etc
 
 library(scales)
 library(xtable)
 library(stringr)
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 ####################################################################
 # TABLE WITH RAW DATA - OUTPUT IN LATEX
 ####################################################################
-=======
+#=======
 ## Summary table of transcript counts per sample
 ## MOUSE table
-tableM <- as.data.frame(colSums(mouse.RC[[3]]))
+tableM <- as.data.frame(colSums(Mm.RC[[3]]))
 #colnames(tableM)[,2] <- "Read.number"
 ## MOUSE w/o day 0 
 tableM$Samples <- rownames(tableM)
 
 tableMsmall <- tableM[!(str_detect(rownames(tableM),"^.*0dpi.*$")), ]
-row.names(tableMsmall) <- seq(1:18)
->>>>>>> Totta_working
+row.names(tableMsmall) <- seq(1:17)
+#>>>>>>> Totta_working
 
 ## table MOUSE and EIMERIA raw counts and percentage parasite reads 
 table.rc <- as.data.frame(colSums(All.RC[[3]][str_detect(rownames(All.RC[[3]]), "^EfaB_.*$"), ]))
 #tableEf <- as.data.frame(colSums(Ef.RC[[3]]))
 colnames(table.rc)[1] <- "EimeriaTranscripts"
-table.rc$MusTranscripts <- colSums(All.RC[[3]][str_detect(rownames(All.RC[[3]]), "^XLOC_.*$"), ])
+table.rc$MusTranscripts <- colSums(All.RC[[3]][str_detect(rownames(All.RC[[3]]), "^ENSMUS.*$"), ])
 table.rc$Samples <- rownames(table.rc)
-row.names(table.rc) <- seq(1:27)
+row.names(table.rc) <- seq(1:30)
 table.rc$PercentEimeria <- format((table.rc[,1]/colSums(All.RC[[3]]))*100, digits=3, scientific = F)
 
-<<<<<<< HEAD
+#<<<<<<< HEAD
 # sort and make rownames pretty for LaTeX use
 sorted.table.rc <- table.rc[order(table.rc$PercentEimeria, decreasing = T), ]
 sorted.table.rc <- sorted.table.rc[, c(3,4,2,1)]
 
 ## EXPORT to Latex format
-rawcount.table <- xtable(sorted.table.rc, align = c("c", "c", "c", "c", "c"), digits = 3)
+rawcount.table <- xtable(sorted.table.rc, align = c("l", "l", "l", "l", "l"), digits = 3)
 print(rawcount.table, type = "latex", file = "figures/table_rc.tex", include.rownames = F)
 
+## Same as above but with order of magnitutde in numbers
+rawcount.table2 <- xtable(sorted.table.rc, align = c("l", "l", "l", "l", "l"), digits = -3)
+print(rawcount.table2, type = "latex", file = "figures/table_rc2.tex", include.rownames = F)
+
+
 ## add timepoint here for plots - but not above in table
-table.rc$Timepoint <- c(5, 5, 5, 3, 3, 5, 5, 7, 7, 3, 3, 5, 5, 7, 7, 5, 5, 5, NA, NA)
+table.rc$Timepoint <- pData(Ef.bg)$timepoint 
 
 ## plotting parasite percentage of reads
 ef.percentage <- ggplot() +
   geom_point(data = table.rc, aes(x = Samples, y = PercentEimeria)) + #, color = pData(Ef.bg)[, 7])) +
-=======
+#=======
 ## ADD EIMERIA % to EIMERIAsmall table
 as.data.frame(colSums(Ef.RC[[3]]))
 #print.xtable(tableEf, type = "latex", file = "tableEf-reads.tex")
@@ -53,7 +61,7 @@ tableEf$Samples <- rownames(tableEf)
 
 ## EIMERIA table w/o oocysts and sporozoites, for mouse comparison
 tableEfsmall <- tableEf[!(str_detect(tableEf$Samples, "^NMRI_(oocysts|sporozoites)$")), ]
-row.names(tableEfsmall) <- seq(1:18)
+row.names(tableEfsmall) <- seq(1:17)
 tableEfsmall$mouseReads <- cbind(tableMsmall[,1])
 
 ## add oocysts and sporozoites
@@ -86,7 +94,7 @@ tableEfsmall$Timepoint <- c(5, 5, 5, 3, 3, 5, 5, 7, 7, 3, 3, 5, 5, 7, 7, 5, 5, 5
 ## plotting parasite percentage of reads
 ef.percentage <- ggplot() +
   geom_point(data = tableEfsmall, aes(x = Samples, y = PercentEimeria)) + #, color = pData(Ef.bg)[, 7])) +
->>>>>>> Totta_working
+#>>>>>>> Totta_working
   ylim(c(0, 10))+
   ylab("Percentage of reads mapping to Eimeria genome") +
   ggtitle("Eimeria fraction of total sequences per sample - 2 samples rm") +
@@ -96,11 +104,11 @@ dev.off()
 	
 ## plot number of parasite reads
 ef.read.number <- ggplot()+
-<<<<<<< HEAD
+#<<<<<<< HEAD
   geom_point(data = table.rc, aes(x = Samples, y = as.numeric(EimeriaTranscripts), color = factor(Timepoint))) +
-=======
+#=======
   geom_point(data = tableEfsmall, aes(x = Samples, y = as.numeric(EimeriaTranscripts), color = factor(Timepoint))) +
->>>>>>> Totta_working
+#>>>>>>> Totta_working
   scale_y_log10(labels = comma) +
   ylab("Number of Eimeria reads") +
   ggtitle("Sequences per samples for Eimeria - immune-status") +
