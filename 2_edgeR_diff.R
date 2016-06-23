@@ -2,18 +2,11 @@
 
 ## needed from data import script are two raw count objects 
 
-source("https://bioconductor.org/biocLite.R")
+#source("https://bioconductor.org/biocLite.R")
 if(!exists("Mm.RC")|!exists("Ef.RC")){
     source("1_ballgown_import.R")
 }
 
-# Check checkpoint package for package control.
-source("http://bioconductor.org/biocLite.R")
-if(!require(edgeR)) BiocInstaller::biocLite("edgeR") # Imports package if user does not have it
-if(!require(GGally)) biocLite("GGally") # Imports package if user does not have it
-if(!require(RUVSeq)) BiocInstaller::biocLite("RUVSeq") # Imports package if user does not have it
-if(!require(reshape)) biocLite("reshape") # Imports package if user does not have it
-if(!require(statmod)) biocLite("statmod") # Imports package if user does not have it
 
 library(statmod)
 library(edgeR)
@@ -48,7 +41,7 @@ colnames(Ef.design)  <- gsub("_", ".",
 
 Ef.contrasts <- makeContrasts(
     ## just different stages in NMRI
-    N3vsN5 = NMRI.1stInf.3dpi-NMRI.1stInf.5dpi,
+    N3vsN5 = NMRI.1stInf.3dpi-NMRI.1stInf.5dpi, #1
     N3vsN7 = NMRI.1stInf.3dpi-NMRI.1stInf.7dpi,
     N3vsSpo = NMRI.1stInf.3dpi-NMRI.sporozoites,
     N3vsOoc = NMRI.1stInf.3dpi-NMRI.oocysts,
@@ -57,24 +50,24 @@ Ef.contrasts <- makeContrasts(
     N5vsOo = NMRI.1stInf.5dpi-NMRI.oocysts,
     N7vsSp = NMRI.1stInf.7dpi-NMRI.sporozoites,
     N7vsOo = NMRI.1stInf.7dpi-NMRI.oocysts,
-    SpvsOo=  NMRI.sporozoites-NMRI.oocysts,
+    SpvsOo=  NMRI.sporozoites-NMRI.oocysts,	#10
     ## differences in 1st vs 2nd infection
-    N3.1stvsN3.2nd = NMRI.1stInf.3dpi-NMRI.2ndInf.3dpi,
+    N3.1stvsN3.2nd = NMRI.1stInf.3dpi-NMRI.2ndInf.3dpi,	#11
     N5.1stvsN5.2nd = NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi,
     N7.1stvsN7.2nd = NMRI.1stInf.7dpi-NMRI.2ndInf.7dpi,
     B5.1stvsB5.2nd = C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi,
-    R5.1stvsR5.2nd = Rag.1stInf.5dpi-Rag.2ndInf.5dpi,
+    R5.1stvsR5.2nd = Rag.1stInf.5dpi-Rag.2ndInf.5dpi,	#15
     ## differences in mouse strains
-    NvsB=NMRI.1stInf.5dpi-C57BL6.1stInf.5dpi,
+    NvsB=NMRI.1stInf.5dpi-C57BL6.1stInf.5dpi,	#16
     NvsR=NMRI.1stInf.5dpi-Rag.1stInf.5dpi,
-    BvsR=C57BL6.1stInf.5dpi-Rag.1stInf.5dpi,
+    BvsR=C57BL6.1stInf.5dpi-Rag.1stInf.5dpi,	#18
     ## differences in 1st vs. 2nd depending on mouse strain
     N5.1stvsN52ndVSB5.1stvsB52nd = (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi)-
-        (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),
+        (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),	#19
     R5.1stvsR52ndVSB5.1stvsB52nd = (Rag.1stInf.5dpi-Rag.2ndInf.5dpi)-
         (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),
     R5.1stvsR52ndVSN5.1stvsN52nd = (Rag.1stInf.5dpi-Rag.2ndInf.5dpi)-
-        (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi),
+        (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi),	#21
     levels=Ef.design)
 
 
@@ -92,34 +85,35 @@ colnames(Mm.design)  <- gsub("_", ".",
 Mm.contrasts <- makeContrasts(
     ## just infections in NMRI !!! As we not have uninfected control
     ## using 2nd infected control here
-    N3vs0 = NMRI.1stInf.3dpi-NMRI.2ndInf.0dpi,
-    N5vs0 = NMRI.1stInf.5dpi-NMRI.2ndInf.0dpi,
-    N7vs0 = NMRI.1stInf.7dpi-NMRI.2ndInf.0dpi,
+    N3vs0 = NMRI.1stInf.3dpi-NMRI.2ndInf.0dpi, #1
+    N5vs0 = NMRI.1stInf.5dpi-NMRI.2ndInf.0dpi, #2
+    N7vs0 = NMRI.1stInf.7dpi-NMRI.2ndInf.0dpi, #3
     ## just infections in Black and Rag
-    B5vs0 = C57BL6.1stInf.5dpi- C57BL6.0dpi ,
-    R5vs0 = Rag.1stInf.5dpi - Rag.0dpi,
+    B5vs0 = C57BL6.1stInf.5dpi- C57BL6.0dpi , #4
+    R5vs0 = Rag.1stInf.5dpi - Rag.0dpi,		#5
     ## differences in 1st vs 2nd infection
-    N3.1stvsN3.2nd = NMRI.1stInf.3dpi-NMRI.2ndInf.3dpi,
+    N3.1stvsN3.2nd = NMRI.1stInf.3dpi-NMRI.2ndInf.3dpi, #6
     N5.1stvsN5.2nd = NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi,
     N7.1stvsN7.2nd = NMRI.1stInf.7dpi-NMRI.2ndInf.7dpi,
     B5.1stvsB5.2nd = C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi,
-    R5.1stvsR5.2nd = Rag.1stInf.5dpi-Rag.2ndInf.5dpi,
+    R5.1stvsR5.2nd = Rag.1stInf.5dpi-Rag.2ndInf.5dpi,	#10
     ## differences in mouse strains
         RvsB=Rag.0dpi-C57BL6.0dpi,
+	#NvsB=NMRI.0dpi-C57BL6.0dpi,
     ## differences in infection over time
     N3vsN5 = NMRI.1stInf.3dpi-NMRI.1stInf.5dpi,
     N5vsN7 = NMRI.1stInf.5dpi-NMRI.1stInf.7dpi,
-    N3vsN7 = NMRI.1stInf.3dpi-NMRI.1stInf.7dpi,
+    N3vsN7 = NMRI.1stInf.3dpi-NMRI.1stInf.7dpi,		#14
     ## what about differences in the reaction to first infection in
     ## different mouse strains??
     ##
     ## differences in 1st vs. 2nd depending on mouse strain
     N5.1stvsN52ndVSB5.1stvsB52nd = (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi)-
-        (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),
+        (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),		#15
     R5.1stvsR52ndVSB5.1stvsB52nd = (Rag.1stInf.5dpi-Rag.2ndInf.5dpi)-
         (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),
     R5.1stvsR52ndVSN5.1stvsN52nd = (Rag.1stInf.5dpi-Rag.2ndInf.5dpi)-
-        (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi),
+        (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi), 		#16
     levels=Mm.design)
 
 
@@ -145,7 +139,7 @@ get.my.models <- function (RC, cutoff, group,
                        })
     names(top.list) <- colnames(contrasts)
     gene.list <- lapply(top.list, function(x) {
-                            rownames(x[x$FDR<0.01,])
+                            rownames(x[x$FDR<0.05,]) ######### CHANGE FDR!!!!!!!!!!
                         })
     return(list(ALL.top, top.list, gene.list, DGEList))
 }

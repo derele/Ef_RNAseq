@@ -1,9 +1,5 @@
 ### ballgown for data import from the cufflinks/tablemaker pipeline
 
-# Check package for package control.
-source("https://bioconductor.org/biocLite.R")
-if(!require(ballgown)) biocLite("ballgown") # Imports package if user does not have it
-
 library(ballgown)
 setwd("~/Ef_RNAseq")
 

@@ -45,9 +45,9 @@
 %	DOCUMENT INFORMATION
 %----------------------------------------------------------------------------------------
 
-\title{Overview of dual RNA-seq data from \textit{Eimeria falciformis} infected \textit{Mus musculus}} % Title
+\title{Data summary and analysis procedure: dual RNA-seq of \textit{Eimeria falciformis} infected \textit{Mus musculus}} % Title
 
-\author{Totta \textsc{Kasemo}} % Author name
+\author{Totta \textsc{Kasemo}, Simone \textsc{Spork},\\ Christoph \textsc{Dietrich}, Richard \textsc{Lucius}, Emanuel \textsc{Heitlinger}} % Author name
 
 \date{\today} % Date for the report
 
@@ -73,15 +73,92 @@
 %	SECTION 1
 %----------------------------------------------------------------------------------------
 
-\section{Objective}
-
-This summary table of reads generated in each sample.....
-
+\section{Overview}
+This document contains data summaries and parts of analysis from the dual RNA-seq experiments of 
+ \textit{Eimeria falciformis} infected mice carried our by Simone Spork. Basic read-outs
+ such as number of transcripts detected in each sample from mouse and parasite are summarized, as
+ well as compilations of the outcome of statistical tests for differential mRNA abundance from
+ comparisons of different experimental groups. Mouse data was compared (correlated) with previously
+ published (schmid12) microarray data from \textit{E. falciformis} infected mice.
+ Hierarchical clustering illustrated by heatmaps is shown for different comparisons.\\
+ The largest mRNA abundance differences on the parasite side are seen in comparisons between different
+ time points post infection. Mouse strain, including Rag1-/- (adaptive immunity compromised mice) and 
+ mouse immune status due to previous parasite exposure (second/challenge infection) seems to have less effects
+ on mRNA abundance profiles in the parasite.
 %\begin{center}\ce{}\end{center}
 
 %----------------------------------------------------------------------------------------
-%	SECTION 2 
+%	SECTION  
 %----------------------------------------------------------------------------------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%	METHODS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Methods}
+\subsection{Mice and infection procedure}
+Three strains of mice were used in our experiments: NMRI (Charles River Laboratories, Sulzfeld,
+Germany), C57BL/6 (), and Rag1-/- on C57BL/6 background (gift from Susanne Hartmann, FU?). 
+Animal procedures were performed according to the German Animal Protection Laws as 
+directed and approved by the overseeing authority Landesamt fuer Gesundheit und Soziales 
+(Berlin, Germany). Animals where infected as described by Schmid et al., (Schmid12), but
+tapwater was used instead of PBS for administration of oocysts. Briefly, NMRI mice were infected 
+two times, which will be referred to as first and second infection. For the first infection, 
+150 sporulated oocysts were administered in 100 $μ$L by oral gavage. During the first infection
+of 60 mice, all animals were weighed every day. On day zero, before infection, as well as on day three,
+five and seven days post infection, dpi, caeca from 3-4 sacrificed mice per time point were 
+collected. Epithelial cells were isolated as described in Schmid et al.(schmid12). For challenge 
+infection, mice recovered for four weeks before second infection. 
+Recovery was monitored by weighing and visual inspection of fur. For the second infection, 
+1500 sporulated oocysts were applied by oral gavage. Three mice were used as non-second infection control, 
+referred to as day 0, second infection.
+
+\subsection{Oocyst purification for infection and sequencing}
+Sporulated oocysts were purified by flotation from feces stored in potassium dichromate and 
+administered orally in 100 uL tapwater. One \textit{E. falciformis} isolate, 
+\textit{E. falciformis} Bayer Haberkorn 1970, was used for all infections and parasite 
+samples. The strain is maintained through passage in NMRI mice in our facilities as described 
+elsewhere (schmid12).
+
+\subsection{Sporozoite isolation}
+Sporozoites were isolated from sporocysts by excystment. For this, sporocysts were incubated at 
+37$°$C in DMEM containing 0.04\% tauroglycocholate (MP Biomedicals) and 0.25\% trypsin (Applichem) 
+for 30 min. Sporozoites were purified by the method of Schmatz et al (schmatz--).
+
+\subsection{RNA extraction}
+Total RNA was isolated from infected epithelial cells, sporozoites and sporulated oocysts 
+using Trizol according to the manufacturer’s protocol (Invitrogen). High quality  \emph{what is the meaning of 'high quality' here?}
+RNA was used to produce an mRNA library using the Illumina’s TruSeq RNA Sample Preparation guide.
+\emph{stolen from genome paper}
+Sporozoites were stored in 1 mL Trizol until RNA-isolation. 
+Total RNA was isolated using the PureLink RNA Mini Kit (Invitrogen).
+
+\subsection{Sequence quality assessment and alignment}
+Fastq\_quality\_filter was applied to Illumina Hiseq 2000 sequenced samples. 
+Since this is not easily applicable to pair-end sequencing data, a low threshold was 
+used on the hiseq data. A phred score of 10 was used, i.e., the probability of false base 
+calling is one in ten. We further set q = 60, i.e., nine out of ten bases
+or more is required to be correct in at least 
+60\% of the bases in each read for the read sequence to be kept for further analysis.
+This resulted in.......
+
+\subsubsection{Alignment and reference genomes}
+We used the published \textit{Mus musculus} mm10 assembly (Genome Reference Consortium Mouse 
+Build 38, GCA\_000001635.2) as reference genome including annotations for mouse data. The
+\textit{E. falciformis} genome (Heitlinger14) was downloaded from ToxoDB (Gajria07). For the
+alignment, the mouse and parasite genome files were merged into a dual reference genome, and 
+files including mRNA sequences from both species were aligned against the dual reference genome
+using TopHat2 (version 2.0.14, Trapnell09)/ Bowtie2 (version 1.1.2, Langmead12). Single-end and 
+pair-end sequence samples were aligned separately with library type 'fr-unstranded' specified 
+for pair-end samples. Import into R was enabled by the R package Ballgown, which requires bam 
+files to be processed by Tablemaker (Frazee15). Tablemaker in turn makes use of Cufflinks 
+(version 2.1.1, Trapnell10).
+
+
+
+%----------------------------------------------------------------------------------------
+%	SECTION  
+%----------------------------------------------------------------------------------------
+
 
 \section{Table of reads per sample}
 % latex table generated in R 3.2.2 by xtable 1.8-2 package
@@ -89,11 +166,12 @@ This summary table of reads generated in each sample.....
 \setlength{\tabcolsep}{10pt}
 \begin{table}[H]
 \centering 
-\caption{Transcripts per sample listed for \textit{E. falciformis} and mouse. Percentage of
-	\textit{E. falciformis} transcripts and number of \textit{E. falciformis} genes are alo shown. 
-	Gray indicates that samples are excluded from analysis (see Methods for details).}
+	\caption{Samples are listed from highest to lowest percentace of \textit{E. falciformis} transcripts per 
+	total number of transcripts (mouse plus \textit{E. falciformis}). Corresponding number of
+	\textit{E. falciformis} genes are shown. Gray indicates that samples are excluded from 
+	analysis (see Methods for details).}
 \begin{tabular}{*5l}    \toprule
-Samples  & Mouse 	& \textit{E. falciformis}  & Percent			& \#\textit{E.falciformis} \\
+Samples  & Mouse 	& \textit{E. falciformis}  & Percentage			& \#\textit{E.falciformis} \\
 	& trancripts	& transcripts   	 & \textit{E. falciformis}	& genes \\ \midrule
 NMRI\_oocysts\_rep1 & 11676.000 & 108477484.000 & 99.989 & 5734.000 \\ 
 NMRI\_oocysts\_rep2 & 19024.000 & 126543533.000 & 99.985 & 5774.000 \\ 
@@ -136,16 +214,15 @@ NMRI\_2ndInf\_0dpi\_rep1 & 285032128.000 & 326.000 & 0.000 & 2.000 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	OVERVIEW READS PER SAMPLE, LAYOT AS EXPERIMENTAL OVERVIEW
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experimental overview with transcripts per sample}
+\section{Experimental overview}
 	\setlength{\tabcolsep}{14pt}
 	\begin{table}[H]
 	\begin{center}
-	\caption{Replicate average transcripts numbers as order of magnitude for \textit{E. falciformis}
-		(first) and mouse (second) and experimental overview. Columns represent different mouse strains
-		used (NMRI, C57BL/6 and Rag1-/-). Rows are different timepoints post infection or parasite life cycle 
-		stages. The upper part shows data for first infection, and oocyst and sporozoite data. The lower part 
-		shows data for challange infection. Averages were calculated after sample exclusions (see Methods). 
-		For exact values, see Table 1.}
+	\caption{Replicate average of transcripts as order of magnitude for \textit{E. falciformis}/mouse. 
+		Columns represent mouse strains used in infection experiments. Rows represent timepoints post 
+		infection plus oocyst and sporozoite samples. The upper part of the table shows data for first 
+		infection, and oocyst and sporozoite data. The lower part shows data for challenge infection. 
+		Averages were calculated after sample exclusions (see Methods). For exact values, see Table 1.}
 \begin{tabular}{*4l}    \toprule
 \textit{Day, 1st infection}  	& NMRI  & C57BL/6  & Rag1-/- \\ \midrule
 	0 (control)    & $10^4$ / $10^8$  & $10^2$ / $10^8$  & $10^2$ / $10^7$  \\ %rep1/rep2, NA=no replicate
@@ -172,19 +249,19 @@ Sporozoites 	& $10^7$ / NA & NA  & NA \\ \midrule
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	MICROARRAY COMPARISON
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Transcript distribution and excluding samples}
+\section{Transcript coverage distribution and sample exclusions}
 \subsection{Mouse transcript distributions}
 \begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{distributionsMm.pdf}
-\caption{Density of transcripts (y-axis) with a specific number of reads mapping (x-axis). 
-Density of raw transcripts (not normalised) for all mouse samples. Without any requirement 
-(cutoff) for a minimum read coverage per transcript, all samples display a bimodal distribution 
-trend and an additional peak at zero by visual inspection. A minimal number of total reads 
-(sum for all samples) mapping to one transcript was set (cutoff). For further analysis, a cutoff of
-2000 was applied with which for the edgeR anaylsis assumed negative binomial distribution is not 
-contradicted. For the density distribution analysis, 0.1 was added to all read values to allow plotting 
-density of absent transcripts on a log-scale.}
+	\caption{Transcript coverage distribution (density) for mouse samples. 
+ Without any requirement (cutoff) for a minimum read 
+coverage per transcript, all samples display a bimodal distribution trend and an additional 
+peak at zero by visual inspection. In our analyses, a cutoff of 3000 was applied. 
+\emph{(2000 enough? No big diff...?)}. With this cutoff we can assume a negative binomial
+coverage distribution as required in the analysis pipline. Non-normalised read counts were used.
+For this visualization 0.1 was added to all read counts to allow to plot 
+absent transcripts (zero reads) on a log-scale.}
 %\end{center}
 \end{figure}
 
@@ -193,14 +270,15 @@ density of absent transcripts on a log-scale.}
 \begin{figure}[H]
 \begin{center}
 \includegraphics[width=\textwidth]{distributionsEf.pdf}
-\caption{Density of transcripts (y-axis) with a specific number of reads mapping (x-axis). 
-Density of raw transcripts (not normalised) for all \textit{E. falciformis} samples. Without any
-requirement (cutoff) for a minimum read coverage per transcript, most samples do not contradict
-the assumed negative binomial distribution. However, two samples clearly do and a cutoff was applied 
-to evaluate whether peaks can be removed by excluding transcripts with very low coverage.
-The cutoff does not have a large effect on distributions of \textit{E. falciformis} data and therefore 
-two samples were removed from further analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1.
-	To all read values, 0.1 was added to allow plotting density of absent transcripts on a log-scale.}
+\caption{Transcript coverage distribution (density) for \textit{E. falciformis} samples. Without any
+requirement (cutoff) for a minimum read coverage per transcript, most samples are in agreement with
+the assumed negative binomial distribution. However, two samples clearly contradict this assumption
+and a cutoff was applied to evaluate whether peaks in these samples can be removed by excluding 
+transcripts with very low coverage. The cutoff does not have a large effect on distributions 
+of \textit{E. falciformis} data and therefore two samples were removed from further 
+analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1. On all kept samples, a cutoff of 100 
+was applied. \emph{(but I guess we could also skip it altogether?)}. Non-normalised read counts were used.
+To all read values, 0.1 was added to allow to plot density of absent transcripts on a log-scale.}
 \end{center}
 \end{figure}
 
@@ -228,7 +306,7 @@ two samples were removed from further analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_
 	\includegraphics[width=\textwidth]{EfMm_4-mds.pdf} % Include 
 	\caption{Multidimensional scaling shows no clear sample pattern due to technical variation. Effect on scaling is visualized 
 	for batch (left) and sequencing method (right). Upper panel displays \textit{E. falciformis} data and lower panel mouse data. 
-	Distances on plot approximate log2 fold changes. Scaling was done with Euklidean distance and "pairwise" gene selection 
+	Distances on plot approximate log2 fold changes. Scaling was done with Euclidean distance and "pairwise" gene selection 
 	method as implemented in R package limma (version ...).}
 \end{center}
 \end{figure}
@@ -238,36 +316,43 @@ two samples were removed from further analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 \section{mRNA abundance differences between different experimental groups}
-\setlength{\tabcolsep}{14pt}
+\setlength{\tabcolsep}{8pt}
 \begin{table}[H]
 \begin{center}
-\caption{\textit{E. falciformis} data overview of pairwise comparisons and number of genes with differently abundant mRNAs 
-	per comparison. NMRI followed by number indicates day post infection (e.g. NMRI3 = \textit{E. falciformis} genes from
-	NMRI mouse day 3 post infection). Genes with Benjamini-Hochberg corrected p-values \leq0.01 as implemented in edgeR are indluced. 
-	ADD MOUSE DATA COLUMN.}
+\caption{\textit{E. falciformis} data overview of pairwise comparisons and number of genes with differently abundant mRNAs per comparison. NMRI followed by number indicates day post infection (e.g. NMRI3 = \textit{E. falciformis} genes from NMRI mouse day 3 post infection). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as implemented in edgeR are indluced. NAs are missing samples or not applicable for the species. NA* is due to missing NMRI day 0 sample from first infection.}
 %\label{tab:table3}
-\begin{tabular}{*2l}    \toprule
-\textit{Comparisons with difference} & Genes different (FDR\leq0.01) \\ \midrule
-	NMRI3 vs NMRI5     	& 111  \\
-	NMRI3 vs NMRI7  	& 1385 \\ 
-	NMRI5 vs NMRI7  	& 1895 \\
-	Oocysts vs NMRI3  	& 3310 \\  
-	Oocysts vs NMRI5	& 3605 \\ 
-	Oocysts vs NMRI7	& 3085 \\ 
-	Oocysts vs sporozoites & 3421 \\
-	Sporozoites vs NMRI3 	& 1663 \\
-	Sporozoites vs NMRI5 	& 1605 \\
-	Sporozoites vs NMRI7 	& 2473 \\ 
-	NMRI vs C57BL/6 	& 22 \\	\midrule	
-\textit{Comparisons, no difference}  	\\ \midrule
-	NMRI vs Rag1-/-     & 0 \\
-	C57BL/6 vs Rag1-/-  & 0 \\
-	NMRI3 1st vs NMRI3 2nd  	    & 0 \\
-	NMRI5 1st vs NMRI5 2nd  	    & 0 \\
-	NMRI7 1st vs NMRI7 2nd  	    & 0 \\
-	C57BL/6 1st vs C57BL/6 2nd (day 5) & 0 \\
-	Rag1-/- 1st vs Rag1-/- 2nd (day 5) & 0 \\ \bottomrule
-\hline
+\begin{tabular}{*3l}    \toprule
+\textit{Day post infection} & \textit{Ef} genes different & Mouse genes different \\ 
+	\textit{comparisons} 	    & (FDR$\leq$0.01) &  (FDR$\leq$0.01/0.05) \\ \midrule
+	NMRI 0 vs NMRI 3		& NA   & 274 \\
+	NMRI 0 vs NMRI 5		& NA   & 1736 \\
+	NMRI 0 vs NMRI 7		& NA   & 2802 \\
+	NMRI 3 vs NMRI 5     		& 111  & 1 \\
+	NMRI 3 vs NMRI 7  		& 1385 & 1407 \\ 
+	NMRI 5 vs NMRI 7  		& 1895 & 873 \\ 
+	C57BL/6 0 vs C57BL/6 5		& NA	& 914 \\
+	Rag1-/- 0 vs Rag1-/- 5		& NA	& 45 \\ \midrule
+\textit{First and second infection} & 		 & 	 \\ 
+\textit{comparisons} 	    & 		& 	\\ \midrule
+	NMRI 3 1st vs NMRI 3 2nd  	& 0  & 5 \\
+	NMRI 5 1st vs NMRI 5 2nd  	& 0  & 1 \\
+	NMRI 7 1st vs NMRI 7 2nd  	& 0  & 902 \\
+	C57BL/6 1st vs C57BL/6 2nd (day 5) & 0 &  mouse \\
+	Rag1-/- 1st vs Rag1-/- 2nd (day 5) & 0 & mouse  \\ \midrule
+\textit{Mouse strain comparisons} & 		 & 	 \\ \midrule
+	NMRI vs C57BL/6 		& 22 	& NA* \\		
+	NMRI vs Rag1-/-     		& 0 & NA* 	\\
+	C57BL/6 vs Rag1-/-  		& 0   & 356 	\\ \midrule
+\textit{Day post infection,} & 		 & 		 \\ 
+\textit{parasite relevant comparisons} 	    & 		&  \\ \midrule
+	Oocysts vs NMRI 3  	& 3310 & NA \\  
+	Oocysts vs NMRI 5	& 3605 & NA \\ 
+	Oocysts vs NMRI 7	& 3085 & NA \\ 
+	Oocysts vs sporozoites  & 3421 & NA \\
+	Sporozoites vs NMRI 3 	& 1663 & NA \\
+	Sporozoites vs NMRI 5 	& 1605 & NA \\
+	Sporozoites vs NMRI 7 	& 2473 & NA \\ \bottomrule
+	\hline
 \end{tabular}
 \end{center}
 \end{table}
@@ -277,13 +362,13 @@ two samples were removed from further analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_
 \subsection{Differentially abundant mRNAs used for hierarchical clustering}
 \setlength{\tabcolsep}{10pt}
 \begin{table}[H]
-\begin{adjustwidth}{-10}{}
+%\begin{adjustwidth}{-10}{}
 \begin{center}
-	\caption{A selection of differently abundant mRNAs are used for hierarchical clustering of \textit{E. falciformis}
-	life cycle relevant genes. In each comparison (see Table 3), the 500 differentially abundant mRNAs with lowest FDR
-	are selected. In the next step, the 500 mRNAs from each comparison (or less) are joined (4935 genes) and only 
-	unique genes are selected (1618 genes). The 22 genes in the NMRI vs C57BL/6 
-	comparison are not included in the \textit{E. falciformis} life cycle analysis.}
+\caption{A selection of differently abundant mRNAs are used for hierarchical clustering of \textit{E. falciformis}
+life cycle relevant genes. In each comparison (see Table 3), the 500 differentially abundant mRNAs with lowest FDR
+are selected. In the next step, the 500 mRNAs from each comparison (or less) are joined (4935 genes) and only 
+unique genes are selected (1618 genes). The 22 genes in the NMRI vs C57BL/6 
+comparison are not included in the \textit{E. falciformis} life cycle analysis.}
 \begin{tabular}{*2l}    \toprule
 	\textit{Data description} & Number of genes \\ \midrule
 	Sum of 1st infection NMRI sample differences	& 4935  \\ 
@@ -292,16 +377,62 @@ two samples were removed from further analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_
 \hline
 \end{tabular}
 \end{center}
-\end{adjustwidth}
+%\end{adjustwidth}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	HEATMAPS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Hierarchical clustering of genes different depending on time post infection}
+\section{Hierarchical clustering...}
+All heatmaps shown are now with cutoff 0.05, even though we previously used 0.01 for the life cycle part. I will change it, but the difference seems small and I am really tired... Therefore, I also didn't write the legends for the 1st VS 2nd and mouse strain effect heatmaps. The 1st-2nd looks rediculous for Ef, for instance (it could only compile with cutree=2 or 1). So sorry abot the ugly end.
+\subsection{Time post infection, \textit{E. falciformis}}
+\begin{figure}[H]
+%\begin{center}
+\centering
+	\includegraphics[width=0.9\textwidth]{EfLifecycleHeatmap.pdf}  
+	\caption{\textit{E. falciformis} mRNAs with significantly different abundance at different times post infection in NMRI mice (see Table 3). All (parasite) samples were included in heatmap. \textit{E. falciformis} samples from seven days p.i. cluster together (NMRI mice only). For day 7, NMRI the pattern is most pronounced in cluster 1 (up). Withing this cluster, the second replicate from the challenge infection has a deviant profile (compare mouse data in Figure 6). Distinct groups of genes also define sporozoites (cluster 6: up) and oocysts (cluster 3: up, cluster 7: down). mRNA profiles on days three and five p.i. from all three mouse strains cluster together. These samples are distinct from oocysts, NMRI day 7 p.i., and sporozoites. The latter cluster closer with days 3 and 5 than with oocysts or day 7. On scale bar, 0 is mean mRNA abundance for each gene (row). Up (green) and down-regulation (brown) numbers denote number of standard deviations from row mean. Hierarchical clustering was performed using with Euclidean distances, method 'complete' (R package limma).}
+%\end{center}
+\end{figure}
+
+\subsection{Time post infection, mouse}
+\begin{figure}[H]
+%\begin{center}
+\centering
+\includegraphics[width=0.9\textwidth]{MmLifecycleHeatmap.pdf}  
+\caption{Mouse mRNAs with significantly different abundance at different times post infection in NMRI mice (see Table 3).
+Three out of four samples from day 7 p.i. (NMRI only) cluster together. These samples are characterized by genes in cluster 2 (up) as well as 3 and 4 (down). The fourth day 7 sample (challenge infection, second replicate) clusters with day 3 and 5 samples but upon visual inspection of cluster 4diplays a profile similar to non-infected mice. The same sample is abnormal in the parasite profile (see Figure 5). NMRI and C57BL/6 uninfected samples cluster together, defined by clusters 3, 4 (up), and 1 (down). Day 3 and 5 samples cluster together, with Rag1-/- forming a separate group and Rag1-/- non-infected most distant in this sample cluster. All non-infected samples share a high mRNA abundance in cluster 3. On scale bar, 0 is mean mRNA abundance for each gene (row). Up (green) and down-regulation (brown) numbers denote number of standard deviations from row mean. Hierarchical clustering was performed using with Euclidean distances, method 'complete' (R package limma).}
+%\end{center}
+\end{figure}
+
+\subsection{First versus second infection, \textit{E. falciformis}}
 \begin{figure}[H]
 \begin{center}
-\includegraphics[width=\textwidth]{Ef_most_sig_lifecycle_heatmapi.pdf}  
-	\caption{\textit{E. falciformis} with Euklidean distance .........as implemented in R package limma.}
+\includegraphics[width=\textwidth]{Ef1st2ndHeatmap.pdf}  
+	\caption{\textit{E. falciformis} with Euclidean distance .........as implemented in R package limma.}
+\end{center}
+\end{figure}
+
+\subsection{First versus second infection, mouse}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{Mm1st2ndHeatmap.pdf}  
+	\caption{Mouse.... with Euclidean distance .........as implemented in R package limma.}
+\end{center}
+\end{figure}
+
+
+\subsection{Differences between mouse strains,\textit{E. falciformis}}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{EfStrainHeatmap.pdf}  
+	\caption{\textit{E. falciformis} with Euclidean distance .........as implemented in R package limma.}
+\end{center}
+\end{figure}
+
+\subsection{Differences between mouse strains, mouse}
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=\textwidth]{MmStrainHeatmap.pdf}  
+	\caption{Mouse.... with Euclidean distance .........as implemented in R package limma.}
 \end{center}
 \end{figure}
 

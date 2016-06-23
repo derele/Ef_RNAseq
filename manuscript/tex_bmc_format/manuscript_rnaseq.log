@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2015/dev/Debian) (preloaded format=pdflatex 2016.6.1)  15 JUN 2016 15:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.6.13)  23 JUN 2016 17:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **manuscript_rnaseq.tex
 (./manuscript_rnaseq.tex
-LaTeX2e <2014/05/01>
-Babel <3.9l> and hyphenation patterns for 2 languages loaded.
+LaTeX2e <2016/03/31>
+Babel <3.9r> and hyphenation patterns for 3 language(s) loaded.
 (./bmcart.cls
 Document Class: bmcart 2014/01/24BioMed Central class (VS)
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
@@ -28,14 +28,14 @@ File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 \mathindent=\dimen103
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
 (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
 
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
@@ -43,22 +43,22 @@ Package xcolor Info: Driver file: pdftex.def on input line 225.
 File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )
 \Gread@gobject=\count87
 )
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
 (./lastpage.sty
 Package: lastpage 2011/09/01 v1.2k Refers to last page's name (HMM; JPG)
@@ -76,18 +76,18 @@ Package: lastpage 2011/09/01 v1.2k Refers to last page's name (HMM; JPG)
 \keywords@list=\toks16
 )
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/05/09 v1.0r Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/01/02 v1.10 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: pdftex.def on input line 96.
 )
 \Gin@req@height=\dimen105
 \Gin@req@width=\dimen106
@@ -108,7 +108,7 @@ LaTeX Font Info:    ... okay on input line 90.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 90.
 LaTeX Font Info:    ... okay on input line 90.
 
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count92
 \scratchdimen=\dimen107
@@ -130,16 +130,15 @@ Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             install/macros/latex/contrib/pageslts.tds.zip
 (lastpage)             ! on input line 90.
  (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+Package: pdftexcmds 2016/05/10 v0.21 Utility functions of pdfTeX for LuaTeX (HO
 )
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: ifpdf 2016/05/14 v3.1 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -147,22 +146,22 @@ Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 Package etexcmds Info: Could not find \expanded.
 (etexcmds)             That can mean that you are not using pdfTeX 1.50 or
 (etexcmds)             that some package has redefined \expanded.
@@ -171,7 +170,7 @@ Package etexcmds Info: Could not find \expanded.
 Package grfext Info: Graphics extension search list:
 (grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
 G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
+(grfext)             \AppendGraphicsExtensions on input line 456.
 
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
@@ -225,47 +224,6 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 
 LaTeX Warning: Reference `aff1thanks' on page 1 undefined on input line 236.
 
-! Missing $ inserted.
-<inserted text> 
-                $
-l.351 (EfaB_
-            MINUS_4114.g412 and EfaB_PLUS_1425.g183) are involved in sporozo...
-
-? r
-OK, entering \nonstopmode...
-! Missing $ inserted.
-<inserted text> 
-                $
-l.361 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-
-Overfull \hbox (465.7587pt too wide) in paragraph at lines 338--361
-\OT1/cmr/m/n/10 (EfaB$[]\OML/cmm/m/it/10 INUS[]\OT1/cmr/m/n/10 114\OML/cmm/m/it
-/10 :g\OT1/cmr/m/n/10 412\OML/cmm/m/it/10 andEfaB[]LUS[]\OT1/cmr/m/n/10 425\OML
-/cmm/m/it/10 :g\OT1/cmr/m/n/10 183)\OML/cmm/m/it/10 areinvolvedinsporozoiteinva
-sionin[]andthatthemRNAsaretranscribedandavailablebeforeexcystation:Aroleinmeroz
-oitere \OMS/cmsy/m/n/10 ^^@
- []
-
-
-Overfull \hbox (917.15414pt too wide) in paragraph at lines 338--361
-\OML/cmm/m/it/10 invasionin[]isnotindicatedbyourdata:TheLCCLdomainannotationand
-thrombospondinsroleinhighereukaryotesalsoindicatesthatadhesionorpreparationfora
-dhesionisimportantinoocysts:Wesuggest\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 speculat
-e:::\OT1/cmr/m/n/10 ?)\OML/cmm/m/it/10 thatthethrombospondinannotatedorthologan
-dtheLCCLdomain \OMS/cmsy/m/n/10 ^^@
- []
-
-
-Overfull \hbox (27.62766pt too wide) in paragraph at lines 338--361
-\OML/cmm/m/it/10 containingprotein\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 EfaB[]INUS[
-]\OT1/cmr/m/n/10 1233\OML/cmm/m/it/10 :g\OT1/cmr/m/n/10 986)\OML/cmm/m/it/10 ar
-einvolvedincelladhesionin[]:$ 
- []
-
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <8> not available
 (Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 361.
@@ -278,37 +236,34 @@ Overfull \hbox (1.0pt too wide) has occurred while \output is active
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2] [3] [4]
+] [2] [3]
 No file manuscript_rnaseq.bbl.
-<../figures/efmm-ratio.pdf, id=27, 578.16pt x 578.16pt>
+<../figures/efmm-ratio.pdf, id=20, 578.16pt x 578.16pt>
 File: ../figures/efmm-ratio.pdf Graphic file (type pdf)
 
 <use ../figures/efmm-ratio.pdf>
-Package pdftex.def Info: ../figures/efmm-ratio.pdf used on input line 619.
+Package pdftex.def Info: ../figures/efmm-ratio.pdf used on input line 588.
 (pdftex.def)             Requested size: 180.5pt x 180.49811pt.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 621.
+(Font)              <8> on input line 590.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 621.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-<../figures/ef-heatmap.pdf, id=28, 578.16pt x 578.16pt>
+(Font)              <6> on input line 590.
+ [4]
+<../figures/ef-heatmap.pdf, id=24, 578.16pt x 578.16pt>
 File: ../figures/ef-heatmap.pdf Graphic file (type pdf)
 
 <use ../figures/ef-heatmap.pdf>
-Package pdftex.def Info: ../figures/ef-heatmap.pdf used on input line 625.
+Package pdftex.def Info: ../figures/ef-heatmap.pdf used on input line 594.
 (pdftex.def)             Requested size: 252.6989pt x 252.69736pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<../figures/mm-heatmap.pdf, id=29, 578.16pt x 578.16pt>
+<../figures/mm-heatmap.pdf, id=25, 578.16pt x 578.16pt>
 File: ../figures/mm-heatmap.pdf Graphic file (type pdf)
 
 <use ../figures/mm-heatmap.pdf>
-Package pdftex.def Info: ../figures/mm-heatmap.pdf used on input line 631.
+Package pdftex.def Info: ../figures/mm-heatmap.pdf used on input line 600.
 (pdftex.def)             Requested size: 252.6989pt x 252.69736pt.
 
 
@@ -316,15 +271,8 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 AED: lastpage setting LastPage
-[5]
-
-LaTeX Warning: Text page 6 contains only floats.
-
-[6 <../figures/efmm-ratio.pdf> <../figures/ef-heatmap.pdf
-
-pdfTeX warning: pdflatex (file ../figures/ef-heatmap.pdf): PDF inclusion: multi
-ple pdfs with page group included in a single page
->] [7 <../figures/mm-heatmap.pdf>] (./manuscript_rnaseq.aux)
+[5 <../figures/efmm-ratio.pdf>] [6 <../figures/ef-heatmap.pdf>] [7 <../figures/
+mm-heatmap.pdf>] (./manuscript_rnaseq.aux)
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
@@ -332,31 +280,31 @@ LaTeX Font Warning: Size substitutions with differences
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 2565 strings out of 495020
- 34706 string characters out of 6181325
- 99709 words of memory out of 5000000
- 5768 multiletter control sequences out of 15000+600000
+ 2566 strings out of 494946
+ 34753 string characters out of 6181040
+ 99169 words of memory out of 5000000
+ 5847 multiletter control sequences out of 15000+600000
  10993 words of font info for 38 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 37i,9n,42p,953b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 37i,10n,42p,953b,296s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb></usr
 /share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on manuscript_rnaseq.pdf (7 pages, 673902 bytes).
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmti10.pfb>
+Output written on manuscript_rnaseq.pdf (7 pages, 633990 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 97 compressed objects within 1 object stream
+ 126 PDF objects out of 1000 (max. 8388607)
+ 86 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

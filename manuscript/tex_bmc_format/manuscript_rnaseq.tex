@@ -348,13 +348,13 @@ Limulus clotting factor C, Coch-5b2 (Cochlin) and Lgl1, LCCL,
 (syn. F5/8 domain) domains are associated discoidin lectin domains and thereby with adhesion.
 (Pfam entries for 'LCCL domain' and 'Discoidin domain', May 2016). 
 Taken together, this indicates that the thrombospondin and sushi-domain genes 
-(EfaB_MINUS_4114.g412 and EfaB_PLUS_1425.g183) are involved in sporozoite invasion in 
+(EfaB\_MINUS\_4114.g412 and EfaB\_PLUS\_1425.g183) are involved in sporozoite invasion in 
 \textit{E. falciformis} and that the mRNAs are transcribed and available before excystation. 
 A role in merozoite re-invasion in \textit{E. falciformis} is not indicated by our data.
 The LCCL domain annotation and thrombospondins role in higher eukaryotes also indicates 
 that adhesion or preparation for adhesion is important in oocysts. 
 We suggest (speculate...?) that the thrombospondin annotated ortholog and the LCCL domain-containing protein 
-(EfaB_MINUS_11233.g986) are involved in cell adhesion in \textit{E. falciformis}.
+(EfaB\_MINUS\_11233.g986) are involved in cell adhesion in \textit{E. falciformis}.
 %One examples
 %is found in the slime mold \textit{Dictyostelium discoideum)} in which the LCCL domain
 %is part of the mold's discoidin adhesion protein. (Pfam entry for 'discoidin domain', May 2016)
@@ -491,51 +491,20 @@ association).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Discussion}
 In our analysis we demonstrate which biological processes are dominant in different
-life cycle stages of E. falciformis in the mouse. The RNAseq transcriptome provided here 
+life cycle stages of \textit{E. falciformis} in the mouse. The RNAseq transcriptome provided here 
 allows for detailed analysis of genes involved in those processes, providing candidates for 
 life stage specific marker in \textit{Eimeria} spp. research. 
+
+\ldots
+\ldots
+\ldots
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	METHODS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Methods}
-\subsection*{Mice and infection procedure}
-Three strains of mice were used in our experiments: NMRI (Charles River Laboratories, Sulzfeld,
-Germany), C57BL/6 (), and Rag1-/- on C57BL/6 background (gift from Susanne Hartmann, FU?). 
-Animal procedures were performed according to the German Animal Protection Laws as 
-directed and approved by the overseeing authority Landesamt fuer Gesundheit und Soziales 
-(Berlin, Germany). Animals where infected as described by Schmid et al., (Schmid12), but
-tapwater was used instead of PBS for administration of oocysts. Briefly, the indicated number of
-sporulated oocysts were purified by flotation from feces stored in potassium dichromate and 
-administered orally in 100 uL tapwater. One \textit{E. falciformis} isolate
-was used for all infections and parasite samples. Oocysts were originally purchased from Bayer 
-() and the strain is maintained through passage in mice  in our facilities as described 
-elsewhere (Schmid12).
 \ldots
-\subsection*{RNA extraction}
- \ldots
-\subsection*{Sequence quality assessment and alignment}
-Fastq\_quality\_filter was applied to Illumina Hiseq 2000 sequenced samples. 
-Since this is not easily applicable to pair-end sequencing data, a low threshold was 
-used on the hiseq data. A phred score of 10 was used, i.e., the probability of false base 
-calling is one in ten. We further set q = 60, i.e., nine out of ten bases
-or more is required to be correct in at least 
-60\% of the bases in each read for the read sequence to be kept for further analysis.
-This resulted in.......
-\subsubsection*{Alignment and reference genomes}
-We used the published \textit{Mus musculus} mm10 assembly (Genome Reference Consortium Mouse 
-Build 38, GCA\_000001635.2) as reference genome including annotations for mouse data. The
-\textit{E. falciformis} genome (Heitlinger14) was downloaded from ToxoDB (Gajria07). For the
-alignment, the mouse and parasite genome files were merged into a dual reference genome, and 
-files including mRNA sequences from both species were aligned against the dual reference genome
-using TopHat2 (version 2.0.14, Trapnell09)/ Bowtie2 (version 1.1.2, Langmead12). Single-end and 
-pair-end sequence samples were aligned separately with library type 'fr-unstranded' specified 
-for pair-end samples. Import into R was enabled by the R package Ballgown, which requires bam 
-files to be processed by Tablemaker (Frazee15). Tablemaker in turn makes use of Cufflinks 
-(version 2.1.1, Trapnell10).
-
-\ldots
-
 
 \subsection*{Sub-heading for section}
 Text for this sub-heading \ldots

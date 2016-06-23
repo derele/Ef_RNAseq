@@ -4,14 +4,14 @@
 ## of IFNg-regulated host pathways for the parasite development"
 ## DOI:10.1038/mi.2013.115
 
-source("https://bioconductor.org/biocLite.R")
+#source("https://bioconductor.org/biocLite.R")
 # Check checkpoint package for package control.
-if(!require(Biobase)) biocLite("Biobase") # Imports package if user does not have it
-if(!require(RSvgDevice)) biocLite("RSvgDevice") # Imports package if user does not have it
-if(!require(GGally)) biocLite("GGally") # Imports package if user does not have it
-if(!require(ggplot2)) biocLite("ggplot2") # Imports package if user does not have it
+#if(!require(Biobase)) biocLite("Biobase") # Imports package if user does not have it
+#if(!require(RSvgDevice)) biocLite("RSvgDevice") # Imports package if user does not have it
+#if(!require(GGally)) biocLite("GGally") # Imports package if user does not have it
+#if(!require(ggplot2)) biocLite("ggplot2") # Imports package if user does not have it
 ## For below package does not always work: then manual import is necessary
-if(!require(mgug4122a.db)) biocLite("mgug4122a.db") # Imports package if user does not have it
+#if(!require(mgug4122a.db)) biocLite("mgug4122a.db") # Imports package if user does not have it
 
 library(mgug4122a.db)
 library(Agi4x44PreProcess) # !!!! NOT available for R 3.3.0 - NOT on Bioconductor anymore
@@ -28,9 +28,10 @@ if(!exists("gene2GO")){
     source("3_annotations.R")
 }
 
-targets <- readTargets("/data/Mouse_arrays/2012_arrays/targets.txt", sep=";")
+#targets <- readTargets("/data/Mouse_arrays/2012_arrays/targets.txt", sep=";")
+targets <- readTargets("/SAN/Mouse_arrays/2012_arrays/targets.txt", sep=";")
 
-RG <- read.maimages(targets, path= "/data/Mouse_arrays/2012_arrays/", source = "agilent", 
+RG <- read.maimages(targets, path= "/SAN/Mouse_arrays/2012_arrays/", source = "agilent", 
                     other.columns = list(IsFound = "gIsFound",
                       IsWellAboveBG = "gIsWellAboveBG", 
                       IsSaturated = "gIsSaturated",
@@ -138,7 +139,7 @@ dev.off()
 ## If these are meant to be aesthetics, submit them using the 'mapping' variable within 
 ## ggpairs with ggplot2::aes or ggplot2::aes_string.
 ##
-pdf("figures/Array144_vs_RNAseqN7.pdf")
+pdf("figures/Array144vsRNAseqN7.pdf")
 ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
     geom_point(alpha=0.8) +
         stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +
@@ -148,7 +149,7 @@ ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
                         theme_bw()
 dev.off()
 
-pdf("figures/Array144_vs_RNAseqN7_ruved.pdf")
+pdf("figures/Array144vsRNAseqN7_ruved.pdf")
 ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.ruved)) +
     geom_point(alpha=0.8) +
         stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +

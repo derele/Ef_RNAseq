@@ -6,9 +6,6 @@ if(!exists("Ef.1st.pass.model")){ #Totta changes Mm to Ef here
     source("2_edgeR_diff.R")
 }
 
-# Check checkpoint package for package control.
-if(!require(Mus.musculus)) biocLite("Mus.musculus") # Imports package if user does not have it
-
 ## The Bioconductor mouse annotation libary
 library(Mus.musculus)
 

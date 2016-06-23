@@ -129,8 +129,9 @@ par(mfrow = c(2,2), mai = c(0.6, 0.5, 0.4, 0.4))
 plotMDS(Ef.RC[[3]], labels = pData(Ef.bg)$batch,
 	      col.axis = "#474747", col.lab = "#474747", col.main = "#474747", col.sub = "#474747",
               col = batch.colors.ef,
-              xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2",
-              mgp = c(2,1,0))
+              xlab = "Fold change, dimension 1", 
+	      ylab = "Fold change, dimension 2",
+	      mgp = c(2,1,0))
 #mai = c(1, 0.1, 0.1, 0.1)
 title("Batch, Ef", line = 0.7)
 
@@ -140,7 +141,7 @@ plotMDS(Ef.RC[[3]], labels = pData(Ef.bg)$seq.method,
               xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2",
               mgp = c(2,1,0))
 #mai = c(1, 0.1, 0.1, 0.1))
-title("Sequnecing method, Ef", line = 0.7)
+title("Sequencing method, Ef", line = 0.7)
 
 
 plotMDS(Mm.RC[[3]], labels = pData(Mm.bg)$batch,
@@ -157,7 +158,7 @@ plotMDS(Mm.RC[[3]], labels = pData(Mm.bg)$seq.method,
               xlab = "Fold change, dimension 1", ylab = "Fold change, dimension 2",
               mgp = c(2,1,0))
 #mai = c(1, 0.1, 0.1, 0.1))
-title("Sequnecing method, mouse", line = 0.7)
+title("Sequencing method, mouse", line = 0.7)
 
 dev.off()
 
