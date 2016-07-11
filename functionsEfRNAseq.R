@@ -21,6 +21,12 @@ gene.table.topGO <- function(TOGO.list, pval=0.01){
 }
 
 
+get.genes.4.clusters <- function (clusters) {
+  gsub("Efa\\|", "",   grep("Efa\\|",
+                            unlist(clusters),
+                            value=TRUE))
+}
+
 ## adjusted functions from ballgown
 
 library(ballgown)
