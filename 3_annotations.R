@@ -43,9 +43,9 @@ gene2GO[["Ef"]] <- gene2GO[["Ef"]][names(gene2GO[["Ef"]])%in%
 
 ### ORTHOMCL categories
 
-get.omcl.categories <- function(){
-  ## Orthomcl
-  omcl <- readLines("data/Omcl_groups.txt")
+
+read.omcl <- function(path="data/Omcl_groups.txt"){
+  omcl <- readLines(path)
   omcl <- lapply(omcl, strsplit, " ")
   omcl <- lapply(omcl, function(x) x[[1]])
   names(omcl) <- lapply(omcl, function(x) gsub("\\:", "", x[1]))
@@ -59,6 +59,12 @@ get.omcl.categories <- function(){
   omcl <- omcl[!unlist(lapply(omcl, length))==1]
   omcl <- omcl[!names(omcl)%in%"api10278"] ## exclude a cluster... wonder now why that ;-)
 
+}
+
+omcl <- read.omcl()
+
+get.omcl.categories <- function(ortho.obj){
+  ## Orthomcl
   get.presence.omcl <- function(ortho.obj){
     omcl.tab <- lapply(ortho.obj, function (x) table(substr(x, 1, 3)))
     spp.inf <- unique(unlist(lapply(omcl.tab, names)))
@@ -154,7 +160,7 @@ get.omcl.categories <- function(){
   return(gene.clus.cat)
 }
 
-gene.cluster.category <- get.omcl.categories()
+gene.cluster.category <- get.omcl.categories(omcl)
 
 #####  objects created here for further use:
 ## 1. annot.frame - a data frame containing coprehensive annotation information
