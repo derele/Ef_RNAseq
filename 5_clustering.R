@@ -71,7 +71,7 @@ pheatmap(Ef.strain.top.data,
          cluster_cols = T,
          annotation_row = Ef.strain.hclustered.df,
          ## annotation_names_row = F,
-         cutree_rows = 7, # 5 in EH script 
+         cutree_rows = 3, # 5 in EH script 
          show_rownames = F,
          main = expression(paste(italic("E. falciformis"),
              " mRNAs differently abundant between mouse strains")))
@@ -86,7 +86,7 @@ pheatmap(Ef.1st2nd.top.data,
          cluster_cols = T,
          annotation_row = Ef.1st2nd.hclustered.df,
          ## annotation_names_row = F,
-         cutree_rows = 7, # 5 in EH script 
+         cutree_rows = 2, # 5 in EH script 
          show_rownames = F,
          main = expression(paste(italic("E. falciformis"),
              " mRNAs differently abundant between 1st and 2nd infection")))
@@ -106,7 +106,11 @@ pheatmap(Ef.cycle.diff.top.100.data,
          main = expression(paste(italic("E. falciformis"),
              " mRNAs differently abundant between lifecycle stages")))
 dev.off()
-## mouse infection progression 
+
+###################################################
+## 	MOUSE
+###################################################
+##mouse infection progression 
 union.of.Mm.cycle.diff.top.100 <-
     unique(unlist(lapply(Mm.1st.pass.model[[3]][c(1:3, 12:14)], head, n=500)))
 
@@ -121,24 +125,65 @@ Mm.1st2nd.top.data <-
     cpm(Mm.1st.pass.model[[4]])[union.of.Mm.1st2nd.top,]
 
 ######## EIMERIA DEVELOPMENT IN DIFFERENT MOUSE STRAINS (day 5 only) ##################
-union.of.Mm.strain.depend.top <-
+union.of.Mm.strain.top <-
     unique(unlist(lapply(Mm.1st.pass.model[[3]][11], head, n=500)))
 
-Mm.strain.depend.top.data <-
-    cpm(Mm.1st.pass.model[[4]])[union.of.Mm.strain.depend.top,]
+Mm.strain.top.data <-
+    cpm(Mm.1st.pass.model[[4]])[union.of.Mm.strain.top,]
 
 ## clustering
 
-Mm.hclustered <- get.scaled.and.clustered(Mm.cycle.diff.top.100.data)
+Mm.cyc.hclustered <- get.scaled.and.clustered(Mm.cycle.diff.top.100.data)
+Mm.1st2nd.hclustered <- get.scaled.and.clustered(Mm.1st2nd.top.data)
+Mm.strain.hclustered <- get.scaled.and.clustered(Mm.strain.top.data)
 
 hcluster[["Mm.cyc"]] <- cutree(Mm.hclustered, k=4) ## h=7.2)
-hcluster[["Mm.firstsec"]] <- cutree(Ef.hclustered, k = 4) ## 1st versus 2nd 
-hcluster[["Mm.strain"]] <- cutree(Ef.hclustered, k = 4) ## Strain comparison
+hcluster[["Mm.1st2nd"]] <- cutree(Mm.hclustered, k = 4) ## 1st versus 2nd 
+hcluster[["Mm.strain"]] <- cutree(Mm.hclustered, k = 4) ## Strain comparison
 
-Mm.hclustered.df <- as.data.frame(hcluster[["Mm.cyc"]])
+Mm.cyc.hclustered.df <- as.data.frame(hcluster[["Mm.cyc"]])
+names(Mm.cyc.hclustered.df) <- "Cluster"
+Mm.cyc.hclustered.df$Cluster <- as.factor(Mm.cyc.hclustered.df$Cluster)
 
-names(Mm.hclustered.df) <- "Cluster"
-Mm.hclustered.df$Cluster <- as.factor(Mm.hclustered.df$Cluster)
+Mm.1st2nd.hclustered.df <- as.data.frame(hcluster[["Mm.1st2nd"]])
+names(Mm.1st2nd.hclustered.df) <- "Cluster"
+Mm.1st2nd.hclustered.df$Cluster <- as.factor(Mm.1st2nd.hclustered.df$Cluster)
+
+Mm.strain.hclustered.df <- as.data.frame(hcluster[["Mm.strain"]])
+names(Mm.strain.hclustered.df) <- "Cluster"
+Mm.strain.hclustered.df$Cluster <- as.factor(Mm.strain.hclustered.df$Cluster)
+
+## plotting
+pdf("figures/MmStrainHeatmap.pdf",
+    height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
+pheatmap(Mm.strain.top.data,
+         color = brewer.pal(n = 11, name = "BrBG"), 
+         scale = "row",
+         cluster_rows = T, ## hc.high,
+         cluster_cols = T,
+         annotation_row = Mm.strain.hclustered.df,
+         ## annotation_names_row = F,
+         cutree_rows = 4, 
+         show_rownames = F,
+         main = expression(paste(italic("M. musculus"),
+             " mRNAs differently abundant in different mouse strains")))
+dev.off()
+
+pdf("figures/Mm1st2ndHeatmap.pdf",
+    height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
+pheatmap(Mm.1st2nd.top.data,
+         color = brewer.pal(n = 11, name = "BrBG"), 
+         scale = "row",
+         cluster_rows = T, ## hc.high,
+         cluster_cols = T,
+         annotation_row = Mm.1st2nd.hclustered.df,
+         ## annotation_names_row = F,
+         cutree_rows = 4, 
+         show_rownames = F,
+         main = expression(paste(italic("M. musculus"),
+             " mRNAs differently abundant in 1st and2nd infection")))
+dev.off()
+
 
 pdf("figures/MmLifecycleHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
