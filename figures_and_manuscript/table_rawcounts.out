@@ -1,0 +1,24 @@
+\BOOKMARK [1][-]{section.1}{Overview}{}% 1
+\BOOKMARK [1][-]{section.2}{Methods}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Mice and infection procedure}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Oocyst purification for infection and sequencing}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Sporozoite isolation}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{RNA extraction}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{Sequence quality assessment and alignment}{section.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.5.1}{Alignment and reference genomes}{subsection.2.5}% 8
+\BOOKMARK [1][-]{section.3}{Table of reads per sample}{}% 9
+\BOOKMARK [1][-]{section.4}{Experimental overview}{}% 10
+\BOOKMARK [1][-]{section.5}{Transcript coverage distribution and sample exclusions}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Mouse transcript distributions}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{E. falciformis transcript distributions}{section.5}% 13
+\BOOKMARK [1][-]{section.6}{Mouse RNA-seq data compared with mouse microarray data}{}% 14
+\BOOKMARK [1][-]{section.7}{Analysing variance in data by multidimensional scaling}{}% 15
+\BOOKMARK [1][-]{section.8}{mRNA abundance differences between different experimental groups}{}% 16
+\BOOKMARK [2][-]{subsection.8.1}{Differentially abundant mRNAs used for hierarchical clustering}{section.8}% 17
+\BOOKMARK [1][-]{section.9}{Hierarchical clustering...}{}% 18
+\BOOKMARK [2][-]{subsection.9.1}{Time post infection, E. falciformis}{section.9}% 19
+\BOOKMARK [2][-]{subsection.9.2}{Time post infection, mouse}{section.9}% 20
+\BOOKMARK [2][-]{subsection.9.3}{First versus second infection, E. falciformis}{section.9}% 21
+\BOOKMARK [2][-]{subsection.9.4}{First versus second infection, mouse}{section.9}% 22
+\BOOKMARK [2][-]{subsection.9.5}{Differences between mouse strains,E. falciformis}{section.9}% 23
+\BOOKMARK [2][-]{subsection.9.6}{Differences between mouse strains, mouse}{section.9}% 24
