@@ -16,6 +16,7 @@
 /RUVseq.R~
 /2b_edgeR_diff.R~
 /data_curataion.R~
+<<<<<<< HEAD
 figures/*
 .4_compareArray.R.swp
 .5_clustering.R.swp
@@ -57,3 +58,8 @@ manuscript_rnaseq.log
 .display.txt
 EfMm_4-mds.png
 5_clustering_recovered.R
+=======
+/figures/*
+/#6_enrichment.R#
+/Rplots.pdf
+>>>>>>> 6427e743909ef76faae2cb0f6b7c16d694ba0be7

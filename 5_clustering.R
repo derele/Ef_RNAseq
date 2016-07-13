@@ -4,8 +4,8 @@ library(pheatmap)
 library(made4)
 library(RColorBrewer)
 
-if(!exists("RNAseq.Array.logFC")){
-    source("4_compareArray.R")
+if(!exists("Ef.1st.pass.model")){
+    source("2_edgeR_diff.R")
 }
 ########## USE THIS #######################
 ########## PHEATMAP() specifying distance and method ############
