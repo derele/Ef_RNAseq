@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section*.1}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.1}{Experimental overview}{}% 2
+\BOOKMARK [1][-]{section.2}{mRNA abundance differences between different experimental groups}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Life cycle analysis... E. falciformis}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Parasite development in mouse data}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{First versus second infection, mouse}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Methods}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Mice and infection procedure}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Oocyst purification for infection and sequencing}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.3}{Sporozoite isolation}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.4}{RNA extraction}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.5}{Sequencing, sequence quality assessment and alignment}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.5.1}{Alignment and reference genomes}{subsection.3.5}% 13
+\BOOKMARK [3][-]{subsubsection.3.5.2}{Data normalisation and sample exclusions}{subsection.3.5}% 14
+\BOOKMARK [2][-]{subsection.3.6}{Differentially abundant mRNAs used for hierarchical clustering}{section.3}% 15
