@@ -330,6 +330,15 @@ Sporozoites 	& $10^7$ / NA & NA  & NA \\ \midrule
 	NMRI 5 vs NMRI 7  		& 1895 & 873 \\ 
 	C57BL/6 0 vs C57BL/6 5		& NA	& 914 \\
 	Rag1-/- 0 vs Rag1-/- 5		& NA	& 45 \\ \midrule
+\textit{Day post infection,} & 		 & 		 \\ 
+\textit{parasite relevant comparisons} 	    & 		&  \\ \midrule
+	Oocysts vs NMRI 3  	& 3310 & NA \\  
+	Oocysts vs NMRI 5	& 3605 & NA \\ 
+	Oocysts vs NMRI 7	& 3085 & NA \\ 
+	Oocysts vs sporozoites  & 3421 & NA \\
+	Sporozoites vs NMRI 3 	& 1663 & NA \\
+	Sporozoites vs NMRI 5 	& 1605 & NA \\
+	Sporozoites vs NMRI 7 	& 2473 & NA \\ 
 \textit{First and second infection} & 		 & 	 \\ 
 \textit{comparisons} 	    & 		& 	\\ \midrule
 	NMRI 3 1st vs NMRI 3 2nd  	& 0  & 5 \\
@@ -341,21 +350,13 @@ Sporozoites 	& $10^7$ / NA & NA  & NA \\ \midrule
 	NMRI vs C57BL/6 		& 22 	& NA* \\		
 	NMRI vs Rag1-/-     		& 0 & NA* 	\\
 	C57BL/6 vs Rag1-/-  		& 0   & 356 	\\ \midrule
-\textit{Day post infection,} & 		 & 		 \\ 
-\textit{parasite relevant comparisons} 	    & 		&  \\ \midrule
-	Oocysts vs NMRI 3  	& 3310 & NA \\  
-	Oocysts vs NMRI 5	& 3605 & NA \\ 
-	Oocysts vs NMRI 7	& 3085 & NA \\ 
-	Oocysts vs sporozoites  & 3421 & NA \\
-	Sporozoites vs NMRI 3 	& 1663 & NA \\
-	Sporozoites vs NMRI 5 	& 1605 & NA \\
-	Sporozoites vs NMRI 7 	& 2473 & NA \\ \bottomrule
+\bottomrule
 	\hline
 \end{tabular}
 \end{center}
 \end{table}
 
-\textit{E. falciformis} data overview of pairwise comparisons and number of genes with differently abundant mRNAs per comparison. NMRI followed by number indicates day post infection (e.g. NMRI3 = \textit{E. falciformis} genes from NMRI mouse day 3 post infection). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as implemented in edgeR are indluced. NAs are missing samples or not applicable for the species. NA* is due to missing NMRI day 0 sample from first infection.
+Table 2 lists pairwise sample comparisons and number of genes with differently abundant mRNAs per comparison."NMRI" followed by number indicates day post infection (e.g. NMRI 3 = NMRI mouse on day 3 p.i.). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as implemented in edgeR are included. NAs are missing samples or not applicable for the species. NA* is due to missing NMRI day 0 sample from first infection. For \textit{E. falciformis} no mRNAs are significantly differently abundant between first and second infection, whereas in mouse there are some differences, especially on day 7 p.i. However, upon hierarchical clustering of these genes (union of 500 with lowest FDR), samples do not cluster according to first/second infection (Figure SX ?). In comparisons between mouse strains, 22 genes are detected to be different in the parasite data. The difference is however not between Rag1-/- mice as expected, but between NMRI and C57BL/6. For mouse....
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -365,36 +366,32 @@ Sporozoites 	& $10^7$ / NA & NA  & NA \\ \midrule
 %\begin{center}
 %\centering
 	\includegraphics[width=\linewidth]{EfLifecycleHeatmap.pdf}  
-	\caption{\textit{E. falciformis} mRNAs with significantly different abundance at different times post infection in NMRI mice (see Table ...).  \textit{E. falciformis} samples from seven days p.i. cluster together (NMRI mice only). For \textit{E. falciformis} day 7, NMRI, the pattern is most pronounced in cluster 1 (up). Within this cluster, the second replicate from the challenge infection has a deviant profile (compare mouse data in Figure 6). Distinct groups of genes also define sporozoites (cluster 6: up) and oocysts (cluster 3: up, cluster 7: down). mRNA profiles on days three and five p.i. from all three mouse strains cluster together. These samples are distinct from oocysts, NMRI day 7 p.i., and sporozoites. The latter cluster closer with days 3 and 5 than with oocysts or day 7.}
+	\caption{\textit{E. falciformis} mRNAs with significantly different abundance at different times p.i. in NMRI mice (see Table 2). Samples cluster according to expected developmental state of the parasite, without distinguishing between first and challenge infection. Hierarchical clustering was set to apply seven gene clusters.}
 %\end{center}
 \end{figure}
 
+We applied hierarchical clustering on \textit{E. falciformis} mRNAs which were differently abundant at different timepoints p.i., including comparisons with oocysts and sporozoites (union of 500 with lowest FDR). Samples from day 7 p.i. form a separate cluster (NMRI mice only), not distinguishing between first and challenge infection. For these samples, the pattern is most pronounced in gene cluster 1 (up), and 4 and 6 (down). Within cluster 1, the second replicate from the challenge infection has a deviant profile (compare mouse data in Figure 2). Distinct groups of genes also define sporozoites (cluster 5 up) and oocysts (cluster 3 up, cluster 6 down). mRNA profiles on days 3 and 5 p.i. from all three mouse strains cluster together. These samples are distinct from oocysts, NMRI day 7 p.i., and sporozoites. Sporozoites cluster closer with days 3 and 5 than with oocysts or day 7.
+
+
 \clearpage
-\subsection{Parasite development in mouse data}
+\subsection{Parasite development reflected in mouse data}
 \begin{figure}[h!]
 %\begin{center}
 %\centering
 \includegraphics[width=\linewidth]{MmLifecycleHeatmap.pdf}  
-\caption{Mouse mRNAs with significantly different abundance at different times post infection in NMRI mice (see Table 3).
-Three out of four samples from day 7 p.i. (NMRI only) cluster together. These samples are characterized by genes in cluster 2 (up) as well as 3 and 4 (down). The fourth day 7 sample (challenge infection, second replicate) clusters with day 3 and 5 samples but upon visual inspection of cluster 4 diplays a profile similar to non-infected mice. The same sample is abnormal in the parasite profile (see Figure 5). NMRI and C57BL/6 uninfected samples cluster together, defined by clusters 3, 4 (up), and 1 (down). Day 3 and 5 samples cluster together, with Rag1-/- forming a separate group and Rag1-/- non-infected most distant in this sample cluster. All non-infected samples share a high mRNA abundance in cluster 3.}
+\caption{Mouse mRNAs with significantly different abundance at different times p.i. in NMRI mice (see Table 2). Samples cluster according to expected developmental state of the parasite, without distinguishing between first and challenge infection. Rag1-/- mouse samples cluster together. Hierarchical clustering was set to apply four gene clusters.}
 %\end{center}
 \end{figure}
 
+When clustering mouse mRNAs which were different in time p.i. comparisons in Table 2, three out of four samples from day 7 p.i. (NMRI only) cluster together. These samples are characterized by gene cluster 3 (up) as well as 2 and 4 (down). The fourth day 7-sample (challenge infection, second replicate) clusters with day 3 and 5 samples. Upon visual inspection of this sample in gene cluster 4, it diplays a profile similar to non-infected mice. The same sample is abnormal in the parasite profile (Figure 1). NMRI and C57BL/6 uninfected samples (0dpi) cluster together, defined by gene clusters 4 (up), and 1 (down). Rag1-/- day 0 samples are however less pronounced in gene cluster 1. Day 3 and 5 samples cluster together, with Rag1-/- forming a separate group and Rag1-/- non-infected most distant in this sample cluster.
 
-\clearpage
-\subsection{First versus second infection, mouse}
-\begin{figure}[h!]
-%\begin{center}
-\includegraphics[width=\linewidth]{Mm1st2ndHeatmap.pdf}  
-	\caption{Mouse mRNAs with significantly different abundance between first infection and challenge infection (see Table 3). Samples do not cluster into first and second infection clusters. The two major sample cluster each contain four challenge infection samples. }
-%\end{center}
-\end{figure}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-
+\clearpage
 \subsection*{GO term enrichments in heatmap clusters}
 The annotations referred to here are inferred from orthologs in other \textit{Eimeria} spp. or
 in \textit{T. gondii}

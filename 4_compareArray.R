@@ -128,7 +128,7 @@ names(RNAseq.Array.logFC) <- gsub(".y", ".ruved", names(RNAseq.Array.logFC))
 cor(RNAseq.Array.logFC[,3:14])
 cor(RNAseq.Array.logFC[,3:14], method="spearman")
 
-pdf("figures/Array_vs_RNAseq_pairs.pdf")
+pdf("figuresANDmanuscript/Array_vs_RNAseq_pairs.pdf")
 #ggpairs(RNAseq.Array.logFC[, 3:14], alpha=0.2) + theme_bw()
 ggpairs(RNAseq.Array.logFC[, 3:14], mapping=aes(alpha=0.2)) + theme_bw()
 dev.off()
@@ -139,7 +139,7 @@ dev.off()
 ## If these are meant to be aesthetics, submit them using the 'mapping' variable within 
 ## ggpairs with ggplot2::aes or ggplot2::aes_string.
 ##
-pdf("figures/Array144vsRNAseqN7.pdf")
+pdf("figuresANDmanuscript/Array144vsRNAseqN7.pdf")
 ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
     geom_point(alpha=0.8) +
         stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +
@@ -149,7 +149,7 @@ ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
                         theme_bw()
 dev.off()
 
-pdf("figures/Array144vsRNAseqN7_ruved.pdf")
+pdf("figuresANDmanuscript/Array144vsRNAseqN7_ruved.pdf")
 ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.ruved)) +
     geom_point(alpha=0.8) +
         stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +
