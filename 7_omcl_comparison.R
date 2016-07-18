@@ -91,7 +91,6 @@ pheatmap(cor(RC.ortho.mean[,3:ncol(RC.ortho.mean)], method="spearman")[-(1:3),1:
          display_numbers=TRUE)
 dev.off()
 
-
 ### Work with Fold Changes... ## What to do wiht Max and Min?
 FC.ortho <- merge(all.orthologs,
                   TenGam[, grepl("gene.ID|log2.fold.change", names(TenGam))],
@@ -122,33 +121,33 @@ dev.off()
 
 pdf("figures/TenellaGamVsMer_vs_N3vsN7.pdf")
 ggplot(FC.ortho, aes(log2.fold.change.GamVsMer, logFC.N3vsN7*-1)) +
-    geom_point(alpha=0.8) +
-        stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +
-            scale_fill_gradient(low = "yellow", high = "red") +
-                scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
-                    stat_smooth() +
-                        theme_bw()
+  geom_point(alpha=0.8) +
+  stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +
+  scale_fill_gradient(low = "yellow", high = "red") +
+  scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
+  stat_smooth() +
+  theme_bw()
 dev.off()
 
 
 pdf("figures/TenellaGamVsMer_vs_N5vsN7.pdf")
 ggplot(FC.ortho, aes(log2.fold.change.GamVsMer, logFC.N5vsN7*-1)) +
-    geom_point(alpha=0.8) +
-        stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +
-            scale_fill_gradient(low = "yellow", high = "red") +
-                scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
-                    stat_smooth() +
-                        theme_bw()
+  geom_point(alpha=0.8) +
+  stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +
+  scale_fill_gradient(low = "yellow", high = "red") +
+  scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
+  stat_smooth() +
+  theme_bw()
 dev.off()
 
 
 pdf("figures/TenellaGamVsSpor_vs_N7vsSpor.pdf")
 ggplot(FC.ortho, aes(log2.fold.change.GamVsSpor, logFC.N7vsSp)) +
-    geom_point(alpha=0.8) +
-        stat_density2d(aes(alpha=..level.., fill=..level..), size=2,                                                                          geom="polygon") +
-            scale_fill_gradient(low = "yellow", high = "red") +
-                scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
-                    stat_smooth() +
-                        theme_bw()
+  geom_point(alpha=0.8) +
+  stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +
+  scale_fill_gradient(low = "yellow", high = "red") +
+  scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
+  stat_smooth() +
+  theme_bw()
 dev.off()
 
