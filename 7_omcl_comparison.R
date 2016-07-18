@@ -70,7 +70,7 @@ scaling.f <- max(CS)/CS
 
 RC.ortho[, 3:ncol(RC.ortho)] <- t(t(RC.ortho[, 3:ncol(RC.ortho)])*scaling.f)
 
-pdf("figures/RC_correlation_Efal_Eten.pdf")
+pdf("figuresANDmanuscript/RC_correlation_Efal_Eten.pdf")
 pheatmap(cor(RC.ortho[,3:ncol(RC.ortho)], method="spearman")[-(1:3),1:3],
          display_numbers=TRUE)
 dev.off()
@@ -86,7 +86,7 @@ mean.columns <- function(x){
   
 RC.ortho.mean <- as.data.frame(cbind(RC.ortho[, 1:5], mean.columns(RC.ortho)))
 
-pdf("figures/RC_mean_correlation_Efal_Eten.pdf")
+pdf("figuresANDmanuscript/RC_mean_correlation_Efal_Eten.pdf")
 pheatmap(cor(RC.ortho.mean[,3:ncol(RC.ortho.mean)], method="spearman")[-(1:3),1:3],
          display_numbers=TRUE)
 dev.off()
@@ -112,14 +112,14 @@ FC.ortho[,3:ncol(FC.ortho)] <- apply(FC.ortho[,3:ncol(FC.ortho)],
                                      2, function(x) as.numeric(as.character(x)))
 
 
-pdf("figures/FC_correlation_Efal_Eten.pdf")
+pdf("figuresANDmanuscript/FC_correlation_Efal_Eten.pdf")
 pheatmap(cor(FC.ortho[, 3:ncol(FC.ortho)], method="spearman")[-c(1:2),1:2],
          display_numbers=TRUE)
 dev.off()
 
 
 
-pdf("figures/TenellaGamVsMer_vs_N3vsN7.pdf")
+pdf("figuresANDmanuscript/TenellaGamVsMer_vs_N3vsN7.pdf")
 ggplot(FC.ortho, aes(log2.fold.change.GamVsMer, logFC.N3vsN7*-1)) +
   geom_point(alpha=0.8) +
   stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +
@@ -130,7 +130,7 @@ ggplot(FC.ortho, aes(log2.fold.change.GamVsMer, logFC.N3vsN7*-1)) +
 dev.off()
 
 
-pdf("figures/TenellaGamVsMer_vs_N5vsN7.pdf")
+pdf("figuresANDmanuscript/TenellaGamVsMer_vs_N5vsN7.pdf")
 ggplot(FC.ortho, aes(log2.fold.change.GamVsMer, logFC.N5vsN7*-1)) +
   geom_point(alpha=0.8) +
   stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +
@@ -141,7 +141,7 @@ ggplot(FC.ortho, aes(log2.fold.change.GamVsMer, logFC.N5vsN7*-1)) +
 dev.off()
 
 
-pdf("figures/TenellaGamVsSpor_vs_N7vsSpor.pdf")
+pdf("figuresANDmanuscript/TenellaGamVsSpor_vs_N7vsSpor.pdf")
 ggplot(FC.ortho, aes(log2.fold.change.GamVsSpor, logFC.N7vsSp)) +
   geom_point(alpha=0.8) +
   stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +

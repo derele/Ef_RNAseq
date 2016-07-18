@@ -123,16 +123,9 @@ cor(RNAseq.Array.logFC[,2:13])
 cor(RNAseq.Array.logFC[,2:13], method="spearman")
 
 pdf("figures/Array_vs_RNAseq_pairs.pdf")
-## ggpairs(RNAseq.Array.logFC[, 2:13], alpha=0.2) + theme_bw()
 ggpairs(RNAseq.Array.logFC[, 2:13], mapping=aes(alpha=0.2)) + theme_bw()
 dev.off()
 
-##Warning messages when script is run:
-##2: In ggpairs(RNAseq.Array.logFC[, 3:14], alpha = 0.2) :
-## Extra arguments: 'alpha' are being ignored.  
-## If these are meant to be aesthetics, submit them using the 'mapping' variable within 
-## ggpairs with ggplot2::aes or ggplot2::aes_string.
-##
 pdf("figures/Array144vsRNAseqN7.pdf")
 ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
   geom_point(alpha=0.8) +

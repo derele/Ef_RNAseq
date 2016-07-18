@@ -139,7 +139,7 @@ get.my.models <- function (RC, cutoff, group,
                        })
     names(top.list) <- colnames(contrasts)
     gene.list <- lapply(top.list, function(x) {
-                            rownames(x[x$FDR<0.05,]) ######### CHANGE FDR!!!!!!!!!!
+                            rownames(x[x$FDR<0.01,]) ######### CHANGE FDR!!!!!!!!!!
                         })
     return(list(ALL.top, top.list, gene.list, DGEList))
 }

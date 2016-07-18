@@ -62,7 +62,7 @@ Ef.strain.hclustered.df <- as.data.frame(hcluster[["Ef.strain"]])
 names(Ef.strain.hclustered.df) <- "Cluster"
 Ef.strain.hclustered.df$Cluster <- as.factor(Ef.strain.hclustered.df$Cluster)
 
-pdf("figures/EfStrainHeatmap.pdf",
+pdf("figuresANDmanuscript/EfStrainHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf
 pheatmap(Ef.strain.top.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -77,7 +77,7 @@ pheatmap(Ef.strain.top.data,
              " mRNAs differently abundant between mouse strains")))
 dev.off()
 
-pdf("figures/Ef1st2ndHeatmap.pdf",
+pdf("figuresANDmanuscript/Ef1st2ndHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf
 pheatmap(Ef.1st2nd.top.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -92,7 +92,7 @@ pheatmap(Ef.1st2nd.top.data,
              " mRNAs differently abundant between 1st and 2nd infection")))
 dev.off()
 
-pdf("figures/EfLifecycleHeatmap.pdf",
+pdf("figuresANDmanuscript/EfLifecycleHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf
 pheatmap(Ef.cycle.diff.top.100.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -154,7 +154,7 @@ names(Mm.strain.hclustered.df) <- "Cluster"
 Mm.strain.hclustered.df$Cluster <- as.factor(Mm.strain.hclustered.df$Cluster)
 
 ## plotting
-pdf("figures/MmStrainHeatmap.pdf",
+pdf("figuresANDmanuscript/MmStrainHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
 pheatmap(Mm.strain.top.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -169,7 +169,7 @@ pheatmap(Mm.strain.top.data,
              " mRNAs differently abundant in different mouse strains")))
 dev.off()
 
-pdf("figures/Mm1st2ndHeatmap.pdf",
+pdf("figuresANDmanuscript/Mm1st2ndHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
 pheatmap(Mm.1st2nd.top.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -185,7 +185,7 @@ pheatmap(Mm.1st2nd.top.data,
 dev.off()
 
 
-pdf("figures/MmLifecycleHeatmap.pdf",
+pdf("figuresANDmanuscript/MmLifecycleHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
 pheatmap(Mm.cycle.diff.top.100.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
