@@ -29,7 +29,7 @@ Ef.1st2nd.top.data <-
 union.of.Ef.strain.depend.top <-
     unique(unlist(lapply(Ef.1st.pass.model[[3]][16:18], head, n=500)))
 
-Ef.strain.top.data <-
+Ef.strain.depend.top.data <-
     cpm(Ef.1st.pass.model[[4]])[union.of.Ef.strain.depend.top,]
 
 get.scaled.and.clustered <- function(data){
@@ -46,11 +46,11 @@ Ef.hclustered.strain <- get.scaled.and.clustered(Ef.strain.depend.top.data )
 
 
 hcluster <- list()
-hcluster[["Ef.cyc"]] <- cutree(Ef.hclustered, k = 7) ## Life cycle
+hcluster[["Ef"]] <- cutree(Ef.hclustered, k = 7) ## Life cycle
 hcluster[["Ef.1st2nd"]] <- cutree(Ef.hclustered, k = 7) ## 1st versus 2nd 
 hcluster[["Ef.strain"]] <- cutree(Ef.hclustered, k = 7) ## Strain comparison
 
-Ef.cyc.hclustered.df <- as.data.frame(hcluster[["Ef.cyc"]])
+Ef.cyc.hclustered.df <- as.data.frame(hcluster[["Ef"]])
 names(Ef.cyc.hclustered.df) <- "Cluster"
 Ef.cyc.hclustered.df$Cluster <- as.factor(Ef.cyc.hclustered.df$Cluster)
 
@@ -137,11 +137,11 @@ Mm.cyc.hclustered <- get.scaled.and.clustered(Mm.cycle.diff.top.100.data)
 Mm.1st2nd.hclustered <- get.scaled.and.clustered(Mm.1st2nd.top.data)
 Mm.strain.hclustered <- get.scaled.and.clustered(Mm.strain.top.data)
 
-hcluster[["Mm.cyc"]] <- cutree(Mm.hclustered, k=4) ## h=7.2)
-hcluster[["Mm.1st2nd"]] <- cutree(Mm.hclustered, k = 4) ## 1st versus 2nd 
-hcluster[["Mm.strain"]] <- cutree(Mm.hclustered, k = 4) ## Strain comparison
+hcluster[["Mm"]] <- cutree(Mm.cyc.hclustered, k=4) ## h=7.2)
+hcluster[["Mm.1st2nd"]] <- cutree(Mm.1st2nd.hclustered, k = 4) ## 1st versus 2nd 
+hcluster[["Mm.strain"]] <- cutree(Mm.strain.hclustered, k = 4) ## Strain comparison
 
-Mm.cyc.hclustered.df <- as.data.frame(hcluster[["Mm.cyc"]])
+Mm.cyc.hclustered.df <- as.data.frame(hcluster[["Mm"]])
 names(Mm.cyc.hclustered.df) <- "Cluster"
 Mm.cyc.hclustered.df$Cluster <- as.factor(Mm.cyc.hclustered.df$Cluster)
 
@@ -192,7 +192,7 @@ pheatmap(Mm.cycle.diff.top.100.data,
          scale = "row",
          cluster_rows = T, ## hc.high,
          cluster_cols = T,
-         annotation_row = Mm.hclustered.df,
+         annotation_row = Mm.cyc.hclustered.df,
          ## annotation_names_row = F,
          cutree_rows = 4, 
          show_rownames = F,

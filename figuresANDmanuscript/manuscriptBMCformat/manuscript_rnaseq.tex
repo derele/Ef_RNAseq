@@ -51,10 +51,18 @@
 %\RequirePackage{natbib}
 %\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
 %\RequirePackage{hyperref}
-%\usepackage[utf8]{inputenc} %unicode support
+\usepackage[utf8]{inputenc} %unicode support
 %\usepackage[applemac]{inputenc} %applemac support if unicode package fails
-%%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
+%\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
 %\usepackage{siunitx}
+\usepackage[colorlinks]{hyperref} % To color blocks of text 
+%\usepackage[dvipsnames]{xcolor} % More color options (see Wikibooks)  
+\usepackage{changepage}
+\usepackage{booktabs} % For prettier tables
+\usepackage{float} % To control positions of e.g. tables or figures
+%\usepackage[section]{placeins}
+\usepackage{graphicx}
+\graphicspath{ {../} }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                             %%
@@ -71,14 +79,6 @@
 %%                                             %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\usepackage[colorlinks]{hyperref} % To color blocks of text 
-%\usepackage[dvipsnames]{xcolor} % More color options (see Wikibooks)  
-\usepackage{changepage}
-\usepackage{booktabs} % For prettier tables
-\usepackage{float} % To control positions of e.g. tables or figures
-\usepackage[section]{placeins}
-\usepackage{graphicx}
-\graphicspath{ {../} }
 %\def\includegraphic{}
 %\def\includegraphics{}
 
@@ -122,22 +122,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \author[
-   addressref={aff1},
+%	addressref={aff1},
+%	noteref={n1},
 ]{\inits{TK}\fnm{Totta} \snm{Kasemo}}
 \author[
-   addressref={aff1},
+%	addressref={aff1},
 ]{\inits{SS}\fnm{Simone} \snm{Spork}}
 \author[
-   addressref={aff2},
+%	addressref={aff2},
+%	noteref={n1},
 ]{\inits{CD}\fnm{Christoph} \snm{Dieterich}}
 \author[
-   addressref={aff1},
+%	addressref={aff1},
 ]{\inits{RL}\fnm{Richard} \snm{Lucius}}
 \author[
-   addressref={aff1, aff3},                   % id's of addresses, e.g. {aff1,aff2}
-   corref={aff1},                       % id of corresponding address, if any
-   noteref={n1},                        % id's of article notes, if any
-   email={emanuel.heitlinger@hu-berlin.de}   % email address
+%	addressref={aff1, aff3},                   % id's of addresses, e.g. {aff1,aff2}
+	corref={aff1, aff3},                       % id of corresponding address, if any
+%	noteref={n1},                        % id's of article notes, if any
+	email={emanuel.heitlinger@hu-berlin.de}   % email address
 ]{\inits{EH}\fnm{Emanuel} \snm{Heitlinger}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -150,25 +152,25 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \address[id=aff1]{%                           % unique id
-  \orgname{Department of Biology, Humboldt-Universitat zu Berlin}, % university, etc
-  \street{Philippstr. 13, Haus 14},                     %
-  %\postcode{}                                % post or zip code
-  \city{Berlin},                              % city
-  \cny{Germany}                                    % country
+	\orgname{Department of Biology, Humboldt-Universitat zu Berlin}, % university, etc
+	\street{Philippstr. 13, Haus 14},                     %
+	\postcode{10115}                                % post or zip code
+	\city{Berlin},                              % city
+	\cny{Germany}                                    % country
 }
 \address[id=aff2]{%  
-  \orgname{Max Planck Institute for Biology of Ageing},
-  \street{Joseph-Stelzmann-Strasse 9B},
-  \postcode{50931}
-  \city{Cologne},
-  \cny{Germany}
+	\orgname{Max Planck Institute for Biology of Ageing},
+	\street{Joseph-Stelzmann-Strasse 9B},
+	\postcode{50931}
+	\city{Cologne},
+	\cny{Germany}
 }
 \address[id=aff3]{%  
-  \orgname{Department Reproduction Biology and Evolutionary Ecology, Leibniz Institute of Zoo and Wildlife Research},
-  \street{Alfred-Kowalke-Str. 17},
-  \postcode{10315}
-  \city{Berlin},
-  \cny{Germany}
+	\orgname{Department Reproduction Biology and Evolutionary Ecology, Leibniz Institute of Zoo and Wildlife Research},
+	\street{Alfred-Kowalke-Str. 17},
+	\postcode{10315}
+	\city{Berlin},
+	\cny{Germany}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -180,10 +182,11 @@
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\begin{artnotes}
+\begin{artnotes}
 %\note{Sample of title note}     % note to the article
 %\note[id=n1]{Equal contributor} % note, connected to author
-%\end{artnotes}
+%\note[id=n2]
+\end{artnotes}
 
 %\end{fmbox}% comment this for two column layout
 
@@ -218,8 +221,8 @@ Text for this section.
 
 \begin{keyword}
 \kwd{Parasite, apicomplexa, RNA-seq, transcriptome, life-cycle, interaction}
-\kwd{article}
-\kwd{author}
+%\kwd{article}
+%\kwd{author}
 \end{keyword}
 
 % MSC classifications codes, if any
@@ -230,9 +233,7 @@ Text for this section.
 %\end{keyword}
 
 \end{abstractbox}
-%
 \end{fmbox}% uncomment this for twcolumn layout
-
 \end{frontmatter}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -338,7 +339,7 @@ Sporozoites 	& $10^7$ / NA & NA  & NA \\ \midrule
 	Oocysts vs sporozoites  & 3421 & NA \\
 	Sporozoites vs NMRI 3 	& 1663 & NA \\
 	Sporozoites vs NMRI 5 	& 1605 & NA \\
-	Sporozoites vs NMRI 7 	& 2473 & NA \\ 
+	Sporozoites vs NMRI 7 	& 2473 & NA \\ \midrule
 \textit{First and second infection} & 		 & 	 \\ 
 \textit{comparisons} 	    & 		& 	\\ \midrule
 	NMRI 3 1st vs NMRI 3 2nd  	& 0  & 5 \\
@@ -630,26 +631,24 @@ alignment, the mouse and parasite genome files were merged into a dual reference
 files including mRNA sequences from both species were aligned against the dual reference genome
 using TopHat2 (version 2.0.14, Trapnell09) with -G specified, and a Bowtie2 (version 1.1.2, Langmead12) index of the dual genome. Single-end and pair-end sequence samples were aligned separately with library type 'fr-unstranded' specified for pair-end samples. Import into R was enabled by the R package Ballgown, which requires bam files to be processed by Tablemaker (Frazee15), in our case used with -qW -G specified. Tablemaker in turn makes use of Cufflinks (version 2.1.1, Trapnell10).
 
-\subsubsection{Data normalisation and sample exclusions}
-Count data was normalised in R, using the upperquartile method as implemented in edgeR (version 3.14.0). Briefly, normalisation assumes a negative binomial distribution of data and dispersed variance for genes with higher mean abundance. The normalisation shrinks the dispersion of variance towards a Poisson (linear) relationship between mean and variance. We evaluated the density distribution of our data and two samples contradicted the assumed negative binomial distribution and were excluded from further analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1 (SI ...).
+\subsection{Differential mRNA abundance, data normalisation and sample exclusions}
+Complete scripts are available at git@github.com:derele/Ef\_RNAseq.git. Count data was analysed in R, using the upperquartile normalisation method as implemented in edgeR (version 3.14.0). Briefly, genes with zero coverage in all samples (libraries) are removed and normalisation factors are calculated for the 75\% quantile for each library. This  normalisation assumes a negative binomial distribution of read densities. Two samples contradicted the assumption (parasite data) and both mouse and parasite data from these samples were excluded from further analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1 (SI ...). We used a the edgeR pipleine which estimates dispersion values for each gene (provided that a design matrix is defined). The method fits data for each gene to a negative binomial distribution using a generalized linear model (GLM) with the function glmFit() and glmLRT(). 
+
+........... include outcome of MDS analysis here?
 
 \subsection{Differentially abundant mRNAs used for hierarchical clustering}
-A selection of differently abundant mRNAs are used for hierarchical clustering of \textit{E. falciformis} life cycle relevant genes. In each comparison (see Table 3), the 500 differentially abundant mRNAs with lowest FDR are selected. In the next step, the 500 mRNAs from each comparison (or less) are joined (4935 genes) and only unique genes are selected (1618 genes). The 22 genes in the NMRI vs C57BL/6 comparison are not included in the \textit{E. falciformis} life cycle analysis.
-
-All parasite samples were included in heatmap of genes detected as differentially abundant in timepoint comparisons. 
-
-On scale bar in heatmaps, 0 is mean mRNA abundance for each gene (row). Up (green) and down-regulation (brown) numbers denote number of standard deviations from row mean. Hierarchical clustering was performed using with Euclidean distances, method 'complete' (R package base).
+A selection of differently abundant mRNAs are used for hierarchical clustering of \textit{E. falciformis} life cycle relevant genes. In each comparison (see Table 3), the union of the 500 differentially abundant mRNAs with lowest FDR are selected. In the next step, the 500 mRNAs from each comparison (or less) are joined. For \textit{E. falciformis} time p.i. comparison, this resulted in 4935 genes of which only the 1618 unique genes were selected. The 22 genes in the NMRI vs C57BL/6 comparison are not included in the \textit{E. falciformis} life cycle analysis. The same comparisons for mouse yielded 8052 genes in total and 1313 unique ones. In heatmaps, all samples, i.e. also samples which themselves did not have any significantly different mRNAs according to our selection, were included in hierarchical clustering. Scale bar in heatmaps show 0 as mean mRNA abundance for each gene (row). Up (green) and down-regulation (brown) denote number of standard deviations from 0, i.e., row mean. Hierarchical clustering was performed using with Euclidean distances, using complete linkage ('complete', R package base).
 
 \setlength{\tabcolsep}{10pt}
 \begin{table}[H]
 \small
 \begin{center}
-\caption{Differentially abundant \textit{E. falciformis} mRNAs used for hierarchical clustering.}
-\begin{tabular}{*2l}    \toprule
-	\textit{Data description} & Number of genes \\ \midrule
-	Sum of 1st infection NMRI sample differences	& 4935  \\ 
-	(including oocysts and sporozoites)	\\	
-	Used in hierarchical clustering (heatmap)  	& 1618 \\ 	\bottomrule	
+\caption{Genes used for hierarchical clustering of mRNAs differently abundant depending on time p.i..}
+\begin{tabular}{*3l}    \toprule
+	\textit{Data description} & \emph{E. falciformis} genes & Mouse genes	\\ \midrule
+	Sum of 1st infection NMRI sample differences	& 4935 & 8052 \\ 
+	(including oocysts and sporozoites if appl.)	\\	
+	Used in hierarchical clustering (heatmap)  	& 1618 & 1313 \\ 	\bottomrule	
 \hline
 \end{tabular}
 \end{center}
