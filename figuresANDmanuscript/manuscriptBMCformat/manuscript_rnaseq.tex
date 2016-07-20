@@ -272,51 +272,132 @@ Text and results for this section, as per the individual journal's instructions 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \section*{Results}
-Text for this section \ldots
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	OVERVIEW READS PER SAMPLE, LAYOT AS EXPERIMENTAL OVERVIEW
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Experimental overview}
-We performed mRNA sequencing of caecum tissue of mice infected with
-the parasite \textit{E. falciformis} at different timepoints and for
-infections of different mouse strains. 
 
-Replicate average of transcripts as order of magnitude for
-\textit{E. falciformis}/mouse are indicated in Table.... Columns in
-table represent mouse strains used in infection experiments. Rows
-represent timepoints post infection plus oocyst and sporozoite
-samples. The upper part of the table shows data for first infection,
-and oocyst and sporozoite data. The lower part shows data for
-challenge infection. Averages were calculated after sample exclusions
-(see Methods). For exact values, see Table 1.
+  \section*{Experimental overview}
+We performed mRNA sequencing of caecum tissue from mice infected with
+the apicomplexan parasite \textit{E. falciformis}. For each replicate
+sample we enriched caecum tissue from three infected mice for
+epithelial cells. We extracted mRNA and constructed sequencing
+libraries for different timepoints after infection and mouse strains
+with assumed different immunocompetence.
+%% we have to bring in Simones data first with two sentences and a
+%% figure or write it like this
+Additonally we obtained data for challenge infections of mice
+immunized one month prior to the experiment. For the parasite oocysts
+and sporozoites were included as ``environmental'' lifecycle stages.
 
-	\setlength{\tabcolsep}{14pt}
-	\begin{table}[H]
-	\small
-	\begin{center}
-	\caption{Experimental overview with number of read for parasite/mouse indicated.}
-\begin{tabular}{*4l}    \toprule
-\textit{Day, 1st infection}  	& NMRI  & C57BL/6  & Rag1-/- \\ \midrule
-	0 (control)    & $10^4$ / $10^8$  & $10^2$ / $10^8$  & $10^2$ / $10^7$  \\ %rep1/rep2, NA=no replicate
-3  		& $10^5$ / $10^8$ & NA  & NA \\ 
-5  		& $10^7$ / $10^8$ & $10^5$ / $10^7$  & $10^5$ / $10^7$ \\
-7  		& $10^8$ / $10^7$ & NA  & NA \\ 
-Oocysts 	& $10^8$ / NA & NA  & NA \\ 
-Sporozoites 	& $10^7$ / NA & NA  & NA \\ \midrule
+The number of sequencing reads obtained for individual replicates
+ranged between 111111 (samply NMRIxyz) and 222222 (NMRIwyv).
 
-\textit{Day, 2nd infection}  	\\ \midrule
-0 (control)     & $10^3$ / $10^8$  &  NA  & NA  \\ %rep1/rep2, NA=no replicate
-3  		& $10^4$ / $10^8$ & NA  & NA \\ 
-5  		& $10^4$ / $10^8$ & $10^5$ / $10^7$  & $10^5$ / $10^7$ \\
-7  		& $10^6$ / $10^8$ & NA  & NA \\ 
-	
-	
-	\bottomrule
- \hline
-\end{tabular}
-\end{center}
-\end{table}
+As samples and idividual replicates were sequenced in batches to
+different depth and using different instrumentation (see additional
+file 1 %%{or include sequencing even in Table 1?
+) we performed quality controls confirming the abscence of batch
+effects influencing analysis and quality of our results (additional
+file xyc).
+
+\section*{Parasite and host transcriptomes can be assessed in parallel}
+
+A maximum of 75\% (sample NMRIaaga) and a minimum of 0.01\% (sample
+NMRIagag) of mapped reads could be assigened to the
+\textit{E. falciformis} genome in samples considered infected. We
+excluded samples NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1 due
+to an exptremely low parasite contribution to the overall
+transcriptome. Technically this made it possible to obtain read counts
+following negative bionmial distributions after normalization between
+samples (see adddtional file x). Judging from their mRNA output those
+samples can be considered non-infected.On the other end of the
+spectruem this means that at 7dpi the majority of mRNA originated from
+the parasite as opposed to the host transcriptome (Figure 1).
+
+%%%%%
+figure 1 label
+cotribution of mouse vs. parasite transcripts to the overall
+transcriptional output of the analysed tissue for all samples.
+%%%%
+
+The total number of sequencing reads obtained as well as those reads
+mapped to the transcriptome of either \textit{E. falciformis} and the
+mouse are indicated in Table 1 for all replicates.
+
+%% Before was not pretty. All those NA's. If people are like me they
+%% hate NAs in tables ;-). I think you sould make the above table from
+%% data with xtable.
+
+%% best use a straight 2d table with... 
+
+% label & mouse strain & parasite dpi & naive/challenge & number of
+% reads & #mapped to mouse & #mapped to \textit{E. falciformis}
+
+%% column name "naive/challenge" can change
+
+%% as technical as it seems people will want to know what our labels
+%% mean (they appear in figures throughout) therfore it is good to
+%% have them in table 1
+
+\section*{The mouse transcriptome changes in the course of infection infection}
+
+Statistical testing for differences between infected and uninfected
+mice, revealed changes in mRNA abundance becoming more pronounced
+(involving more genes) at later timepoints of infection (Table 1).
+
+The observed fold-changes were in agreement with previously published
+microarry data. Fold-Change data obtained from mice at 6dpi on Agilent
+microarrays (Schmidt et al 2012) or 7dpi (our RNAseq data) shows a
+strong correlateion (Spearman's \rho = 333; $R^2$ from a linear model
+= 444 ; see also figure 2). Considering both and technical differences
+between the tow methods and the biological changes along the lifecycle
+this confirms the adequacy of our methods for assessing the host
+transcriptome.
+
+We selected mouse
+%%% This is from methods but all the results should be presented here:
+
+%% Selecting at most at most 500 genes differentially abundant with
+%% lowest FDR (<0.05) are selected. In the next step, the 500 mRNAs from
+%% each comparison (or less) are joined. For \textit{E. falciformis} time
+%% p.i. comparison, this resulted in 1618 unique genes selected as
+%% differently expressed . The 22 genes in the NMRI vs C57BL/6 comparison
+%% are not included in the \textit{E. falciformis} life cycle
+%% analysis. The same comparisons for mouse yielded 8052 genes in total
+%% and 1313 unique ones. In heatmaps, all samples, i.e. also samples
+%% which themselves did not have any significantly different mRNAs
+%% according to our selection, were included in hierarchical
+%% clustering.
+
+
+
+Those changes are mainly related to the onset of an
+adaptive immune response.
+
+
+
+
+\section*{The lifecycle of Eimeria is characterized by large changes in mRNA abundance}
+
+%%% This is from methods but all the results should be presented here: 
+
+%% Selecting at most at most 500 genes differentially abundant with
+%% lowest FDR (<0.05) are selected. In the next step, the 500 mRNAs from
+%% each comparison (or less) are joined. For \textit{E. falciformis} time
+%% p.i. comparison, this resulted in 1618 unique genes selected as
+%% differently expressed . The 22 genes in the NMRI vs C57BL/6 comparison
+%% are not included in the \textit{E. falciformis} life cycle
+%% analysis. The same comparisons for mouse yielded 8052 genes in total
+%% and 1313 unique ones. In heatmaps, all samples, i.e. also samples
+%% which themselves did not have any significantly different mRNAs
+%% according to our selection, were included in hierarchical
+%% clustering.
+
+
+%% This might be figure label
+%% Scale bar in heatmaps show 0 as mean mRNA abundance for
+%% each gene (row). Up (green) and down-regulation (brown) denote number
+%% of standard deviations from 0, i.e., row mean. 
 
 
 
@@ -607,62 +688,125 @@ life stage specific marker in \textit{Eimeria} spp. research.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Methods}
 \subsection{Mice and infection procedure}
-Three strains of mice were used in our experiments: NMRI (Charles River Laboratories, Sulzfeld,
-Germany), C57BL/6 (), and Rag1-/- on C57BL/6 background (gift from Susanne Hartmann, FU?). 
-Animal procedures were performed according to the German Animal Protection Laws as 
-directed and approved by the overseeing authority Landesamt fuer Gesundheit und Soziales 
-(Berlin, Germany). Animals where infected as described by Schmid et al., (Schmid12), but
-tapwater was used instead of PBS for administration of oocysts. Briefly, NMRI mice were infected 
-two times, which will be referred to as first and second infection. For the first infection, 
-150 sporulated oocysts were administered in 100 $μ$L by oral gavage. During the first infection
-of 60 mice, all animals were weighed every day. On day zero, before infection, as well as on day three,
-five and seven days post infection, dpi, caeca from 3-4 sacrificed mice per time point were 
-collected. Epithelial cells were isolated as described in Schmid et al.(schmid12). For challenge 
-infection, mice recovered for four weeks before second infection. 
-Recovery was monitored by weighing and visual inspection of fur. For the second infection, 
-1500 sporulated oocysts were applied by oral gavage. Three mice were used as non-second infection control, 
-referred to as day 0, second infection.
+Three strains of mice were used in our experiments: NMRI (Charles
+River Laboratories, Sulzfeld, Germany), C57BL/6 (), and Rag1-/- on
+C57BL/6 background (gift from Susanne Hartmann, FU?).  Animal
+procedures were performed according to the German Animal Protection
+Laws as directed and approved by the overseeing authority Landesamt
+fuer Gesundheit und Soziales (Berlin, Germany). Animals where infected
+as described by Schmid et al., (Schmid12), but tapwater was used
+instead of PBS for administration of oocysts. Briefly, NMRI mice were
+infected two times, which will be referred to as first and second
+infection. For the first infection, 150 sporulated oocysts were
+administered in 100 $μ$L by oral gavage. During the first infection of
+60 mice, all animals were weighed every day. On day zero, before
+infection, as well as on day three, five and seven days post
+infection, dpi, caeca from 3-4 sacrificed mice per time point were
+collected. Epithelial cells were isolated as described in Schmid et
+al.(schmid12). For challenge infection, mice recovered for four weeks
+before second infection.  Recovery was monitored by weighing and
+visual inspection of fur. For the second infection, 1500 sporulated
+oocysts were applied by oral gavage. Three mice were used as
+non-second infection control, referred to as day 0, second infection.
 
 \subsection{Oocyst purification for infection and sequencing}
-Sporulated oocysts were purified by flotation from feces stored in potassium dichromate and 
-administered orally in 100 uL tapwater. One \textit{E. falciformis} isolate, 
-\textit{E. falciformis} Bayer Haberkorn 1970, was used for all infections and parasite 
-samples. The strain is maintained through passage in NMRI mice in our facilities as described 
-elsewhere (schmid12).
+Sporulated oocysts were purified by flotation from feces stored in
+potassium dichromate and administered orally in 100 uL tapwater. One
+\textit{E. falciformis} isolate, \textit{E. falciformis} Bayer
+Haberkorn 1970, was used for all infections and parasite samples. The
+strain is maintained through passage in NMRI mice in our facilities as
+described elsewhere (schmid12).
 
 \subsection{Sporozoite isolation}
-Sporozoites were isolated from sporocysts by excystment. For this, sporocysts were incubated at 
-37$°$C in DMEM containing 0.04\% tauroglycocholate (MP Biomedicals) and 0.25\% trypsin (Applichem) 
-for 30 min. Sporozoites were purified by the method of Schmatz et al (schmatz--).
+Sporozoites were isolated from sporocysts by excystment. For this,
+sporocysts were incubated at 37$°$C in DMEM containing 0.04\%
+tauroglycocholate (MP Biomedicals) and 0.25\% trypsin (Applichem) for
+30 min. Sporozoites were purified by the method of Schmatz et al
+(schmatz--).
 
 \subsection{RNA extraction}
-Total RNA was isolated from infected epithelial cells, sporozoites and sporulated oocysts 
-using Trizol according to the manufacturer’s protocol (Invitrogen). High quality  \emph{what is the meaning of 'high quality' here?}
-RNA was used to produce an mRNA library using the Illumina’s TruSeq RNA Sample Preparation guide.
-\emph{stolen from genome paper}
-Sporozoites were stored in 1 mL Trizol until RNA-isolation. 
-Total RNA was isolated using the PureLink RNA Mini Kit (Invitrogen) and reverse transcribed into cDNA.
+Total RNA was isolated from infected epithelial cells, sporozoites and
+sporulated oocysts using Trizol according to the manufacturer’s
+protocol (Invitrogen). High quality \emph{what is the meaning of 'high
+  quality' here?}  RNA was used to produce an mRNA library using the
+Illumina’s TruSeq RNA Sample Preparation guide.  \emph{stolen from
+  genome paper} Sporozoites were stored in 1 mL Trizol until
+RNA-isolation.  Total RNA was isolated using the PureLink RNA Mini Kit
+(Invitrogen) and reverse transcribed into cDNA.
 
 \subsection{Sequencing, sequence quality assessment and alignment}
-cDNA samples were sequenced by either GAIIX or Illumina Hiseq 2000 as specified in SI xx (both unstranded). A fastq\_quality\_filter (FASTQ-toolkit, version 0.0.14, available at https://github.com/agordon/fastx\_toolkit.git) was applied to Illumina Hiseq 2000 samples after replacing "N" bases by "." annotation.  
-A phred score of 10 was applied. We further set q = 60. These settings require that nine out of ten bases
-or more are correct in at least 60\% of the bases for each read.
+cDNA samples were sequenced by either GAIIX or Illumina Hiseq 2000 as
+specified in SI xx (both unstranded). A fastq\_quality\_filter
+(FASTQ-toolkit, version 0.0.14, available at
+https://github.com/agordon/fastx\_toolkit.git) was applied to Illumina
+Hiseq 2000 samples after replacing "N" bases by "." annotation.  A
+phred score of 10 was applied. We further set q = 60. These settings
+require that nine out of ten bases or more are correct in at least
+60\% of the bases for each read.
 
-\subsubsection{Alignment and reference genomes}
-We used the published \textit{Mus musculus} mm10 assembly (Genome Reference Consortium Mouse 
-Build 38, GCA\_000001635.2) as reference genome including annotations for mouse data. The
-\textit{E. falciformis} genome (Heitlinger14) was downloaded from ToxoDB (Gajria07). For the
-alignment, the mouse and parasite genome files were merged into a dual reference genome, and 
-files including mRNA sequences from both species were aligned against the dual reference genome
-using TopHat2 (version 2.0.14, Trapnell09) with -G specified, and a Bowtie2 (version 1.1.2, Langmead12) index of the dual genome. Single-end and pair-end sequence samples were aligned separately with library type 'fr-unstranded' specified for pair-end samples. Import into R was enabled by the R package Ballgown, which requires bam files to be processed by Tablemaker (Frazee15), in our case used with -qW -G specified. Tablemaker in turn makes use of Cufflinks (version 2.1.1, Trapnell10).
+\subsection{Alignment and reference genomes}
+We used the published \textit{Mus musculus} mm10 assembly (Genome
+Reference Consortium Mouse Build 38, GCA\_000001635.2) as reference
+genome including annotations for mouse data. The
+\textit{E. falciformis} genome (Heitlinger14) was downloaded from
+ToxoDB (Gajria07). For the alignment, the mouse and parasite genome
+files were merged into a dual reference genome, and files including
+mRNA sequences from both species were aligned against the dual
+reference genome using TopHat2 (version 2.0.14, Trapnell09) with -G
+specified, and a Bowtie2 (version 1.1.2, Langmead12) index of the dual
+genome. Single-end and pair-end sequence samples were aligned
+separately with library type 'fr-unstranded' specified for pair-end
+samples. Import into R was enabled by the R package Ballgown, which
+requires bam files to be processed by Tablemaker (Frazee15), in our
+case used with -qW -G specified. Tablemaker in turn makes use of
+Cufflinks (version 2.1.1, Trapnell10).
 
 \subsection{Differential mRNA abundance, data normalisation and sample exclusions}
-Complete scripts are available at git@github.com:derele/Ef\_RNAseq.git. Count data was analysed in R, using the upperquartile normalisation method as implemented in edgeR (version 3.14.0). Briefly, genes with zero coverage in all samples (libraries) are removed and normalisation factors are calculated for the 75\% quantile for each library. This  normalisation assumes a negative binomial distribution of read densities. Two samples contradicted the assumption (parasite data) and both mouse and parasite data from these samples were excluded from further analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1 (SI ...). We used a the edgeR pipleine which estimates dispersion values for each gene (provided that a design matrix is defined). The method fits data for each gene to a negative binomial distribution using a generalized linear model (GLM) with the function glmFit() and glmLRT(). 
+Count data was normalized using the R-package edgeR (version 3.14.0;
+cite) with the upperquartile normalisation method. Briefly, genes with
+zero coverage in all samples (libraries) are removed and normalisation
+factors are calculated for the 75\% quantile for each library. This
+normalisation is suitable for read densities following a negative
+binomial distribution. Two samples contradicted this assumption
+(parasite data) for later modelling and both mouse and parasite data
+from these samples were excluded from further analysis:
+NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1 (SI ...). The method
+then fits a generalized linear model (GLM with a negative binomial
+link function) for each gene (glmFit) and then performs likelihood
+ratio tests for models w or w/o focal factor (glmLRT).
 
-........... include outcome of MDS analysis here?
+%% ........... include outcome of MDS analysis here?
+%% No, results never are presented in methods.
+
+\subsection{Selection of differentially abundant mRNAs nad hierarchical clustering}
+A selection of differently abundant mRNAs are used for hierarchical
+clustering of \textit{E. falciformis} life cycle relevant genes. In
+each comparison (see Table 3), the union of the at most 500 genes
+differentially abundant with lowest FDR (<0.05) are selected. In the
+next step, the 500 mRNAs from each comparison (or less) are
+joined. For \textit{E. falciformis} time p.i. comparison, this
+resulted in 1618 unique genes selected as differently expressed . The
+22 genes in the NMRI vs C57BL/6 comparison are not included in the
+\textit{E. falciformis} life cycle analysis. The same comparisons for
+mouse yielded 8052 genes in total and 1313 unique ones. In heatmaps,
+all samples, i.e. also samples which themselves did not have any
+significantly different mRNAs according to our selection, were
+included in hierarchical clustering. Scale bar in heatmaps show 0 as
+mean mRNA abundance for each gene (row). Up (green) and
+down-regulation (brown) denote number of standard deviations from 0,
+i.e., row mean. Hierarchical clustering was performed using with
+Euclidean distances, using complete linkage ('complete', R package
+base).
+
+%% the paragraph above has results. All those number 
+
+
 
 \subsection{Differentially abundant mRNAs used for hierarchical clustering}
-A selection of differently abundant mRNAs are used for hierarchical clustering of \textit{E. falciformis} life cycle relevant genes. In each comparison (see Table 3), the union of the 500 differentially abundant mRNAs with lowest FDR are selected. In the next step, the 500 mRNAs from each comparison (or less) are joined. For \textit{E. falciformis} time p.i. comparison, this resulted in 4935 genes of which only the 1618 unique genes were selected. The 22 genes in the NMRI vs C57BL/6 comparison are not included in the \textit{E. falciformis} life cycle analysis. The same comparisons for mouse yielded 8052 genes in total and 1313 unique ones. In heatmaps, all samples, i.e. also samples which themselves did not have any significantly different mRNAs according to our selection, were included in hierarchical clustering. Scale bar in heatmaps show 0 as mean mRNA abundance for each gene (row). Up (green) and down-regulation (brown) denote number of standard deviations from 0, i.e., row mean. Hierarchical clustering was performed using with Euclidean distances, using complete linkage ('complete', R package base).
+All analyses were performed in R (cite R-core). Complete scripts are
+available at git@github.com:derele/Ef\_RNAseq.git tagged as version
+1.0. 
+%% We will make this available as a git webpage probably
 
 \setlength{\tabcolsep}{10pt}
 \begin{table}[H]
