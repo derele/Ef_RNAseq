@@ -1,7 +1,6 @@
 ## Description of script
 
 library(ggplot2)
-=======
 library(pheatmap)
 library(reshape)
 library(ggplot2)
@@ -154,16 +153,8 @@ get.ortholog.RC <- function(){
     return(foobar)
 }
 
-RC.ortho <- merge(RC.ortho, cpm(Ef.1st.pass.model[[4]]),
-                  by.x="Efa", by.y=0)
-RC.ortho[,3:ncol(RC.ortho)] <- apply(RC.ortho[,3:ncol(RC.ortho)], 2,
-                                     function (x) as.numeric(as.character(x)))
-=======
 RC.ortho <- get.ortholog.RC()
-
-CS <- colSums(RC.ortho[,4:ncol(RC.ortho)])
-scaling.f <- max(CS)/CS
-RC.ortho[, 4:ncol(RC.ortho)] <- t(t(RC.ortho[, 4:ncol(RC.ortho)])*scaling.f)
+RC.ortho[is.na(RC.ortho)] <- 0
 
 pdf("figuresANDmanuscript/RC_correlation_Efal_Ete_Tgo.pdf", heigh=15, width=15)
 pheatmap(cor(RC.ortho[,4:ncol(RC.ortho)], method="spearman"),
