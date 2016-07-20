@@ -277,7 +277,18 @@ Text for this section \ldots
 %% 	OVERVIEW READS PER SAMPLE, LAYOT AS EXPERIMENTAL OVERVIEW
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimental overview}
-Replicate average of transcripts as order of magnitude for \textit{E. falciformis}/mouse are indicated in Table.... Columns in table represent mouse strains used in infection experiments. Rows represent timepoints post infection plus oocyst and sporozoite samples. The upper part of the table shows data for first infection, and oocyst and sporozoite data. The lower part shows data for challenge infection. Averages were calculated after sample exclusions (see Methods). For exact values, see Table 1.
+We performed mRNA sequencing of caecum tissue of mice infected with
+the parasite \textit{E. falciformis} at different timepoints and for
+infections of different mouse strains. 
+
+Replicate average of transcripts as order of magnitude for
+\textit{E. falciformis}/mouse are indicated in Table.... Columns in
+table represent mouse strains used in infection experiments. Rows
+represent timepoints post infection plus oocyst and sporozoite
+samples. The upper part of the table shows data for first infection,
+and oocyst and sporozoite data. The lower part shows data for
+challenge infection. Averages were calculated after sample exclusions
+(see Methods). For exact values, see Table 1.
 
 	\setlength{\tabcolsep}{14pt}
 	\begin{table}[H]
@@ -356,7 +367,21 @@ Sporozoites 	& $10^7$ / NA & NA  & NA \\ \midrule
 \end{center}
 \end{table}
 
-Table 2 lists pairwise sample comparisons and number of genes with differently abundant mRNAs per comparison."NMRI" followed by number indicates day post infection (e.g. NMRI 3 = NMRI mouse on day 3 p.i.). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as implemented in edgeR are included. NAs are missing samples or not applicable for the species. NA* is due to missing NMRI day 0 sample from first infection. For \textit{E. falciformis} no mRNAs are significantly differently abundant between first and second infection, whereas in mouse there are some differences, especially on day 7 p.i. However, upon hierarchical clustering of these genes (union of 500 with lowest FDR), samples do not cluster according to first/second infection (Figure SX ?). In comparisons between mouse strains, 22 genes are detected to be different in the parasite data. The difference is however not between Rag1-/- mice as expected, but between NMRI and C57BL/6. For mouse....
+Table 2 lists pairwise sample comparisons and number of genes with
+differently abundant mRNAs per comparison."NMRI" followed by number
+indicates day post infection (e.g. NMRI 3 = NMRI mouse on day 3
+p.i.). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as
+implemented in edgeR are included. NAs are missing samples or not
+applicable for the species. NA* is due to missing NMRI day 0 sample
+from first infection. For \textit{E. falciformis} no mRNAs are
+significantly differently abundant between first and second infection,
+whereas in mouse there are some differences, especially on day 7
+p.i. However, upon hierarchical clustering of these genes (union of
+500 with lowest FDR), samples do not cluster according to first/second
+infection (Figure SX ?). In comparisons between mouse strains, 22
+genes are detected to be different in the parasite data. The
+difference is however not between Rag1-/- mice as expected, but
+between NMRI and C57BL/6. For mouse....
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -770,14 +795,24 @@ On scale bar in heatmaps, 0 is mean mRNA abundance for each gene (row). Up (gree
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Additional Files}
-  \subsection*{Additional file 1 --- Sample additional file title}
-    Additional file descriptions text (including details of how to
-    view the file, if it is in a non-standard format or the file extension).  This might
-    refer to a multi-page table or a figure.
+  \subsection*{Additional file 1 --- Raw and normalized counts }
+  Raw and normalized counts for individual samples in our
+  study (two compressed csv files).
+  
+  \subsection*{Additional file 2 --- Results of statistical tests (edgeR) }
+  Fold-changes, p-values and false discovery rates (adjusted p-values)
+  are given for all tested contrasts (one compressed csv file). 
+  
+  \subsection*{Additional file 3 --- Additional methods and resuts }
+  % this would be cool but requires special referencing in the text
+  % (hard to keep track and hard to fit in the journals referencing
+  % system). But we can try.
+  Document containing additonal figures and summary tables (pdf).
 
-  \subsection*{Additional file 2 --- Sample additional file title}
-    Additional file descriptions text.
-
-
+\subsection*{Additional file 4 --- Results of enrichment analyses (topGO)}
+  Tables listing all tested gene sets and resulting significatn GO
+  terms.
+  
+  
 \end{backmatter}
 \end{document}
