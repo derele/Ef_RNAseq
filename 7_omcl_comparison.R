@@ -1,3 +1,5 @@
+## Description of script
+
 library(ggplot2)
 library(reshape)
 library(plyr)
@@ -62,7 +64,7 @@ RC.ortho <- merge(all.orthologs,
 
 RC.ortho <- merge(RC.ortho, cpm(Ef.1st.pass.model[[4]]),
                   by.x="Efa", by.y=0)
-RC.ortho[,3:ncol(RC.orhto)] <- apply(RC.ortho[,3:ncol(RC.orhto)], 2,
+RC.ortho[,3:ncol(RC.ortho)] <- apply(RC.ortho[,3:ncol(RC.ortho)], 2,
                                      function (x) as.numeric(as.character(x)))
 
 CS <- colSums(RC.ortho[,3:ncol(RC.ortho)])
