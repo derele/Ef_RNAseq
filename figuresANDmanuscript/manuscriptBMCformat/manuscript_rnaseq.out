@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 \BOOKMARK [1][-]{section*.1}{Abstract}{}% 1
 \BOOKMARK [1][-]{section.1}{Experimental overview}{}% 2
 \BOOKMARK [1][-]{section.2}{mRNA abundance differences between different experimental groups}{}% 3
@@ -12,3 +13,5 @@
 \BOOKMARK [3][-]{subsubsection.3.5.1}{Alignment and reference genomes}{subsection.3.5}% 12
 \BOOKMARK [3][-]{subsubsection.3.5.2}{Data normalisation and sample exclusions}{subsection.3.5}% 13
 \BOOKMARK [2][-]{subsection.3.6}{Differentially abundant mRNAs used for hierarchical clustering}{section.3}% 14
+=======
+>>>>>>> ce7a348a5c7d0ee80f8fe6f44b4b32d973ca1d8f

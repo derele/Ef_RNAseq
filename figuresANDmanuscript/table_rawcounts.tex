@@ -293,53 +293,6 @@ analysis: NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1. On all kept samples, 
 \end{center}
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 	NUMBER OF GENES DIFFERENT IN DIFFERENT COMPARISONS	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\clearpage
-%\section{mRNA abundance differences between different experimental groups}
-%\setlength{\tabcolsep}{8pt}
-%\begin{table}[H]
-%\begin{center}
-%\caption{mRNA abundance differences between different experimental groups.}
-%%\label{tab:table3}
-%\begin{tabular}{*3l}    \toprule
-%\textit{Day post infection} & \textit{Ef} genes different & Mouse genes different \\ 
-%	\textit{comparisons} 	    & (FDR$\leq$0.01) &  (FDR$\leq$0.01/0.05) \\ \midrule
-%	NMRI 0 vs NMRI 3		& NA   & 274 \\
-%	NMRI 0 vs NMRI 5		& NA   & 1736 \\
-%	NMRI 0 vs NMRI 7		& NA   & 2802 \\
-%	NMRI 3 vs NMRI 5     		& 111  & 1 \\
-%	NMRI 3 vs NMRI 7  		& 1385 & 1407 \\ 
-%	NMRI 5 vs NMRI 7  		& 1895 & 873 \\ 
-%	C57BL/6 0 vs C57BL/6 5		& NA	& 914 \\
-%	Rag1-/- 0 vs Rag1-/- 5		& NA	& 45 \\ \midrule
-%\textit{First and second infection} & 		 & 	 \\ 
-%\textit{comparisons} 	    & 		& 	\\ \midrule
-%	NMRI 3 1st vs NMRI 3 2nd  	& 0  & 5 \\
-%	NMRI 5 1st vs NMRI 5 2nd  	& 0  & 1 \\
-%	NMRI 7 1st vs NMRI 7 2nd  	& 0  & 902 \\
-%	C57BL/6 1st vs C57BL/6 2nd (day 5) & 0 &  mouse \\
-%	Rag1-/- 1st vs Rag1-/- 2nd (day 5) & 0 & mouse  \\ \midrule
-%\textit{Mouse strain comparisons} & 		 & 	 \\ \midrule
-%	NMRI vs C57BL/6 		& 22 	& NA* \\		
-%	NMRI vs Rag1-/-     		& 0 & NA* 	\\
-%	C57BL/6 vs Rag1-/-  		& 0   & 356 	\\ \midrule
-%\textit{Day post infection,} & 		 & 		 \\ 
-%\textit{parasite relevant comparisons} 	    & 		&  \\ \midrule
-%	Oocysts vs NMRI 3  	& 3310 & NA \\  
-%	Oocysts vs NMRI 5	& 3605 & NA \\ 
-%	Oocysts vs NMRI 7	& 3085 & NA \\ 
-%	Oocysts vs sporozoites  & 3421 & NA \\
-%	Sporozoites vs NMRI 3 	& 1663 & NA \\
-%	Sporozoites vs NMRI 5 	& 1605 & NA \\
-%	Sporozoites vs NMRI 7 	& 2473 & NA \\ \bottomrule
-%	\hline
-%\end{tabular}
-%\end{center}
-%\end{table}
-
-%\textit{E. falciformis} data overview of pairwise comparisons and number of genes with differently abundant mRNAs per comparison. NMRI followed by number indicates day post infection (e.g. NMRI3 = \textit{E. falciformis} genes from NMRI mouse day 3 post infection). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as implemented in edgeR are indluced. NAs are missing samples or not applicable for the species. NA* is due to missing NMRI day 0 sample from first infection.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	INPUT TO HEATMAP	
@@ -364,47 +317,19 @@ A selection of differently abundant mRNAs are used for hierarchical clustering o
 \end{center}
 %\end{adjustwidth}
 \end{table}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	HEATMAPS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Hierarchical clustering...}
-%All heatmaps shown are now with cutoff 0.05, even though we previously used 0.01 for the life cycle part. I will change it, but the difference seems small and I am really tired... Therefore, I also didn't write the legends for the 1st VS 2nd and mouse strain effect heatmaps. The 1st-2nd looks rediculous for Ef, for instance (it could only compile with cutree=2 or 1). So sorry abot the ugly end.
 
-%\subsection{Life cycle analysis... \textit{E. falciformis}}
-%\begin{figure}[H]
-%\begin{center}
-%\centering
-%	\includegraphics[width=0.9\textwidth]{EfLifecycleHeatmap.pdf}  
-%	\caption{\textit{E. falciformis} mRNAs with significantly different abundance at different times post infection in NMRI mice (see Table ...).  \textit{E. falciformis} samples from seven days p.i. cluster together (NMRI mice only). For \textit{E. falciformis} day 7, NMRI, the pattern is most pronounced in cluster 1 (up). Within this cluster, the second replicate from the challenge infection has a deviant profile (compare mouse data in Figure 6). Distinct groups of genes also define sporozoites (cluster 6: up) and oocysts (cluster 3: up, cluster 7: down). mRNA profiles on days three and five p.i. from all three mouse strains cluster together. These samples are distinct from oocysts, NMRI day 7 p.i., and sporozoites. The latter cluster closer with days 3 and 5 than with oocysts or day 7.}
-%%\end{center}
-%\end{figure}
-%
-%\subsection{Parasite development in mouse data}
-%\begin{figure}[H]
-%%\begin{center}
-%\centering
-%\includegraphics[width=0.9\textwidth]{MmLifecycleHeatmap.pdf}  
-%\caption{Mouse mRNAs with significantly different abundance at different times post infection in NMRI mice (see Table 3).
-%Three out of four samples from day 7 p.i. (NMRI only) cluster together. These samples are characterized by genes in cluster 2 (up) as well as 3 and 4 (down). The fourth day 7 sample (challenge infection, second replicate) clusters with day 3 and 5 samples but upon visual inspection of cluster 4 diplays a profile similar to non-infected mice. The same sample is abnormal in the parasite profile (see Figure 5). NMRI and C57BL/6 uninfected samples cluster together, defined by clusters 3, 4 (up), and 1 (down). Day 3 and 5 samples cluster together, with Rag1-/- forming a separate group and Rag1-/- non-infected most distant in this sample cluster. All non-infected samples share a high mRNA abundance in cluster 3.}
-%%\end{center}
-%\end{figure}
-
-\subsection{First versus second infection, \textit{E. falciformis}}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{Ef1st2ndHeatmap.pdf}  
-	\caption{\textit{E. falciformis} with Euclidean distance .........as implemented in R package limma.}
-\end{center}
-\end{figure}
-
+\clearpage
 \subsection{First versus second infection, mouse}
-\begin{figure}[H]
-\begin{center}
-\includegraphics[width=\textwidth]{Mm1st2ndHeatmap.pdf}  
-	\caption{Mouse.... with Euclidean distance .........as implemented in R package limma.}
-\end{center}
+\begin{figure}[h!]
+%\begin{center}
+\includegraphics[width=\linewidth]{Mm1st2ndHeatmap.pdf}  
+	\caption{Mouse mRNAs with significantly different abundance between first infection and challenge infection (see Table 2). Samples do not cluster into first and second infection clusters. The two major sample cluster each contain four challenge infection samples.}
+%\end{center}
 \end{figure}
-
 
 \subsection{Differences between mouse strains,\textit{E. falciformis}}
 \begin{figure}[H]
