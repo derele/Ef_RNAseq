@@ -274,22 +274,14 @@ Text and results for this section, as per the individual journal's instructions 
   \section*{Results}
 Text for this section \ldots
 
+We found xx E. falciformis genes of the total predicted yy, which were expressed in at leat one developmental stage measured.
+Of the total reported mouse genes aaa, hhh were expressed on at least one timepoint during E. falciformis infection and fff were expressed in controls.  
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	OVERVIEW READS PER SAMPLE, LAYOT AS EXPERIMENTAL OVERVIEW
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experimental overview}
-We performed mRNA sequencing of caecum tissue of mice infected with
-the parasite \textit{E. falciformis} at different timepoints and for
-infections of different mouse strains. 
-
-Replicate average of transcripts as order of magnitude for
-\textit{E. falciformis}/mouse are indicated in Table.... Columns in
-table represent mouse strains used in infection experiments. Rows
-represent timepoints post infection plus oocyst and sporozoite
-samples. The upper part of the table shows data for first infection,
-and oocyst and sporozoite data. The lower part shows data for
-challenge infection. Averages were calculated after sample exclusions
-(see Methods). For exact values, see Table 1.
+Replicate average of transcripts as order of magnitude for \textit{E. falciformis}/mouse are indicated in Table.... Columns in table represent mouse strains used in infection experiments. Rows represent timepoints post infection plus oocyst and sporozoite samples. The upper part of the table shows data for first infection, and oocyst and sporozoite data. The lower part shows data for challenge infection. Averages were calculated after sample exclusions (see Methods). For exact values, see Table 1.
 
 	\setlength{\tabcolsep}{14pt}
 	\begin{table}[H]
@@ -368,22 +360,8 @@ Sporozoites 	& $10^7$ / NA & NA  & NA \\ \midrule
 \end{center}
 \end{table}
 
-Table 2 lists pairwise sample comparisons and number of genes with
-differently abundant mRNAs per comparison."NMRI" followed by number
-indicates day post infection (e.g. NMRI 3 = NMRI mouse on day 3
-p.i.). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as
-implemented in edgeR are included. NAs are missing samples or not
-applicable for the species. NA* is due to missing NMRI day 0 sample
-from first infection. For \textit{E. falciformis} no mRNAs are
-significantly differently abundant between first and second infection,
-whereas in mouse there are some differences, especially on day 7
-p.i. However, upon hierarchical clustering of these genes (union of
-500 with lowest FDR), samples do not cluster according to first/second
-infection (Figure SX ?). In comparisons between mouse strains, 22
-genes are detected to be different in the parasite data. The
-difference is however not between Rag1-/- mice as expected, but
-between NMRI and C57BL/6. For mouse....
-
+Table 2 lists pairwise sample comparisons and number of genes with differently abundant mRNAs per comparison."NMRI" followed by number indicates day post infection (e.g. NMRI 3 = NMRI mouse on day 3 p.i.). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as implemented in edgeR are included. NAs are missing samples or not applicable for the species. NA* is due to missing NMRI day 0 sample from first infection. For \textit{E. falciformis} no mRNAs are significantly differently abundant between first and second infection, whereas in mouse there are some differences, especially on day 7 p.i. However, upon hierarchical clustering of these mouse genes (union of 500 with lowest FDR), samples do not cluster according to first/second infection (Figure SX ?). In comparisons between mouse strains, 22 \textit{E. falciformis} genes are detected as different. The difference is however not between Rag1-/- immune incompetent and either WT mouse as expected, but between NMRI and C57BL/6. For mouse.... 
+The comparisons between timepoints p.i. are dominant in number of mRNAs being differently abundant and we were interested in finding patterns in this data. Unsupervised hierarchical clustering was applied on \textit{E. falciformis} mRNAs which were differently abundant at different timepoints p.i., including comparisons with oocysts and sporozoites (union of 500 with lowest FDR, Figure 1). Samples from day 7 p.i. form a separate cluster (NMRI mice only), not distinguishing between first and challenge infection. For these samples, the pattern is most pronounced in gene cluster 1 (up), and 4 and 6 (down). Within cluster 1, the second replicate from the challenge infection has a deviant profile (compare mouse data in Figure 2). Distinct groups of genes also define sporozoites (cluster 5 up) and oocysts (cluster 3 up, cluster 6 down). mRNA profiles on days 3 and 5 p.i. from all three mouse strains cluster together. These samples are distinct from oocysts, NMRI day 7 p.i., and sporozoites. Sporozoites cluster closer with days 3 and 5 than with oocysts or day 7.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \clearpage
@@ -396,7 +374,6 @@ between NMRI and C57BL/6. For mouse....
 %\end{center}
 \end{figure}
 
-We applied hierarchical clustering on \textit{E. falciformis} mRNAs which were differently abundant at different timepoints p.i., including comparisons with oocysts and sporozoites (union of 500 with lowest FDR). Samples from day 7 p.i. form a separate cluster (NMRI mice only), not distinguishing between first and challenge infection. For these samples, the pattern is most pronounced in gene cluster 1 (up), and 4 and 6 (down). Within cluster 1, the second replicate from the challenge infection has a deviant profile (compare mouse data in Figure 2). Distinct groups of genes also define sporozoites (cluster 5 up) and oocysts (cluster 3 up, cluster 6 down). mRNA profiles on days 3 and 5 p.i. from all three mouse strains cluster together. These samples are distinct from oocysts, NMRI day 7 p.i., and sporozoites. Sporozoites cluster closer with days 3 and 5 than with oocysts or day 7.
 
 
 \clearpage
@@ -794,24 +771,14 @@ A selection of differently abundant mRNAs are used for hierarchical clustering o
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Additional Files}
-  \subsection*{Additional file 1 --- Raw and normalized counts }
-  Raw and normalized counts for individual samples in our
-  study (two compressed csv files).
-  
-  \subsection*{Additional file 2 --- Results of statistical tests (edgeR) }
-  Fold-changes, p-values and false discovery rates (adjusted p-values)
-  are given for all tested contrasts (one compressed csv file). 
-  
-  \subsection*{Additional file 3 --- Additional methods and resuts }
-  % this would be cool but requires special referencing in the text
-  % (hard to keep track and hard to fit in the journals referencing
-  % system). But we can try.
-  Document containing additonal figures and summary tables (pdf).
+  \subsection*{Additional file 1 --- Sample additional file title}
+    Additional file descriptions text (including details of how to
+    view the file, if it is in a non-standard format or the file extension).  This might
+    refer to a multi-page table or a figure.
 
-\subsection*{Additional file 4 --- Results of enrichment analyses (topGO)}
-  Tables listing all tested gene sets and resulting significatn GO
-  terms.
-  
-  
+  \subsection*{Additional file 2 --- Sample additional file title}
+    Additional file descriptions text.
+
+
 \end{backmatter}
 \end{document}
