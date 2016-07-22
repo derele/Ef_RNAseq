@@ -291,28 +291,33 @@ immunized one month prior to the experiment. For the parasite oocysts
 and sporozoites were included as ``environmental'' lifecycle stages.
 
 The number of sequencing reads obtained for individual replicates
-ranged between 111111 (samply NMRIxyz) and 222222 (NMRIwyv).
+ranged from 21,517,055 (sample NMRI\_sporozoites\_rep2) to 593,396,312
+(NMRI\_2ndInf\_5dpi\_rep1).
 
 As samples and idividual replicates were sequenced in batches to
-different depth and using different instrumentation (see additional
-file 1 %%{or include sequencing even in Table 1?
-) we performed quality controls confirming the abscence of batch
-effects influencing analysis and quality of our results (additional
-file xyc).
+different depth and using different instrumentation (Table 1) we
+performed quality controls confirming the abscence of batch effects
+influencing analysis and quality of our results (additional file xyc).
 
 \section*{Parasite and host transcriptomes can be assessed in parallel}
 
-A maximum of 75\% (sample NMRIaaga) and a minimum of 0.01\% (sample
-NMRIagag) of mapped reads could be assigened to the
-\textit{E. falciformis} genome in samples considered infected. We
-excluded samples NMRI\_1st\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep1 due
-to an exptremely low parasite contribution to the overall
-transcriptome. Technically this made it possible to obtain read counts
-following negative bionmial distributions after normalization between
-samples (see adddtional file x). Judging from their mRNA output those
-samples can be considered non-infected.On the other end of the
-spectruem this means that at 7dpi the majority of mRNA originated from
-the parasite as opposed to the host transcriptome (Figure 1).
+A maximum of 86\% (sample NMRI\_1stInf\_7dpi\_rep1) and a minimum of
+0.0326\% (sample NMRI\_2ndInf\_3dpi\_rep2) of mapped reads could be
+assigened to the \textit{E. falciformis} genome in samples considered
+infected.
+
+We excluded samples NMRI\_2nd\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep2
+due to an exptremely low parasite contribution to the overall
+transcriptome. Technically this exclusion made it possible to obtain
+read counts in agreement with a negative bionmial distributions (see
+adddtional file x). Judging from their mRNA output those samples can
+be considered non-infected, as both samples occured in a challenge
+infection we assume that the infection was cleard or reduced to a
+non-detectable output in those animmals.
+
+On the other end of the spectrum mice not previously immunized
+featured an mRNA ``holo-transcriptome'' at 7dpi with the majority of
+mRNA originating from the parasite as opposed to the host (Figure 1).
 
 %%%%%
 figure 1 label
@@ -354,7 +359,10 @@ between the tow methods and the biological changes along the lifecycle
 this confirms the adequacy of our methods for assessing the host
 transcriptome.
 
-We selected mouse
+We selected all mouse genes differently expressed (FDR<1\%) between
+uinfected and any of the infected samples.
+
+
 %%% This is from methods but all the results should be presented here:
 
 %% Selecting at most at most 500 genes differentially abundant with
@@ -404,6 +412,9 @@ adaptive immune response.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	NUMBER OF GENES DIFFERENT IN DIFFERENT COMPARISONS	
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% I like this table. Looks good and transprorts the right kind of
+%% information
+
 \clearpage
 \section{mRNA abundance differences between different experimental groups}
 \setlength{\tabcolsep}{8pt}
@@ -414,7 +425,7 @@ adaptive immune response.
 %\label{tab:table3}
 \begin{tabular}{*3l}    \toprule
 \textit{Day post infection} & \textit{Ef} genes different & Mouse genes different \\ 
-	\textit{comparisons} 	    & (FDR$\leq$0.01) &  (FDR$\leq$0.01/0.05) \\ \midrule
+	\textit{comparisons} 	    & (FDR$\leq$1\%) &  (FDR$\leq$1\%/5\%) \\ \midrule
 	NMRI 0 vs NMRI 3		& NA   & 274 \\
 	NMRI 0 vs NMRI 5		& NA   & 1736 \\
 	NMRI 0 vs NMRI 7		& NA   & 2802 \\
