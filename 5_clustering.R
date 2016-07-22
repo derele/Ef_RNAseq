@@ -18,6 +18,17 @@ union.of.Ef.cycle.diff.top.100 <-
 Ef.cycle.diff.top.100.data <-
     cpm(Ef.1st.pass.model[[4]])[union.of.Ef.cycle.diff.top.100,]
 
+union.of.Ef.cycle.diff <-
+    unique(unlist(Ef.1st.pass.model[[3]][1:10]))
+
+Ef.cycle.diff.top.100.data <-
+    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.cycle.diff.top.100,]
+
+Ef.cycle.diff.data <-
+    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.cycle.diff,]
+
+
+
 ############# 1st VERSUS 2nd INFECTION ##################
 union.of.Ef.1st2nd.top <-
     unique(unlist(lapply(Ef.1st.pass.model[[3]][11:15], head, n=500)))
@@ -40,7 +51,7 @@ get.scaled.and.clustered <- function(data){
     return(hclustered)
 }
 
-Ef.hclustered <- get.scaled.and.clustered(Ef.cycle.diff.top.100.data)
+Ef.hclustered <- get.scaled.and.clustered(Ef.cycle.diff.data)
 Ef.hclustered.first.second <- get.scaled.and.clustered(Ef.1st2nd.top.data) 
 Ef.hclustered.strain <- get.scaled.and.clustered(Ef.strain.depend.top.data )
 
@@ -94,7 +105,7 @@ dev.off()
 
 pdf("figuresANDmanuscript/EfLifecycleHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf
-pheatmap(Ef.cycle.diff.top.100.data,
+pheatmap(Ef.cycle.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
          scale = "row",
          cluster_rows = T, ## hc.high,

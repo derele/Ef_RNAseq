@@ -58,11 +58,11 @@ RC.table$p.Ef.reads <- round(RC.table$c.Ef.reads/RC.table$c.total.reads*100, 4)
 ef.percentage <- ggplot(RC.table, aes(x = sample, y = p.Ef.reads,
                                       color=seq.method)) +
     geom_point()+
-        scale_y_log10()+
-            ylab(label="Percentage of reads mapping to Eimeria genome") +
-                xlab(label="Sample") +
-                ggtitle("Eimeria fraction of total sequences per sample") +
-                    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+    scale_y_log10()+
+    ylab(label="Percentage of reads mapping to Eimeria genome") +
+    xlab(label="Sample") +
+    ggtitle("Eimeria fraction of total sequences per sample") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ggsave("ef.percentage.png", ef.percentage, path = "figures", width = 10)
 
@@ -93,12 +93,13 @@ names(keep.val) <- keep.val
 r.c.s.l <-
     lapply(keep.val,
            function (x){
-		
-		Mm.RCtemp <- All.RC[[3]][grepl('^ENSMUS.*', rownames(All.RC[[3]])),]+ 0.1 # add tiny number to be able to plot transcripts with zero reads mapping
-        	kept.df <- Mm.RCtemp[rowSums(Mm.RCtemp)>x,]       
-		kept.df <- melt(kept.df)
-		kept.df <- kept.df[grep("^.*_(oocysts|sporozoites)_.*$", kept.df$X2, invert = T),] # remove ooc and sporo samples
-		return(kept.df)
+               ## add tiny number to be able to plot transcripts with zero reads mapping
+               Mm.RCtemp <- All.RC[[3]][grepl('^ENSMUS.*', rownames(All.RC[[3]])),]+ 0.1 
+               kept.df <- Mm.RCtemp[rowSums(Mm.RCtemp)>x,]       
+               kept.df <- melt(kept.df)
+               ## remove ooc and sporo samples
+               kept.df <- kept.df[grep("^.*_(oocysts|sporozoites)_.*$", kept.df$X2, invert = T),] 
+               return(kept.df)
            })
 
 #####################################################
@@ -106,7 +107,7 @@ density.plots <-
     lapply(seq_along(r.c.s.l),
            function(i){
                ggplot(r.c.s.l[[i]],
-                   aes(value, ..density..)) + 
+                      aes(value, ..density..)) + 
                    stat_density(geom="line") +
                    facet_wrap(~X2)+ 	# makes gray box on top of each plot
 		   scale_x_log10("Read counts (log10)",
@@ -123,7 +124,7 @@ density.plots <-
                    ggtitle(paste("Cutoff =",
                                names(r.c.s.l)[[i]]))
            })
-               
+
 pdf("figures/distributionsMm.pdf", width = 27, height = 21)
 do.call(grid.arrange, c(density.plots, list(nrow=2)))
 dev.off()
@@ -138,21 +139,12 @@ names(keep.val) <- keep.val
 r.c.s.l <-
     lapply(keep.val,
            function (x){
-		Ef.RCtemp <- All.RC[[3]][grepl('^EfaB.*', rownames(All.RC[[3]])),] + 0.1 # add tiny number to be able to plot transcripts with zero reads mapping	
-        	kept.df <- Ef.RCtemp[rowSums(Ef.RCtemp)>x,]       
-		kept.df <- melt(kept.df)
-		kept.df <- kept.df[grep("^.*_0dpi_.*$", kept.df$X2, invert = T),] # remove day 0 samples
-		return(kept.df)
+               Ef.RCtemp <- All.RC[[3]][grepl('^EfaB.*', rownames(All.RC[[3]])),] + 0.1 # add tiny number to be able to plot transcripts with zero reads mapping	
+               kept.df <- Ef.RCtemp[rowSums(Ef.RCtemp)>x,]       
+               kept.df <- melt(kept.df)
+               kept.df <- kept.df[grep("^.*_0dpi_.*$", kept.df$X2, invert = T),] # remove day 0 samples
+               return(kept.df)
            })
-## OLD - remove after some days if everything works
-#r.c.s.l <-
-#    lapply(keep.val,
-#           function (x){
-#               kept.df <- Ef.RC[[3]][rowSums(Ef.RC[[3]])>x, ]
-#               kept.df <- melt(kept.df)
-#               return(kept.df)
-#           })
-
 
 density.plots <-
     lapply(seq_along(r.c.s.l),
@@ -162,7 +154,7 @@ density.plots <-
                    stat_density(geom="line") +
                    facet_wrap(~X2)+ 	# makes gray box on top of each plot
 		   scale_x_log10("Read counts (log10)",
-			labels = trans_format("log10",
+			labels = scales::trans_format("log10",
 			math_format(10^.x))) +
 	   	   theme(axis.text = element_text(size = 16),
 			 axis.line = element_line(colour = "black", size=2),
