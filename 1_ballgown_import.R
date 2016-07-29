@@ -102,3 +102,25 @@ raw.counts.4.bg <- function(bg){
 All.RC <- raw.counts.4.bg(All.bg)
 Mm.RC <- raw.counts.4.bg(Mm.bg)
 Ef.RC <- raw.counts.4.bg(Ef.bg)
+
+## Create tables and analyse for sample exclusion: A_data_curation.R
+## Now exclude those samples
+Mm.bg <- subset(Mm.bg,
+                !pData(Mm.bg)$samples%in%c("NMRI_2ndInf_3dpi_rep1",
+                                           "NMRI_2ndInf_5dpi_rep2",
+                                           "NMRI_1stInf_0dpi_rep1"),
+                genomesubset=FALSE)
+Mm.RC <- raw.counts.4.bg(Mm.bg)
+
+Ef.bg <- subset(Ef.bg,
+                !pData(Ef.bg)$samples%in%c("NMRI_2ndInf_3dpi_rep1",
+                                           "NMRI_2ndInf_5dpi_rep2",
+                                           "NMRI_1stInf_0dpi_rep1"),
+                genomesubset=FALSE)
+Ef.RC <- raw.counts.4.bg(Ef.bg)
+
+write.table(Mm.RC[[3]], "output_data/RC_Mm_genes.csv", sep=",")
+write.table(Ef.RC[[3]], "output_data/RC_Ef_genes.csv", sep=",")
+
+write.table(pData(Ef.bg), "output_data/Ef_sample_pData.csv", sep=",")
+write.table(pData(Mm.bg), "output_data/Mm_sample_pData.csv", sep=",")

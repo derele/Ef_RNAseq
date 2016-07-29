@@ -2,9 +2,9 @@
 ## a TopTags (edgeR) object listing genes tested for differential
 ## expression
 
-if(!exists("Ef.1st.pass.model")){ #Totta changes Mm to Ef here
-    source("2_edgeR_diff.R")
-}
+Mm.DE.test <- read.table("output_data/Mm_DEtest.csv", sep=",")
+Ef.DE.test <- read.table("output_data/Ef_DEtest.csv", sep=",")
+
 
 ## The Bioconductor mouse annotation libary
 library(Mus.musculus)
@@ -32,14 +32,14 @@ gene2GO[["Mm"]] <- by(annot.frame, annot.frame$ensembl_id,
                       function(x) as.character(x$go_id))
 ## define the universe of tested genes
 gene2GO[["Mm"]] <- gene2GO[["Mm"]][names(gene2GO[["Mm"]])%in%
-                                       rownames(Mm.1st.pass.model[[1]])]
+                                   unique(Mm.DE.test$gene)]
 
 
 go_Ef <- read.csv("data/12864_2014_6777_GO-annot.csv")
 
 gene2GO[["Ef"]] <- by(go_Ef, go_Ef$gene, function(x) as.character(x$go))
 gene2GO[["Ef"]] <- gene2GO[["Ef"]][names(gene2GO[["Ef"]])%in%
-                                       rownames(Ef.1st.pass.model[[1]])]
+                                   unique(Ef.DE.test$gene)]
 
 ### ORTHOMCL categories
 

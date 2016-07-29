@@ -1,39 +1,23 @@
 #### DIFFERENTIAL GENE EXPRESSION ANALYSIS
-
 ## needed from data import script are two raw count objects 
+Mm.RC <- as.matrix(read.table("output_data/RC_Mm_genes.csv", sep=","))
+Ef.RC <- as.matrix(read.table("output_data/RC_Ef_genes.csv", sep=","))
 
-#source("https://bioconductor.org/biocLite.R")
-if(!exists("Mm.RC")|!exists("Ef.RC")){
-    source("1_ballgown_import.R")
-}
-
+Ef.pData <- read.table("output_data/Ef_sample_pData.csv", sep=",")
+Mm.pData <- read.table("output_data/Mm_sample_pData.csv", sep=",")
 
 library(statmod)
 library(edgeR)
 library(GGally)
 library(RUVSeq)
 library(reshape)
-
-## Implement the sample exclusion (see A_data_curation.R)
-Mm.bg <- subset(Mm.bg,
-                !pData(Mm.bg)$samples%in%c("NMRI_2ndInf_3dpi_rep1",
-                                           "NMRI_2ndInf_5dpi_rep2",
-                                           "NMRI_1stInf_0dpi_rep1"),
-                genomesubset=FALSE)
-Mm.RC <- raw.counts.4.bg(Mm.bg)
-
-Ef.bg <- subset(Ef.bg,
-                !pData(Ef.bg)$samples%in%c("NMRI_2ndInf_3dpi_rep1",
-                                           "NMRI_2ndInf_5dpi_rep2",
-                                           "NMRI_1stInf_0dpi_rep1"),
-                genomesubset=FALSE)
-Ef.RC <- raw.counts.4.bg(Ef.bg)
+library(plyr)
 
 ## use the alternate design like recommended by the EdgR manual (or
 ## eg. here: https://support.bioconductor.org/p/66952/) and specifiy
 ## interactions as contrasts!
-Ef.design <- model.matrix(~0+pData(Ef.bg)$grouped)
-colnames(Ef.design)  <- gsub("pData\\(Ef.bg\\)\\$grouped", "",
+Ef.design <- model.matrix(~0+Ef.pData$grouped)
+colnames(Ef.design)  <- gsub("Ef.pData\\$grouped", "",
                              colnames(Ef.design))
 ## just to have the standard point delimitor
 colnames(Ef.design)  <- gsub("_", ".",
@@ -74,9 +58,9 @@ Ef.contrasts <- makeContrasts(
 ## use the alternate design like recommended by the EdgR manual (or
 ## eg. here: https://support.bioconductor.org/p/66952/) and specifiy
 ## interactions as contrasts!
-Mm.design <- model.matrix(~0+pData(Mm.bg)$grouped)
+Mm.design <- model.matrix(~0+Mm.pData$grouped)
 
-colnames(Mm.design)  <- gsub("pData\\(Mm.bg\\)\\$grouped", "",
+colnames(Mm.design)  <- gsub("Mm.pData\\$grouped", "",
                              colnames(Mm.design))
 ## just to have the standard point delimitor
 colnames(Mm.design)  <- gsub("_", ".",
@@ -146,14 +130,14 @@ get.my.models <- function (RC, cutoff, group,
 
 ## filter: with 3000 as cutoff, bimodal distr. almost not visible (see
 ## A_data_curation.R)
-Mm.1st.pass.model <- get.my.models(Mm.RC[[3]], cutoff=3000,
-                                   group = pData(Mm.bg)$grouped,
+Mm.1st.pass.model <- get.my.models(Mm.RC, cutoff=3000,
+                                   group = Mm.pData$grouped,
                                    contrasts=Mm.contrasts,
                                    design=Mm.design,
                                    norm="upperquartile")
 
-Ef.1st.pass.model <- get.my.models(Ef.RC[[3]], cutoff=100,
-                                   group = pData(Ef.bg)$grouped,
+Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=100,
+                                   group = Ef.pData$grouped,
                                    contrasts=Ef.contrasts,
                                    design=Ef.design,
                                    norm="upperquartile")
@@ -167,23 +151,38 @@ get.RUVed.data <- function(RC, cutoff, group){
     RUVs(RUVset, rownames(RUVset), k=1, makeGroups(group))
 }
 
-Mm.RUVset.groups <- get.RUVed.data(Mm.RC[[3]], cutoff = 3000,
-                                   pData(Mm.bg)$grouped)
+Mm.RUVset.groups <- get.RUVed.data(Mm.RC, cutoff = 3000,
+                                   Mm.pData$grouped)
 
-Ef.RUVset.groups <- get.RUVed.data(Ef.RC[[3]], cutoff = 100,
-                                   pData(Ef.bg)$grouped)
+Ef.RUVset.groups <- get.RUVed.data(Ef.RC, cutoff = 100,
+                                   Ef.pData$grouped)
 
 Mm.RUVg.model <- get.my.models(normCounts(Mm.RUVset.groups),
                                cutoff=3000, ## no further cut off
-                               group = pData(Mm.bg)$grouped,
+                               group = Mm.pData$grouped,
                                contrasts=Mm.contrasts,
                                design=Mm.design, norm=NULL)
 
 Ef.RUVg.model <- get.my.models(normCounts(Ef.RUVset.groups),
                                cutoff=100, ## no further cut off
-                               group = pData(Ef.bg)$grouped,
+                               group = Ef.pData$grouped,
                                contrasts=Ef.contrasts,
                                design=Ef.design, norm=NULL)
+
+
+Mm.DE.test <- do.call(rbind, Mm.1st.pass.model[[2]])
+Mm.DE.test$contrast <- gsub("(.*)\\.(ENSMUS.*?)$", "\\1", rownames(Mm.DE.test))
+Mm.DE.test$gene <- gsub("(.*)\\.(ENSMUS.*?)$", "\\2", rownames(Mm.DE.test))
+Mm.DE.test <- Mm.DE.test[, c("contrast", "gene", "logFC", "logCPM", "LR", "PValue", "FDR")]
+
+Ef.DE.test <- do.call(rbind, Ef.1st.pass.model[[2]])
+Ef.DE.test$contrast <- gsub("(.*)\\.(EfaB_.*?)$", "\\1", rownames(Ef.DE.test))
+Ef.DE.test$gene <- gsub("(.*)\\.(EfaB_.*?)$", "\\2", rownames(Ef.DE.test))
+Ef.DE.test <- Ef.DE.test[, c("contrast", "gene", "logFC", "logCPM", "LR", "PValue", "FDR")]
+
+
+write.table(Mm.DE.test, "output_data/Mm_DEtest.csv", sep=",")
+write.table(Ef.DE.test, "output_data/Ef_DEtest.csv", sep=",")
 
 ## how many genes are regulated:
 cbind(melt(lapply(Mm.1st.pass.model[[3]], length)),
@@ -191,5 +190,10 @@ cbind(melt(lapply(Mm.1st.pass.model[[3]], length)),
 
 cbind(melt(lapply(Ef.1st.pass.model[[3]], length)),
       melt(lapply(Ef.RUVg.model[[3]], length)), by = "L1")[,c(1,3,4)]
-      
 
+## test for consistency with suppl file data:
+
+by(Mm.DE.test, Mm.DE.test$contrast, function (x) table(x$FDR<0.01))
+by(Ef.DE.test, Ef.DE.test$contrast, function (x) table(x$FDR<0.01))
+
+## they do
