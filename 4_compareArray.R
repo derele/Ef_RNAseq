@@ -4,15 +4,6 @@
 ## of IFNg-regulated host pathways for the parasite development"
 ## DOI:10.1038/mi.2013.115
 
-#source("https://bioconductor.org/biocLite.R")
-# Check checkpoint package for package control.
-#if(!require(Biobase)) biocLite("Biobase") # Imports package if user does not have it
-#if(!require(RSvgDevice)) biocLite("RSvgDevice") # Imports package if user does not have it
-#if(!require(GGally)) biocLite("GGally") # Imports package if user does not have it
-#if(!require(ggplot2)) biocLite("ggplot2") # Imports package if user does not have it
-## For below package does not always work: then manual import is necessary
-#if(!require(mgug4122a.db)) biocLite("mgug4122a.db") # Imports package if user does not have it
-
 library(mgug4122a.db)
 library(Agi4x44PreProcess) # !!!! NOT available for R 3.3.0 - NOT on Bioconductor anymore
 library(Biobase)
@@ -20,15 +11,17 @@ library(RSvgDevice)
 library(GGally)
 library(ggplot2)
 
-if(!exists("Mm.1st.pass.model")){
-    source("2_edgeR_diff.R")
-}
+## read the fold-change data for mouse
+Mm.DE.test <- read.table("output_data/Mm_DEtest.csv", sep=",")
 
-if(!exists("gene2GO")){
-    source("3_annotations.R")
-}
+## make it wider format to merge with array results (bleow)
+Mm.DE.FC <- Mm.DE.test[, c("contrast", "gene", "logFC")]
+Mm.DE.FC <- reshape(Mm.DE.FC, idvar = "gene", timevar = "contrast", direction="wide")
 
-targets <- readTargets("/SAN/Mouse_arrays/2012_arrays/targets.txt", sep=";")
+### getting all the annotation names to be able to merge based on them
+annot.frame <- read.table("output_data/annotation_data.csv", sep=",")
+
+targets <- readTargets("data/targets.txt", sep=";")
 
 RG <- read.maimages(targets, path= "/SAN/Mouse_arrays/2012_arrays/", source = "agilent", 
                     other.columns = list(IsFound = "gIsFound",
@@ -98,36 +91,32 @@ fit2.g <- eBayes(fit2.g)
 
 Array.logFC <- topTable(fit2.g, n=400000)[, c("X24h", "X144h")]
 
-RNAseq.logFC <- as.data.frame(Mm.1st.pass.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
-                                                         "logFC.N7vs0", "logFC.B5vs0",
-                                                         "logFC.R5vs0" )])
+## RNAseq.logFC <- as.data.frame(Mm.1st.pass.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
+##                                                          "logFC.N7vs0", "logFC.B5vs0",
+##                                                          "logFC.R5vs0" )])
 
+## RuvSeq at the moment not tested
 RNAseq.logFC.ruved <- as.data.frame(Mm.RUVg.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
                                                            "logFC.N7vs0", "logFC.B5vs0",
-                                                           "logFC.R5vs0" )])
 
-### getting all the annotation names to be able to merge
-RNAseq.logFC <- merge(RNAseq.logFC, RNAseq.logFC.ruved, by = 0)
+## RuvSeq at the moment not tested
+## RNAseq.logFC <- merge(RNAseq.logFC, RNAseq.logFC.ruved, by = 0)
 
 Array.logFC <- merge(annot.frame[,1:3], Array.logFC, 
                      by.x = "symbol", by.y = 0)
 
-RNAseq.Array.logFC <- merge(RNAseq.logFC, Array.logFC[,c("ensembl_id", "X24h", "X144h")],
-                            by.x = "Row.names", by.y = "ensembl_id")
+RNAseq.Array.logFC <- merge(Array.logFC[,c("ensembl_id", "X24h", "X144h")], Mm.DE.FC, 
+                            by.x = "ensembl_id", by.y = "gene")
 
-names(RNAseq.Array.logFC) <- gsub(".x", ".plain", names(RNAseq.Array.logFC))
-names(RNAseq.Array.logFC) <- gsub(".y", ".ruved", names(RNAseq.Array.logFC))
+## RuvSeq at the moment not tested
+## names(RNAseq.Array.logFC) <- gsub(".x", ".plain", names(RNAseq.Array.logFC))
+## names(RNAseq.Array.logFC) <- gsub(".y", ".ruved", names(RNAseq.Array.logFC))
 
 ## Very interesting...
-cor(RNAseq.Array.logFC[,2:13])
-cor(RNAseq.Array.logFC[,2:13], method="spearman")
+cor(RNAseq.Array.logFC[,2:20], method="pearson")[,1:2]
 
-pdf("figures/Array_vs_RNAseq_pairs.pdf")
-ggpairs(RNAseq.Array.logFC[, 2:13], mapping=aes(alpha=0.2)) + theme_bw()
-dev.off()
-
-pdf("figures/Array144vsRNAseqN7.pdf")
-ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
+pdf("figuresANDmanuscript/Array144vsRNAseqN7.pdf")
+ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +
   geom_point(alpha=0.8) +
   stat_density2d(aes(fill=..level..), size=2, geom="polygon") +
   scale_fill_gradient(low = "yellow", high = "red") +
@@ -136,15 +125,16 @@ ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.plain)) +
   theme_bw()
 dev.off()
 
-pdf("figures/Array144vsRNAseqN7_ruved.pdf")
-ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.ruved)) +
-  geom_point(alpha=0.8) +
-  stat_density2d(aes(alpha=..level.., fill=..level..), size=2,
-                 geom="polygon") +
-  scale_fill_gradient(low = "yellow", high = "red") +
-  scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
-  stat_smooth() +
-  theme_bw()
-dev.off()
+## RuvSeq at the moment not tested
+## pdf("figures/Array144vsRNAseqN7_ruved.pdf")
+## ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.ruved)) +
+##   geom_point(alpha=0.8) +
+##   stat_density2d(aes(alpha=..level.., fill=..level..), size=2,
+##                  geom="polygon") +
+##   scale_fill_gradient(low = "yellow", high = "red") +
+##   scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
+##   stat_smooth() +
+##   theme_bw()
+## dev.off()
 
 

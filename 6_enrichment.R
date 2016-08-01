@@ -12,14 +12,31 @@ if(!exists("hcluster")){
     source("5_clustering.R")
 }
 
-if(!exists("gene2GO")){
-    source("3_annotations.R")
-}
+annotation.frame <- read.table("output_data/annotation_data", sep=",")
 
-## the universe of genes which were tested at all:
+## just to get the universe of genes which were tested at all:
+Mm.DE.test <- read.table("output_data/Mm_DEtest.csv", sep=",")
+Ef.DE.test <- read.table("output_data/Ef_DEtest.csv", sep=",")
+
+gene2GO <- list()
+gene2GO[["Mm"]] <- by(annot.frame, annot.frame$ensembl_id,
+                      function(x) as.character(x$go_id))
+## the universe of genes which were tested at all
+gene2GO[["Mm"]] <- gene2GO[["Mm"]][names(gene2GO[["Mm"]])%in%
+                                   unique(Mm.DE.test$gene)]
+
+
+go_Ef <- read.csv("data/12864_2014_6777_GO-annot.csv")
+
+gene2GO[["Ef"]] <- by(go_Ef, go_Ef$gene, function(x) as.character(x$go))
+## the universe of genes which were tested at all
+gene2GO[["Ef"]] <- gene2GO[["Ef"]][names(gene2GO[["Ef"]])%in%
+                                   unique(Ef.DE.test$gene)]
+
 exp.universe <- list()
 exp.universe[["Mm"]] <- names(gene2GO[["Mm"]])
 exp.universe[["Ef"]] <- names(gene2GO[["Ef"]])
+
 
 
 #### We search for enrichment of genes from clustering 

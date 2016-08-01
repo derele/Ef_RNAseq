@@ -2,10 +2,6 @@
 ## a TopTags (edgeR) object listing genes tested for differential
 ## expression
 
-Mm.DE.test <- read.table("output_data/Mm_DEtest.csv", sep=",")
-Ef.DE.test <- read.table("output_data/Ef_DEtest.csv", sep=",")
-
-
 ## The Bioconductor mouse annotation libary
 library(Mus.musculus)
 
@@ -24,22 +20,6 @@ library(Mus.musculus)
 }
 
 annot.frame <- .get.annot.frame()
-
-## ensembl2GO contains the mapping of ensembllink ids to GO terms
-gene2GO <- list()
-
-gene2GO[["Mm"]] <- by(annot.frame, annot.frame$ensembl_id,
-                      function(x) as.character(x$go_id))
-## define the universe of tested genes
-gene2GO[["Mm"]] <- gene2GO[["Mm"]][names(gene2GO[["Mm"]])%in%
-                                   unique(Mm.DE.test$gene)]
-
-
-go_Ef <- read.csv("data/12864_2014_6777_GO-annot.csv")
-
-gene2GO[["Ef"]] <- by(go_Ef, go_Ef$gene, function(x) as.character(x$go))
-gene2GO[["Ef"]] <- gene2GO[["Ef"]][names(gene2GO[["Ef"]])%in%
-                                   unique(Ef.DE.test$gene)]
 
 ### ORTHOMCL categories
 
@@ -163,9 +143,7 @@ get.omcl.categories <- function(ortho.obj){
 gene.cluster.category <- get.omcl.categories(omcl)
 
 #####  objects created here for further use:
-## 1. annot.frame - a data frame containing coprehensive annotation information
-## 2. gene2GO - a list linking cufflinks ids to GO terms for both mouse and Eimeria
+write.table(annot.frame, "output_data/annotation_data.csv", sep=",")
+write.table(gene.cluster.category, "output_data/gene_family_category.csv", sep=",")
 
-## 3. gene.cluster.category - a categorization of genes, gene families
-## (clusters) into phylogenetic categories of "novelty"
 
