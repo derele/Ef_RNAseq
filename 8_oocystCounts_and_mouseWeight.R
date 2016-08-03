@@ -75,8 +75,8 @@ weight.averages <- ggplot(subset(phen.summary,phen.summary$Phenotype %in% "Norma
                           aes(x = Day_pi, y = value.mean, col = factor(Mouse_strain))) +
   geom_errorbar(x = Day_pi, ymax = phen.summary$value.mean + phen.summary$value.sd,
                     ymin = phen.summary$value.mean - phen.summary$value.sd) +
-  geom_line(aes(linetype = Inf_number)) +
-  geom_point() +
+  #geom_line(aes(linetype = Inf_number)) +
+  geom_point(aes(symbols = Inf_number)) +
   theme_bw(20) +
   theme(panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(), 
@@ -111,7 +111,7 @@ oocysts.averages <- ggplot(subset(phen.summary,
                      #breaks = seq(0, 6000000, 2000000),
                      #limits = c(0, 4000000)) +
   scale_x_continuous("Day post infection", breaks = seq(0, 15, 3)) + 
-  #scale_colour_discrete("Infection") +
+  scale_colour_discrete("Strain") +
   ggtitle("Parasite load by immune status")
 
 ggsave("figuresANDmanuscript/oocyst_averages.png", plot = oocysts.averages)

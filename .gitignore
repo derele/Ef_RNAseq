@@ -79,3 +79,8 @@ figuresANDmanuscript/immuneVSrag_oocysts.png
 /figuresANDmanuscript/manuscriptBMCformat/manuscript_rnaseq.blg
 =======
 >>>>>>> ce7a348a5c7d0ee80f8fe6f44b4b32d973ca1d8f
+
+data/NMRI_1st_2nd_qPCR_frSS_ctref_long.csv
+data/NMRI_1st_2nd_qPCR_frSS_long.csv
+test-using-delta3dpidelta-mean.png
+
