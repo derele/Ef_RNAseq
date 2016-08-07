@@ -28,7 +28,8 @@ add.pdata <- function (ballgown.obj){
     ## variables to summarize other variables sith mutliple levels into two levels ##
     immune.status <- ifelse(mouse.strain %in% "Rag", "Rag", "competent")
     late.early <- ifelse(timepoint < 7 , "early", "late")
-    batch <- c(3, 3, 3, 3, 3, 1, 1, 100, 2, 2, 0, 1, 1, 2, 3, 3, 3, 2, 3, 3, 3, 1, 0, 1, 0, 3, 3, 3, 3, 3)
+    batch <- c(3, 3, 3, 3, 3, 1, 1, 2, 2, 2, 0, 1, 1, 2,
+               3, 3, 3, 2, 3, 3, 3, 1, 0, 1, 0, 3, 3, 3, 3, 3)
     seq.method <- c("hiseq", "hiseq", "hiseq", "hiseq", "hiseq",
                "GAII", "GAII", "GAII", "GAII", "GAII", "GAII", "GAII", "GAII", "GAII",
                "hiseq", "hiseq", "hiseq",
@@ -66,7 +67,7 @@ Ef.bg <- subset(Ef.bg,
 ## the ballgown objects
 
 raw.counts.4.bg <- function(bg){
-    exon.raw.count <- eexpr(bg, "ucount")
+    exon.raw.count <- eexpr(bg, "mrcount") ## ucount
     ## the linkage data
     e2t <- bg@indexes$e2t
     t2g <- bg@indexes$t2g
@@ -121,6 +122,9 @@ Ef.RC <- raw.counts.4.bg(Ef.bg)
 
 write.table(Mm.RC[[3]], "output_data/RC_Mm_genes.csv", sep=",")
 write.table(Ef.RC[[3]], "output_data/RC_Ef_genes.csv", sep=",")
+write.table(All.RC[[3]], "output_data/RC_All_genes.csv", sep=",")
+
 
 write.table(pData(Ef.bg), "output_data/Ef_sample_pData.csv", sep=",")
 write.table(pData(Mm.bg), "output_data/Mm_sample_pData.csv", sep=",")
+write.table(pData(All.bg), "output_data/Sample_pData.csv", sep=",")

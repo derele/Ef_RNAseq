@@ -5,7 +5,7 @@
 "4","C57BL6_1stInf_5dpi_rep2","C57BL6_1stInf_5dpi","1st","rep2","C57BL6",5,"competent","early",3,"hiseq","C57BL6_1stInf_5dpi_rep2 hiseq"
 "5","C57BL6_2ndInf_5dpi_rep1","C57BL6_2ndInf_5dpi","2nd","rep1","C57BL6",5,"competent","early",3,"hiseq","C57BL6_2ndInf_5dpi_rep1 hiseq"
 "7","NMRI_1stInf_3dpi_rep1","NMRI_1stInf_3dpi","1st","rep1","NMRI",3,"competent","early",1,"GAII","NMRI_1stInf_3dpi_rep1 GAII"
-"8","NMRI_1stInf_3dpi_rep2","NMRI_1stInf_3dpi","1st","rep2","NMRI",3,"competent","early",100,"GAII","NMRI_1stInf_3dpi_rep2 GAII"
+"8","NMRI_1stInf_3dpi_rep2","NMRI_1stInf_3dpi","1st","rep2","NMRI",3,"competent","early",2,"GAII","NMRI_1stInf_3dpi_rep2 GAII"
 "9","NMRI_1stInf_5dpi_rep1","NMRI_1stInf_5dpi","1st","rep1","NMRI",5,"competent","early",2,"GAII","NMRI_1stInf_5dpi_rep1 GAII"
 "10","NMRI_1stInf_5dpi_rep2","NMRI_1stInf_5dpi","1st","rep2","NMRI",5,"competent","early",2,"GAII","NMRI_1stInf_5dpi_rep2 GAII"
 "11","NMRI_1stInf_5dpi_rep3","NMRI_1stInf_5dpi","1st","rep3","NMRI",5,"competent","early",0,"GAII","NMRI_1stInf_5dpi_rep3 GAII"

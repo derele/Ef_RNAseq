@@ -1,6 +1,5 @@
-## This is a script which is not part of the pipeline but needed for
-## evaluation purpose -> only "insight" gained from this is transfered
-## to the numberd scripts which are part of the processing pipeline
+## This is a script is 2nd the pipeline and needed for evaluation
+## purpose
 
 ## Goals:
 
@@ -29,46 +28,86 @@
 ## a) decide for samples needed to be excluede because of uncertain
 ## infection status
 
-##object required from upstream scripts:
+## The raw counts  required from upstream scripts:
+## GENES
+## All.RC <- as.matrix(read.table("output_data/RC_All_genes.csv", sep=","))
 
-## The raw counts:
-if(!exists("All.RC")|!exists("Mm.RC")|!exists("Ef.RC")){
-    source("1_ballgown_import.R")
-}
+## TRANSCRIPTS
+All.RC <- as.matrix(read.table("output_data/RC_All_genes.csv", sep=","))
+
+## The phenotype information
+All.pData <- read.table("output_data/Sample_pData.csv", sep=",")
 
 library(ggplot2)
 library(reshape)
 library(gridExtra)
+library(xtable)
 
 ## Overview for differential representation of host/parasite
-RC.table <-  as.data.frame(cbind(sample=as.character(pData(All.bg)$samples),
-                                 seq.method=as.character(pData(All.bg)$seq.method),
-                                 batch=pData(All.bg)$batch))
+RC.table <-  as.data.frame(cbind(sample=as.character(All.pData$samples),
+                                 seq.method=as.character(All.pData$seq.method),
+                                 batch=All.pData$batch))
 
-RC.table$c.total.reads <- colSums(All.RC[[3]])
+## get the total read count.
+## see README_fastq_linecount.txt on how this file was produced    
+## rawfastqRC <- readLines("/SAN/Eimeria_Totta/fastq_linecounts.txt")
 
-RC.table$c.Mm.reads <- colSums(All.RC[[3]][grepl('^ENSMUS.*', rownames(All.RC[[3]])),])
+## fastqRC <- rawfastqRC[seq(1, length(rawfastqRC), by=2)+1]
+## fastqRC <- as.numeric(as.character(fastqRC))/4
 
-RC.table$c.Ef.reads <- colSums(All.RC[[3]]
-                                [grepl('^EfaB.*', rownames(All.RC[[3]])),])
+## names(fastqRC) <- rawfastqRC[seq(1, length(rawfastqRC), by=2)]
+## names(fastqRC) <- gsub("^.*?\\/(.*rep\\d).*", "\\1", names(fastqRC) )
 
-RC.table$p.Ef.reads <- round(RC.table$c.Ef.reads/RC.table$c.total.reads*100, 4)
+## RC.table <- merge(RC.table, fastqRC, by.x="sample", by.y=0)
+## names(RC.table)[ncol(RC.table)] <- "c.seq.reads"
+
+## RC.table$c.seq.reads <- ifelse(RC.table$seq.method%in%"GAIIX",
+##                                RC.table$c.seq.reads*2, # paired end
+##                                RC.table$c.seq.reads) #single end
+
+## this is total reads mapped not total reads!!!
+RC.table$c.mapping.counts <- colSums(All.RC)
+
+## wtf more reads mapped than sequenced
+## RC.table$wtf <- RC.table$c.seq.reads - RC.table$c.mapped.reads
+## or percent wtf
+## RC.table$perc.wtf <- (RC.table$wtf/RC.table$c.seq.reads*-1)*100
+
+RC.table$c.Mm.reads <- colSums(All.RC[grepl('^ENSMUS.*', rownames(All.RC)),])
+
+RC.table$c.Ef.reads <- colSums(All.RC
+                                [grepl('^EfaB.*', rownames(All.RC)),])
+
+RC.table$p.Ef.reads <- round(RC.table$c.Ef.reads/RC.table$c.mapping.counts*100, 4)
+
+RC.table$dpi <- gsub(".*?(\\ddpi).*", "\\1", RC.table$sample)
+
+RC.table$challenged <- ifelse(grepl("2ndInf", RC.table$sample), "Callenge",
+                       ifelse(grepl("0dpi", RC.table$sample), "None",
+                       ifelse(grepl("1stInf", RC.table$sample), "First",
+                              "environmental")))
+
+RC.table$dpi[RC.table$challenged%in%"environmental"] <- "environmental"
 
 ## plotting parasite percentage of reads
-ef.percentage <- ggplot(RC.table, aes(x = sample, y = p.Ef.reads,
-                                      color=seq.method)) +
-    geom_point()+
-    scale_y_log10()+
-    ylab(label="Percentage of reads mapping to Eimeria genome") +
-    xlab(label="Sample") +
-    ggtitle("Eimeria fraction of total sequences per sample") +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
-ggsave("ef.percentage.png", ef.percentage, path = "figures", width = 10)
+pdf("figuresANDmanuscript/Ef.percentage.pdf")
+ggplot(RC.table, aes(x = dpi, y = p.Ef.reads,
+                     color=challenged)) +
+    geom_jitter(size=4, width=0.35, alpha=0.6)+
+    scale_y_log10(breaks = scales::trans_breaks("log10", function(x) 10^x),
+                  labels = scales::trans_format("log10", scales::math_format(10^.x)))+
+    annotation_logticks(sides="lr") +
+    ylab(label="Percentage of reads mapping to Eimeria genome") +
+    xlab(label="Time after infection") +
+    ggtitle("Eimeria fraction of total sequences per sample") +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+    theme_bw()
+dev.off()
 
 ## taking a minimum of 5 reads as evidence of expression
-RC.table$c.Ef.genes <- colSums(All.RC[[3]]
-                               [grepl('^EfaB.*', rownames(All.RC[[3]])),]>5)
+RC.table$c.Ef.genes <- colSums(All.RC
+                               [grepl('^EfaB.*', rownames(All.RC)),]>5)
 
 ## -> NMRI_1stInf_0dpi_rep1 has to be excluded from the mouse and
 ## parasite dataset because of uncretain infection status
@@ -80,25 +119,16 @@ RC.table$c.Ef.genes <- colSums(All.RC[[3]]
 keep.val <- c(0, 100, 1000, 2000, 3000, 5000)
 names(keep.val) <- keep.val
 
-## Original function
-#r.c.s.l <-
-#    lapply(keep.val,
-#           function (x){
-#               kept.df <- Mm.RC[[3]][rowSums(Mm.RC[[3]])>x, ]
-#               kept.df <- melt(kept.df)
-#               return(kept.df)
-#           })
-
-## Totta's fix to have data plotted with all (not already removed) samples:
 r.c.s.l <-
     lapply(keep.val,
            function (x){
                ## add tiny number to be able to plot transcripts with zero reads mapping
-               Mm.RCtemp <- All.RC[[3]][grepl('^ENSMUS.*', rownames(All.RC[[3]])),]+ 0.1 
+               Mm.RCtemp <- All.RC[grepl('^ENSMUS.*', rownames(All.RC)),]+ 0.1 
                kept.df <- Mm.RCtemp[rowSums(Mm.RCtemp)>x,]       
                kept.df <- melt(kept.df)
                ## remove ooc and sporo samples
-               kept.df <- kept.df[grep("^.*_(oocysts|sporozoites)_.*$", kept.df$X2, invert = T),] 
+               kept.df <- kept.df[grep("^.*_(oocysts|sporozoites)_.*$",
+                                       kept.df$X2, invert = T),] 
                return(kept.df)
            })
 
@@ -111,8 +141,8 @@ density.plots <-
                    stat_density(geom="line") +
                    facet_wrap(~X2)+ 	# makes gray box on top of each plot
 		   scale_x_log10("Read counts (log10)",
-			labels = trans_format("log10",
-			math_format(10^.x))) +
+			labels = scales::trans_format("log10",
+                                                      scales::math_format(10^.x))) +
 	   	   theme(axis.text = element_text(size = 16),
 			 axis.line = element_line(colour = "black", size=2),
 			 plot.title = element_text(size = 20),
@@ -125,7 +155,7 @@ density.plots <-
                                names(r.c.s.l)[[i]]))
            })
 
-pdf("figures/distributionsMm.pdf", width = 27, height = 21)
+pdf("figuresANDmanuscript/distributionsMm.pdf", width = 27, height = 21)
 do.call(grid.arrange, c(density.plots, list(nrow=2)))
 dev.off()
 
@@ -139,7 +169,7 @@ names(keep.val) <- keep.val
 r.c.s.l <-
     lapply(keep.val,
            function (x){
-               Ef.RCtemp <- All.RC[[3]][grepl('^EfaB.*', rownames(All.RC[[3]])),] + 0.1 # add tiny number to be able to plot transcripts with zero reads mapping	
+               Ef.RCtemp <- All.RC[grepl('^EfaB.*', rownames(All.RC)),] + 0.1 # add tiny number to be able to plot transcripts with zero reads mapping	
                kept.df <- Ef.RCtemp[rowSums(Ef.RCtemp)>x,]       
                kept.df <- melt(kept.df)
                kept.df <- kept.df[grep("^.*_0dpi_.*$", kept.df$X2, invert = T),] # remove day 0 samples
@@ -150,12 +180,12 @@ density.plots <-
     lapply(seq_along(r.c.s.l),
            function(i){
                ggplot(r.c.s.l[[i]],
-                   aes(value, ..density..)) + 
+                      aes(value, ..density..)) + 
                    stat_density(geom="line") +
                    facet_wrap(~X2)+ 	# makes gray box on top of each plot
-		   scale_x_log10("Read counts (log10)",
-			labels = scales::trans_format("log10",
-			math_format(10^.x))) +
+                   scale_x_log10("Read counts (log10)",
+                                 labels = scales::trans_format("log10",
+                                                               scales::math_format(10^.x))) +
 	   	   theme(axis.text = element_text(size = 16),
 			 axis.line = element_line(colour = "black", size=2),
 			 plot.title = element_text(size = 20),
@@ -168,7 +198,7 @@ density.plots <-
                                names(r.c.s.l)[[i]]))
            })
                
-pdf("figures/distributionsEf.pdf", width = 27, height = 21)
+pdf("figuresANDmanuscript/distributionsEf.pdf", width = 27, height = 21)
 do.call(grid.arrange, c(density.plots, list(nrow=2)))
 dev.off()
 
@@ -190,28 +220,24 @@ ggplot(foo,
 ## "NMRI_2ndInf_5dpi_rep2" both samples are below the number of reads
 ## (and percentage) of the "NMRI_1stInf_0dpi_rep1" sample which is
 ## excluded for uncertain infection status. See:
-RC.table[order(RC.table$c.Ef.reads),]
+RC.table <- RC.table[order(RC.table$c.Ef.reads),]
 
-RC.table[order(RC.table$p.Ef.reads),]
+table.cleaned <- RC.table[, c("sample", "seq.method", "batch",
+                              "c.Mm.reads", "c.Ef.reads",
+                              "p.Ef.reads", "dpi", "challenged",
+                              "c.Ef.genes")]
 
-table.cleaned <- RC.table[,c(1,5,6,7,8)]
 ## Pretty names for tex
+names(table.cleaned) <- sub("^seq.method$", "Sequencing method", names(table.cleaned))
 names(table.cleaned) <- sub("^sample$", "Sample", names(table.cleaned))
-names(table.cleaned) <- sub("^c.Mm.reads$", "Mouse transcripts", names(table.cleaned))
-names(table.cleaned) <- sub("^c.Ef.reads$", "E. falciformis transcripts", names(table.cleaned))
+names(table.cleaned) <- sub("^c.Mm.reads$", "read mappings Mouse", names(table.cleaned))
+names(table.cleaned) <- sub("^c.Ef.reads$", "read mappings E. falciformis", names(table.cleaned))
 names(table.cleaned) <- sub("^p.Ef.reads$", "Percentage E. falciformis", names(table.cleaned))
-names(table.cleaned) <- sub("^c.Ef.genes$", "#E. falciformis genes", names(table.cleaned))
-
-table.cleaned <- table.cleaned[order(table.cleaned[,4], decreasing = T),]
+names(table.cleaned) <- sub("^c.Ef.genes$", "# E. falciformis genes", names(table.cleaned))
 
 ## EXPORT to Latex format
-table.tex <- xtable(table.cleaned, align = c("l", "l", "l", "l", "l", "l"), digits = 3)
-print(table.tex, type = "latex", file = "figures/table_rc.tex", include.rownames = F)
+table.tex <- xtable(table.cleaned, align = c("l", "l", "l", "l", "l", "l", "l", "l", "l", "l"), digits = 3)
+print(table.tex, type = "latex", file = "figuresANDmanuscript/table_rc.tex", include.rownames = F)
 
-table.cleaned2 <- table.cleaned[order(table.cleaned[,1]),]
-
-## Same as above but only cols 1-3 and order of magnitutde in numbers
-table.tex2 <- xtable(table.cleaned2[,1:3], align = c("l", "l", "l", "l"), digits = -3)
-print(table.tex2, type = "latex", file = "figures/table_rc2.tex", include.rownames = F)
 
 

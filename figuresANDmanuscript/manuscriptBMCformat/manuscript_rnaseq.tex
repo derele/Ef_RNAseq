@@ -62,6 +62,9 @@
 \usepackage{float} % To control positions of e.g. tables or figures
 %\usepackage[section]{placeins}
 \usepackage{graphicx}
+
+% to color table rows
+\usepackage{color, colortbl}
 \graphicspath{ {../} }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -290,9 +293,9 @@ Additonally we obtained data for challenge infections of mice
 immunized one month prior to the experiment. For the parasite oocysts
 and sporozoites were included as ``environmental'' lifecycle stages.
 
-The number of sequencing reads obtained for individual replicates
-ranged from 21,517,055 (sample NMRI\_sporozoites\_rep2) to 593,396,312
-(NMRI\_2ndInf\_5dpi\_rep1).
+The number of sequence read mappings obtained for individual
+replicates ranged from 21,517,055 (sample NMRI\_sporozoites\_rep2) to
+593,396,312 (NMRI\_2ndInf\_5dpi\_rep1).
 
 As samples and idividual replicates were sequenced in batches to
 different depth and using different instrumentation (Table 1) we
@@ -318,6 +321,65 @@ non-detectable output in those animmals.
 On the other end of the spectrum mice not previously immunized
 featured an mRNA ``holo-transcriptome'' at 7dpi with the majority of
 mRNA originating from the parasite as opposed to the host (Figure 1).
+
+
+\newcommand{\bcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{LightRed}{rgb}{1,0.88,1}
+
+
+% latex table generated in R 3.3.1 by xtable 1.8-2 package
+% Fri Aug  5 13:00:01 2016
+\begin{table}[ht]
+\caption{Experimental design, sequencing output and mapping statistics.}
+\centering
+\hspace*{-1.5cm}\begin{tabular}{lllllllll}
+  \hline
+Sample & \bcell{Sequencing\\method} & batch & \bcell{read mappings\\Mouse} & \bcell{read mappings\\\textit{E. falciformis}} & \bcell{Percentage\\\textit{E. falciformis}} & dpi & infection  \\ 
+\hline
+  NMRI\_2ndInf\_0dpi\_rep1 & GAII & 2 & 285032128 & 326 & 0 & 0dpi & Challenge \\ 
+  Rag\_0dpi\_rep1 & hiseq & 3 & 43414004 & 474 & 0.001 & 0dpi & None \\ 
+  C57BL6\_0dpi\_rep1 & hiseq & 3 & 53877840 & 491 & 0.001 & 0dpi & None \\ 
+  C57BL6\_0dpi\_rep2 & hiseq & 3 & 76753491 & 657 & 0.001 & 0dpi & None \\ 
+  Rag\_0dpi\_rep2 & hiseq & 3 & 80702547 & 730 & 0.001 & 0dpi & None \\ 
+  NMRI\_2ndInf\_0dpi\_rep2 & hiseq & 3 & 90681785 & 3738 & 0.004 & 0dpi & Challenge \\ 
+  \rowcolor{LightCyan}
+  NMRI\_2ndInf\_3dpi\_rep1 & hiseq & 3 & 91352242 & 5355 & 0.006 & 3dpi & Challenge \\ 
+  \rowcolor{LightCyan}
+  NMRI\_2ndInf\_5dpi\_rep2 & hiseq & 3 & 113957667 & 12692 & 0.011 & 5dpi & Challenge \\ 
+  \rowcolor{LightRed}
+  NMRI\_1stInf\_0dpi\_rep1 & GAII & 1 & 229165002 & 31459 & 0.014 & 0dpi & None \\ 
+  NMRI\_2ndInf\_3dpi\_rep2 & hiseq & 3 & 106446839 & 34699 & 0.033 & 3dpi & Challenge \\ 
+  NMRI\_2ndInf\_7dpi\_rep2 & hiseq & 3 & 122999109 & 46700 & 0.038 & 7dpi & Challenge \\ 
+  Rag\_1stInf\_5dpi\_rep1 & hiseq & 3 & 71173382 & 73445 & 0.103 & 5dpi & First \\ 
+  Rag\_1stInf\_5dpi\_rep2 & hiseq & 3 & 57192380 & 113673 & 0.198 & 5dpi & First \\ 
+  C57BL6\_1stInf\_5dpi\_rep1 & hiseq & 3 & 65523435 & 217606 & 0.331 & 5dpi & First \\ 
+  Rag\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 85288323 & 224273 & 0.262 & 5dpi & Challenge \\ 
+  C57BL6\_1stInf\_5dpi\_rep2 & hiseq & 3 & 32887009 & 250954 & 0.757 & 5dpi & First \\ 
+  C57BL6\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 62053975 & 311900 & 0.500 & 5dpi & Challenge \\ 
+  NMRI\_1stInf\_3dpi\_rep1 & GAII & 1 & 209723287 & 815820 & 0.388 & 3dpi & First \\ 
+  NMRI\_1stInf\_3dpi\_rep2 & GAII & 2 & 515516785 & 903330 & 0.175 & 3dpi & First \\ 
+  NMRI\_1stInf\_5dpi\_rep2 & GAII & 2 & 316721928 & 1609009 & 0.505 & 5dpi & Firs \\ 
+  NMRI\_2ndInf\_5dpi\_rep1 & GAII & 2 & 589643389 & 3752923 & 0.632 & 5dpi & Challenge \\ 
+  NMRI\_2ndInf\_7dpi\_rep1 & hiseq & 3 & 97221189 & 9927803 & 9.265 & 7dpi & Challenge \\ 
+  NMRI\_1stInf\_5dpi\_rep1 & GAII & 2 & 204647381 & 18549727 & 8.311 & 5dpi & First \\ 
+  NMRI\_sporozoites\_rep2 & GAII & 0 & 8702 & 21508353 & 99.960 & \textit{in vitro} & \textit{in vitro} \\ 
+  NMRI\_1stInf\_5dpi\_rep3 & GAII & 0 & 334671421 & 54022504 & 13.899 & 5dpi & First \\ 
+  NMRI\_1stInf\_7dpi\_rep1 & GAII & 1 & 12532238 & 79648900 & 86.405 & 7dpi & First \\ 
+  NMRI\_sporozoites\_rep1 & GAII & 1 & 13800 & 92259539 & 99.985 & \textit{in vitro} & \textit{in vitro} \\ 
+  NMRI\_oocysts\_rep1 & GAII & 1 & 11676 & 108477484 & 99.989 & envir. & envir. \\ 
+  NMRI\_oocysts\_rep2 & GAII & 0 & 19024 & 126543533 & 99.985 & envir. & envir. \\ 
+  NMRI\_1stInf\_7dpi\_rep2 & GAII & 1 & 94310278 & 154343046 & 62.072 & 7dpi & First \\ 
+   \hline
+\hspace*{+1.5cm}\end{tabular}
+\begin{tablenotes}
+  \small
+\item *envir. ``environmental'' oocysts sporulated in potassium dichromate. \\
+\item *\textit{in vitro} in vitro sporulated oocysts
+\end{tablenotes}
+\end{table}
 
 %%%%%
 figure 1 label

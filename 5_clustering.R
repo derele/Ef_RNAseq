@@ -4,44 +4,51 @@ library(pheatmap)
 library(made4)
 library(RColorBrewer)
 
-if(!exists("Ef.1st.pass.model")){
-    source("2_edgeR_diff.R")
+## raw count data
+Mm.RC <- read.table("output_data/RC_Mm_genes.csv", sep=",")
+Ef.RC <- read.table("output_data/RC_Ef_genes.csv", sep=",")
+
+## replace zeros and avoid zero variance in cluter scaling
+Mm.RC[Mm.RC==0] <- sample(seq(0.01, 0.1, 0.0001), length(Mm.RC[Mm.RC==0]), replace =TRUE)
+Ef.RC[Ef.RC==0] <- sample(seq(0.01, 0.1, 0.0001), length(Ef.RC[Ef.RC==0]), replace =TRUE)
+
+## data on statistical testing for selection
+Mm.DE.test <- read.table("output_data/Mm_DEtest.csv", sep=",")
+Ef.DE.test <- read.table("output_data/Ef_DEtest.csv", sep=",")
+
+select.diff.data <- function (data, diff.data, columns, FDR.min=0.01){
+    DE.test.col <-
+        diff.data[diff.data$contrast%in%columns, ]
+    DE.diff.genes <-
+        unique(DE.test.col[DE.test.col$FDR<FDR.min, "gene"])
+    data[DE.diff.genes, ]
 }
-########## USE THIS #######################
-########## PHEATMAP() specifying distance and method ############
-## 1:10 refers to the Ef.contrast object and the first ten 
-## comparisons in it.
-############# LIFE CYCLE SELECTION ##################
-union.of.Ef.cycle.diff.top.100 <-
-    unique(unlist(lapply(Ef.1st.pass.model[[3]][1:10], head, n=500)))
 
-Ef.cycle.diff.top.100.data <-
-    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.cycle.diff.top.100,]
+############# Eimeria LIFE CYCLE SELECTION ##################
+cycle.cols <- c("N3vsN5","N3vsN7", "N3vsOoc", "N3vsSpo",
+                "N5vsN7", "N5vsOo", "N5vsSp",
+                "N7vsOo", "N7vsSp",
+                "SpvsOo")
+Ef.cycle.diff.data <- select.diff.data(Ef.RC, Ef.DE.test, cycle.cols, 0.01)
 
-union.of.Ef.cycle.diff <-
-    unique(unlist(Ef.1st.pass.model[[3]][1:10]))
-
-Ef.cycle.diff.top.100.data <-
-    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.cycle.diff.top.100,]
-
-Ef.cycle.diff.data <-
-    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.cycle.diff,]
+############# Eimeria 1st VERSUS 2nd INFECTION ##################
+first.second.cols <- c("B5.1stvsB5.2nd", "N3.1stvsN3.2nd", "N5.1stvsN5.2nd",
+                       "N7.1stvsN7.2nd","R5.1stvsR5.2nd")
+Ef.first2nd.diff.data <- select.diff.data(Ef.RC, Ef.DE.test, first.second.cols, 0.5)
 
 
+############# Eimeria Competent vs. RAG  ##################
+comp.rag.cols <- c("R5.1stvsR52ndVSB5.1stvsB52nd", "R5.1stvsR52ndVSN5.1stvsN52nd")
+Ef.comp.rag.diff.data <- select.diff.data(Ef.RC, Ef.DE.test, comp.rag.cols, 0.5)
 
-############# 1st VERSUS 2nd INFECTION ##################
-union.of.Ef.1st2nd.top <-
-    unique(unlist(lapply(Ef.1st.pass.model[[3]][11:15], head, n=500)))
+############# Mouse LIFE CYCLE SELECTION ##################
+Mm.cycle.diff.data <- select.diff.data(Mm.RC, Mm.DE.test, cycle.cols, 0.01)
 
-Ef.1st2nd.top.data <-
-    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.1st2nd.top,]
+############# Mouse 1st VERSUS 2nd INFECTION ##################
+Mm.first2nd.diff.data <- select.diff.data(Mm.RC, Mm.DE.test, first.second.cols, 0.01)
 
-######## EIMERIA DEVELOPMENT IN DIFFERENT MOUSE STRAINS (day 5 only) ##################
-union.of.Ef.strain.depend.top <-
-    unique(unlist(lapply(Ef.1st.pass.model[[3]][16:18], head, n=500)))
-
-Ef.strain.depend.top.data <-
-    cpm(Ef.1st.pass.model[[4]])[union.of.Ef.strain.depend.top,]
+############# Mouse Competent vs. RAG  ##################
+Mm.comp.rag.diff.data <- select.diff.data(Mm.RC, Mm.DE.test, comp.rag.cols, 0.2)
 
 get.scaled.and.clustered <- function(data){
     rMeans <- rowMeans(data)
@@ -51,38 +58,33 @@ get.scaled.and.clustered <- function(data){
     return(hclustered)
 }
 
-Ef.hclustered <- get.scaled.and.clustered(Ef.cycle.diff.data)
-Ef.hclustered.first.second <- get.scaled.and.clustered(Ef.1st2nd.top.data) 
-Ef.hclustered.strain <- get.scaled.and.clustered(Ef.strain.depend.top.data )
+get.cluster.tree.df <- function(data, k){
+   clusdat <- get.scaled.and.clustered(data)
+   Cluster <- factor(unlist(cutree(clusdat, k = k)))
+   as.data.frame(Cluster)
+}
 
 
-hcluster <- list()
-hcluster[["Ef"]] <- cutree(Ef.hclustered, k = 7) ## Life cycle
-hcluster[["Ef.1st2nd"]] <- cutree(Ef.hclustered, k = 7) ## 1st versus 2nd 
-hcluster[["Ef.strain"]] <- cutree(Ef.hclustered, k = 7) ## Strain comparison
+Ef.cycle.diff.data <- apply(Ef.cycle.diff.data, 2, as.numeric)
 
-Ef.cyc.hclustered.df <- as.data.frame(hcluster[["Ef"]])
-names(Ef.cyc.hclustered.df) <- "Cluster"
-Ef.cyc.hclustered.df$Cluster <- as.factor(Ef.cyc.hclustered.df$Cluster)
+Ef.hclustered.cycle <- get.cluster.tree.df(Ef.cycle.diff.data, 7)
+Ef.hclustered.first.second <- get.cluster.tree.df(Ef.first2nd.diff.data,  7)
+Ef.hclustered.strain <- get.cluster.tree.df(Ef.comp.rag.diff.data, 3)
 
-Ef.1st2nd.hclustered.df <- as.data.frame(hcluster[["Ef.1st2nd"]])
-names(Ef.1st2nd.hclustered.df) <- "Cluster"
-Ef.1st2nd.hclustered.df$Cluster <- as.factor(Ef.1st2nd.hclustered.df$Cluster)
+Mm.hclustered.cycle <- get.cluster.tree.df(Mm.cycle.diff.data, 4)
+Mm.hclustered.first.second <- get.cluster.tree.df(Mm.first2nd.diff.data,  4)
+Mm.hclustered.strain <- get.cluster.tree.df(Mm.comp.rag.diff.data, 4)
 
-Ef.strain.hclustered.df <- as.data.frame(hcluster[["Ef.strain"]])
-names(Ef.strain.hclustered.df) <- "Cluster"
-Ef.strain.hclustered.df$Cluster <- as.factor(Ef.strain.hclustered.df$Cluster)
 
 pdf("figuresANDmanuscript/EfStrainHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf
-pheatmap(Ef.strain.top.data,
+pheatmap(Ef.comp.rag.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
          scale = "row",
-         cluster_rows = T, ## hc.high,
+         cluster_rows = T,
          cluster_cols = T,
-         annotation_row = Ef.strain.hclustered.df,
-         ## annotation_names_row = F,
-         cutree_rows = 3, # 5 in EH script 
+         annotation_row = Ef.hclustered.strain,
+         cutree_rows = 3, 
          show_rownames = F,
          main = expression(paste(italic("E. falciformis"),
              " mRNAs differently abundant between mouse strains")))
@@ -90,14 +92,13 @@ dev.off()
 
 pdf("figuresANDmanuscript/Ef1st2ndHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf
-pheatmap(Ef.1st2nd.top.data,
+pheatmap(Ef.first2nd.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
          scale = "row",
-         cluster_rows = T, ## hc.high,
+         cluster_rows = T,
          cluster_cols = T,
-         annotation_row = Ef.1st2nd.hclustered.df,
-         ## annotation_names_row = F,
-         cutree_rows = 2, # 5 in EH script 
+         annotation_row = Ef.hclustered.first.second,
+         cutree_rows = 7, 
          show_rownames = F,
          main = expression(paste(italic("E. falciformis"),
              " mRNAs differently abundant between 1st and 2nd infection")))
@@ -110,69 +111,24 @@ pheatmap(Ef.cycle.diff.data,
          scale = "row",
          cluster_rows = T, ## hc.high,
          cluster_cols = T,
-         annotation_row = Ef.cyc.hclustered.df,
+         annotation_row = Ef.hclustered.cycle,
          ## annotation_names_row = F,
-         cutree_rows = 7, # 5 in EH script 
+         cutree_rows = 7, 
          show_rownames = F,
          main = expression(paste(italic("E. falciformis"),
              " mRNAs differently abundant between lifecycle stages")))
 dev.off()
 
-###################################################
-## 	MOUSE
-###################################################
-##mouse infection progression 
-union.of.Mm.cycle.diff.top.100 <-
-    unique(unlist(lapply(Mm.1st.pass.model[[3]][c(1:3, 12:14)], head, n=500)))
 
-Mm.cycle.diff.top.100.data <-
-    cpm(Mm.1st.pass.model[[4]])[union.of.Mm.cycle.diff.top.100,]
-
-############# 1st VERSUS 2nd INFECTION ##################
-union.of.Mm.1st2nd.top <-
-    unique(unlist(lapply(Mm.1st.pass.model[[3]][6:10], head, n=500)))
-
-Mm.1st2nd.top.data <-
-    cpm(Mm.1st.pass.model[[4]])[union.of.Mm.1st2nd.top,]
-
-######## EIMERIA DEVELOPMENT IN DIFFERENT MOUSE STRAINS (day 5 only) ##################
-union.of.Mm.strain.top <-
-    unique(unlist(lapply(Mm.1st.pass.model[[3]][11], head, n=500)))
-
-Mm.strain.top.data <-
-    cpm(Mm.1st.pass.model[[4]])[union.of.Mm.strain.top,]
-
-## clustering
-
-Mm.cyc.hclustered <- get.scaled.and.clustered(Mm.cycle.diff.top.100.data)
-Mm.1st2nd.hclustered <- get.scaled.and.clustered(Mm.1st2nd.top.data)
-Mm.strain.hclustered <- get.scaled.and.clustered(Mm.strain.top.data)
-
-hcluster[["Mm"]] <- cutree(Mm.cyc.hclustered, k=4) ## h=7.2)
-hcluster[["Mm.1st2nd"]] <- cutree(Mm.1st2nd.hclustered, k = 4) ## 1st versus 2nd 
-hcluster[["Mm.strain"]] <- cutree(Mm.strain.hclustered, k = 4) ## Strain comparison
-
-Mm.cyc.hclustered.df <- as.data.frame(hcluster[["Mm"]])
-names(Mm.cyc.hclustered.df) <- "Cluster"
-Mm.cyc.hclustered.df$Cluster <- as.factor(Mm.cyc.hclustered.df$Cluster)
-
-Mm.1st2nd.hclustered.df <- as.data.frame(hcluster[["Mm.1st2nd"]])
-names(Mm.1st2nd.hclustered.df) <- "Cluster"
-Mm.1st2nd.hclustered.df$Cluster <- as.factor(Mm.1st2nd.hclustered.df$Cluster)
-
-Mm.strain.hclustered.df <- as.data.frame(hcluster[["Mm.strain"]])
-names(Mm.strain.hclustered.df) <- "Cluster"
-Mm.strain.hclustered.df$Cluster <- as.factor(Mm.strain.hclustered.df$Cluster)
-
-## plotting
+## Mouse plotting
 pdf("figuresANDmanuscript/MmStrainHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
-pheatmap(Mm.strain.top.data,
+pheatmap(Mm.comp.rag.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
          scale = "row",
-         cluster_rows = T, ## hc.high,
+         cluster_rows = T,
          cluster_cols = T,
-         annotation_row = Mm.strain.hclustered.df,
+         annotation_row = Mm.hclustered.strain,
          ## annotation_names_row = F,
          cutree_rows = 4, 
          show_rownames = F,
@@ -182,13 +138,12 @@ dev.off()
 
 pdf("figuresANDmanuscript/Mm1st2ndHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
-pheatmap(Mm.1st2nd.top.data,
+pheatmap(Mm.first2nd.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
          scale = "row",
-         cluster_rows = T, ## hc.high,
+         cluster_rows = T,
          cluster_cols = T,
-         annotation_row = Mm.1st2nd.hclustered.df,
-         ## annotation_names_row = F,
+         annotation_row = Mm.hclustered.first.second,
          cutree_rows = 4, 
          show_rownames = F,
          main = expression(paste(italic("M. musculus"),
@@ -198,16 +153,17 @@ dev.off()
 
 pdf("figuresANDmanuscript/MmLifecycleHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
-pheatmap(Mm.cycle.diff.top.100.data,
+pheatmap(Mm.cycle.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
          scale = "row",
-         cluster_rows = T, ## hc.high,
+         cluster_rows = T,
          cluster_cols = T,
-         annotation_row = Mm.cyc.hclustered.df,
-         ## annotation_names_row = F,
+         annotation_row = Mm.hclustered.cycle,
          cutree_rows = 4, 
          show_rownames = F,
          main = expression(paste(italic("M. musculus"),
              " mRNAs differently abundant at different dpi ")))
 dev.off()
 
+
+c("NMRI_1stInf_3dpi_rep2", "NMRI_2ndInf_5dpi_rep1)
