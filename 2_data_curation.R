@@ -85,7 +85,7 @@ RC.table$dpi[RC.table$challenged%in%"environmental"] <- "environmental"
 
 ## plotting parasite percentage of reads
 
-pdf("figuresANDmanuscript/Ef.percentage.pdf")
+pdf("figures/Figure1b_Ef.percentage.pdf")
 ggplot(RC.table, aes(x = dpi, y = p.Ef.reads,
                      color=challenged, shape=strain)) +
     geom_jitter(size=4, width=0.35, alpha=0.6)+
@@ -149,7 +149,7 @@ density.plots <-
                                names(r.c.s.l)[[i]]))
            })
 
-pdf("figuresANDmanuscript/distributionsMm.pdf", width = 27, height = 21)
+pdf("Supplement/distributionsMm.pdf", width = 27, height = 21)
 do.call(grid.arrange, c(density.plots, list(nrow=2)))
 dev.off()
 
@@ -192,7 +192,7 @@ density.plots <-
                                names(r.c.s.l)[[i]]))
            })
                
-pdf("figuresANDmanuscript/distributionsEf.pdf", width = 27, height = 21)
+pdf("Supplement/distributionsEf.pdf", width = 27, height = 21)
 do.call(grid.arrange, c(density.plots, list(nrow=2)))
 dev.off()
 
@@ -220,7 +220,7 @@ names(table.cleaned) <- sub("^c.Ef.genes$", "# E. falciformis genes", names(tabl
 
 ## EXPORT to Latex format
 table.tex <- xtable(table.cleaned, align = c("l", "l", "l", "l", "l", "l", "l", "l", "l", "l"), digits = 3)
-print(table.tex, type = "latex", file = "figuresANDmanuscript/table_rc.tex", include.rownames = F)
+print(table.tex, type = "latex", file = "tables/Table1_ReadCounts.tex", include.rownames = F)
 
 
 

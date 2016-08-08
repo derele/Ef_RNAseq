@@ -25,14 +25,14 @@ targets <- readTargets("data/targets.txt", sep=";")
 
 RG <- read.maimages(targets, path= "/SAN/Mouse_arrays/2012_arrays/", source = "agilent", 
                     other.columns = list(IsFound = "gIsFound",
-                      IsWellAboveBG = "gIsWellAboveBG", 
-                      IsSaturated = "gIsSaturated",
-                      IsFeatNonUnifOF = "gIsFeatNonUnifOL", 
-                      IsFeatPopnOL = "gIsFeatPopnOL",
-                      ChrCoord = "chr_coord"), 
+                                         IsWellAboveBG = "gIsWellAboveBG", 
+                                         IsSaturated = "gIsSaturated",
+                                         IsFeatNonUnifOF = "gIsFeatNonUnifOL", 
+                                         IsFeatPopnOL = "gIsFeatPopnOL",
+                                         ChrCoord = "chr_coord"), 
                     columns = list(G = "gMedianSignal", Gb = "gBGMedianSignal",
-                      R = "rMedianSignal",
-                      Rb = "rBGMedianSignal"), verbose = T, 
+                                   R = "rMedianSignal",
+                                   Rb = "rBGMedianSignal"), verbose = T, 
                     sep = "\t", quote = "")
 
 array.names <- apply(targets, 1, function (x) paste(x[c(2, 4,5)], collapse="."))
@@ -91,13 +91,6 @@ fit2.g <- eBayes(fit2.g)
 
 Array.logFC <- topTable(fit2.g, n=400000)[, c("X24h", "X144h")]
 
-## RNAseq.logFC <- as.data.frame(Mm.1st.pass.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
-##                                                          "logFC.N7vs0", "logFC.B5vs0",
-##                                                          "logFC.R5vs0" )])
-
-## RuvSeq at the moment not tested
-## RNAseq.logFC <- merge(RNAseq.logFC, RNAseq.logFC.ruved, by = 0)
-
 Array.logFC <- merge(annot.frame[,1:3], Array.logFC, 
                      by.x = "symbol", by.y = 0)
 
@@ -105,14 +98,7 @@ RNAseq.Array.logFC <- merge(Array.logFC[,c("ensembl_id", "X24h", "X144h")],
                             Mm.DE.FC, 
                             by.x = "ensembl_id", by.y = "gene")
 
-## RuvSeq at the moment not tested
-## names(RNAseq.Array.logFC) <- gsub(".x", ".plain", names(RNAseq.Array.logFC))
-## names(RNAseq.Array.logFC) <- gsub(".y", ".ruved", names(RNAseq.Array.logFC))
-
-## Very interesting...
-cor(RNAseq.Array.logFC[,2:20], method="pearson")[,1:2]
-
-pdf("figuresANDmanuscript/Array144vsRNAseqN7.pdf")
+pdf("figures/Figure2a_Array144vsRNAseqN7.pdf")
 ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +
   geom_point(alpha=0.8) +
   stat_density2d(aes(fill=..level..), size=2, geom="polygon") +
@@ -121,17 +107,5 @@ ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +
   stat_smooth() +
   theme_bw()
 dev.off()
-
-## RuvSeq at the moment not tested
-## pdf("figures/Array144vsRNAseqN7_ruved.pdf")
-## ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0.ruved)) +
-##   geom_point(alpha=0.8) +
-##   stat_density2d(aes(alpha=..level.., fill=..level..), size=2,
-##                  geom="polygon") +
-##   scale_fill_gradient(low = "yellow", high = "red") +
-##   scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
-##   stat_smooth() +
-##   theme_bw()
-## dev.off()
 
 

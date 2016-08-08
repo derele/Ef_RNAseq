@@ -219,7 +219,6 @@ cbind(melt(lapply(Ef.1st.pass.model[[3]], length)),
       melt(lapply(Ef.RUVg.model[[3]], length)), by = "L1")[,c(1,3,4)]
 
 ## test for consistency with suppl file data:
-
 by(Mm.DE.test, Mm.DE.test$contrast, function (x) table(x$FDR<0.01))
 by(Ef.DE.test, Ef.DE.test$contrast, function (x) table(x$FDR<0.01))
 
