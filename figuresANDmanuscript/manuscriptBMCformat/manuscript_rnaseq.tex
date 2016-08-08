@@ -47,10 +47,10 @@
 \documentclass{bmcart}
 
 %%% Load packages
-%\usepackage{amsthm,amsmath}
-%\RequirePackage{natbib}
+\usepackage{amsthm,amsmath}
+\RequirePackage{natbib}
 %\RequirePackage[authoryear]{natbib}% uncomment this for author-year bibliography
-%\RequirePackage{hyperref}
+\RequirePackage{hyperref}
 \usepackage[utf8]{inputenc} %unicode support
 %\usepackage[applemac]{inputenc} %applemac support if unicode package fails
 %\usepackage[latin1]{inputenc} %UNIX support if unicode package fails
@@ -107,7 +107,8 @@
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\title{Dual host-parasite transcriptomes of apicomplexan Eimeria falciformis and its natural mouse host}
+\title{Dual host-parasite transcriptomes of apicomplexan Eimeria
+  falciformis and its natural mouse host}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -124,11 +125,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author[ <addressref>={aff1},] {\inits{TK}\fnm{Totta} \snm{Kasemo}}
-\author[ <addressref>={aff1},] {\inits{SS}\fnm{Simone} \snm{Spork}}
-\author[ <addressref>={aff2},] {\inits{CD}\fnm{Christoph} \snm{Dieterich}}
-\author[ <addressref>={aff1},]{\inits{RL}\fnm{Richard} \snm{Lucius}}
-\author[ <addressref>={aff1, aff3},              
+\author[ addressref={aff1},] {\inits{TK}\fnm{Totta} \snm{Kasemo}}
+\author[ addressref={aff1},] {\inits{SS}\fnm{Simone} \snm{Spork}}
+\author[ addressref={aff2},] {\inits{CD}\fnm{Christoph} \snm{Dieterich}}
+\author[ addressref={aff1}, ]{\inits{RL}\fnm{Richard} \snm{Lucius}}
+\author[ addressref={aff1, aff3},              
   corref={aff1},                   
   email={emanuel.heitlinger@hu-berlin.de}]{\inits{EH}\fnm{Emanuel} \snm{Heitlinger}}
 
@@ -882,12 +883,10 @@ overall transcriptional output of the analysed tissue for all samples.
 %% of standard deviations from 0, i.e., row mean. 
 
 
-
-\subsection{Life cycle analysis... \textit{E. falciformis}}
 \begin{figure}[h!]
 %\begin{center}
 %\centering
-	\includegraphics[width=\linewidth]{EfLifecycleHeatmap.pdf}  
+%%	\includegraphics[width=\linewidth]{EfLifecycleHeatmap.pdf}  
 	\caption{\textit{E. falciformis} mRNAs with significantly
           different abundance at different times p.i. in NMRI mice
           (see Table 2). Samples cluster according to expected
@@ -902,7 +901,7 @@ overall transcriptional output of the analysed tissue for all samples.
 \begin{figure}[h!]
 %\begin{center}
 %\centering
-\includegraphics[width=\linewidth]{MmLifecycleHeatmap.pdf}  
+%% \includegraphics[width=\linewidth]{MmLifecycleHeatmap.pdf}  
 \caption{Mouse mRNAs with significantly different abundance at
   different times p.i. in NMRI mice (see Table 2). Samples cluster
   according to expected developmental state of the parasite, without
