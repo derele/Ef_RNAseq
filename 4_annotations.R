@@ -43,6 +43,13 @@ read.omcl <- function(path="data/Omcl_groups.txt"){
 
 omcl <- read.omcl()
 
+get.genes.4.clusters <- function (clusters) {
+  gsub("Efa\\|", "",   grep("Efa\\|",
+                            unlist(clusters),
+                            value=TRUE))
+}
+
+
 get.omcl.categories <- function(ortho.obj){
   ## Orthomcl
   get.presence.omcl <- function(ortho.obj){
