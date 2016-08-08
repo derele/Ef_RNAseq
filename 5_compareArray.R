@@ -96,16 +96,13 @@ Array.logFC <- topTable(fit2.g, n=400000)[, c("X24h", "X144h")]
 ##                                                          "logFC.R5vs0" )])
 
 ## RuvSeq at the moment not tested
-RNAseq.logFC.ruved <- as.data.frame(Mm.RUVg.model[[1]][, c("logFC.N3vs0", "logFC.N5vs0",
-                                                           "logFC.N7vs0", "logFC.B5vs0",
-
-## RuvSeq at the moment not tested
 ## RNAseq.logFC <- merge(RNAseq.logFC, RNAseq.logFC.ruved, by = 0)
 
 Array.logFC <- merge(annot.frame[,1:3], Array.logFC, 
                      by.x = "symbol", by.y = 0)
 
-RNAseq.Array.logFC <- merge(Array.logFC[,c("ensembl_id", "X24h", "X144h")], Mm.DE.FC, 
+RNAseq.Array.logFC <- merge(Array.logFC[,c("ensembl_id", "X24h", "X144h")],
+                            Mm.DE.FC, 
                             by.x = "ensembl_id", by.y = "gene")
 
 ## RuvSeq at the moment not tested
