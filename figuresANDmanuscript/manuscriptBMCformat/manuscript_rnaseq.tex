@@ -124,26 +124,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\author[
-%	addressref={aff1},
-%	noteref={n1},
-]{\inits{TK}\fnm{Totta} \snm{Kasemo}}
-\author[
-%	addressref={aff1},
-]{\inits{SS}\fnm{Simone} \snm{Spork}}
-\author[
-%	addressref={aff2},
-%	noteref={n1},
-]{\inits{CD}\fnm{Christoph} \snm{Dieterich}}
-\author[
-%	addressref={aff1},
-]{\inits{RL}\fnm{Richard} \snm{Lucius}}
-\author[
-%	addressref={aff1, aff3},                   % id's of addresses, e.g. {aff1,aff2}
-	corref={aff1, aff3},                       % id of corresponding address, if any
-%	noteref={n1},                        % id's of article notes, if any
-	email={emanuel.heitlinger@hu-berlin.de}   % email address
-]{\inits{EH}\fnm{Emanuel} \snm{Heitlinger}}
+\author[ <addressref>={aff1},] {\inits{TK}\fnm{Totta} \snm{Kasemo}}
+\author[ <addressref>={aff1},] {\inits{SS}\fnm{Simone} \snm{Spork}}
+\author[ <addressref>={aff2},] {\inits{CD}\fnm{Christoph} \snm{Dieterich}}
+\author[ <addressref>={aff1},]{\inits{RL}\fnm{Richard} \snm{Lucius}}
+\author[ <addressref>={aff1, aff3},              
+  corref={aff1},                   
+  email={emanuel.heitlinger@hu-berlin.de}]{\inits{EH}\fnm{Emanuel} \snm{Heitlinger}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                                          %%
@@ -154,22 +141,22 @@
 %%                                          %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\address[id=aff1]{%                           % unique id
-	\orgname{Department of Biology, Humboldt-Universitat zu Berlin}, % university, etc
-	\street{Philippstr. 13, Haus 14},                     %
-	\postcode{10115}                                % post or zip code
-	\city{Berlin},                              % city
-	\cny{Germany}                                    % country
+\address[id=aff1]{
+	\orgname{Institute of Biology, Humboldt-Universitat zu Berlin}, 
+	\street{Philippstr. 13, Haus 14},
+	\postcode{10115}                 
+	\city{Berlin},                   
+	\cny{Germany}                    
 }
-\address[id=aff2]{%  
+\address[id=aff2]{  
 	\orgname{Max Planck Institute for Biology of Ageing},
 	\street{Joseph-Stelzmann-Strasse 9B},
 	\postcode{50931}
 	\city{Cologne},
 	\cny{Germany}
 }
-\address[id=aff3]{%  
-	\orgname{Department Reproduction Biology and Evolutionary Ecology, Leibniz Institute of Zoo and Wildlife Research},
+\address[id=aff3]{  
+	\orgname{Leibniz Institute of Zoo and Wildlife Research},
 	\street{Alfred-Kowalke-Str. 17},
 	\postcode{10315}
 	\city{Berlin},
@@ -280,18 +267,26 @@ Text and results for this section, as per the individual journal's instructions 
 %% 	OVERVIEW READS PER SAMPLE, LAYOT AS EXPERIMENTAL OVERVIEW
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \section*{Experimental overview}
+  \section*{A dual transcriptomics experiment}
 We performed mRNA sequencing of caecum tissue from mice infected with
-the apicomplexan parasite \textit{E. falciformis}. For each replicate
-sample we enriched caecum tissue from three infected mice for
-epithelial cells. We extracted mRNA and constructed sequencing
-libraries for different timepoints after infection and mouse strains
-with assumed different immunocompetence.
-%% we have to bring in Simones data first with two sentences and a
-%% figure or write it like this
+the apicomplexan parasite \textit{E. falciformis}. We worked with two
+biological replicates for all but two conditions (with one and three
+replicates, respecitively). For each replicate sample we enriched
+caecum tissue from three infected mice for epithelial cells. We
+extracted mRNA and constructed sequencing libraries for different
+timepoints after infection and mouse strains which displayed different
+immunocompetence in infection trials (see figure x).
+
+Briefly RAG-1-/- knockout mice, in which mature B and T lymphocytes
+are absent showed ... 
+
 Additonally we obtained data for challenge infections of mice
-immunized one month prior to the experiment. For the parasite oocysts
-and sporozoites were included as ``environmental'' lifecycle stages.
+immunized one month prior to the experiment.
+
+
+For the parasite oocysts and sporozoites were included as
+``environmental'' and ``\textit{in vitro}'' processed lifecycle
+stages.
 
 The number of sequence read mappings obtained for individual
 replicates ranged from 21,517,055 (sample NMRI\_sporozoites\_rep2) to
@@ -301,6 +296,9 @@ As samples and idividual replicates were sequenced in batches to
 different depth and using different instrumentation (Table 1) we
 performed quality controls confirming the abscence of batch effects
 influencing analysis and quality of our results (additional file xyc).
+
+The results of these multivariate analyses in relation to biological
+interpretation are described further below. 
 
 \section*{Parasite and host transcriptomes can be assessed in parallel}
 
@@ -318,209 +316,82 @@ be considered non-infected, as both samples occured in a challenge
 infection we assume that the infection was cleard or reduced to a
 non-detectable output in those animmals.
 
+One sample (NMRI\_1stInf\_0dpi\_rep1) was additonally excluded because
+the uninfected control showed an unexpected mapping of reads to the
+\textit{E. falciformis} genome. We consider this together with the
+unsuccessfully infected samples above to display an undecided state of
+infection.
+
 On the other end of the spectrum mice not previously immunized
 featured an mRNA ``holo-transcriptome'' at 7dpi with the majority of
-mRNA originating from the parasite as opposed to the host (Figure 1).
-
-
-\newcommand{\bcell}[2][c]{%
-  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-
-\definecolor{LightCyan}{rgb}{0.88,1,1}
-\definecolor{LightRed}{rgb}{1,0.88,1}
-
-
-% latex table generated in R 3.3.1 by xtable 1.8-2 package
-% Fri Aug  5 13:00:01 2016
-\begin{table}[ht]
-\caption{Experimental design, sequencing output and mapping statistics.}
-\centering
-\hspace*{-1.5cm}\begin{tabular}{lllllllll}
-  \hline
-Sample & \bcell{Sequencing\\method} & batch & \bcell{read mappings\\Mouse} & \bcell{read mappings\\\textit{E. falciformis}} & \bcell{Percentage\\\textit{E. falciformis}} & dpi & infection  \\ 
-\hline
-  NMRI\_2ndInf\_0dpi\_rep1 & GAII & 2 & 285032128 & 326 & 0 & 0dpi & Challenge \\ 
-  Rag\_0dpi\_rep1 & hiseq & 3 & 43414004 & 474 & 0.001 & 0dpi & None \\ 
-  C57BL6\_0dpi\_rep1 & hiseq & 3 & 53877840 & 491 & 0.001 & 0dpi & None \\ 
-  C57BL6\_0dpi\_rep2 & hiseq & 3 & 76753491 & 657 & 0.001 & 0dpi & None \\ 
-  Rag\_0dpi\_rep2 & hiseq & 3 & 80702547 & 730 & 0.001 & 0dpi & None \\ 
-  NMRI\_2ndInf\_0dpi\_rep2 & hiseq & 3 & 90681785 & 3738 & 0.004 & 0dpi & Challenge \\ 
-  \rowcolor{LightCyan}
-  NMRI\_2ndInf\_3dpi\_rep1 & hiseq & 3 & 91352242 & 5355 & 0.006 & 3dpi & Challenge \\ 
-  \rowcolor{LightCyan}
-  NMRI\_2ndInf\_5dpi\_rep2 & hiseq & 3 & 113957667 & 12692 & 0.011 & 5dpi & Challenge \\ 
-  \rowcolor{LightRed}
-  NMRI\_1stInf\_0dpi\_rep1 & GAII & 1 & 229165002 & 31459 & 0.014 & 0dpi & None \\ 
-  NMRI\_2ndInf\_3dpi\_rep2 & hiseq & 3 & 106446839 & 34699 & 0.033 & 3dpi & Challenge \\ 
-  NMRI\_2ndInf\_7dpi\_rep2 & hiseq & 3 & 122999109 & 46700 & 0.038 & 7dpi & Challenge \\ 
-  Rag\_1stInf\_5dpi\_rep1 & hiseq & 3 & 71173382 & 73445 & 0.103 & 5dpi & First \\ 
-  Rag\_1stInf\_5dpi\_rep2 & hiseq & 3 & 57192380 & 113673 & 0.198 & 5dpi & First \\ 
-  C57BL6\_1stInf\_5dpi\_rep1 & hiseq & 3 & 65523435 & 217606 & 0.331 & 5dpi & First \\ 
-  Rag\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 85288323 & 224273 & 0.262 & 5dpi & Challenge \\ 
-  C57BL6\_1stInf\_5dpi\_rep2 & hiseq & 3 & 32887009 & 250954 & 0.757 & 5dpi & First \\ 
-  C57BL6\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 62053975 & 311900 & 0.500 & 5dpi & Challenge \\ 
-  NMRI\_1stInf\_3dpi\_rep1 & GAII & 1 & 209723287 & 815820 & 0.388 & 3dpi & First \\ 
-  NMRI\_1stInf\_3dpi\_rep2 & GAII & 2 & 515516785 & 903330 & 0.175 & 3dpi & First \\ 
-  NMRI\_1stInf\_5dpi\_rep2 & GAII & 2 & 316721928 & 1609009 & 0.505 & 5dpi & Firs \\ 
-  NMRI\_2ndInf\_5dpi\_rep1 & GAII & 2 & 589643389 & 3752923 & 0.632 & 5dpi & Challenge \\ 
-  NMRI\_2ndInf\_7dpi\_rep1 & hiseq & 3 & 97221189 & 9927803 & 9.265 & 7dpi & Challenge \\ 
-  NMRI\_1stInf\_5dpi\_rep1 & GAII & 2 & 204647381 & 18549727 & 8.311 & 5dpi & First \\ 
-  NMRI\_sporozoites\_rep2 & GAII & 0 & 8702 & 21508353 & 99.960 & \textit{in vitro} & \textit{in vitro} \\ 
-  NMRI\_1stInf\_5dpi\_rep3 & GAII & 0 & 334671421 & 54022504 & 13.899 & 5dpi & First \\ 
-  NMRI\_1stInf\_7dpi\_rep1 & GAII & 1 & 12532238 & 79648900 & 86.405 & 7dpi & First \\ 
-  NMRI\_sporozoites\_rep1 & GAII & 1 & 13800 & 92259539 & 99.985 & \textit{in vitro} & \textit{in vitro} \\ 
-  NMRI\_oocysts\_rep1 & GAII & 1 & 11676 & 108477484 & 99.989 & envir. & envir. \\ 
-  NMRI\_oocysts\_rep2 & GAII & 0 & 19024 & 126543533 & 99.985 & envir. & envir. \\ 
-  NMRI\_1stInf\_7dpi\_rep2 & GAII & 1 & 94310278 & 154343046 & 62.072 & 7dpi & First \\ 
-   \hline
-\hspace*{+1.5cm}\end{tabular}
-\begin{tablenotes}
-  \small
-\item *envir. ``environmental'' oocysts sporulated in potassium dichromate. \\
-\item *\textit{in vitro} in vitro sporulated oocysts
-\end{tablenotes}
-\end{table}
-
-%%%%%
-figure 1 label
-cotribution of mouse vs. parasite transcripts to the overall
-transcriptional output of the analysed tissue for all samples.
-%%%%
+mRNA originating from the parasite as opposed to the host (Figure
+1). The overall mRNA output of the sampled caecum tissue at this point
+of infection is dominated by the parasite with proportional mRNA
+abundance between XXX and XXX %
 
 The total number of sequencing reads obtained as well as those reads
 mapped to the transcriptome of either \textit{E. falciformis} and the
 mouse are indicated in Table 1 for all replicates.
 
-%% Before was not pretty. All those NA's. If people are like me they
-%% hate NAs in tables ;-). I think you sould make the above table from
-%% data with xtable.
-
-%% best use a straight 2d table with... 
-
-% label & mouse strain & parasite dpi & naive/challenge & number of
-% reads & #mapped to mouse & #mapped to \textit{E. falciformis}
-
-%% column name "naive/challenge" can change
-
-%% as technical as it seems people will want to know what our labels
-%% mean (they appear in figures throughout) therfore it is good to
-%% have them in table 1
-
 \section*{The mouse transcriptome changes in the course of infection infection}
 
-Statistical testing for differences between infected and uninfected
-mice, revealed changes in mRNA abundance becoming more pronounced
-(involving more genes) at later timepoints of infection (Table 1).
+Statistical testing for differetial expression between infected and
+uninfected mice, revealed changes in mRNA abundance becoming more
+pronounced (involving more genes) at later post infection (especially
+at 7dpi; Table 1).
 
-The observed fold-changes were in agreement with previously published
-microarry data. Fold-Change data obtained from mice at 6dpi on Agilent
-microarrays (Schmidt et al 2012) or 7dpi (our RNAseq data) shows a
-strong correlateion (Spearman's \rho = 333; $R^2$ from a linear model
-= 444 ; see also figure 2). Considering both and technical differences
-between the tow methods and the biological changes along the lifecycle
-this confirms the adequacy of our methods for assessing the host
-transcriptome.
+The observed changes between controls and 7dpi were in agreement with
+previously published microarry data. Fold-Change data obtained from
+mice at 6dpi on Agilent microarrays (Schmidt et al 2012) or 7dpi (our
+RNAseq data) agains uninfected controls shows a strong correlateion
+(Spearman's \rho = 333; $R^2$ from a linear model = 444 ; figure 2
+a). Considering both and technical differences between the tow methods
+and the biological changes along the lifecycle this confirms the
+adequacy of our methods for assessing the host transcriptome.
 
-We selected all mouse genes differently expressed (FDR<1\%) between
-uinfected and any of the infected samples.
-
-
-%%% This is from methods but all the results should be presented here:
-
-%% Selecting at most at most 500 genes differentially abundant with
-%% lowest FDR (<0.05) are selected. In the next step, the 500 mRNAs from
-%% each comparison (or less) are joined. For \textit{E. falciformis} time
-%% p.i. comparison, this resulted in 1618 unique genes selected as
-%% differently expressed . The 22 genes in the NMRI vs C57BL/6 comparison
-%% are not included in the \textit{E. falciformis} life cycle
-%% analysis. The same comparisons for mouse yielded 8052 genes in total
-%% and 1313 unique ones. In heatmaps, all samples, i.e. also samples
-%% which themselves did not have any significantly different mRNAs
-%% according to our selection, were included in hierarchical
-%% clustering.
+XX mouse genes were considered differently expressed (DE; FDR<1\%)
+between uinfected and 3dpi, XX genes between controls and 5dpi, xxx
+genes between 0dpi and 7dpi. This lead to combined set of xxxx genes
+reacting to infection (see figure 2 b).
 
 
+We detected no distinct response early in infection.  When testing for
+differences between 3dpi and later infection (5dpi and 7dpi) DE genes
+were simply a subset of genes DE between respective infections and
+controls.
 
-Those changes are mainly related to the onset of an
-adaptive immune response.
-
-
-
-
-\section*{The lifecycle of Eimeria is characterized by large changes in mRNA abundance}
-
-%%% This is from methods but all the results should be presented here: 
-
-%% Selecting at most at most 500 genes differentially abundant with
-%% lowest FDR (<0.05) are selected. In the next step, the 500 mRNAs from
-%% each comparison (or less) are joined. For \textit{E. falciformis} time
-%% p.i. comparison, this resulted in 1618 unique genes selected as
-%% differently expressed . The 22 genes in the NMRI vs C57BL/6 comparison
-%% are not included in the \textit{E. falciformis} life cycle
-%% analysis. The same comparisons for mouse yielded 8052 genes in total
-%% and 1313 unique ones. In heatmaps, all samples, i.e. also samples
-%% which themselves did not have any significantly different mRNAs
-%% according to our selection, were included in hierarchical
-%% clustering.
+To further validate these patterns we performed hierarchical
+clustering on mouse mRNAs DE at different dpi (union of DE
+genes).
 
 
-%% This might be figure label
-%% Scale bar in heatmaps show 0 as mean mRNA abundance for
-%% each gene (row). Up (green) and down-regulation (brown) denote number
-%% of standard deviations from 0, i.e., row mean. 
+%% Samples from day 7 p.i. form a separate cluster (NMRI mice only), not
+%% distinguishing between first and challenge infection. For these
+%% samples, the pattern is most pronounced in gene cluster 1 (up), and 4
+%% and 6 (down). Within cluster 1, the second replicate from the
+%% challenge infection has a deviant profile (compare mouse data in
+%% Figure 2). Distinct groups of genes also define sporozoites (cluster 5
+%% up) and oocysts (cluster 3 up, cluster 6 down). mRNA profiles on days
+%% 3 and 5 p.i. from all three mouse strains cluster together. These
+%% samples are distinct from oocysts, NMRI day 7 p.i., and
+%% sporozoites. Sporozoites cluster closer with days 3 and 5 than with
+%% oocysts or day 7.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% 	NUMBER OF GENES DIFFERENT IN DIFFERENT COMPARISONS	
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% I like this table. Looks good and transprorts the right kind of
-%% information
+%%% Test _this_:
+The more ponounced changes later in infection are is likely reflecting
+a lag time in detection before the parasite reaches sufficient
+intensity during asexual expansion (schizogony). Those changes are
+mainly related to the onset of an adaptive immune response.
 
-\clearpage
-\section{mRNA abundance differences between different experimental groups}
-\setlength{\tabcolsep}{8pt}
-\begin{table}[H]
-\small
-\begin{center}
-\caption{mRNA abundance differences between different experimental groups.}
-%\label{tab:table3}
-\begin{tabular}{*3l}    \toprule
-\textit{Day post infection} & \textit{Ef} genes different & Mouse genes different \\ 
-	\textit{comparisons} 	    & (FDR$\leq$1\%) &  (FDR$\leq$1\%/5\%) \\ \midrule
-	NMRI 0 vs NMRI 3		& NA   & 274 \\
-	NMRI 0 vs NMRI 5		& NA   & 1736 \\
-	NMRI 0 vs NMRI 7		& NA   & 2802 \\
-	NMRI 3 vs NMRI 5     		& 111  & 1 \\
-	NMRI 3 vs NMRI 7  		& 1385 & 1407 \\ 
-	NMRI 5 vs NMRI 7  		& 1895 & 873 \\ 
-	C57BL/6 0 vs C57BL/6 5		& NA	& 914 \\
-	Rag1-/- 0 vs Rag1-/- 5		& NA	& 45 \\ \midrule
-\textit{Day post infection,} & 		 & 		 \\ 
-\textit{parasite relevant comparisons} 	    & 		&  \\ \midrule
-	Oocysts vs NMRI 3  	& 3310 & NA \\  
-	Oocysts vs NMRI 5	& 3605 & NA \\ 
-	Oocysts vs NMRI 7	& 3085 & NA \\ 
-	Oocysts vs sporozoites  & 3421 & NA \\
-	Sporozoites vs NMRI 3 	& 1663 & NA \\
-	Sporozoites vs NMRI 5 	& 1605 & NA \\
-	Sporozoites vs NMRI 7 	& 2473 & NA \\ \midrule
-\textit{First and second infection} & 		 & 	 \\ 
-\textit{comparisons} 	    & 		& 	\\ \midrule
-	NMRI 3 1st vs NMRI 3 2nd  	& 0  & 5 \\
-	NMRI 5 1st vs NMRI 5 2nd  	& 0  & 1 \\
-	NMRI 7 1st vs NMRI 7 2nd  	& 0  & 902 \\
-	C57BL/6 1st vs C57BL/6 2nd (day 5) & 0 &  mouse \\
-	Rag1-/- 1st vs Rag1-/- 2nd (day 5) & 0 & mouse  \\ \midrule
-\textit{Mouse strain comparisons} & 		 & 	 \\ \midrule
-	NMRI vs C57BL/6 		& 22 	& NA* \\		
-	NMRI vs Rag1-/-     		& 0 & NA* 	\\
-	C57BL/6 vs Rag1-/-  		& 0   & 356 	\\ \midrule
-\bottomrule
-	\hline
-\end{tabular}
-\end{center}
-\end{table}
+
+
+
+
+
+
+\section*{The lifecycle of Eimeria is characterized by major changes in mRNA abundance}
 
 Table 2 lists pairwise sample comparisons and number of genes with
 differently abundant mRNAs per comparison."NMRI" followed by number
@@ -538,40 +409,25 @@ genes are detected to be different in the parasite data. The
 difference is however not between Rag1-/- mice as expected, but
 between NMRI and C57BL/6. For mouse....
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage
-\subsection{Life cycle analysis... \textit{E. falciformis}}
-\begin{figure}[h!]
-%\begin{center}
-%\centering
-	\includegraphics[width=\linewidth]{EfLifecycleHeatmap.pdf}  
-	\caption{\textit{E. falciformis} mRNAs with significantly different abundance at different times p.i. in NMRI mice (see Table 2). Samples cluster according to expected developmental state of the parasite, without distinguishing between first and challenge infection. Hierarchical clustering was set to apply seven gene clusters.}
-%\end{center}
-\end{figure}
-
-We applied hierarchical clustering on \textit{E. falciformis} mRNAs which were differently abundant at different timepoints p.i., including comparisons with oocysts and sporozoites (union of 500 with lowest FDR). Samples from day 7 p.i. form a separate cluster (NMRI mice only), not distinguishing between first and challenge infection. For these samples, the pattern is most pronounced in gene cluster 1 (up), and 4 and 6 (down). Within cluster 1, the second replicate from the challenge infection has a deviant profile (compare mouse data in Figure 2). Distinct groups of genes also define sporozoites (cluster 5 up) and oocysts (cluster 3 up, cluster 6 down). mRNA profiles on days 3 and 5 p.i. from all three mouse strains cluster together. These samples are distinct from oocysts, NMRI day 7 p.i., and sporozoites. Sporozoites cluster closer with days 3 and 5 than with oocysts or day 7.
-
-
-\clearpage
-\subsection{Parasite development reflected in mouse data}
-\begin{figure}[h!]
-%\begin{center}
-%\centering
-\includegraphics[width=\linewidth]{MmLifecycleHeatmap.pdf}  
-\caption{Mouse mRNAs with significantly different abundance at different times p.i. in NMRI mice (see Table 2). Samples cluster according to expected developmental state of the parasite, without distinguishing between first and challenge infection. Rag1-/- mouse samples cluster together. Hierarchical clustering was set to apply four gene clusters.}
-%\end{center}
-\end{figure}
-
-When clustering mouse mRNAs which were different in time p.i. comparisons in Table 2, three out of four samples from day 7 p.i. (NMRI only) cluster together. These samples are characterized by gene cluster 3 (up) as well as 2 and 4 (down). The fourth day 7-sample (challenge infection, second replicate) clusters with day 3 and 5 samples. Upon visual inspection of this sample in gene cluster 4, it diplays a profile similar to non-infected mice. The same sample is abnormal in the parasite profile (Figure 1). NMRI and C57BL/6 uninfected samples (0dpi) cluster together, defined by gene clusters 4 (up), and 1 (down). Rag1-/- day 0 samples are however less pronounced in gene cluster 1. Day 3 and 5 samples cluster together, with Rag1-/- forming a separate group and Rag1-/- non-infected most distant in this sample cluster.
-
-
+We applied hierarchical clustering on \textit{E. falciformis} mRNAs
+which were differently abundant at different timepoints p.i.,
+including comparisons with oocysts and sporozoites (union of 500 with
+lowest FDR). Samples from day 7 p.i. form a separate cluster (NMRI
+mice only), not distinguishing between first and challenge
+infection. For these samples, the pattern is most pronounced in gene
+cluster 1 (up), and 4 and 6 (down). Within cluster 1, the second
+replicate from the challenge infection has a deviant profile (compare
+mouse data in Figure 2). Distinct groups of genes also define
+sporozoites (cluster 5 up) and oocysts (cluster 3 up, cluster 6
+down). mRNA profiles on days 3 and 5 p.i. from all three mouse strains
+cluster together. These samples are distinct from oocysts, NMRI day 7
+p.i., and sporozoites. Sporozoites cluster closer with days 3 and 5
+than with oocysts or day 7.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-\clearpage
 \subsection*{GO term enrichments in heatmap clusters}
 The annotations referred to here are inferred from orthologs in other \textit{Eimeria} spp. or
 in \textit{T. gondii}
@@ -581,77 +437,89 @@ In total, xx reads were sequenced. For each sample, mouse read numbers were $10^
 Quality filters applied resulted in xx reads being removed from further analysis
 
 \subsubsection*{Preparation for invasion in oocysts}
-The mRNA profile in the oocyst stage is mainly determined by highly abundant genes in cluster 4.
-Overrepresented GO-terms in this cluster are enriched by ortholog genes to 
-peptidases, microneme localized proteins reported to be involved in invasion, 
-genes associated with adhesion in protozoans (and with clotting in higher eukaryotes),
-and genes that are annotated to be involved in amino acid biosynthesis.
-  Aminopeptidase N ('related' annotation) is the reported ortholog for three genes with 
-abundant mRNAs in oocysts. In humans, this enzyme has been reported to cleave peptides bound to 
-major histocompatibility complex, MHC, II (UniProt reference if we want to keep this... but does any
-secretion happen from oocysts...? Or is this too far-fetched to be interesting?).
+The mRNA profile in the oocyst stage is mainly determined by highly
+abundant genes in cluster 4.  Overrepresented GO-terms in this cluster
+are enriched by ortholog genes to peptidases, microneme localized
+proteins reported to be involved in invasion, genes associated with
+adhesion in protozoans (and with clotting in higher eukaryotes), and
+genes that are annotated to be involved in amino acid biosynthesis.
+Aminopeptidase N ('related' annotation) is the reported ortholog for
+three genes with abundant mRNAs in oocysts. In humans, this enzyme has
+been reported to cleave peptides bound to major histocompatibility
+complex, MHC, II (UniProt reference if we want to keep this... but
+does any secretion happen from oocysts...? Or is this too far-fetched
+to be interesting?).
 
-A Thrombospondin type 1 domain-containing protein ortholog is highly abundant in cluster 4 (high 
-abundance in oocysts). Thrombospondin type 1 domains have been reported in \textit{E. tenella} microneme
-localizing proteins, MIC, e.g. MIC4 (Tomley01) In \textit{E. tenella} MIC4 mRNA was reported in 
-sporozoites where it localizes to the apical end, and in late schizonts and late oocyst stages,
-when sporozoites are forming. (Tomley01). For the same gene, the \textit{T. gondii} annotation is 
-Sushi domain-containing protein, which is also the ortholog annotation of another gene in this 
-cluster. In the related malaria parasite \textit{P. falciparum} the apical sushi 
-protein, ASP, (which has a sushi domain) localizes to micronemes in merozoites but not 
-other stages (OKeeffe05). 
-Limulus clotting factor C, Coch-5b2 (Cochlin) and Lgl1, LCCL, 
-(syn. F5/8 domain) domains are associated discoidin lectin domains and thereby with adhesion.
-(Pfam entries for 'LCCL domain' and 'Discoidin domain', May 2016). 
-Taken together, this indicates that the thrombospondin and sushi-domain genes 
-(EfaB\_MINUS\_4114.g412 and EfaB\_PLUS\_1425.g183) are involved in sporozoite invasion in 
-\textit{E. falciformis} and that the mRNAs are transcribed and available before excystation. 
-A role in merozoite re-invasion in \textit{E. falciformis} is not indicated by our data.
-The LCCL domain annotation and thrombospondins role in higher eukaryotes also indicates 
-that adhesion or preparation for adhesion is important in oocysts. 
-We suggest (speculate...?) that the thrombospondin annotated ortholog and the LCCL domain-containing protein 
-(EfaB\_MINUS\_11233.g986) are involved in cell adhesion in \textit{E. falciformis}.
-%One examples
-%is found in the slime mold \textit{Dictyostelium discoideum)} in which the LCCL domain
-%is part of the mold's discoidin adhesion protein. (Pfam entry for 'discoidin domain', May 2016)
+A Thrombospondin type 1 domain-containing protein ortholog is highly
+abundant in cluster 4 (high abundance in oocysts). Thrombospondin type
+1 domains have been reported in \textit{E. tenella} microneme
+localizing proteins, MIC, e.g. MIC4 (Tomley01) In \textit{E. tenella}
+MIC4 mRNA was reported in sporozoites where it localizes to the apical
+end, and in late schizonts and late oocyst stages, when sporozoites
+are forming. (Tomley01). For the same gene, the \textit{T. gondii}
+annotation is Sushi domain-containing protein, which is also the
+ortholog annotation of another gene in this cluster. In the related
+malaria parasite \textit{P. falciparum} the apical sushi protein, ASP,
+(which has a sushi domain) localizes to micronemes in merozoites but
+not other stages (OKeeffe05).  Limulus clotting factor C, Coch-5b2
+(Cochlin) and Lgl1, LCCL, (syn. F5/8 domain) domains are associated
+discoidin lectin domains and thereby with adhesion.  (Pfam entries for
+'LCCL domain' and 'Discoidin domain', May 2016).  Taken together, this
+indicates that the thrombospondin and sushi-domain genes
+(EfaB\_MINUS\_4114.g412 and EfaB\_PLUS\_1425.g183) are involved in
+sporozoite invasion in \textit{E. falciformis} and that the mRNAs are
+transcribed and available before excystation.  A role in merozoite
+re-invasion in \textit{E. falciformis} is not indicated by our data.
+The LCCL domain annotation and thrombospondins role in higher
+eukaryotes also indicates that adhesion or preparation for adhesion is
+important in oocysts.  We suggest (speculate...?) that the
+thrombospondin annotated ortholog and the LCCL domain-containing
+protein (EfaB\_MINUS\_11233.g986) are involved in cell adhesion in
+\textit{E. falciformis}.
+%One examples is found in the slime mold \textit{Dictyostelium
+%discoideum)} in which the LCCL domain is part of the mold's discoidin
+%adhesion protein. (Pfam entry for 'discoidin domain', May 2016)
 
 \subsubsection*{Amino acid biosynthesis in oocysts}
-High abundance of aminotransferase mRNAs indicate amino acid biosynthesis or preparation for 
-the same in oocysts (cluster 4). 
-We identify D-3-phosphoglycerate dehydrogenase and alanine dehydrogenase orthologs, which 
-are enzymes contributing to L-serine and L-alanine production, respectively. A putative 
-\textit{Eimeria} spp. cystathionine beta-synthase, CBS, in this cluster also indicates 
-de novo cysteine production. Alkyl sulfatase mRNA is also abundant in oocysts. Generally, 
-this enzyme enables an organism to exploit organic sulfur to produce and incorporate 
-inorganic sulfur into the amino acids cysteine and methionine, when no inorganoc sulfur 
-is available. 
+High abundance of aminotransferase mRNAs indicate amino acid
+biosynthesis or preparation for the same in oocysts (cluster 4).  We
+identify D-3-phosphoglycerate dehydrogenase and alanine dehydrogenase
+orthologs, which are enzymes contributing to L-serine and L-alanine
+production, respectively. A putative \textit{Eimeria}
+spp. cystathionine beta-synthase, CBS, in this cluster also indicates
+de novo cysteine production. Alkyl sulfatase mRNA is also abundant in
+oocysts. Generally, this enzyme enables an organism to exploit organic
+sulfur to produce and incorporate inorganic sulfur into the amino
+acids cysteine and methionine, when no inorganoc sulfur is available.
 
-'Embryonic development'
-Nicalin 1, patched family protein (hedgehog)  
+'Embryonic development' Nicalin 1, patched family protein (hedgehog)
 
 
 \subsubsection*{Oocysts contain mRNA for fatty acid catabolism}
-MmgE/PrpD is overrepresented in oocysts. The enzyme is important for propionate catabolism 
-in the 2-methylcitric acid cycle and has been shown to be used by the 
-intestinal intracellular bacterium \textit{Salmonella typhimurium} to generate 
-pyruvate (Horswill99). 
-Propionate is one of two most abundant small-chain fatty acids 
-in the gut along with butyrate. Both fatty acids are largely produced as 
-degradation products from food by commensal bacteria (Sun13). Sharing the intestines as a niche
-with \textit{S. typhimurium} it is possible that also \textit{E. falciformis} uses Mmg/PrpD
-to exploit available propionate for pyruvate production.
+MmgE/PrpD is overrepresented in oocysts. The enzyme is important for
+propionate catabolism in the 2-methylcitric acid cycle and has been
+shown to be used by the intestinal intracellular bacterium
+\textit{Salmonella typhimurium} to generate pyruvate (Horswill99).
+Propionate is one of two most abundant small-chain fatty acids in the
+gut along with butyrate. Both fatty acids are largely produced as
+degradation products from food by commensal bacteria (Sun13). Sharing
+the intestines as a niche with \textit{S. typhimurium} it is possible
+that also \textit{E. falciformis} uses Mmg/PrpD to exploit available
+propionate for pyruvate production.
 
 \subsubsection*{Oocyst highly abundant mRNAs are downregulated in sporozoites}
-Interestingly, the genes described above which are thought to be involved in amino acid 
-biosynthesis and invasion are highly abundant in oocysts but are underrepresented in schizont
-stages (day 3 and day 5 samples) and even in sporozoites. An average abundance was detected on 
-day 7 for these genes, indicating a role in either gametes or early oocyst formation.
-This pattern supports the suggestion that these specific mRNAs (cluster 4) for invasion 
-and biosynthetic processes are prepared (and possibly expressed) in the oocyst stage but 
-are no longer detectable in the cell at the timepont when the protein is assumed to be 
-in use (sporozoites and merozoite stages). 
-Therefore, correlating mRNA prevalence with biological function at the timepoint when mRNAs 
-are detected must be done with care. 
+Interestingly, the genes described above which are thought to be
+involved in amino acid biosynthesis and invasion are highly abundant
+in oocysts but are underrepresented in schizont stages (day 3 and day
+5 samples) and even in sporozoites. An average abundance was detected
+on day 7 for these genes, indicating a role in either gametes or early
+oocyst formation.  This pattern supports the suggestion that these
+specific mRNAs (cluster 4) for invasion and biosynthetic processes are
+prepared (and possibly expressed) in the oocyst stage but are no
+longer detectable in the cell at the timepont when the protein is
+assumed to be in use (sporozoites and merozoite stages).  Therefore,
+correlating mRNA prevalence with biological function at the timepoint
+when mRNAs are detected must be done with care.
 
 \subsubsection*{Down in sporozoites and oocysts -->  cluster 3..........}
 Oocysts: profile for 3, 5, 6:
@@ -660,12 +528,14 @@ Sporozoites: 3 and 5
 
 Day 7: 5 and 7
 
-Specific genes....
-Enolase 2, encoded by Eno2, is among the downregulated genes in oocysts and sporozoites.
-In \textit{T. gondii} the paralog Eno1 is strongly associated with the cyst (bradyzoite) stage
-and Eno2 is associated with tachyzoite stages (kibe05). It is therefore expected that this mRNA is
-underrepresented in oocysts and our data also show that the same is true in sporozoites for
-\textit{E. falciformis}. (TK: If important we could look specifically for Eno1 in cluster 4).
+Specific genes....  Enolase 2, encoded by Eno2, is among the
+downregulated genes in oocysts and sporozoites.  In \textit{T. gondii}
+the paralog Eno1 is strongly associated with the cyst (bradyzoite)
+stage and Eno2 is associated with tachyzoite stages (kibe05). It is
+therefore expected that this mRNA is underrepresented in oocysts and
+our data also show that the same is true in sporozoites for
+\textit{E. falciformis}. (TK: If important we could look specifically
+for Eno1 in cluster 4).
 
 
 
@@ -684,72 +554,88 @@ underrepresented in oocysts and our data also show that the same is true in spor
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%% DAY 7  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection*{Motility-related mRNAs indicate gamete development on day 7}
-Two clusters contain genes with mRNAs highly abundant on day 7 p.i; cluster 1 and 2.
-Dynein, kinesin and tubulin are annotations highly represented among orthologs of genes 
-in both these clusters. The annotations indicate an important role for motility at this
-timepoint, probably reflecting development of microgametes.
-In addition, in cluster 2, there are two 'EF-hand domain containing proteins' annotations as well 
-as caltractin, centrin-1, and troponin annotations. Caltractin and 
-centrin-1 are associated with the centrosome and structure and function of microtubuli in mammals, 
-and troponin is linked to muscle function (UniProt). 
-Also potentially linked to motility is the occurence of growth arrest specific protein 8,
-Gas8, which in the mouse has been reported to be highly 
-expressed in the testes and important for mouse sperm function (Yeh02). 
+Two clusters contain genes with mRNAs highly abundant on day 7 p.i;
+cluster 1 and 2.  Dynein, kinesin and tubulin are annotations highly
+represented among orthologs of genes in both these clusters. The
+annotations indicate an important role for motility at this timepoint,
+probably reflecting development of microgametes.  In addition, in
+cluster 2, there are two 'EF-hand domain containing proteins'
+annotations as well as caltractin, centrin-1, and troponin
+annotations. Caltractin and centrin-1 are associated with the
+centrosome and structure and function of microtubuli in mammals, and
+troponin is linked to muscle function (UniProt).  Also potentially
+linked to motility is the occurence of growth arrest specific protein
+8, Gas8, which in the mouse has been reported to be highly expressed
+in the testes and important for mouse sperm function (Yeh02).
 
-Other genes among the 38 indicate carbon fixation (glycolysis/gluconeogenesis) or 
-conversions of nucleoside phosphates. In addition, a Ras family protein, RNA 
-polymerase II transcription initiation factor and Sec23 and Sec24 were among orthologs 
-identified in \textit{E. falciformis} cluster 2.
+Other genes among the 38 indicate carbon fixation
+(glycolysis/gluconeogenesis) or conversions of nucleoside
+phosphates. In addition, a Ras family protein, RNA polymerase II
+transcription initiation factor and Sec23 and Sec24 were among
+orthologs identified in \textit{E. falciformis} cluster 2.
 
-In cluster 1, carbon metabolism genes are represented by 6-phosphogluconate dehydrogenase 
-and glycogen phosphorylase family protein 1. UDP-glucose 4-epimerase and amiloride-sensitive 
-amine oxidase are reported as upregulated in gametocytes in \textit{E. tenella} by 
-RNA-seq (Walker15) and suggested by those authors to play a role in cyst wall synthesis.
+In cluster 1, carbon metabolism genes are represented by
+6-phosphogluconate dehydrogenase and glycogen phosphorylase family
+protein 1. UDP-glucose 4-epimerase and amiloride-sensitive amine
+oxidase are reported as upregulated in gametocytes in
+\textit{E. tenella} by RNA-seq (Walker15) and suggested by those
+authors to play a role in cyst wall synthesis.
 
 \subsubsection*{Microneme proteins highly expressed on day 7 p.i.}
-Unintuitively for a protozoan organism, seven out of eight GO biological process terms
-in cluster 1 are associated with wound healing and blood coagulation.
-An explanation is offered by some of the orthologs to the three \textit{E. falciformis} genes
-responsible for these terms. In protozoa, e.g., other \textit{Eimeria} spp. and 
-\textit{Toxoplasma gondii} orthologs are annotated as 'Micronemal protein MIC4,
-related' (E. tenella) and more generally for several other protozoa, 'PAN domain containing proteins'.
-The PAN domain is found in the plasminogen/hepatocyte growth factor family and in coagulation 
-factor XI family (REF), explaining why terms related to blood coagulation are enriched by these genes.
-Later publications on \textit{T. gondii} (Marchant12) also associate PAN domains and proteins in 
-apicomplexan parasites with micronemes and therefore invasion. In our case, this is peculiar, since 
-the enrichment appears on day 7 p.i.. A possible role at this timepoint is suggested by work on 
-the fungi \textit{Sclerotinia sclerotiorum} where Yu et al. reported an important role for PAN domain
-proteins in cell wall integrity (Yu12). This role for MIC proteins has to our knowledge 
-not been investigated in apicomplexan parasites. 
-The PAN domain domain has also been reported to be common in nematodes such as 
-\textit{Caenorhabditis elegans}, however the function is not understood. (Thordai99)
-The other two GO terms in the cluster of day seven upregulated genes are DNA replication and DNA 
-replication initiation, which most likely reflects late stage schizogony or gamete formation.
-Six genes contribute to this enrichment and orthologs are either annotated as DNA replcation
-licencing factors, DNA polymerases or minichromosome maintenance proteins 2/3/5/7, Mcm2/3/5/7.
+Unintuitively for a protozoan organism, seven out of eight GO
+biological process terms in cluster 1 are associated with wound
+healing and blood coagulation.  An explanation is offered by some of
+the orthologs to the three \textit{E. falciformis} genes responsible
+for these terms. In protozoa, e.g., other \textit{Eimeria} spp. and
+\textit{Toxoplasma gondii} orthologs are annotated as 'Micronemal
+protein MIC4, related' (E. tenella) and more generally for several
+other protozoa, 'PAN domain containing proteins'.  The PAN domain is
+found in the plasminogen/hepatocyte growth factor family and in
+coagulation factor XI family (REF), explaining why terms related to
+blood coagulation are enriched by these genes.  Later publications on
+\textit{T. gondii} (Marchant12) also associate PAN domains and
+proteins in apicomplexan parasites with micronemes and therefore
+invasion. In our case, this is peculiar, since the enrichment appears
+on day 7 p.i.. A possible role at this timepoint is suggested by work
+on the fungi \textit{Sclerotinia sclerotiorum} where Yu et
+al. reported an important role for PAN domain proteins in cell wall
+integrity (Yu12). This role for MIC proteins has to our knowledge not
+been investigated in apicomplexan parasites.  The PAN domain domain
+has also been reported to be common in nematodes such as
+\textit{Caenorhabditis elegans}, however the function is not
+understood. (Thordai99) The other two GO terms in the cluster of day
+seven upregulated genes are DNA replication and DNA replication
+initiation, which most likely reflects late stage schizogony or gamete
+formation.  Six genes contribute to this enrichment and orthologs are
+either annotated as DNA replcation licencing factors, DNA polymerases
+or minichromosome maintenance proteins 2/3/5/7, Mcm2/3/5/7.
 
 
 \subsubsection*{Gene and sample patterns by hierarchical clustering}
-Samples (columns) cluster into two major clusters where day 7 p.i. samples form one group distinct from
-other samples. In the second group, oocsts and sporozoites are distinct and sporozoites cluster
-most closely with day 3 and 5 p.i. samples. Day 3 and 5 p.i. samples also cluster into two groups,
-of which one contains all NMRI day 5 p.i. samples. Apart from this, the two day 3 and 5 p.i. sample
-clusters have no obvious patters. 
+Samples (columns) cluster into two major clusters where day 7
+p.i. samples form one group distinct from other samples. In the second
+group, oocsts and sporozoites are distinct and sporozoites cluster
+most closely with day 3 and 5 p.i. samples. Day 3 and 5 p.i. samples
+also cluster into two groups, of which one contains all NMRI day 5
+p.i. samples. Apart from this, the two day 3 and 5 p.i. sample
+clusters have no obvious patters.
 
-For gene clusters (rows), the two groups with high mRNA abundance on day 7 p.i. (cluster 1 and 2)
-do not cluster most closely with each other, but with the cluster for high mRNA abundance in oocysts
-(cluster 1 association) and with the cluster for high mRNA abundance in sporozoites (cluster 2 
-association).
+For gene clusters (rows), the two groups with high mRNA abundance on
+day 7 p.i. (cluster 1 and 2) do not cluster most closely with each
+other, but with the cluster for high mRNA abundance in oocysts
+(cluster 1 association) and with the cluster for high mRNA abundance
+in sporozoites (cluster 2 association).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	DISCUSSION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Discussion}
-In our analysis we demonstrate which biological processes are dominant in different
-life cycle stages of \textit{E. falciformis} in the mouse. The RNAseq transcriptome provided here 
-allows for detailed analysis of genes involved in those processes, providing candidates for 
-life stage specific marker in \textit{Eimeria} spp. research. 
+In our analysis we demonstrate which biological processes are dominant
+in different life cycle stages of \textit{E. falciformis} in the
+mouse. The RNAseq transcriptome provided here allows for detailed
+analysis of genes involved in those processes, providing candidates
+for life stage specific marker in \textit{Eimeria} spp. research.
 
 \ldots
 \ldots
@@ -877,9 +763,9 @@ base).
 
 \subsection{Differentially abundant mRNAs used for hierarchical clustering}
 All analyses were performed in R (cite R-core). Complete scripts are
-available at git@github.com:derele/Ef\_RNAseq.git tagged as version
-1.0. 
-%% We will make this available as a git webpage probably
+available at https://github.com/derele/Ef\_RNAseq.git tagged as version
+1.0.
+%% We will make this available as a github webpage!!!
 
 \setlength{\tabcolsep}{10pt}
 \begin{table}[H]
@@ -958,30 +844,120 @@ available at git@github.com:derele/Ef\_RNAseq.git tagged as version
 %%
 %% Do not use \listoffigures as most will included as separate files
 
-%\begin{figure}
- %\begin{picture}
- % \includegraphics[width=0.5\linewidth]{ef-heatmap}
- %\end{picture}
-%\end{figure}
-
 \section*{Figures}
+
 \begin{figure}[h!]
 %  \includegraphics[width=0.5\linewidth]{efmm-ratio}
-  \caption{\csentence{Parasite read sequences per mouse read sequences for each experimental condition.}
-  The more advanced the infection is, the higher the ratio of parasite reads is, reflecting parasite replication between day zero and day seven. ......compare 1st and 2nd ....... patterns between Rag and NMRI/C57BL/6?  ........ Values are mean of replicates (n=2, if * n=1) on log10 scale. Each sample (replicate) consists of mRNA from three different mice.}
+  \caption{\csentence{Experimental design and outcome of a dual RNAseq experiment}
+    read sequences per mouse read sequences for each experimental
+    condition. The more advanced the infection is, the higher the
+    ratio of parasite reads is, reflecting parasite replication
+    between day zero and day seven. ......compare 1st and 2nd
+    ....... patterns between Rag and NMRI/C57BL/6?  ........ Values
+    are mean of replicates (n=2, if * n=1) on log10 scale. Each sample
+    (replicate) consists of mRNA from three different mice.}
   \end{figure}
 
- % \begin{figure}[h!]
- % \includegraphics[width=0.7\linewidth]{ef-heatmap}
- % \caption{\csentence{Parasite genes with different mRNA abundance between samples, sorted into five clusters by hierarchical clustering (method = complete, distance = euclidean).}
- %     \textit{E. falciformis} samples from seven days p.i. cluster together (NMRI mice only). These samples have distinct mRNA abundance patterns in all gene clusters, although more pronounced in clusters 1 (up) and 4 (down). Distinct groups of genes also define sporozoites (cluster 5, up) and oocysts (cluster 2, up). mRNA profiles on days three and five p.i. from all three mouse strains cluster together. These samples are distinct from oocysts, NMRI day 7 p.i., and sporozoites, however closest to the latter. On scale bar, 0 is mean mRNA abundance for each gene. Up and downregulation is standard deviations from mean.}
- %     \end{figure}
+%%%%%
+figure 1 label cotribution of mouse vs. parasite transcripts to the
+overall transcriptional output of the analysed tissue for all samples.
+%%%%
+
+%% Selecting at most at most 500 genes differentially abundant with
+%% lowest FDR (<0.05) are selected. In the next step, the 500 mRNAs from
+%% each comparison (or less) are joined. For \textit{E. falciformis} time
+%% p.i. comparison, this resulted in 1618 unique genes selected as
+%% differently expressed . The 22 genes in the NMRI vs C57BL/6 comparison
+%% are not included in the \textit{E. falciformis} life cycle
+%% analysis. The same comparisons for mouse yielded 8052 genes in total
+%% and 1313 unique ones. In heatmaps, all samples, i.e. also samples
+%% which themselves did not have any significantly different mRNAs
+%% according to our selection, were included in hierarchical
+%% clustering.
+
+
+%% This might be figure label
+%% Scale bar in heatmaps show 0 as mean mRNA abundance for
+%% each gene (row). Up (green) and down-regulation (brown) denote number
+%% of standard deviations from 0, i.e., row mean. 
+
+
+
+\subsection{Life cycle analysis... \textit{E. falciformis}}
+\begin{figure}[h!]
+%\begin{center}
+%\centering
+	\includegraphics[width=\linewidth]{EfLifecycleHeatmap.pdf}  
+	\caption{\textit{E. falciformis} mRNAs with significantly
+          different abundance at different times p.i. in NMRI mice
+          (see Table 2). Samples cluster according to expected
+          developmental state of the parasite, without distinguishing
+          between first and challenge infection. Hierarchical
+          clustering was set to apply seven gene clusters.}
+%\end{center}
+\end{figure}
+
+
+\subsection{Parasite development reflected in mouse data}
+\begin{figure}[h!]
+%\begin{center}
+%\centering
+\includegraphics[width=\linewidth]{MmLifecycleHeatmap.pdf}  
+\caption{Mouse mRNAs with significantly different abundance at
+  different times p.i. in NMRI mice (see Table 2). Samples cluster
+  according to expected developmental state of the parasite, without
+  distinguishing between first and challenge infection. Rag1-/- mouse
+  samples cluster together. Hierarchical clustering was set to apply
+  four gene clusters.}
+%\end{center}
+\end{figure}
+
+When clustering mouse mRNAs which were different in time
+p.i. comparisons in Table 2, three out of four samples from day 7
+p.i. (NMRI only) cluster together. These samples are characterized by
+gene cluster 3 (up) as well as 2 and 4 (down). The fourth day 7-sample
+(challenge infection, second replicate) clusters with day 3 and 5
+samples. Upon visual inspection of this sample in gene cluster 4, it
+diplays a profile similar to non-infected mice. The same sample is
+abnormal in the parasite profile (Figure 1). NMRI and C57BL/6
+uninfected samples (0dpi) cluster together, defined by gene clusters 4
+(up), and 1 (down). Rag1-/- day 0 samples are however less pronounced
+in gene cluster 1. Day 3 and 5 samples cluster together, with Rag1-/-
+forming a separate group and Rag1-/- non-infected most distant in this
+sample cluster.
+
+
+
+% \begin{figure}[h!]
+ % \includegraphics[width=0.7\linewidth]{ef-heatmap} \caption{\csentence{Parasite
+ % genes with different mRNA abundance between samples, sorted into
+ % five clusters by hierarchical clustering (method = complete,
+ % distance = euclidean).}  \textit{E. falciformis} samples from seven
+ % days p.i. cluster together (NMRI mice only). These samples have
+ % distinct mRNA abundance patterns in all gene clusters, although
+ % more pronounced in clusters 1 (up) and 4 (down). Distinct groups of
+ % genes also define sporozoites (cluster 5, up) and oocysts (cluster
+ % 2, up). mRNA profiles on days three and five p.i. from all three
+ % mouse strains cluster together. These samples are distinct from
+ % oocysts, NMRI day 7 p.i., and sporozoites, however closest to the
+ % latter. On scale bar, 0 is mean mRNA abundance for each gene. Up
+ % and downregulation is standard deviations from mean.}  \end{figure}
 
 %\begin{figure}[h!]
-%  \includegraphics[width=0.7\linewidth]{mm-heatmap}
-%  \caption{\csentence{Mouse genes with different mRNA abundance between samples, sorted into four clusters by hierarchical clustering (method = complete, distance = euclidean).}
-%Three out of four samples from day 7 p.i. (NMRI only) cluster together. These samples are characterized by genes in cluster 2 (up), 3, and 4 (down). NMRI and C57BL/6 uninfected samples cluster together (left), defined by clusters 3, 4 (up), and 1 (down). Rag1-/- samples cluster together. These samples share a weak downregulation of most genes in cluster 2 as well as upregulation of a small group genes in the same cluster. Uninfected Rag1-/- samples are separated from infected ones with distinct profiles in clusters 1, 3, and 4. On scale bar, 0 is mean mRNA abundance for each gene. Up and downregulation is standard deviations from mean.}
-%      \end{figure}
+%  \includegraphics[width=0.7\linewidth]{mm-heatmap} \caption{\csentence{Mouse
+%  genes with different mRNA abundance between samples, sorted into
+%  four clusters by hierarchical clustering (method = complete,
+%  distance = euclidean).}  Three out of four samples from day 7
+%  p.i. (NMRI only) cluster together. These samples are characterized
+%  by genes in cluster 2 (up), 3, and 4 (down). NMRI and C57BL/6
+%  uninfected samples cluster together (left), defined by clusters 3,
+%  4 (up), and 1 (down). Rag1-/- samples cluster together. These
+%  samples share a weak downregulation of most genes in cluster 2 as
+%  well as upregulation of a small group genes in the same
+%  cluster. Uninfected Rag1-/- samples are separated from infected
+%  ones with distinct profiles in clusters 1, 3, and 4. On scale bar,
+%  0 is mean mRNA abundance for each gene. Up and downregulation is
+%  standard deviations from mean.}  \end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -992,17 +968,117 @@ available at git@github.com:derele/Ef\_RNAseq.git tagged as version
 
 %% Use of \listoftables is discouraged.
 %%
-\section*{Tables}
-\begin{table}[h!]
-\caption{Sample table title. This is where the description of the table should go.}
-      \begin{tabular}{cccc}
-        \hline
-           & B1  &B2   & B3\\ \hline
-        A1 & 0.1 & 0.2 & 0.3\\
-        A2 & ... & ..  & .\\
-        A3 & ..  & .   & .\\ \hline
-      \end{tabular}
+
+
+
+\newcommand{\bcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{LightRed}{rgb}{1,0.88,1}
+
+\begin{table}[ht]
+\caption{Experimental design, sequencing output and mapping statistics.}
+\centering
+\hspace*{-1.5cm}\begin{tabular}{lllllllll}
+  \hline
+Sample & \bcell{Sequencing\\method} & batch & \bcell{read mappings\\Mouse} & \bcell{read mappings\\\textit{E. falciformis}} & \bcell{Percentage\\\textit{E. falciformis}} & dpi & infection  \\ 
+\hline
+  NMRI\_2ndInf\_0dpi\_rep1 & GAII & 2 & 285032128 & 326 & 0 & 0dpi & Challenge \\ 
+  Rag\_0dpi\_rep1 & hiseq & 3 & 43414004 & 474 & 0.001 & 0dpi & None \\ 
+  C57BL6\_0dpi\_rep1 & hiseq & 3 & 53877840 & 491 & 0.001 & 0dpi & None \\ 
+  C57BL6\_0dpi\_rep2 & hiseq & 3 & 76753491 & 657 & 0.001 & 0dpi & None \\ 
+  Rag\_0dpi\_rep2 & hiseq & 3 & 80702547 & 730 & 0.001 & 0dpi & None \\ 
+  NMRI\_2ndInf\_0dpi\_rep2 & hiseq & 3 & 90681785 & 3738 & 0.004 & 0dpi & Challenge \\ 
+  \rowcolor{LightCyan}
+  NMRI\_2ndInf\_3dpi\_rep1 & hiseq & 3 & 91352242 & 5355 & 0.006 & 3dpi & Challenge \\ 
+  \rowcolor{LightCyan}
+  NMRI\_2ndInf\_5dpi\_rep2 & hiseq & 3 & 113957667 & 12692 & 0.011 & 5dpi & Challenge \\ 
+  \rowcolor{LightRed}
+  NMRI\_1stInf\_0dpi\_rep1 & GAII & 1 & 229165002 & 31459 & 0.014 & 0dpi & None \\ 
+  NMRI\_2ndInf\_3dpi\_rep2 & hiseq & 3 & 106446839 & 34699 & 0.033 & 3dpi & Challenge \\ 
+  NMRI\_2ndInf\_7dpi\_rep2 & hiseq & 3 & 122999109 & 46700 & 0.038 & 7dpi & Challenge \\ 
+  Rag\_1stInf\_5dpi\_rep1 & hiseq & 3 & 71173382 & 73445 & 0.103 & 5dpi & First \\ 
+  Rag\_1stInf\_5dpi\_rep2 & hiseq & 3 & 57192380 & 113673 & 0.198 & 5dpi & First \\ 
+  C57BL6\_1stInf\_5dpi\_rep1 & hiseq & 3 & 65523435 & 217606 & 0.331 & 5dpi & First \\ 
+  Rag\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 85288323 & 224273 & 0.262 & 5dpi & Challenge \\ 
+  C57BL6\_1stInf\_5dpi\_rep2 & hiseq & 3 & 32887009 & 250954 & 0.757 & 5dpi & First \\ 
+  C57BL6\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 62053975 & 311900 & 0.500 & 5dpi & Challenge \\ 
+  NMRI\_1stInf\_3dpi\_rep1 & GAII & 1 & 209723287 & 815820 & 0.388 & 3dpi & First \\ 
+  NMRI\_1stInf\_3dpi\_rep2 & GAII & 2 & 515516785 & 903330 & 0.175 & 3dpi & First \\ 
+  NMRI\_1stInf\_5dpi\_rep2 & GAII & 2 & 316721928 & 1609009 & 0.505 & 5dpi & Firs \\ 
+  NMRI\_2ndInf\_5dpi\_rep1 & GAII & 2 & 589643389 & 3752923 & 0.632 & 5dpi & Challenge \\ 
+  NMRI\_2ndInf\_7dpi\_rep1 & hiseq & 3 & 97221189 & 9927803 & 9.265 & 7dpi & Challenge \\ 
+  NMRI\_1stInf\_5dpi\_rep1 & GAII & 2 & 204647381 & 18549727 & 8.311 & 5dpi & First \\ 
+  NMRI\_sporozoites\_rep2 & GAII & 0 & 8702 & 21508353 & 99.960 & \textit{in vitro} & \textit{in vitro} \\ 
+  NMRI\_1stInf\_5dpi\_rep3 & GAII & 0 & 334671421 & 54022504 & 13.899 & 5dpi & First \\ 
+  NMRI\_1stInf\_7dpi\_rep1 & GAII & 1 & 12532238 & 79648900 & 86.405 & 7dpi & First \\ 
+  NMRI\_sporozoites\_rep1 & GAII & 1 & 13800 & 92259539 & 99.985 & \textit{in vitro} & \textit{in vitro} \\ 
+  NMRI\_oocysts\_rep1 & GAII & 1 & 11676 & 108477484 & 99.989 & envir. & envir. \\ 
+  NMRI\_oocysts\_rep2 & GAII & 0 & 19024 & 126543533 & 99.985 & envir. & envir. \\ 
+  NMRI\_1stInf\_7dpi\_rep2 & GAII & 1 & 94310278 & 154343046 & 62.072 & 7dpi & First \\ 
+   \hline
+\hspace*{+1.5cm}\end{tabular}
+\begin{tablenotes}
+  \small
+\item *envir. ``environmental'' oocysts sporulated in potassium dichromate. \\
+\item *\textit{in vitro} in vitro sporulated oocysts
+\end{tablenotes}
 \end{table}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% 	NUMBER OF GENES DIFFERENT IN DIFFERENT COMPARISONS	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% I like this table. Looks good and transprorts the right kind of
+%% information
+
+\clearpage
+\section{mRNA abundance differences between different experimental groups}
+\setlength{\tabcolsep}{8pt}
+\begin{table}[H]
+\small
+\begin{center}
+\caption{mRNA abundance differences between different experimental groups.}
+%\label{tab:table3}
+\begin{tabular}{*3l}    \toprule
+\textit{Day post infection} & \textit{Ef} genes different & Mouse genes different \\ 
+	\textit{comparisons} 	    & (FDR$\leq$1\%) &  (FDR$\leq$1\%/5\%) \\ \midrule
+	NMRI 0 vs NMRI 3		& NA   & 274 \\
+	NMRI 0 vs NMRI 5		& NA   & 1736 \\
+	NMRI 0 vs NMRI 7		& NA   & 2802 \\
+	NMRI 3 vs NMRI 5     		& 111  & 1 \\
+	NMRI 3 vs NMRI 7  		& 1385 & 1407 \\ 
+	NMRI 5 vs NMRI 7  		& 1895 & 873 \\ 
+	C57BL/6 0 vs C57BL/6 5		& NA	& 914 \\
+	Rag1-/- 0 vs Rag1-/- 5		& NA	& 45 \\ \midrule
+\textit{Day post infection,} & 		 & 		 \\ 
+\textit{parasite relevant comparisons} 	    & 		&  \\ \midrule
+	Oocysts vs NMRI 3  	& 3310 & NA \\  
+	Oocysts vs NMRI 5	& 3605 & NA \\ 
+	Oocysts vs NMRI 7	& 3085 & NA \\ 
+	Oocysts vs sporozoites  & 3421 & NA \\
+	Sporozoites vs NMRI 3 	& 1663 & NA \\
+	Sporozoites vs NMRI 5 	& 1605 & NA \\
+	Sporozoites vs NMRI 7 	& 2473 & NA \\ \midrule
+\textit{First and second infection} & 		 & 	 \\ 
+\textit{comparisons} 	    & 		& 	\\ \midrule
+	NMRI 3 1st vs NMRI 3 2nd  	& 0  & 5 \\
+	NMRI 5 1st vs NMRI 5 2nd  	& 0  & 1 \\
+	NMRI 7 1st vs NMRI 7 2nd  	& 0  & 902 \\
+	C57BL/6 1st vs C57BL/6 2nd (day 5) & 0 &  mouse \\
+	Rag1-/- 1st vs Rag1-/- 2nd (day 5) & 0 & mouse  \\ \midrule
+\bottomrule
+	\hline
+\end{tabular}
+\end{center}
+\end{table}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                               %%
@@ -1012,8 +1088,10 @@ available at git@github.com:derele/Ef\_RNAseq.git tagged as version
 
 \section*{Additional Files}
   \subsection*{Additional file 1 --- Raw and normalized counts }
-  Raw and normalized counts for individual samples in our
-  study (two compressed csv files).
+  Raw counts of reads mappins to the \textit{E. falciformis} and mouse
+  genome for individual samples in our study. Normalized counts for
+  seperately for the host and parasite mappings (three compressed csv
+  files).
   
   \subsection*{Additional file 2 --- Results of statistical tests (edgeR) }
   Focal contrast, fold-changes, likelihood ratio in/excluding this
