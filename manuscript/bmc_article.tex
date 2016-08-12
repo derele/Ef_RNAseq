@@ -62,6 +62,7 @@
 \usepackage{float} % To control positions of e.g. tables or figures
 %\usepackage[section]{placeins}
 \usepackage{graphicx}
+\usepackage[flushleft]{threeparttable}
 
 % to color table rows
 \usepackage{color, colortbl}
@@ -278,12 +279,17 @@ extracted mRNA and constructed sequencing libraries for different
 timepoints after infection and mouse strains which displayed different
 immunocompetence in infection trials (see figure x).
 
-Briefly RAG-1-/- knockout mice, in which mature B and T lymphocytes
-are absent showed ... 
+In these experiments we analysed RAG-1-/- mice and compared them to
+the parental C57BL6 mouse line. RAG knockout mich lack adaptive immune
+response du to the absence of mature B and T lymphocytes. Differences
+in oocyst output were more pronounced between NMRI and both C57BL6 and
+RAG-1-/-. Surprisingly this finding was made both in primary and
+challenge infection. Similarly development of intestinal stages as
+assayed by quantitative reverse transcription PCR (RT qPCR) also ...
 
-Additonally we obtained data for challenge infections of mice
-immunized one month prior to the experiment.
-
+This lead us to question the influence of the innate or cell
+autonomouse immune system on early stages of infection. And we thus
+settled on an experimental design comparing infections at 5dpi for all
 
 For the parasite oocysts and sporozoites were included as
 ``environmental'' and ``\textit{in vitro}'' processed lifecycle
@@ -968,62 +974,62 @@ sample cluster.
 %% Use of \listoftables is discouraged.
 %%
 
-
-
 \newcommand{\bcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 
 \definecolor{LightCyan}{rgb}{0.88,1,1}
 \definecolor{LightRed}{rgb}{1,0.88,1}
 
+% Fri Aug 12 11:05:43 2016
 \begin{table}[ht]
-\caption{Experimental design, sequencing output and mapping statistics.}
 \centering
-\hspace*{-1.5cm}\begin{tabular}{lllllllll}
+\hspace*{-2.5cm}\begin{tabular}{lllllllll}
   \hline
-Sample & \bcell{Sequencing\\method} & batch & \bcell{read mappings\\Mouse} & \bcell{read mappings\\\textit{E. falciformis}} & \bcell{Percentage\\\textit{E. falciformis}} & dpi & infection  \\ 
-\hline
-  NMRI\_2ndInf\_0dpi\_rep1 & GAII & 2 & 285032128 & 326 & 0 & 0dpi & Challenge \\ 
-  Rag\_0dpi\_rep1 & hiseq & 3 & 43414004 & 474 & 0.001 & 0dpi & None \\ 
-  C57BL6\_0dpi\_rep1 & hiseq & 3 & 53877840 & 491 & 0.001 & 0dpi & None \\ 
-  C57BL6\_0dpi\_rep2 & hiseq & 3 & 76753491 & 657 & 0.001 & 0dpi & None \\ 
-  Rag\_0dpi\_rep2 & hiseq & 3 & 80702547 & 730 & 0.001 & 0dpi & None \\ 
-  NMRI\_2ndInf\_0dpi\_rep2 & hiseq & 3 & 90681785 & 3738 & 0.004 & 0dpi & Challenge \\ 
+Sample* & \bcell{Sequencing\\method} & batch & \bcell{total\\reads} & \bcell{reads\\mapping\\Mouse} & \bcell{reads\\mapping\\\textit{E. falciformis}} & \bcell{Percentage\\\textit{E. falciformis}}** & \bcell{detected\\ \textit{E. falciformis}\\genes} \\ 
+  \hline
+NMRI\_2ndInf\_0dpi\_rep1 & GAII & 2 & 108,937,797 & 70,489,674 & 247 & 0.0004 & 1 \\ 
+  Rag\_1stInf\_0dpi\_rep1 & hiseq & 3 & 25,362,793 & 18,853,850 & 443 & 0.0023 & 2 \\ 
+  C57BL6\_1stInf\_0dpi\_rep1 & hiseq & 3 & 35,731,249 & 25,119,348 & 457 & 0.0018 & 2 \\ 
+  C57BL6\_1stInf\_0dpi\_rep2 & hiseq & 3 & 47,085,959 & 34,377,133 & 608 & 0.0018 & 2 \\ 
+  Rag\_1stInf\_0dpi\_rep2 & hiseq & 3 & 46,556,156 & 35,233,327 & 676 & 0.0019 & 2 \\ 
+  NMRI\_2ndInf\_0dpi\_rep2 & hiseq & 3 & 58,122,244 & 40,794,245 & 3,406 & 0.0083 & 51 \\ 
   \rowcolor{LightCyan}
-  NMRI\_2ndInf\_3dpi\_rep1 & hiseq & 3 & 91352242 & 5355 & 0.006 & 3dpi & Challenge \\ 
+  NMRI\_2ndInf\_3dpi\_rep1 & hiseq & 3 & 57,934,016 & 40,544,287 & 4,803 & 0.0118 & 95 \\ 
   \rowcolor{LightCyan}
-  NMRI\_2ndInf\_5dpi\_rep2 & hiseq & 3 & 113957667 & 12692 & 0.011 & 5dpi & Challenge \\ 
+  NMRI\_2ndInf\_5dpi\_rep2 & hiseq & 3 & 63,965,539 & 48,289,181 & 10,941 & 0.0227 & 407 \\ 
   \rowcolor{LightRed}
-  NMRI\_1stInf\_0dpi\_rep1 & GAII & 1 & 229165002 & 31459 & 0.014 & 0dpi & None \\ 
-  NMRI\_2ndInf\_3dpi\_rep2 & hiseq & 3 & 106446839 & 34699 & 0.033 & 3dpi & Challenge \\ 
-  NMRI\_2ndInf\_7dpi\_rep2 & hiseq & 3 & 122999109 & 46700 & 0.038 & 7dpi & Challenge \\ 
-  Rag\_1stInf\_5dpi\_rep1 & hiseq & 3 & 71173382 & 73445 & 0.103 & 5dpi & First \\ 
-  Rag\_1stInf\_5dpi\_rep2 & hiseq & 3 & 57192380 & 113673 & 0.198 & 5dpi & First \\ 
-  C57BL6\_1stInf\_5dpi\_rep1 & hiseq & 3 & 65523435 & 217606 & 0.331 & 5dpi & First \\ 
-  Rag\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 85288323 & 224273 & 0.262 & 5dpi & Challenge \\ 
-  C57BL6\_1stInf\_5dpi\_rep2 & hiseq & 3 & 32887009 & 250954 & 0.757 & 5dpi & First \\ 
-  C57BL6\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 62053975 & 311900 & 0.500 & 5dpi & Challenge \\ 
-  NMRI\_1stInf\_3dpi\_rep1 & GAII & 1 & 209723287 & 815820 & 0.388 & 3dpi & First \\ 
-  NMRI\_1stInf\_3dpi\_rep2 & GAII & 2 & 515516785 & 903330 & 0.175 & 3dpi & First \\ 
-  NMRI\_1stInf\_5dpi\_rep2 & GAII & 2 & 316721928 & 1609009 & 0.505 & 5dpi & Firs \\ 
-  NMRI\_2ndInf\_5dpi\_rep1 & GAII & 2 & 589643389 & 3752923 & 0.632 & 5dpi & Challenge \\ 
-  NMRI\_2ndInf\_7dpi\_rep1 & hiseq & 3 & 97221189 & 9927803 & 9.265 & 7dpi & Challenge \\ 
-  NMRI\_1stInf\_5dpi\_rep1 & GAII & 2 & 204647381 & 18549727 & 8.311 & 5dpi & First \\ 
-  NMRI\_sporozoites\_rep2 & GAII & 0 & 8702 & 21508353 & 99.960 & \textit{in vitro} & \textit{in vitro} \\ 
-  NMRI\_1stInf\_5dpi\_rep3 & GAII & 0 & 334671421 & 54022504 & 13.899 & 5dpi & First \\ 
-  NMRI\_1stInf\_7dpi\_rep1 & GAII & 1 & 12532238 & 79648900 & 86.405 & 7dpi & First \\ 
-  NMRI\_sporozoites\_rep1 & GAII & 1 & 13800 & 92259539 & 99.985 & \textit{in vitro} & \textit{in vitro} \\ 
-  NMRI\_oocysts\_rep1 & GAII & 1 & 11676 & 108477484 & 99.989 & envir. & envir. \\ 
-  NMRI\_oocysts\_rep2 & GAII & 0 & 19024 & 126543533 & 99.985 & envir. & envir. \\ 
-  NMRI\_1stInf\_7dpi\_rep2 & GAII & 1 & 94310278 & 154343046 & 62.072 & 7dpi & First \\ 
+  NMRI\_1stInf\_0dpi\_rep1 & GAII & 1 & 82,364,585 & 55,176,243 & 17,954 & 0.0325 & 701 \\ 
+  NMRI\_2ndInf\_3dpi\_rep2 & hiseq & 3 & 65,548,826 & 46,171,909 & 29,548 & 0.0640 & 1,580 \\ 
+  NMRI\_2ndInf\_7dpi\_rep2 & hiseq & 3 & 67,487,466 & 51,722,265 & 40,091 & 0.0775 & 1,836 \\ 
+  Rag\_1stInf\_5dpi\_rep1 & hiseq & 3 & 38,651,359 & 29,982,453 & 63,024 & 0.2098 & 2,548 \\ 
+  Rag\_1stInf\_5dpi\_rep2 & hiseq & 3 & 34,779,832 & 25,297,803 & 99,000 & 0.3898 & 2,828 \\ 
+  C57BL6\_1stInf\_5dpi\_rep1 & hiseq & 3 & 40,904,388 & 29,319,604 & 185,969 & 0.6303 & 4,173 \\ 
+  Rag\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 50,049,848 & 37,093,621 & 192,856 & 0.5172 & 4,167 \\ 
+  C57BL6\_1stInf\_5dpi\_rep2 & hiseq & 3 & 29,511,368 & 18,062,349 & 215,696 & 1.1801 & 3,823 \\ 
+  C57BL6\_2ndInf\_5dpi\_rep1 & hiseq & 3 & 35,148,432 & 25,660,184 & 262,909 & 1.0142 & 4,563 \\ 
+  NMRI\_1stInf\_3dpi\_rep1 & GAII & 1 & 73,236,430 & 49,993,358 & 394,384 & 0.7827 & 5,220 \\ 
+  NMRI\_1stInf\_3dpi\_rep2 & GAII & 2 & 160,709,694 & 117,791,044 & 413,051 & 0.3494 & 4,862 \\ 
+  NMRI\_1stInf\_5dpi\_rep2 & GAII & 2 & 119,902,722 & 76,419,774 & 794,570 & 1.0290 & 5,333 \\ 
+  NMRI\_2ndInf\_5dpi\_rep1 & GAII & 2 & 230,773,955 & 143,186,486 & 1,846,840 & 1.2734 & 5,533 \\ 
+  NMRI\_2ndInf\_7dpi\_rep1 & hiseq & 3 & 70,366,762 & 41,467,146 & 8,634,201 & 17.2335 & 5,875 \\ 
+  NMRI\_1stInf\_5dpi\_rep1 & GAII & 2 & 76,702,168 & 47,037,087 & 8,669,701 & 15.5631 & 5,700 \\ 
+  NMRI\_sporozoites\_rep2 & GAII & 0 & 19,551,681 & 8,656 & 11,470,604 & 99.9246 & 5,513 \\ 
+  NMRI\_1stInf\_5dpi\_rep3 & GAII & 0 & 191,099,180 & 83,735,624 & 27,839,458 & 24.9513 & 5,784 \\ 
+  NMRI\_1stInf\_7dpi\_rep1 & GAII & 1 & 66,505,514 & 3,310,666 & 39,400,884 & 92.2488 & 5,932 \\ 
+  NMRI\_sporozoites\_rep1 & GAII & 1 & 67,325,397 & 4,334 & 43,774,401 & 99.9901 & 5,825 \\ 
+  NMRI\_oocysts\_rep1 & GAII & 1 & 68,859,802 & 3,805 & 49,653,065 & 99.9923 & 5,695 \\ 
+  NMRI\_oocysts\_rep2 & GAII & 0 & 151,090,783 & 18,524 & 71,019,860 & 99.9739 & 5,777 \\ 
+  NMRI\_1stInf\_7dpi\_rep2 & GAII & 1 & 139,749,046 & 21,699,324 & 73,539,445 & 77.2159 & 5,943 \\ 
    \hline
-\hspace*{+1.5cm}\end{tabular}
-\begin{tablenotes}
-  \small
-\item *envir. ``environmental'' oocysts sporulated in potassium dichromate. \\
-\item *\textit{in vitro} in vitro sporulated oocysts
+\end{tabular}
+\begin{tablenotes}[flushleft]\footnotesize\singlespacing
+\item{*} sample names are given as a) mouse strain b) first or challenge
+  infection c) days post infection (dpi) and d) replicate number
+  seperated by undersocre . \\
+\item{**} percentag mapping \textit{E. falciformis} is given as percentage in total mapping reads
 \end{tablenotes}
 \end{table}
+\hspace*{+2.5cm}
 
 
 

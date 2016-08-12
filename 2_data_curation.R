@@ -1,52 +1,42 @@
-## This is a script is 2nd the pipeline and needed for evaluation
-## purpose
-
-## Goals:
-
-## EX- on IN-clusion of samples and genes ###################
-
-## a) decide for samples needed to be excluede because of uncertain
-## infection status
-
-## b) decice for a filter on minimal expression values over all
-## samples to exclude genes
-
-## c) decide on samples needed to be excluded because of bad
-## "unnormalizable" distribution of expression values
-
-
-### Normalization
-
-## d) decide on a general normalization strategy scaling the smaple
-## throughput
-
-## e) decide on a "removeal of unwanted variation" strategy
-
-## f) decide on a potential addional "batch effect" removal strategy
-
-
-## a) decide for samples needed to be excluede because of uncertain
-## infection status
-
-## The raw counts  required from upstream scripts:
-## GENES
-## All.RC <- as.matrix(read.table("output_data/RC_All_genes.csv", sep=","))
-
-## TRANSCRIPTS
-All.RC <- as.matrix(read.table("output_data/RC_All_genes.csv", sep=","))
-
-## The phenotype information
-All.pData <- read.table("output_data/Sample_pData.csv", sep=",")
-
 library(ggplot2)
 library(reshape)
 library(gridExtra)
 library(xtable)
 
-## Overview for differential representation of host/parasite
-RC.table <-  as.data.frame(cbind(sample=as.character(All.pData$samples),
-                                 seq.method=as.character(All.pData$seq.method),
-                                 batch=All.pData$batch))
+## a) decide for samples needed to be excluede because of uncertain
+## infection status
+
+## b) create Table one summarizing metadata (previously pData) and
+## basic sequencing statistics read counts
+
+## Raw counst for tenes
+All.RC <- as.matrix(read.table("output_data/RC_All_genes.csv", sep=","))
+
+create.pdata <- function (featurecountsTarget){
+    sample <- featurecountsTarget
+    grouped <- sub("_rep\\d+$" , "", sample)
+    challenged <- ifelse(grepl("1stInf", grouped), "1st",
+                  ifelse(grepl("2ndInf", grouped), "2nd",
+                  ifelse(grepl("oocysts", grouped), "environmental", "in vitro")))
+    rep <- sub(".*_(rep\\d+)$" , "\\1", sample) # (name here) is taken "\\1" here
+    mouse.strain <- sub("^(.*?)_.*", "\\1", grouped)
+    dpi <- as.numeric(as.character(sub("^.*_(.*)dpi", "\\1", grouped)))
+    ## below information that can't be extracted out ouf the truncated
+    ## mapping file name
+    batch <- c(3, 3, 3, 3, 3, 1, 1, 2, 2, 2, 0, 1, 1, 2,
+               3, 3, 3, 2, 3, 3, 3, 1, 0, 1, 0, 3, 3, 3, 3, 3)
+    seq.method <- c("hiseq", "hiseq", "hiseq", "hiseq", "hiseq",
+                    "GAII", "GAII", "GAII", "GAII", "GAII", "GAII",
+                    "GAII", "GAII", "GAII", "hiseq", "hiseq", "hiseq",
+                    "GAII", "hiseq", "hiseq", "hiseq", "GAII", "GAII",
+                    "GAII", "GAII","hiseq", "hiseq", "hiseq", "hiseq",
+                    "hiseq")
+    data.frame(sample, grouped, challenged, rep, mouse.strain,
+               dpi, batch, seq.method)
+    
+}
+
+RC.table <- create.pdata(colnames(All.RC))
 
 ## get the total read count.
 ## see README_fastq_linecount.txt on how this file was produced    
@@ -57,6 +47,16 @@ fastqRC <- as.numeric(as.character(fastqRC))/4
 
 names(fastqRC) <- rawfastqRC[seq(1, length(rawfastqRC), by=2)]
 names(fastqRC) <- gsub("^.*?\\/(.*rep\\d).*", "\\1", names(fastqRC) )
+
+## The nasty file renaming here as well
+names(fastqRC)[names(fastqRC)%in%"Rag_0dpi_rep1"] <-
+    "Rag_1stInf_0dpi_rep1"
+names(fastqRC)[names(fastqRC)%in%"Rag_0dpi_rep2"] <-
+    "Rag_1stInf_0dpi_rep2"
+names(fastqRC)[names(fastqRC)%in%"C57BL6_0dpi_rep1"] <-
+    "C57BL6_1stInf_0dpi_rep1"
+names(fastqRC)[names(fastqRC)%in%"C57BL6_0dpi_rep2"] <-
+    "C57BL6_1stInf_0dpi_rep2"
 
 RC.table <- merge(RC.table, fastqRC, by.x="sample", by.y=0)
 names(RC.table)[ncol(RC.table)] <- "c.seq.reads"
@@ -74,14 +74,9 @@ RC.table$c.Ef.reads <- colSums(All.RC
 
 RC.table$p.Ef.reads <- round(RC.table$c.Ef.reads/RC.table$c.mapping.counts*100, 4)
 
-RC.table$dpi <- gsub(".*?(\\ddpi).*", "\\1", RC.table$sample)
-
-RC.table$challenged <- ifelse(grepl("2ndInf", RC.table$sample), "Callenge",
-                       ifelse(grepl("0dpi", RC.table$sample), "None",
-                       ifelse(grepl("1stInf", RC.table$sample), "First",
-                              "environmental")))
 
 RC.table$dpi[RC.table$challenged%in%"environmental"] <- "environmental"
+RC.table$dpi[RC.table$challenged%in%"in vitro"] <- "in vitro"
 
 ## plotting parasite percentage of reads
 
@@ -205,22 +200,31 @@ dev.off()
 ## excluded for uncertain infection status. See:
 RC.table <- RC.table[order(RC.table$c.Ef.reads),]
 
+write.table(RC.table, "output_data/Sample_pData.csv", sep=",")
+
+
+## I tink we don't need dpi, and challenged, this is in the Sample
+## name and can be explained in a subtext
 table.cleaned <- RC.table[, c("sample", "seq.method", "batch",
+                              "c.seq.reads", 
                               "c.Mm.reads", "c.Ef.reads",
-                              "p.Ef.reads", "dpi", "challenged",
-                              "c.Ef.genes")]
+                              "p.Ef.reads", "c.Ef.genes")]
 
 ## Pretty names for tex
 names(table.cleaned) <- sub("^seq.method$", "Sequencing method", names(table.cleaned))
 names(table.cleaned) <- sub("^sample$", "Sample", names(table.cleaned))
-names(table.cleaned) <- sub("^c.Mm.reads$", "read mappings Mouse", names(table.cleaned))
-names(table.cleaned) <- sub("^c.Ef.reads$", "read mappings E. falciformis", names(table.cleaned))
+names(table.cleaned) <- sub("^c.seq.reads$", "total reads", names(table.cleaned))
+names(table.cleaned) <- sub("^c.Mm.reads$", "reads mapping Mouse", names(table.cleaned))
+names(table.cleaned) <- sub("^c.Ef.reads$", "reads mapping E. falciformis", names(table.cleaned))
 names(table.cleaned) <- sub("^p.Ef.reads$", "Percentage E. falciformis", names(table.cleaned))
 names(table.cleaned) <- sub("^c.Ef.genes$", "# E. falciformis genes", names(table.cleaned))
 
 ## EXPORT to Latex format
-table.tex <- xtable(table.cleaned, align = c("l", "l", "l", "l", "l", "l", "l", "l", "l", "l"), digits = 3)
-print(table.tex, type = "latex", file = "tables/Table1_ReadCounts.tex", include.rownames = F)
+table.tex <- xtable(table.cleaned, align = c("l", "l", "l", "l", "l", "l", "l", "l", "l"),
+                    digits = c(0, 0, 0, 0, 0, 0, 0, 4, 0))
+
+print(table.tex, type = "latex", file = "tables/Table1_ReadCounts.tex", include.rownames = F,
+      format.args = list(big.mark = ",", decimal.mark = "."))
 
 
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.7.25)  8 AUG 2016 13:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.7.25)  12 AUG 2016 11:51
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -633,6 +633,10 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 \Gin@req@height=\dimen131
 \Gin@req@width=\dimen132
 )
+(/usr/share/texlive/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box34
+)
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 
@@ -646,29 +650,29 @@ Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
 )
 \everycr=\toks33
 \minrowclearance=\skip54
-)
-No file bmc_article.aux.
+) (./bmc_article.aux)
 \openout1 = `bmc_article.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 96.
-LaTeX Font Info:    ... okay on input line 96.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 97.
+LaTeX Font Info:    ... okay on input line 97.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count122
 \scratchdimen=\dimen135
-\scratchbox=\box34
+\scratchbox=\box35
 \nofMPsegments=\count123
 \nofMParguments=\count124
 \everyMPshowfont=\toks34
@@ -696,9 +700,9 @@ e
 ))
 Package lastpage Info: Please have a look at the pageslts package at
 (lastpage)             https://www.ctan.org/pkg/pageslts
-(lastpage)             ! on input line 96.
-\AtBeginShipoutBox=\box35
-Package hyperref Info: Link coloring ON on input line 96.
+(lastpage)             ! on input line 97.
+\AtBeginShipoutBox=\box36
+Package hyperref Info: Link coloring ON on input line 97.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -708,73 +712,48 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
 \c@section@level=\count128
 )
-LaTeX Info: Redefining \ref on input line 96.
-LaTeX Info: Redefining \pageref on input line 96.
-LaTeX Info: Redefining \nameref on input line 96.
+LaTeX Info: Redefining \ref on input line 97.
+LaTeX Info: Redefining \pageref on input line 97.
+LaTeX Info: Redefining \nameref on input line 97.
+
+(./bmc_article.out) (./bmc_article.out)
 \@outlinefile=\write3
 \openout3 = `bmc_article.out'.
 
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <13> not available
-(Font)              size <12> substituted on input line 102.
+(Font)              size <12> substituted on input line 103.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <24> not available
-(Font)              size <24.88> substituted on input line 111.
+(Font)              size <24.88> substituted on input line 112.
 
-LaTeX Font Info:    Calculating math sizes for size <11> on input line 128.
+LaTeX Font Info:    Calculating math sizes for size <11> on input line 129.
 
 LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 128.
+(Font)              size <5> substituted on input line 129.
 
 
 LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
-(Font)              size <5> substituted on input line 128.
+(Font)              size <5> substituted on input line 129.
 
 
 LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
-(Font)              size <5> substituted on input line 128.
-
-
-LaTeX Warning: Reference `aff1thanks' on page 1 undefined on input line 128.
-
-
-LaTeX Warning: Reference `aff1thanks' on page 1 undefined on input line 129.
-
-
-LaTeX Warning: Reference `aff2thanks' on page 1 undefined on input line 130.
-
-
-LaTeX Warning: Reference `aff1thanks' on page 1 undefined on input line 131.
-
-
-LaTeX Warning: Reference `aff1thanks' on page 1 undefined on input line 134.
-
-
-LaTeX Warning: Reference `aff3thanks' on page 1 undefined on input line 134.
-
-
-LaTeX Warning: Reference `au5thanks' on page 1 undefined on input line 134.
+(Font)              size <5> substituted on input line 129.
 
 \address@aff1=\toks36
 \address@aff2=\toks37
 \address@aff3=\toks38
 
-LaTeX Warning: Reference `au5thanks' on page 1 undefined on input line 227.
-
-
-LaTeX Warning: Reference `aff1thanks' on page 1 undefined on input line 227.
-
-
-Overfull \hbox (32.55643pt too wide) in paragraph at lines 292--295
+Overfull \hbox (32.55643pt too wide) in paragraph at lines 298--301
 \OT1/cmr/m/n/10 from 21,517,055 (sam-ple NMRI[]sporozoites[]rep2) to 593,396,31
 2 (NMRI[]2ndInf[]5dpi[]rep1). 
  []
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 311.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 307.
 
 
 
@@ -788,7 +767,7 @@ Overfull \hbox (1.0pt too wide) has occurred while \output is active
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.348 (Spearman's \rho
+l.354 (Spearman's \rho
                        = 333; $R^2$ from a linear model = 444 ; figure 2
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -796,27 +775,12 @@ you left one out. Proceed, with fingers crossed.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.348 (Spearman's \rho = 333; $R^
+l.354 (Spearman's \rho = 333; $R^
                                  2$ from a linear model = 444 ; figure 2
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-
-LaTeX Warning: Reference `LastPage' on page 2 undefined on input line 395.
-
-[2]
-
-LaTeX Warning: Reference `LastPage' on page 3 undefined on input line 483.
-
-[3]
-
-LaTeX Warning: Reference `LastPage' on page 4 undefined on input line 524.
-
-[4]
-
-LaTeX Warning: Reference `LastPage' on page 5 undefined on input line 613.
-
-[5]
+[2] [3] [4] [5] [6]
 
 ! Package inputenc Error: Unicode char μ (U+3BC)
 (inputenc)                not set up for use with LaTeX.
@@ -825,16 +789,12 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.661 administered in 100 $μ
+l.667 administered in 100 $μ
                              $L by oral gavage. During the first infection of
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-
-LaTeX Warning: Reference `LastPage' on page 6 undefined on input line 671.
-
-[6]
 
 ! Package inputenc Error: Unicode char ° (U+B0)
 (inputenc)                not set up for use with LaTeX.
@@ -843,229 +803,128 @@ See the inputenc package documentation for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.682 sporocysts were incubated at 37$°
+l.688 sporocysts were incubated at 37$°
                                         $C in DMEM containing 0.04\%
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-
-LaTeX Warning: Reference `LastPage' on page 7 undefined on input line 723.
-
-[7]
+[7] [8]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 777.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 783.
 
 
 
-Overfull \hbox (1.46596pt too wide) in paragraph at lines 776--783
+Overfull \hbox (1.46596pt too wide) in paragraph at lines 782--789
  [] 
  []
 
-
-LaTeX Warning: Reference `LastPage' on page 8 undefined on input line 786.
-
-[8] (./bmc_article.bbl
-
-LaTeX Warning: Reference `aff1thanks' on page 9 undefined on input line 3.
-
-
-LaTeX Warning: Reference `aff2thanks' on page 9 undefined on input line 3.
-
-
-LaTeX Warning: Reference `aff3thanks' on page 9 undefined on input line 3.
-
-)
+(./bmc_article.bbl)
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: Reference `LastPage' on page 9 undefined on input line 927.
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (113.22627pt too wide) in paragraph at lines 986--1025
+[]| []
+ []
+
+! Undefined control sequence.
+l.1025 ...s}[flushleft]\footnotesize\singlespacing
+                                                  
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
 [9pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
 as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.927 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-1}) has been already used, duplicate ignored
+l.1031 \end{table}
+                  ] [10pdfTeX warning (ext4): destination with the same identif
+ier (name{figure.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.927 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.927 
-      ]
-
-! LaTeX Error: Environment tablenotes undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1021 \begin{tablenotes}
-                         
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-Overfull \hbox (116.43776pt too wide) in paragraph at lines 982--1023
- []| [] 
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1023 \item *
-              envir. ``environmental'' oocysts sporulated in potassium dichr...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 1023
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1024 \item *
-              \textit{in vitro} in vitro sporulated oocysts
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 1024
-[][]
- []
-
-
-! LaTeX Error: \begin{table} on input line 979 ended by \end{tablenotes}.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.1025 \end{tablenotes}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-
-LaTeX Warning: Reference `LastPage' on page 10 undefined on input line 1038.
-
-[10pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1038 \clearpage
+l.1044 \clearpage
                  pdfTeX warning (ext4): destination with the same identifier (n
-ame{table.2}) has been already used, duplicate ignored
+ame{figure.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1038 \clearpage
-                 ]
+l.1044 \clearpage
+                 pdfTeX warning (ext4): destination with the same identifier (n
+ame{figure.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1044 \clearpage
+                 ] [11]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <7> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 1090
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 1096
 .
 
 
-Package lastpage Warning: Rerun to get the references right on input line 1113.
-
-
-
 AED: lastpage setting LastPage
+[12
 
-LaTeX Warning: Reference `LastPage' on page 11 undefined on input line 1113.
-
-[11
-
-pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has
+pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1113 \end{document}
+l.1119 \end{document}
                      ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1113.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1113.
- (./bmc_article.aux
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1119.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1119.
+ (./bmc_article.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1119.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1119.
 
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
+Package rerunfilecheck Info: File `bmc_article.out' has not changed.
+(rerunfilecheck)             Checksum: 8148D3A2764AA1065DF4800E97AB811D;1119.
 
-)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1113.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1113.
-
-
-
-Package rerunfilecheck Warning: File `bmc_article.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `bmc_article.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  8148D3A2764AA1065DF4800E97AB811D;1119.
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1113.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1119.
  ) 
 Here is how much of TeX's memory you used:
- 7769 strings out of 493014
- 106891 string characters out of 6135690
- 218658 words of memory out of 5000000
- 11135 multiletter control sequences out of 15000+600000
- 14894 words of font info for 53 fonts, out of 8000000 for 9000
+ 7839 strings out of 493014
+ 107996 string characters out of 6135690
+ 230710 words of memory out of 5000000
+ 11197 multiletter control sequences out of 15000+600000
+ 14276 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,16n,40p,665b,467s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx5.pfb></usr
-/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/
-texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texliv
-e/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fo
-nts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi9.
-pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on bmc_article.pdf (11 pages, 215107 bytes).
+ 34i,16n,39p,666b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
+blic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
+/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
+Output written on bmc_article.pdf (12 pages, 202762 bytes).
 PDF statistics:
- 215 PDF objects out of 1000 (max. 8388607)
- 184 compressed objects within 2 object streams
+ 263 PDF objects out of 1000 (max. 8388607)
+ 232 compressed objects within 3 object streams
  81 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 105 words of extra memory for PDF output out of 10000 (max. 10000000)
 

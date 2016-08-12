@@ -15,18 +15,18 @@ Mm.RC <- All.RC[grepl('^ENSMUS.*', rownames(All.RC)),]
 Ef.RC <- All.RC[grepl('^EfaB.*', rownames(All.RC)),]
 
 pData <- read.table("output_data/Sample_pData.csv", sep=",")
-pData <- pData[!pData$samples%in%excluded.samples, ]
+pData <- pData[!pData$sample%in%excluded.samples, ]
 
 ## Mouse and Eimeria specific
-Ef.pData <- pData[!pData$timepoint%in%0, ]
-Mm.pData <- pData[!is.na(pData$timepoint), ]
+Ef.pData <- pData[!pData$dpi%in%0, ]
+Mm.pData <- pData[!pData$dpi%in%c("environmental", "in vitro"), ]
 
 Ef.pData$grouped <- as.factor(as.character(Ef.pData$grouped))
 Mm.pData$grouped <- as.factor(as.character(Mm.pData$grouped))
 
 ## Mouse and Eimeri spcific samples
-Mm.RC <- Mm.RC[, colnames(Mm.RC)%in%Mm.pData$samples]
-Ef.RC <- Ef.RC[, colnames(Ef.RC)%in%Ef.pData$samples] 
+Mm.RC <- Mm.RC[, colnames(Mm.RC)%in%Mm.pData$sample]
+Ef.RC <- Ef.RC[, colnames(Ef.RC)%in%Ef.pData$sample] 
 
 library(statmod)
 library(edgeR)
@@ -95,8 +95,8 @@ Mm.contrasts <- makeContrasts(
     N5vs0 = NMRI.1stInf.5dpi-NMRI.2ndInf.0dpi, #2
     N7vs0 = NMRI.1stInf.7dpi-NMRI.2ndInf.0dpi, #3
     ## just infections in Black and Rag
-    B5vs0 = C57BL6.1stInf.5dpi- C57BL6.0dpi , #4
-    R5vs0 = Rag.1stInf.5dpi - Rag.0dpi,		#5
+    B5vs0 = C57BL6.1stInf.5dpi- C57BL6.1stInf.0dpi , #4
+    R5vs0 = Rag.1stInf.5dpi - Rag.1stInf.0dpi,		#5
     ## differences in 1st vs 2nd infection
     N3.1stvsN3.2nd = NMRI.1stInf.3dpi-NMRI.2ndInf.3dpi, #6
     N5.1stvsN5.2nd = NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi,
@@ -104,7 +104,7 @@ Mm.contrasts <- makeContrasts(
     B5.1stvsB5.2nd = C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi,
     R5.1stvsR5.2nd = Rag.1stInf.5dpi-Rag.2ndInf.5dpi,	#10
     ## differences in mouse strains
-        RvsB=Rag.0dpi-C57BL6.0dpi,
+        RvsB=Rag.1stInf.0dpi-C57BL6.1stInf.0dpi,
 	#NvsB=NMRI.0dpi-C57BL6.0dpi,
     ## differences in infection over time
     N3vsN5 = NMRI.1stInf.3dpi-NMRI.1stInf.5dpi,
@@ -222,4 +222,4 @@ cbind(melt(lapply(Ef.1st.pass.model[[3]], length)),
 by(Mm.DE.test, Mm.DE.test$contrast, function (x) table(x$FDR<0.01))
 by(Ef.DE.test, Ef.DE.test$contrast, function (x) table(x$FDR<0.01))
 
-## they are consistent
+## they are consistent TODO: create the Table 2 from this!
