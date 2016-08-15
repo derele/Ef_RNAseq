@@ -1,5 +1,6 @@
 #### DIFFERENTIAL GENE EXPRESSION ANALYSIS
 ## needed from data import script are two raw count objects 
+library(RSvgDevice)
 
 ## We know from 2_data_curation.R that we want to exclude:
 excluded.samples <- c("NMRI_2ndInf_3dpi_rep1",
@@ -19,7 +20,6 @@ pData <- pData[!pData$sample%in%excluded.samples, ]
 
 ## Mouse and Eimeria specific
 Ef.pData <- pData[!pData$dpi%in%0, ]
-Mm.pData <- pData[!pData$dpi%in%c("environmental", "in vitro"), ]
 
 Ef.pData$grouped <- as.factor(as.character(Ef.pData$grouped))
 Mm.pData$grouped <- as.factor(as.character(Mm.pData$grouped))
@@ -27,6 +27,14 @@ Mm.pData$grouped <- as.factor(as.character(Mm.pData$grouped))
 ## Mouse and Eimeri spcific samples
 Mm.RC <- Mm.RC[, colnames(Mm.RC)%in%Mm.pData$sample]
 Ef.RC <- Ef.RC[, colnames(Ef.RC)%in%Ef.pData$sample] 
+
+## Make sure the pData follows the same order as the sample count
+## columns!!!
+Mm.RC <- Mm.RC[, order(colnames(Mm.RC))]
+Ef.RC <- Ef.RC[, order(colnames(Ef.RC))]
+
+Mm.pData <- Mm.pData[order(Mm.pData$sample), ]
+Ef.pData <- Ef.pData[order(Ef.pData$sample), ]
 
 library(statmod)
 library(edgeR)
@@ -152,13 +160,13 @@ get.my.models <- function (RC, cutoff, group,
 
 ## filter: with 3000 as cutoff, bimodal distr. almost not visible (see
 ## A_data_curation.R)
-Mm.1st.pass.model <- get.my.models(Mm.RC, cutoff=3000,
+Mm.1st.pass.model <- get.my.models(Mm.RC, cutoff=1000,
                                    group = Mm.pData$grouped,
                                    contrasts=Mm.contrasts,
                                    design=Mm.design,
                                    norm="upperquartile")
 
-Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=100,
+Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=10,
                                    group = Ef.pData$grouped,
                                    contrasts=Ef.contrasts,
                                    design=Ef.design,
@@ -180,7 +188,7 @@ Ef.RUVset.groups <- get.RUVed.data(Ef.RC, cutoff = 100,
                                    Ef.pData$grouped)
 
 Mm.RUVg.model <- get.my.models(normCounts(Mm.RUVset.groups),
-                               cutoff=3000, ## no further cut off
+                               cutoff=1000, ## no further cut off
                                group = Mm.pData$grouped,
                                contrasts=Mm.contrasts,
                                design=Mm.design, norm=NULL)
@@ -223,3 +231,59 @@ by(Mm.DE.test, Mm.DE.test$contrast, function (x) table(x$FDR<0.01))
 by(Ef.DE.test, Ef.DE.test$contrast, function (x) table(x$FDR<0.01))
 
 ## they are consistent TODO: create the Table 2 from this!
+
+
+
+###########
+Mm.infection.difference <-
+    venn.diagram(Mm.1st.pass.model[[3]][c("N3vs0", "N5vs0", "N7vs0")],
+                 filename=NULL)
+
+devSVG("figures/Figure2bi_vennMmInfection.svg")
+grid.draw(Mm.infection.difference)
+dev.off()
+
+############
+Mm.infection <- unique(unname(unlist(Mm.1st.pass.model[[3]][c("N3vs0", "N5vs0", "N7vs0")])))
+
+
+Mm.infection.LC.difference <-
+    venn.diagram(c(Mm.1st.pass.model[[3]][c("N5vsN7", "N3vsN7")],
+                   upon.infection=list(Mm.infection)),
+                 filename=NULL)
+
+devSVG("figures/Figure2bii_vennMmCycle.svg")
+grid.draw(Mm.infection.LC.difference)
+dev.off()
+
+#####
+
+Ef.infection.LCInteral.difference <-
+    venn.diagram(Ef.1st.pass.model[[3]][c("N3vsN5", "N3vsN7", "N5vsN7")],
+                 filename=NULL)
+
+devSVG("figures/Figure3ai_vennEfCycleInternal.svg")
+grid.draw(Ef.infection.LCInteral.difference)
+dev.off()
+
+Ef.early.late <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsN7", "N5vsN7")])))
+Ef.early.spo <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsSpo", "N5vsSpo")])))
+Ef.early.Ooc <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsOoc", "N5vsOo")])))
+
+Ef.infection.LCFull.difference <-
+    venn.diagram(c(Ef.1st.pass.model[[3]][c("N7vsSp", "N7vsOo", "SpvsOo")],
+#                   early.late=list(Ef.early.late),
+                   early.spo=list(Ef.early.spo),
+                   early.Ooc=list(Ef.early.Ooc)), 
+                 filename=NULL)
+
+devvSVG("figures/Figure3aii_vennEfCycleFull.svg")
+grid.draw(Ef.infection.LCFull.difference)
+dev.off()
+
+
+
+
+
+
+

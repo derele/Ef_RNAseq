@@ -17,7 +17,6 @@ create.pdata <- function (featurecountsTarget){
     grouped <- sub("_rep\\d+$" , "", sample)
     challenged <- ifelse(grepl("1stInf", grouped), "1st",
                   ifelse(grepl("2ndInf", grouped), "2nd",
-                  ifelse(grepl("oocysts", grouped), "environmental", "in vitro")))
     rep <- sub(".*_(rep\\d+)$" , "\\1", sample) # (name here) is taken "\\1" here
     mouse.strain <- sub("^(.*?)_.*", "\\1", grouped)
     dpi <- as.numeric(as.character(sub("^.*_(.*)dpi", "\\1", grouped)))
@@ -76,7 +75,6 @@ RC.table$p.Ef.reads <- round(RC.table$c.Ef.reads/RC.table$c.mapping.counts*100, 
 
 
 RC.table$dpi[RC.table$challenged%in%"environmental"] <- "environmental"
-RC.table$dpi[RC.table$challenged%in%"in vitro"] <- "in vitro"
 
 ## plotting parasite percentage of reads
 

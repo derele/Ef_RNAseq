@@ -270,34 +270,50 @@ Text and results for this section, as per the individual journal's instructions 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
   \section*{A dual transcriptomics experiment}
+
 We performed mRNA sequencing of caecum tissue from mice infected with
-the apicomplexan parasite \textit{E. falciformis}. We worked with two
-biological replicates for all but two conditions (with one and three
-replicates, respecitively). For each replicate sample we enriched
-caecum tissue from three infected mice for epithelial cells. We
-extracted mRNA and constructed sequencing libraries for different
-timepoints after infection and mouse strains which displayed different
-immunocompetence in infection trials (see figure x).
+the apicomplexan parasite \textit{E. falciformis}. Oocysts and
+sporozoites were included as ``environmental'' stages and processed
+``\textit{in vitro}''. To follow the lifecycle of the parsite, we
+compare different timepoints after infection.
 
-In these experiments we analysed RAG-1-/- mice and compared them to
-the parental C57BL6 mouse line. RAG knockout mich lack adaptive immune
-response du to the absence of mature B and T lymphocytes. Differences
-in oocyst output were more pronounced between NMRI and both C57BL6 and
-RAG-1-/-. Surprisingly this finding was made both in primary and
+We additonally used different mouse strains which displayed different
+immunocompetence in infection trials to assess the influence host
+immunocompetence on parasite development (figure 1a,b). In these
+experiments we analysed RAG-1-/- mice and compared them to the
+parental C57BL6 mouse line. RAG knockout mich lack adaptive immune
+response du to the absence of mature B and T lymphocytes.  All three
+mouse strains were used for infections of both naive and previously
+challenge infected animals.
+
+Concerning basic phenotyping, differences in oocyst output were
+visible both between the immunocompetent (NMRI and C57BL6) and
+immunodeficient (RAG-1-/-) host strain, but also between the two
+similarly immunocompetent (NMRI and C57BL6) strains (figure
+1a). Surprisingly this finding was consistent in both in primary and
 challenge infection. Similarly development of intestinal stages as
-assayed by quantitative reverse transcription PCR (RT qPCR) also ...
+assayed by quantitative reverse transcription PCR (RT qPCR) also
+... ADD HERE (figure 1b).
 
-This lead us to question the influence of the innate or cell
-autonomouse immune system on early stages of infection. And we thus
-settled on an experimental design comparing infections at 5dpi for all
+We thus aim to analyse the lifecycle of \textit{E. falciformis} under
+the influence of (most likely the innate or cell autonomouse) immune
+respons at on early stages of infection. We used an experimental
+design comparing infections at 5dpi for all possible experimental
+conditions (all three mouse strains in naive and challenge infection),
+and analyse additional infections at 3dpi (figure 1c).
 
-For the parasite oocysts and sporozoites were included as
-``environmental'' and ``\textit{in vitro}'' processed lifecycle
-stages.
+In our RNAseq experiment we worked with two biological replicates for
+all but two conditions (with one and three replicates,
+respecitively). For each replicate sample we enriched caecum tissue
+from three infected mice for epithelial cells, extracted mRNA and
+constructed sequencing libraries. These libraries were sequenced on
+several lanes of Illumina GAIIX and HiSeq machines and mapped to both
+mouse and parasite genome simulatneously to avoid spurious assignments
+of read in ultra conserved genomic regions.
 
 The number of sequence read mappings obtained for individual
-replicates ranged from 21,517,055 (sample NMRI\_sporozoites\_rep2) to
-593,396,312 (NMRI\_2ndInf\_5dpi\_rep1).
+replicates ranged from 11,479,260 (sample NMRI\_sporozoites\_rep2) to
+145,033,326 (NMRI\_2ndInf\_5dpi\_rep1).
 
 As samples and idividual replicates were sequenced in batches to
 different depth and using different instrumentation (Table 1) we
