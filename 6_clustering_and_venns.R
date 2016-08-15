@@ -68,10 +68,13 @@ get.cluster.tree.df <- function(data, k){
 Ef.hclustered.cycle <- get.cluster.tree.df(Ef.cycle.diff.data, 7)
 Ef.hclustered.first.second <- get.cluster.tree.df(Ef.first2nd.diff.data,  7)
 
+write.table(Ef.hclustered.cycle, "output_data/Ef_hclustered_cycle.csv", sep=",")
+
 Mm.hclustered.cycle <- get.cluster.tree.df(Mm.cycle.diff.data, 7)
 Mm.hclustered.first.second <- get.cluster.tree.df(Mm.first2nd.diff.data,  4)
 Mm.hclustered.strain <- get.cluster.tree.df(Mm.comp.rag.diff.data, 4)
 
+write.table(Mm.hclustered.cycle, "output_data/Mm_hclustered_cycle.csv", sep=",")
 
 pdf("Supplement/Ef1st2ndHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf

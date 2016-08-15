@@ -365,7 +365,7 @@ lowest representation against those with the hightest.
 Statistical testing for differetial expression between infected and
 uninfected mice, revealed changes in mRNA abundance becoming more
 pronounced (involving more genes) at later post infection (especially
-at 7dpi; Table 1).
+at 7dpi; Table 2).
 
 The observed changes between controls and 7dpi were in agreement with
 previously published microarry data. Fold-Change data obtained from
@@ -386,55 +386,88 @@ response in early infection we performed hierarchical clustering on
 (the union of) mouse genes DE between different dpi (figure 2c).
 
 
-The changes in early infection are ...
+The ponounced changes later in infection are reflecting the expected
+onset of an adaptive immune response. This is underlined by GO-terms
+such as ``antigen binding'' and ``immunoglobulin receptor binding''
+(molecular function) ``immune system process'' and ``adaptive immune
+response'' (biological process) highly enriched in Cluster 5 of figure
+2c.
+
+Particular ``regulation of cell death'' and ``regulation of apoptotic
+process'' (BP)
+
+``UDP-N-acetylglucosamine-lysosomal-enzyme'' (MF)
+
+%% This might be relevant: The DMAP interaction domain of
+%% UDP-GlcNAc:lysosomal enzyme
+%% N-acetylglucosamine-1-phosphotransferase is a substrate recognition
+%% module. Catalysis of the reaction: UDP-N-acetyl-D-glucosamine +
+%% lysosomal-enzyme D-mannose = UMP + lysosomal-enzyme
+%% N-acetyl-D-glucosaminyl-phospho-D-mannose
 
 
-Those changes are similarly pronounce in the immunocompetent strains
-and RAG-/- immunodefficient animals. 
+General changes upon infection are a downregulation of genes involved
+``lipid modification'' or more detailed ``phosphatidylinositol
+phosphorylation''. These changes are similarly pronounce in the
+immunocompetent strains and RAG-/- immunodefficient animals (cluster 3
+of fibure 2c) (see supplementary table X).  The presence of these
+changes immunocompromized animals invite the speculation that those
+genes are independent of a potential later adaptive immune response.
+
+Changes not detectable in RAG-/- immunodefficient animals (cluster 3
+of fibure 2c) but otherwise observed in general infection are
+characterized by and enrichment to genes involved in ``positive
+regulation of calcineurin-NFAT'', ``blood coagulation'' and ``inositol
+phosphate-mediated signaling'' (see supplementary table X). The
+abscence of these changes in RAG-/- mice allow us to speculate that
+those genes might be involved in a very early onlset of adaptive
+immune response.
 
 
-The ponounced changes later in infection are is likely reflecting the
-onset of an adaptive immune response.
+%% Go on here if you can... 
 
-
-
-
-
+We dedtected further differences between infections of naive and
+challenge infected mous hosts , especially at 7 dpi. These genes are
+characterized by...
+%% We should't limit ourselfs to testing the clusters only! But
+%% discuss the cluster first if you got difficulties coding the
+%% enrichment tests.
 
 
 \section*{The lifecycle of Eimeria is characterized by major changes in mRNA abundance}
 
 Table 2 lists pairwise sample comparisons and number of genes with
-differently abundant mRNAs per comparison."NMRI" followed by number
-indicates day post infection (e.g. NMRI 3 = NMRI mouse on day 3
-p.i.). Genes with Benjamini-Hochberg corrected p-values $\leq$0.01 as
-implemented in edgeR are included. NAs are missing samples or not
-applicable for the species. NA* is due to missing NMRI day 0 sample
-from first infection. For \textit{E. falciformis} no mRNAs are
-significantly differently abundant between first and second infection,
-whereas in mouse there are some differences, especially on day 7
-p.i. However, upon hierarchical clustering of these genes (union of
-500 with lowest FDR), samples do not cluster according to first/second
-infection (Figure SX ?). In comparisons between mouse strains, 22
-genes are detected to be different in the parasite data. The
-difference is however not between Rag1-/- mice as expected, but
-between NMRI and C57BL/6. For mouse....
+differently abundant mRNAs per comparison.  For
+\textit{E. falciformis} no mRNAs are significantly differently
+abundant between first and second infection.
 
+Changes throughout the intr-host lifecycle can be clearly categorized
+in an early (3 and 5 dpi) and late (7dpi) phase. Sporozoites show
+expression profiles similar more similar to early infection stages
+while oocysts show distinctly different mRNA abundance profile (MDS
+plot .
 
 We applied hierarchical clustering on \textit{E. falciformis} mRNAs
-which were differently abundant at different timepoints p.i.,
-including comparisons with oocysts and sporozoites (union of 500 with
-lowest FDR). Samples from day 7 p.i. form a separate cluster (NMRI
-mice only), not distinguishing between first and challenge
-infection. For these samples, the pattern is most pronounced in gene
-cluster 1 (up), and 4 and 6 (down). Within cluster 1, the second
-replicate from the challenge infection has a deviant profile (compare
-mouse data in Figure 2). Distinct groups of genes also define
-sporozoites (cluster 5 up) and oocysts (cluster 3 up, cluster 6
-down). mRNA profiles on days 3 and 5 p.i. from all three mouse strains
-cluster together. These samples are distinct from oocysts, NMRI day 7
-p.i., and sporozoites. Sporozoites cluster closer with days 3 and 5
-than with oocysts or day 7.
+which were differently abundant at different dpi, including
+comparisons with oocysts and sporozoites.
+
+Samples from 7dpi form a separate cluster (NMRI mice only), not
+distinguishing between first and challenge infection.
+
+%% Mix it all well into the GO-term discussion! GO-term inferred
+%% biiology needs to be reported in connection to clutering-inferred
+%% ``sample biology''. 
+
+
+%% For these samples, the pattern is most pronounced in gene cluster 1
+%% (up), and 4 and 6 (down). Within cluster 1, the second replicate from
+%% the challenge infection has a deviant profile (compare mouse data in
+%% Figure 2). Distinct groups of genes also define sporozoites (cluster 5
+%% up) and oocysts (cluster 3 up, cluster 6 down). mRNA profiles on days
+%% 3 and 5 p.i. from all three mouse strains cluster together. These
+%% samples are distinct from oocysts, NMRI day 7 p.i., and
+%% sporozoites. Sporozoites cluster closer with days 3 and 5 than with
+%% oocysts or day 7.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
