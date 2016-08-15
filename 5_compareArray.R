@@ -98,7 +98,7 @@ RNAseq.Array.logFC <- merge(Array.logFC[,c("ensembl_id", "X24h", "X144h")],
                             Mm.DE.FC, 
                             by.x = "ensembl_id", by.y = "gene")
 
-cor(RNAseq.Array.logFC[, -1])[,1:2]
+cor(RNAseq.Array.logFC[, -1], method="spearman")[,1:2]
 
 pdf("figures/Figure2a_Array144vsRNAseqN7.pdf", onefile = FALSE)
 ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +

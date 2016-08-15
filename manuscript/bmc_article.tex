@@ -311,24 +311,22 @@ several lanes of Illumina GAIIX and HiSeq machines and mapped to both
 mouse and parasite genome simulatneously to avoid spurious assignments
 of read in ultra conserved genomic regions.
 
-The number of sequence read mappings obtained for individual
-replicates ranged from 11,479,260 (sample NMRI\_sporozoites\_rep2) to
-145,033,326 (NMRI\_2ndInf\_5dpi\_rep1).
-
-As samples and idividual replicates were sequenced in batches to
-different depth and using different instrumentation (Table 1) we
-performed quality controls confirming the abscence of batch effects
-influencing analysis and quality of our results (additional file xyc).
-
-The results of these multivariate analyses in relation to biological
-interpretation are described further below. 
+The number of total read mappings obtained for individual replicates
+ranged from 11,479,260 (sample NMRI\_sporozoites\_rep2) to 145,033,326
+(NMRI\_2ndInf\_5dpi\_rep1). As samples and idividual replicates were
+sequenced in batches to different depth and using different
+instrumentation (Table 1) we performed quality controls confirming the
+abscence of batch effects influencing analysis and quality of our
+results (additional file xyc). The results of these multivariate
+analyses in relation to biological interpretation are described
+further below.
 
 \section*{Parasite and host transcriptomes can be assessed in parallel}
 
 A maximum of 86\% (sample NMRI\_1stInf\_7dpi\_rep1) and a minimum of
 0.0326\% (sample NMRI\_2ndInf\_3dpi\_rep2) of mapped reads could be
 assigened to the \textit{E. falciformis} genome in samples considered
-infected.
+infected (table 1).
 
 We excluded samples NMRI\_2nd\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep2
 due to an exptremely low parasite contribution to the overall
@@ -350,11 +348,17 @@ featured an mRNA ``holo-transcriptome'' at 7dpi with the majority of
 mRNA originating from the parasite as opposed to the host (Figure
 1). The overall mRNA output of the sampled caecum tissue at this point
 of infection is dominated by the parasite with proportional mRNA
-abundance between XXX and XXX %
+abundance of 77\% (in NMRI\_1stInf\_7dpi\_rep2) and even 92\% (in
+NMRI\_1stInf\_7dpi\_rep1).
 
 The total number of sequencing reads obtained as well as those reads
 mapped to the transcriptome of either \textit{E. falciformis} and the
-mouse are indicated in Table 1 for all replicates.
+mouse are indicated in Table 1 for all replicates. We additonally
+assessed the number of genes considered ``expressed'', further
+analysis and discussion considers the possibility that especially for
+\textit{E. falciformis} the number of reads might have been
+insufficient to fully normalize the dataset of the samples with the
+lowest representation against those with the hightest.
 
 \section*{The mouse transcriptome changes in the course of infection infection}
 
@@ -366,47 +370,31 @@ at 7dpi; Table 1).
 The observed changes between controls and 7dpi were in agreement with
 previously published microarry data. Fold-Change data obtained from
 mice at 6dpi on Agilent microarrays (Schmidt et al 2012) or 7dpi (our
-RNAseq data) agains uninfected controls shows a strong correlateion
-(Spearman's \rho = 333; $R^2$ from a linear model = 444 ; figure 2
-a). Considering both and technical differences between the tow methods
-and the biological changes along the lifecycle this confirms the
-adequacy of our methods for assessing the host transcriptome.
+RNAseq data) against uninfected controls shows a strong correlateion
+(Spearman's \rho = 0.74; figure 2a). Considering both and technical
+differences between the tow methods and the biological changes along
+the lifecycle this confirms the adequacy of our methods for assessing
+the host transcriptome.
 
-XX mouse genes were considered differently expressed (DE; FDR<1\%)
-between uinfected and 3dpi, XX genes between controls and 5dpi, xxx
-genes between 0dpi and 7dpi. This lead to combined set of xxxx genes
-reacting to infection (see figure 2 b).
-
-
-We detected no distinct response early in infection.  When testing for
-differences between 3dpi and later infection (5dpi and 7dpi) DE genes
-were simply a subset of genes DE between respective infections and
-controls.
-
-To further validate these patterns we performed hierarchical
-clustering on mouse mRNAs DE at different dpi (union of DE
-genes).
+325 mouse genes were considered differently expressed (DE; FDR<1\%)
+between uinfected and 3dpi, 1,804 between controls and 5dpi and 2,711
+genes between 0dpi and 7dpi. This lead to combined set of 3453 genes
+reacting to infection (figure 2bi).  DE genes early in infection (3dpi
+and and 5dpi) were not simply a subset of genes becoming DE later in
+infection (7dpi). To further validate this pattern of a distinct
+response in early infection we performed hierarchical clustering on
+(the union of) mouse genes DE between different dpi (figure 2c).
 
 
-%% Samples from day 7 p.i. form a separate cluster (NMRI mice only), not
-%% distinguishing between first and challenge infection. For these
-%% samples, the pattern is most pronounced in gene cluster 1 (up), and 4
-%% and 6 (down). Within cluster 1, the second replicate from the
-%% challenge infection has a deviant profile (compare mouse data in
-%% Figure 2). Distinct groups of genes also define sporozoites (cluster 5
-%% up) and oocysts (cluster 3 up, cluster 6 down). mRNA profiles on days
-%% 3 and 5 p.i. from all three mouse strains cluster together. These
-%% samples are distinct from oocysts, NMRI day 7 p.i., and
-%% sporozoites. Sporozoites cluster closer with days 3 and 5 than with
-%% oocysts or day 7.
+The changes in early infection are ...
 
 
+Those changes are similarly pronounce in the immunocompetent strains
+and RAG-/- immunodefficient animals. 
 
-%%% Test _this_:
-The more ponounced changes later in infection are is likely reflecting
-a lag time in detection before the parasite reaches sufficient
-intensity during asexual expansion (schizogony). Those changes are
-mainly related to the onset of an adaptive immune response.
+
+The ponounced changes later in infection are is likely reflecting the
+onset of an adaptive immune response.
 
 
 
