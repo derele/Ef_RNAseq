@@ -1,0 +1,90 @@
+﻿Mouse strains
+Three mouse strains were used in infection experiments with E. falciformis: Naval Medical Research Institute, NMRI strain, C57BL/6 and Rag1 -/- (probably Rag1-/- and not Rag2 -/-. Animal facility could not say for sure though). NMRI (http://www.criver.com/products-services/basic-research/find-a-model/nmri-mouse) is an outbred mouse strain often used in e.g. toxicology studies. C57BL/6 inbred strain was the first mouse genome to be fully sequenced and is subject to the International Mouse Phenotyping Consortium’s, IMPC, efforts to catalogue deletion mutants and their phenotypes in the mouse (according to http://www.labome.com/method/Laboratory-Mice-and-Rats.html#ref56). Rag1-/- immunodeficient strain is derived from C57BL/6 and lacks the Recombination Activation Gene 1, RAG1 (ref). The RAG1 protein product is involved in V(D)J recombination of B- and T-cell receptors and hence mutants lack mature B- and T-cells. Rag1 and Rag2 enzymes form a complex and both proteins are needed for all known functions (Belizário, 2009).
+
+
+E. falciformis oocysts for infection
+Oocysts were collected from feces of all mice… (mice kept together or separately during infection? From which mice do oocyst counts come?)
+From (Heitlinger…Ef) genome paper (with some typos changed only): 
+“Faeces were washed and treated with 2.5% potassium bichromate. Oocysts were allowed to sporulate for one week. For purification of sporulated oocysts, faeces were sterilized and recovered with sodium hydrochloride as described by Hoffmann and Raether (1990) and Hosek et al. (1988). Sporocysts were isolated according to the method of Kowalik and Zahner (1999) with slight modifications. Briefly, not more than 5 million sporulated oocysts were resuspended in 0.4% pepsin-solution (Applichem), pH 3 and incubated at 37°C for 1 hour. Subsequently, sporocysts were isolated by mechanical shearing using glass beads (diameter 0.5 mm), recovered from glass beads by intense washing and separated from oocyst cell wall components by centrifugation at 1800 g for 10 min. Sporocysts were suspended in lysis buffer and were shock frozen 3 times in liquid nitrogen. Proteins were digested with proteinase K for 45 min at 65°C. Nucleic acids were recovered by phenol/chloroform extraction and RNA was digested using RNase A”.
+
+
+
+
+Infection procedure
+All strains were infected two times, which will be referred to as first and second infection. Infection doses consisted of XX purified oocysts, provided orally in 2 mL tap water. After first infection of XX mice all animals were weighed (??) every XX days. On day zero, before infection, as well as day three, five and seven days post infection, dpi, caecum samples from 3 sacrificed mice per time point were collected. Oocysts were purified from feces and counted with the same interval (??). After the first infection, remaining mice recovered, XX from NMRI mice, YY from C57BL/6 mice and ZZ Rag1-/- mutant mice. A XX days recovery was allowed before second infection. Recovery was monitored as weight and visual inspection of fur….(??) Second infections followed the same procedures for the remaining mice. At all time points for caecum sampling /? parasite oocysts were sampled and counted in the feces as an indication of infection progress. 
+
+
+Collection of mRNA from caecum
+Transcriptome data from mouse caecum epithelial cells as well as E. falciformis intracellular transcriptome for first and second infections on days zero, three, five and seven dpi were produced. 
+(any extracellular material can be assumed to have been washed away before sequencing?)
+Caecum samples were…(from Schmid, 2012 paper, slightly changed but basically word for word:).”Isolation of Epithelial Cells and RNA Analysis
+Infected or uninfected caeca were isolated, washed in calcium- and magnesium-free Hanks’ balanced salt solution, opened longitudinally, and cut into 5 mm pieces. To isolate epithelial cells, the tissues were transferred into tubes and incubated in Hanks’ balanced salt solution and DTT (1mM) for 30 min and 37 °C with gentle shaking. Supernatants were discarded. Samples were suspended in Hanks’ balanced salt solution and EDTA (1mM), and incubated for 30 min at 37 °C with vigorous shaking every 10 min. Subsequent supernatants were passed through a 70-um cell strainer (BD Bioscience) into fresh tubes and centrifuged (1500 rpm, 5 min). Pellets were resuspended in 1 ml of TRIzol reagent (Invitrogen) and stored at 80 °C. Total RNA was isolated using the PureLink RNA Mini Kit (Invitrogen) (Totta question: kit recommends 5x10^7 cells - what was used?). 
+
+
+100 ng of RNA was either reverse transcribed into first strand cDNA (SuperScript III first strand synthesis Super- Mix for quantitative RT-PCR; Invitrogen) for standard PCR (1.5 mM MgCl2
+, 0.2 mM dNTP, 1 ? M primers, 1.25 units of GoTaqDNApolymerase)...”
+
+
+mRNA/cDNA was sequenced on Illumina GAIIX (oldest data, dataset 1, SI XX), or HiSeq/HiSeq2000 (?) (newest data, dataset 2, SI XX). RNA preparation was done with XX kit (Illumina…. XXX) following the manufacturer's instructions.
+Unstranded protocols were used, meaning that sequencing direction is unknown and which DNA strand reads may map to is not informative. ......resulting in single end and paired end sequence reads respectively as described in (SI...table?). Sequences from single stranded sequencing are 101 bases and XX for pair-end sequencing (see table…) 
+
+
+
+
+Library preparation kit
+	Sequencing machine
+	Number of cycles/ sequence length
+	Number of reads
+	Number of reads mapped
+	Removed reads due to low quality sequencing
+	Removed bases per read due to low quality sequencing
+	….
+	…….
+	……..
+	……...
+	………...
+	……...
+	……...
+	
+
+
+
+Transcriptome data treatment
+Adapter sequences were removed… 
+
+
+Quality….
+FastQC was used to asses sequencing quality. A cut-off limit for base-pair phred score of 
+10 and data was trimmed to remove any lower quality bases. With this approach XX sequences 
+were removed OR trimmed for xx-yy bases in single end sequences, and none? in paired-end 
+sequences.
+
+
+Transcriptome analysis softwares TopHat (version x, using Bowtie2) were used for alignment 
+and the Ballgown package (version x) was applied to analyse expression levels. TopHat was 
+used for initial and simultaneous alignment to a Mus musculus genome (Strain: C57BL/6J 
+also known as mm9, retrieved from ToxoDB: filename ToxoDB-24_EfalciformisBayerHaberkorn1970 )
+ and E. falciformis genome (name, link). Tablemaker, which makes use of Cufflinks from 
+Tuxedo Tools was used to analyse splice isoforms e.g. by finding alignments that start 
+in one exon and end in another one (not sure how Tablemaker does that - check - this was 
+written for Cufflinks). Tablemaker (version x) was also used to quantify expression levels. (ref). 
+Samtools (version x) allowed format conversions between .bam and .sam formats. 
+
+
+(Results: Considering every one read alignment as a hit in the respective genomes, XX mouse 
+genes and XX E. falciformis genes were detected.)
+
+
+Due to different proportions of host and parasite RNA, normalisation using the R package 
+edgeR (version X… or DESeq, whichever will work better) was adjusted to the respective 
+species' transcriptome size (library size in TMM normalisation). Data was split into mouse 
+and E. falciformis files before this analysis. 
+
+
+On both the mouse and E. falciformis datasets, Tablemaker software was applied to identify 
+isoforms(?), analyse expression levels (after normalisation). Tablemaker and Ballgown tools 
+were used to import counts from mapping data into R (possibly: and to visualize results. 
+OR: Visualisation was done with R package ggplot2). R packages (EdgeR, DEseq??) were used 
+for statistical analysis.
+
+

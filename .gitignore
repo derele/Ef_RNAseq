@@ -79,6 +79,7 @@ figuresANDmanuscript/immuneVSrag_oocysts.png
 /figuresANDmanuscript/manuscriptBMCformat/manuscript_rnaseq.blg
 =======
 >>>>>>> ce7a348a5c7d0ee80f8fe6f44b4b32d973ca1d8f
+<<<<<<< HEAD
 
 data/NMRI_1st_2nd_qPCR_frSS_ctref_long.csv
 data/NMRI_1st_2nd_qPCR_frSS_long.csv
@@ -86,3 +87,18 @@ test-using-delta3dpidelta-mean.png
 .2_edgeR_diff.R.swp
 figuresANDmanuscript/manuscriptBMCformat/.manuscript_rnaseq.tex.swo
 
+=======
+/figuresANDmanuscript/manuscriptBMCformat/manuscript_rnaseq.dvi
+/VennDiagram2016-08-12_21-13-28.log
+/VennDiagram2016-08-12_21-13-33.log
+/VennDiagram2016-08-13_21-30-59.log
+/VennDiagram2016-08-13_21-31-00.log
+/VennDiagram2016-08-15_09-58-20.log
+/VennDiagram2016-08-15_09-58-21.log
+/VennDiagram2016-08-15_09-58-22.log
+/VennDiagram2016-08-15_09-58-48.log
+/VennDiagram2016-08-15_09-58-51.log
+/VennDiagram2016-08-15_09-58-52.log
+/VennDiagram2016-08-15_10-02-51.log
+/VennDiagram2016-08-15_10-10-07.log
+>>>>>>> 229ebf613c8c9a8a8bc44d6806e720a8b448abc9

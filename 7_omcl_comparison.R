@@ -1,7 +1,6 @@
 ## Description of script
 
 library(ggplot2)
-=======
 library(pheatmap)
 library(reshape)
 library(ggplot2)
@@ -75,20 +74,18 @@ Walker.data <- read.csv("data/12864_2015_1298_MOESM3_ESM.csv", skip=1)
 names(Walker.data)[5:8] <- paste(names(Walker.data)[5:8], "GamVsMer", sep=".")
 names(Walker.data) <- gsub("\\.1", "\\.GamVsSpor", names(Walker.data))
 
-## make thins numeric
-Walker.data <- Walker.data[, c("gene.ID", "gametocyte", "merozoite", "sporozoite",
-                               "log2.fold.change.GamVsSpor", "log2.fold.change.GamVsMer")] 
+Walker.data <- Walker.data[, c("gene.ID", "gametocyte", "merozoite", "sporozoite")]
 
 Walker.data <- merge(all.orthologs, Walker.data, by.x="Ete", by.y="gene.ID")
 
 Walker.RC <- Walker.data[, c("Efa", "Ete", "Tgo", "gametocyte", "merozoite", "sporozoite")]
 names(Walker.RC) <-  c("Efa", "Ete", "Tgo", "Walker.Gam", "Walker.Mer", "Walker.Spo")
 
+## log2 transform to make it compatible with ToxoDB
 Walker.RC[,c("Walker.Gam", "Walker.Mer", "Walker.Spo")] <-
     log2(Walker.RC[,c("Walker.Gam", "Walker.Mer", "Walker.Spo")])
-Walker.RC[is.na(Walker.RC)] <- 0
 
-Walker.FC <-  Walker.data[, c("Efa", "Ete", "Tgo", "log2.fold.change.GamVsMer", "log2.fold.change.GamVsSpor")]
+Walker.RC[is.na(Walker.RC)] <- 0
 
 ## More from Reid et al via ToxoDB (tedious manual downloads)
 read.Reid.data <- function(){
@@ -111,7 +108,6 @@ Reid.data <- read.Reid.data()
 Reid.data <- merge(Reid.data, all.orthologs, by="Ete")
 
 Reid.RC <- Reid.data[, c("Efa", "Ete", "Tgo", "Reid.Mer","Reid.spOoc", "Reid.Sp", "Reid.Ooc")]
-Reid.FC <- Reid.data[, c("Efa", "Ete", "Tgo", "FC.OOvsMer","FC.OOvsspOO", "FC.OOvsSp")]
 
 ## Data from Hehl lab on toxo in the cat
 read.Hehl.data <- function(){
@@ -137,7 +133,6 @@ Hehl.data <- read.Hehl.data()
 Hehl.data <- merge(all.orthologs, Hehl.data, by="Tgo")
 
 Hehl.RC <- Hehl.data[, c("Efa", "Ete", "Tgo", "Hehl.Tg3", "Hehl.Tg7.x", "Hehl.TgTach")]
-Hehl.FC <- Hehl.data[, c("Efa", "Ete", "Tgo", "FC.Tg7vs3", "FC.Tg7vsTach")]
 
 ## Work with normalized counts
 get.ortholog.RC <- function(){
@@ -154,16 +149,8 @@ get.ortholog.RC <- function(){
     return(foobar)
 }
 
-RC.ortho <- merge(RC.ortho, cpm(Ef.1st.pass.model[[4]]),
-                  by.x="Efa", by.y=0)
-RC.ortho[,3:ncol(RC.ortho)] <- apply(RC.ortho[,3:ncol(RC.ortho)], 2,
-                                     function (x) as.numeric(as.character(x)))
-=======
 RC.ortho <- get.ortholog.RC()
-
-CS <- colSums(RC.ortho[,4:ncol(RC.ortho)])
-scaling.f <- max(CS)/CS
-RC.ortho[, 4:ncol(RC.ortho)] <- t(t(RC.ortho[, 4:ncol(RC.ortho)])*scaling.f)
+RC.ortho[is.na(RC.ortho)] <- 0
 
 pdf("figuresANDmanuscript/RC_correlation_Efal_Ete_Tgo.pdf", heigh=15, width=15)
 pheatmap(cor(RC.ortho[,4:ncol(RC.ortho)], method="spearman"),
@@ -214,56 +201,4 @@ pheatmap(cor(RC.ortho.mean.oneONE.LCsig[,4:ncol(RC.ortho.mean.oneONE.LCsig)],
              method="spearman"),
          display_numbers=TRUE, scale="none")
 dev.off()
-
-## ### Work with Fold Changes... ## What to do wiht Max and Min? ## probably no good idea
-## FC.ortho <- merge(all.orthologs,
-##                   TenGam[, grepl("gene.ID|log2.fold.change", names(TenGam))],
-##                   by.x="Ete", by.y="gene.ID")
-## FC.ortho <- FC.ortho[!rowSums(is.na(FC.ortho))>0, ]
-
-## all.Ef.FC.list <- lapply(Ef.1st.pass.model[[2]], function(x) {
-##   as.data.frame(cbind(gene=rownames (x), logFC=x[,1]))
-## })
-
-## all.FC.df <- Reduce(function (x,y)merge(x,y, by="gene"),all.Ef.FC.list)
-## names(all.FC.df) <- c("gene.ID", paste("logFC", names(Ef.1st.pass.model[[2]]), sep="."))
-
-## FC.ortho <- merge(FC.ortho,
-##                   all.FC.df,
-##                   by.x="Efa", by.y="gene.ID")
-
-## FC.ortho[,3:ncol(FC.ortho)] <- apply(FC.ortho[,3:ncol(FC.ortho)],
-##                                      2, function(x) as.numeric(as.character(x)))
-
-## pdf("figuresANDmanuscript/TenellaGamVsMer_vs_N3vsN7.pdf")
-## ggplot(FC.ortho, aes(log2.fold.change.GamVsMer, logFC.N3vsN7*-1)) +
-##   geom_point(alpha=0.8) +
-##   stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +
-##   scale_fill_gradient(low = "yellow", high = "red") +
-##   scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
-##   stat_smooth() +
-##   theme_bw()
-## dev.off()
-
-
-## pdf("figuresANDmanuscript/TenellaGamVsMer_vs_N5vsN7.pdf")
-## ggplot(FC.ortho, aes(log2.fold.change.GamVsMer, logFC.N5vsN7*-1)) +
-##   geom_point(alpha=0.8) +
-##   stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +
-##   scale_fill_gradient(low = "yellow", high = "red") +
-##   scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
-##   stat_smooth() +
-##   theme_bw()
-## dev.off()
-
-
-## pdf("figuresANDmanuscript/TenellaGamVsSpor_vs_N7vsSpor.pdf")
-## ggplot(FC.ortho, aes(log2.fold.change.GamVsSpor, logFC.N7vsSp)) +
-##   geom_point(alpha=0.8) +
-##   stat_density2d(aes(alpha=..level.., fill=..level..), size=2, geom="polygon") +
-##   scale_fill_gradient(low = "yellow", high = "red") +
-##   scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
-##   stat_smooth() +
-##   theme_bw()
-## dev.off()
 
