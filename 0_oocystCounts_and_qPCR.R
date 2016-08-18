@@ -8,9 +8,7 @@ library(reshape2)
 library(plyr)
 library(doBy)
 library(stringr)
-library(svglite)
-
-
+library(RSvgDevice)
 
 setwd("~/Ef_RNAseq/")
 phen.data <- read.csv("data/Oocysts_output_weight_SS_longdata.csv")
@@ -44,10 +42,8 @@ all.oocysts.line +
     theme_bw()
 dev.off()
 
-
 ## qPCR data from Simone and Annica
-
-## Ef18S qPCR data for different timepoints, 1st and 2nd infection and 3 replicates.
+## Ef18S qPCR data for different timepoints, 1st and 2nd infection and 3 biological replicates.
 qpcr.df <- as.data.frame(read.csv("data/NMRI1st2ndqPCR_frSS_EfctRef_long.csv"))
 long.qpcr <- melt(qpcr.df, measure.vars = c("rep1_ct", "rep2_ct", "rep3_ct"))
 ## Normalise to highest ct among all replicates
@@ -57,7 +53,7 @@ long.qpcr$norm.value <- (long.qpcr$value - max(long.qpcr$value))*-1
 ## Calculate sd and means on normalised values
 stats.qpcr <- summaryBy(norm.value ~ dpi + inf,
           data = long.qpcr, 
-          FUN = list(mean, min, max, sd))
+          FUN = list(mean, min, max, sd, se))
 stats.qpcr <- merge(stats.qpcr, long.qpcr)
 
 ################ STATUS ####################
@@ -70,22 +66,28 @@ stats.qpcr <- merge(stats.qpcr, long.qpcr)
 ## Cool that we have so much qPCR data: find those genes in RNAseq data and 
 ## plot together
 
+devSVG("~/Ef_RNAseq/figures/Figure1c_qPCR18S.svg")
 qpcr18S <- ggplot(subset(stats.qpcr, stats.qpcr$gene %in% "Ef18S"), 
        aes(x = dpi, y = norm.value.mean, col = factor(inf))) +
-  geom_errorbar(aes(ymin = norm.value.min,
-                    ymax = norm.value.max,
+  ggtitle("Eimeria 18S by qPCR") +
+  labs(color = "Infection No.") +
+  ## to get rid of label, rm aes(), but then size is not controlled. How fix this? ################ HERE ####################
+  geom_errorbar(aes(ymin = norm.value.mean - norm.value.sd,
+                    ymax = norm.value.mean + norm.value.sd,
                     width = 0.2)) +
-  geom_point(aes(size = 2)) +
+  geom_point(aes(alpha = 0.7)) +
+  geom_line() +
   ##  (delta-delta-ct): put in figure legend
-  scale_y_continuous("Eimeria 18S fold change", labels = math_format(2^.x), breaks = seq(0,2^30, 2)) +
+    scale_y_continuous("Eimeria 18S fold change", 
+                     labels = math_format(2^.x), 
+                     breaks = c(0, 2, 4, 8, 16, 32),
+                     limits = c(0, 32)) +
   scale_x_continuous("Day post infection", breaks = seq(0,8,1)) +
   theme_bw(20) +
-  theme(#legend.title = element_blank(),
-        legend.key = element_blank(),
+  theme(legend.key = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())
-#ggsave("figures/Figure1c_qPCR_Ef18S.pdf", plot = qpcr18S)
-qpcr18S
+dev.off()
 
 
 
