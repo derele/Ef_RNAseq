@@ -15,11 +15,10 @@ All.RC <- as.matrix(read.table("output_data/RC_All_genes.csv", sep=","))
 create.pdata <- function (featurecountsTarget){
     sample <- featurecountsTarget
     grouped <- sub("_rep\\d+$" , "", sample)
-    challenged <- ifelse(grepl("1stInf", grouped), "1st",
-                  ifelse(grepl("2ndInf", grouped), "2nd",
+    challenged <- unlist(lapply(strsplit(sample, "_"), "[[", 2))
     rep <- sub(".*_(rep\\d+)$" , "\\1", sample) # (name here) is taken "\\1" here
     mouse.strain <- sub("^(.*?)_.*", "\\1", grouped)
-    dpi <- as.numeric(as.character(sub("^.*_(.*)dpi", "\\1", grouped)))
+    dpi <- gsub(".*?_(.*?)$", "\\1", grouped)
     ## below information that can't be extracted out ouf the truncated
     ## mapping file name
     batch <- c(3, 3, 3, 3, 3, 1, 1, 2, 2, 2, 0, 1, 1, 2,
@@ -72,9 +71,6 @@ RC.table$c.Ef.reads <- colSums(All.RC
                                 [grepl('^EfaB.*', rownames(All.RC)),])
 
 RC.table$p.Ef.reads <- round(RC.table$c.Ef.reads/RC.table$c.mapping.counts*100, 4)
-
-
-RC.table$dpi[RC.table$challenged%in%"environmental"] <- "environmental"
 
 ## plotting parasite percentage of reads
 
