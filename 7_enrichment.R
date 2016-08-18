@@ -2,9 +2,6 @@ library(topGO)
 library(xtable)
 library(AnnotationDbi)
 
-if(!exists("hcluster")){
-    source("5_clustering.R")
-}
 annotation.frame <- read.table("output_data/annotation_data.csv", sep=",")
 
 ## just to get the universe of genes which were tested at all:
