@@ -53,7 +53,7 @@ long.qpcr$norm.value <- (long.qpcr$value - max(long.qpcr$value))*-1
 ## Calculate sd and means on normalised values
 stats.qpcr <- summaryBy(norm.value ~ dpi + inf,
           data = long.qpcr, 
-          FUN = list(mean, min, max, sd, se))
+          FUN = list(mean, min, max, sd))
 stats.qpcr <- merge(stats.qpcr, long.qpcr)
 
 ################ STATUS ####################
