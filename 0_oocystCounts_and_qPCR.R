@@ -13,7 +13,6 @@ library(RSvgDevice)
 setwd("~/Ef_RNAseq/")
 phen.data <- read.csv("data/Oocysts_output_weight_SS_longdata.csv")
 
-## Mouse IDs are not unique so it is impossible to track individuals FIX THIS!!
 ## here just a hack to take the first occurence of a ID at a time point
 phen.data <- phen.data[!duplicated(phen.data[, c("Day_pi", "Mouse_ID", "Infection_No")]), ]
 
