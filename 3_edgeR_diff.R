@@ -44,6 +44,7 @@ library(GGally)
 library(RUVSeq)
 library(reshape)
 library(plyr)
+library(gridExtra)
 
 ## use the alternate design like recommended by the EdgR manual (or
 ## eg. here: https://support.bioconductor.org/p/66952/) and specifiy
@@ -168,7 +169,7 @@ Mm.1st.pass.model <- get.my.models(Mm.RC, cutoff=1000,
                                    design=Mm.design,
                                    norm="upperquartile")
 
-Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=10,
+Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=10,    ########## P R O B L E M ############
                                    group = Ef.pData$grouped,
                                    contrasts=Ef.contrasts,
                                    design=Ef.design,
