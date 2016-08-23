@@ -20,6 +20,8 @@ pData <- pData[!pData$sample%in%excluded.samples, ]
 
 ## Mouse and Eimeria specific
 Ef.pData <- pData[!pData$dpi%in%0, ]
+Mm.pD <- pData[!pData$challenged%in% "oocysts", ]
+Mm.pData <- Mm.pD[!Mm.pD$challenged%in% "sporozoites", ]
 
 Ef.pData$grouped <- as.factor(as.character(Ef.pData$grouped))
 Mm.pData$grouped <- as.factor(as.character(Mm.pData$grouped))
