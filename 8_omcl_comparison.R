@@ -2,6 +2,8 @@ library(ggplot2)
 library(pheatmap)
 library(reshape)
 library(ggplot2)
+library(gridExtra)
+library(RSvgDevice)
 
 Ef.nRC <- read.table("output_data/Ef_norm_counts.csv", sep=",", header=TRUE)
 Ef.nRC <- matrix(unlist(Ef.nRC), nrow=nrow(Ef.nRC), ncol=ncol(Ef.nRC),
@@ -158,7 +160,35 @@ lots.of.f <- melt(lots.of.f)
 lots.of.f <- reshape(lots.of.f, idvar = c("L2", "L1"), timevar="L3", direction="wide")
 lots.of.f$FDR <- round(p.adjust(lots.of.f$value.p.value, method="BH"), 4)
 
-lots.of.f[ lots.of.f[, "FDR"]<0.01, ]
+
+lots.signif <- lots.of.f[ lots.of.f[, "FDR"]<0.01, ]
+#names(lots.signif)[names(lots.signif)=="L2"] <- "Cluster"
+#names(lots.signif)[names(lots.signif)=="L1"] <- "Conservation"
+#names(lots.signif)[names(lots.signif)=="value.estimate"] <- "Ratio"
+lots.signif$value.p.value <- NULL ## rm p-value column for figure
+
+## function to control colors in table
+myt <- ttheme_default(
+  base_size = 18,
+  padding = unit(c(6, 6), "mm"),
+  # Use hjust and x to left justify the text
+  # Alternate the row fill colours
+  core = list(fg_params=list(col="dark green"), #, hjust = 1, x=1),
+              bg_params=list(fill=c("white", "light gray"))),
+  
+  # Change column header to white text and red background
+  colhead = list(fg_params=list(col="dark green"),
+                 bg_params=list(fill="gray"))
+)
+
+#devSVG("~/Ef_RNAseq/tables/Table2_conservationClusters.svg")
+pdf("~/Ef_RNAseq/tables/Table2_conservationClusters.pdf", width = 12, height = 8)
+lots.signi.table <- grid.table(data.frame(lots.signif),
+           theme = myt,
+           rows = NULL,
+           cols = c("Cluster", "Conservation", "Ratio", "FDR"))
+dev.off()
+           
 
 ## new 2016: Get for every cluster the E. falciformis and E. tenella gene
 get.all.pairedE.orthos <- function (){
