@@ -48,6 +48,8 @@ set.from.cluster <- function(hcluster, number){
 to.test <- list(
     ## Eimeria
     ## fill me in!!!
+    list(set=set.from.cluster(hcluster[["Ef"]], 5),
+          type = "sporoz", species = "Ef"),
     ## Mouse
     list(set=set.from.cluster(hcluster[["Mm"]], 5),
          type="7dpiUp", species="Mm"),
@@ -78,9 +80,7 @@ gene.table.topGO <- function(TOGO.list, pval=0.01){
     return(all[all$p.value<pval,])
 }
 
-## Subset BPMF.ll by [[1]][1[]][1[]] to get GO-terms (third bracket)
-## per cluster (first No.) and either BP (1) or MF (2) (second
-## number).
+## Subset BPMF.ll by e.g. BPMF.ll$sporoz$BP (another $Term will give only annotated terms)
 BPMF.ll <- lapply(to.test, function (x){
           set = x[[1]]
           type = x[[2]]
@@ -103,6 +103,21 @@ BPMF.ll <- lapply(to.test, function (x){
 })
 
 names(BPMF.ll) <- unlist(lapply(to.test, "[[", 2))
+
+##colors for table
+myt <- ttheme_default(
+  base_size = 18,
+  padding = unit(c(6, 6), "mm"),
+  # Use hjust and x to left justify the text
+  # Alternate the row fill colours
+  core = list(fg_params=list(col="dark green"), #, hjust = 1, x=1),
+              bg_params=list(fill=c("white", "light gray"))),
+  
+  # Change column header to white text and red background
+  colhead = list(fg_params=list(col="dark green"),
+                 bg_params=list(fill="gray"))
+)
+
 
 ### NOT tested from here on...
 ## Short how-to:
