@@ -81,26 +81,28 @@ get.omcl.categories <- function(ortho.obj){
 
   Piroplasma.clusters <- rownames(ortholog.presence[select.deeper.nodes(Piroplasma), ])
 
-  Haemosporidia.clusters <- rownames(ortholog.presence[select.deeper.nodes(Haemosporidia, ), ])
-
-  Coccidia.clusters <- rownames(ortholog.presence[select.deeper.nodes(Coccidia, ), ])
+  #Haemosporidia.clusters <- rownames(ortholog.presence[select.deeper.nodes(Haemosporidia, ), ])
+  ## with or without comma?????????
+  
+  Haemosporidia.clusters <- rownames(ortholog.presence[select.deeper.nodes(Haemosporidia), ])
+  Coccidia.clusters <- rownames(ortholog.presence[select.deeper.nodes(Coccidia), ])
   Coccidia.clusters <- Coccidia.clusters[!Coccidia.clusters%in%Eimeria.clusters &
                                          !Coccidia.clusters%in%Sarcocystida.clusters]
 
   Coccidia.genes <- get.genes.4.clusters(omcl[Coccidia.clusters])
 
-  Aconoidasida.clusters <- rownames(ortholog.presence[select.deeper.nodes(Aconoidasida, ), ])
+  Aconoidasida.clusters <- rownames(ortholog.presence[select.deeper.nodes(Aconoidasida), ])
   Aconoidasida.clusters <- Aconoidasida.clusters[!Aconoidasida.clusters%in%Piroplasma.clusters &
                                                  !Aconoidasida.clusters%in%Haemosporidia.clusters]
 
-  Apicomplexa.clusters <- rownames(ortholog.presence[select.deeper.nodes(Apicomplexa, ), ])
+  Apicomplexa.clusters <- rownames(ortholog.presence[select.deeper.nodes(Apicomplexa), ])
   Apicomplexa.clusters <- Apicomplexa.clusters[!Apicomplexa.clusters%in%Aconoidasida.clusters &
                                                !Apicomplexa.clusters%in%Coccidia.clusters &
                                                !Apicomplexa.clusters%in%Eimeria.clusters &
                                                !Apicomplexa.clusters%in%Ef.only.clusters]
   Apicomplexa.genes <- get.genes.4.clusters(omcl[Apicomplexa.clusters])
 
-  ApicomplexaC.clusters <- rownames(ortholog.presence[select.deeper.nodes(ApicomplexaC,), ])
+  ApicomplexaC.clusters <- rownames(ortholog.presence[select.deeper.nodes(ApicomplexaC), ])
   ApicomplexaC.clusters <- ApicomplexaC.clusters[!ApicomplexaC.clusters%in%Apicomplexa.clusters&
                                                  !ApicomplexaC.clusters%in%Coccidia.clusters &
                                                  !ApicomplexaC.clusters%in%Eimeria.clusters &
@@ -114,9 +116,9 @@ get.omcl.categories <- function(ortho.obj){
     Eimeria=Eimeria.clusters,
     Sarcocystida=Sarcocystida.clusters,
     Coccidia=Coccidia.clusters,
-    Haemosporidi=Haemosporidia.clusters,
-    Piroplasma=Piroplasma.clusters,
-    Aconoidasida=Aconoidasida.clusters,
+    Haemosporidi=Haemosporidia.clusters, # 
+    Piroplasma=Piroplasma.clusters,     #  Aplicomplexan parasite
+    Aconoidasida=Aconoidasida.clusters, # Aplicomplexan parasite
     Apicomplexa=Apicomplexa.clusters,
     ApicomplexaC=ApicomplexaC.clusters))
 
@@ -139,8 +141,6 @@ write.table(gene.cluster.category, "output_data/gene_family_category.csv", sep="
 
 
 ## testing for overrepresentation in conservating grouping
-
-
 lots.of.f <- lapply(unique(gene.cluster.category$grouping), function (cons.group){
     inner <-
         lapply(unique(hcluster[["Ef"]]$Cluster), function (hier.cluster){
@@ -159,15 +159,12 @@ names(lots.of.f) <- unique(gene.cluster.category$grouping)
 lots.of.f <- melt(lots.of.f)
 lots.of.f <- reshape(lots.of.f, idvar = c("L2", "L1"), timevar="L3", direction="wide")
 lots.of.f$FDR <- round(p.adjust(lots.of.f$value.p.value, method="BH"), 4)
-
+lots.of.f[ lots.of.f[, "FDR"]<0.01, ]
 
 lots.signif <- lots.of.f[ lots.of.f[, "FDR"]<0.01, ]
-#names(lots.signif)[names(lots.signif)=="L2"] <- "Cluster"
-#names(lots.signif)[names(lots.signif)=="L1"] <- "Conservation"
-#names(lots.signif)[names(lots.signif)=="value.estimate"] <- "Ratio"
 lots.signif$value.p.value <- NULL ## rm p-value column for figure
 
-## function to control colors in table
+## function to control colors in table below
 myt <- ttheme_default(
   base_size = 18,
   padding = unit(c(6, 6), "mm"),
