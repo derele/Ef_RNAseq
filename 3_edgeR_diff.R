@@ -1,6 +1,14 @@
 #### DIFFERENTIAL GENE EXPRESSION ANALYSIS
 ## needed from data import script are two raw count objects 
 library(RSvgDevice)
+library(statmod)
+library(edgeR)
+library(GGally)
+library(RUVSeq)
+library(reshape)
+library(plyr)
+library(gridExtra)
+library(VennDiagram)
 
 ## We know from 2_data_curation.R that we want to exclude:
 excluded.samples <- c("NMRI_2ndInf_3dpi_rep1",
@@ -19,9 +27,8 @@ pData <- read.table("output_data/Sample_pData.csv", sep=",")
 pData <- pData[!pData$sample%in%excluded.samples, ]
 
 ## Mouse and Eimeria specific
-Ef.pData <- pData[!pData$dpi%in%0, ]
-Mm.pD <- pData[!pData$challenged%in% "oocysts", ]
-Mm.pData <- Mm.pD[!Mm.pD$challenged%in% "sporozoites", ]
+Ef.pData <- pData[!pData$dpi%in%"0dpi", ]
+Mm.pData <- pData[!pData$challenged%in%c("sporozoites", "oocysts"), ]
 
 Ef.pData$grouped <- as.factor(as.character(Ef.pData$grouped))
 Mm.pData$grouped <- as.factor(as.character(Mm.pData$grouped))
@@ -38,13 +45,7 @@ Ef.RC <- Ef.RC[, order(colnames(Ef.RC))]
 Mm.pData <- Mm.pData[order(Mm.pData$sample), ]
 Ef.pData <- Ef.pData[order(Ef.pData$sample), ]
 
-library(statmod)
-library(edgeR)
-library(GGally)
-library(RUVSeq)
-library(reshape)
-library(plyr)
-library(gridExtra)
+
 
 ## use the alternate design like recommended by the EdgR manual (or
 ## eg. here: https://support.bioconductor.org/p/66952/) and specifiy
@@ -280,7 +281,7 @@ Ef.infection.LCFull.difference <-
                    early.Ooc=list(Ef.early.Ooc)), 
                  filename=NULL)
 
-devvSVG("figures/Figure3aii_vennEfCycleFull.svg")
+devSVG("figures/Figure3aii_vennEfCycleFull.svg")
 grid.draw(Ef.infection.LCFull.difference)
 dev.off()
 
