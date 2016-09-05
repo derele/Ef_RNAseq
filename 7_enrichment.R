@@ -63,9 +63,9 @@ to.test <- list(
          type = "earlyUp", species = "Ef"),
     ## Mouse
     list(set=set.from.cluster(hcluster[["Mm"]], 6),
-         type="2ndInf", species="Mm"),
+         type="secondInfInf", species="Mm"),
     list(set=set.from.cluster(hcluster[["Mm"]], 5),
-         type="7dpiUp", species="Mm"),
+         type="SevendpiUp", species="Mm"),
     list(set=set.from.cluster(hcluster[["Mm"]], 3),
           type="allInfDown", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 4),
@@ -120,7 +120,7 @@ names(BPMF.ll) <- unlist(lapply(to.test, "[[", 2))
 ##colors for table
 myt <- ttheme_default(
   base_size = 18,
-  padding = unit(c(6, 6), "mm"),
+  padding = unit(c(2, 6), "mm"),
   # Use hjust and x to left justify the text
   # Alternate the row fill colours
   core = list(fg_params=list(col="dark green"), #, hjust = 1, x=1),
@@ -130,6 +130,18 @@ myt <- ttheme_default(
   colhead = list(fg_params=list(col="dark green"),
                  bg_params=list(fill="gray"))
 )
+
+## Change filename and part of BPMF.ll object to export tables 
+## (adjust size of PDF for better readability)
+pdf("~/Ef_RNAseq/additional_files/SI_GOMmSevendpiUp.pdf", width = 24, height = 48)
+oocysts1 <- grid.table(data.frame(BPMF.ll$SevendpiUp$BP),
+                               theme = myt,
+                               rows = NULL,
+                               cols = c("GO id", "Term", 
+                                        "Annot. genes", 
+                                        "Sign. genes", 
+                                        "Expected", "P-value", "Adj. P-value"))
+dev.off()
 
 
 ### NOT tested from here on...
