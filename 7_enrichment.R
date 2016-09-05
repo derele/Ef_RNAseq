@@ -1,5 +1,7 @@
 library(topGO)
 library(xtable)
+library(gridExtra) #  for color theme function
+library(grid)      # for color theme function
 
 annotation.frame <- read.table("output_data/annotation_data.csv", sep=",")
 
@@ -47,10 +49,21 @@ set.from.cluster <- function(hcluster, number){
 ######## Clustering #############
 to.test <- list(
     ## Eimeria
-    ## fill me in!!!
+    list(set=set.from.cluster(hcluster[["Ef"]], 1),
+         type = "oocystUp1", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 5),
+         type = "oocystUp2", species = "Ef"),
+    list(set=set.from.cluster(hcluster[["Ef"]], 7),
+         type = "lateWeak", species = "Ef"),
+    list(set=set.from.cluster(hcluster[["Ef"]], 2),
+         type = "lateStrong", species = "Ef"),
+    list(set=set.from.cluster(hcluster[["Ef"]], 4),
           type = "sporoz", species = "Ef"),
+    list(set=set.from.cluster(hcluster[["Ef"]], 6),
+         type = "earlyUp", species = "Ef"),
     ## Mouse
+    list(set=set.from.cluster(hcluster[["Mm"]], 6),
+         type="2ndInf", species="Mm"),
     list(set=set.from.cluster(hcluster[["Mm"]], 5),
          type="7dpiUp", species="Mm"),
     list(set=set.from.cluster(hcluster[["Mm"]], 3),
