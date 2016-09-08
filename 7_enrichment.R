@@ -61,6 +61,8 @@ to.test <- list(
           type = "sporoz", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 6),
          type = "earlyUp", species = "Ef"),
+    list(set=set.from.cluster(hcluster[["Ef"]], 3),
+         type = "cluster3", species = "Ef"),
     ## Mouse
     list(set=set.from.cluster(hcluster[["Mm"]], 6),
          type="secondInfInf", species="Mm"),
@@ -70,6 +72,12 @@ to.test <- list(
           type="allInfDown", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 4),
           type="CompInfDown", species="Mm"),
+    list (set=set.from.cluster(hcluster[["Mm"]], 1),
+          type="cluster1", species="Mm"),
+    list (set=set.from.cluster(hcluster[["Mm"]], 2),
+          type="cluster2", species="Mm"),
+    list (set=set.from.cluster(hcluster[["Mm"]], 7),
+          type="cluster7", species="Mm"),
     list (set=set.from.DE(Mm.DE.test, "N5vsN7"),
           type="DE_N5vsN7", species="Mm")
     )
