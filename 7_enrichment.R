@@ -50,34 +50,34 @@ set.from.cluster <- function(hcluster, number){
 to.test <- list(
     ## Eimeria
     list(set=set.from.cluster(hcluster[["Ef"]], 1),
-         type = "oocystUp1", species = "Ef"),
+         type = "cluster1ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 5),
-         type = "oocystUp2", species = "Ef"),
+         type = "cluster5ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 7),
-         type = "lateWeak", species = "Ef"),
+         type = "cluster7ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 2),
-         type = "lateStrong", species = "Ef"),
+         type = "cluster2ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 4),
-          type = "sporoz", species = "Ef"),
+          type = "cluster3ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 6),
-         type = "earlyUp", species = "Ef"),
+         type = "cluster6ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 3),
-         type = "cluster3", species = "Ef"),
+         type = "cluster3ef", species = "Ef"),
     ## Mouse
     list(set=set.from.cluster(hcluster[["Mm"]], 6),
-         type="secondInfInf", species="Mm"),
+         type="cluster6mm", species="Mm"),
     list(set=set.from.cluster(hcluster[["Mm"]], 5),
-         type="SevendpiUp", species="Mm"),
+         type="cluster5mm", species="Mm"),
     list(set=set.from.cluster(hcluster[["Mm"]], 3),
-          type="allInfDown", species="Mm"),
+          type="cluster3mm", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 4),
-          type="CompInfDown", species="Mm"),
-    list (set=set.from.cluster(hcluster[["Mm"]], 1),
-          type="cluster1", species="Mm"),
+          type="cluster4mm", species="Mm"),
+    #list (set=set.from.cluster(hcluster[["Mm"]], 1), # no enriched terms
+    #      type="cluster1mm", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 2),
-          type="cluster2", species="Mm"),
+          type="cluster2mm", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 7),
-          type="cluster7", species="Mm"),
+          type="cluster7mm", species="Mm"),
     list (set=set.from.DE(Mm.DE.test, "N5vsN7"),
           type="DE_N5vsN7", species="Mm")
     )
@@ -141,8 +141,8 @@ myt <- ttheme_default(
 
 ## Change filename and part of BPMF.ll object to export tables 
 ## (adjust size of PDF for better readability)
-pdf("~/Ef_RNAseq/additional_files/SI_GOMmSevendpiUp.pdf", width = 24, height = 48)
-oocysts1 <- grid.table(data.frame(BPMF.ll$SevendpiUp$BP),
+pdf("~/Ef_RNAseq/Supplement/SI_GOEfcluster2_mf.pdf", width = 24, height = 48)
+oocysts1 <- grid.table(data.frame(BPMF.ll$cluster2ef$MF),
                                theme = myt,
                                rows = NULL,
                                cols = c("GO id", "Term", 
