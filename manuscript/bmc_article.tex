@@ -344,47 +344,47 @@ the uninfected control showed unexpected mapping of reads to the
 \textit{E. falciformis} genome. We consider the three excluded samples to display an uncertain 
 state of infection.
 
-\section*{The mouse transcriptome changes in the course of infection}
+\section*{The mouse transcriptome changes upon \textit{E. falciformis} infection}
 Statistical testing for differential expression between infected and
 uninfected mice revealed changes in mRNA abundance becoming more
 pronounced (involving more genes) at later time-points post infection (especially
-at 7 dpi; Table 2).
-
-The observed changes between controls and 7 dpi were in agreement with
-previously published microarry data. Fold-Change data obtained from
+at 7 dpi; Table 2). For mouse, 325 mRNAs were considered differently abundant (DA; FDR\<1\%)
+between controls and 3 dpi, 1,804 mRNAs between controls and 5 dpi and 2,711
+mRNAs between controls and 7 dpi. This lead to a combined set of 3,453 genes
+responding to infection (Figure 2bi). DA mRNAs early in infection (3 dpi
+and 5 dpi) were not a pure subset of genes DA later in
+infection (7 dpi). Instead, the transcriptional profile of the mouse 
+changes throughout the infection. Changes between controls and 7 dpi were in agreement with
+previously published microarry data. Fold-change data obtained from
 \textit{E. falciformis} infected mice at 6 dpi on Agilent microarrays 
 (Schmidt et al 2012) or 7 dpi (our RNAseq data) against uninfected controls
 show a strong correlation (Spearman's \rho = 0.74; Figure 2a). Considering both biological 
 (e.g. exact time-points) and technical differences between the two methods this comparison 
 confirms the adequacy of using dual RNA-seq for assessing the host transcriptome.
 
-For mouse, 325 mRNAs were considered differently abundant (DA; FDR<1\%)
-between controls and 3 dpi, 1,804 mRNAs between controls and 5 dpi and 2,711
-mRNAs between controls and 7 dpi. This lead to a combined set of 3,453 genes
-responding to infection (Figure 2bi). DA mRNAs early in infection (3 dpi
-and 5 dpi) were not simply a subset of genes DA later in
-infection (7 dpi), but instead, the transcriptional profile of the mouse 
-changes throughout the time-points tested here. To further validate this pattern of a distinct
+
+\section*{Epithelial responses depend on mouse immune status}
+To further validate the pattern of a distinct
 response in early infection we performed hierarchical clustering on
 the (union of) mouse genes DA between different time-points post infection (Figure 2c).
-
 By hierarchical clustering of mouse samples, three main sample clusters formed, “main clusters” 
-(dendrogram of columns at top of Figure 2c). Rag1-/- mice cluster with control samples, and there is no clear distinction between infected and non-infected Rag1-/- samples, confirming the immune deficiency phenotype in Rag1-/-. Control samples are defined by high abundance of transcripts in gene cluster 3 (yellow, clusters of rows on the left) and partly high abundance in cluster 4 (red). Immunodeficient Rag1-/- samples share this profile with control samples in gene cluster 4, and this cluster has low abundance in (most) other infection samples. This suggests that these are genes which become down-regulated in immune competent mice upon infection. 
-%%Two naive 5 dpi samples to the left cluster separately and diverge from this and most other patterns. High in infection, but does not fit with third NMRI replicate....
-Three samples of challenged mice from 3, 5, and 7 dpi display high abundance of transcripts in gene cluster 6 (blue). The same genes have a low abundance in two naive, immune competent mouse samples from 5 dpi. Genes in cluster 6 are therefore particularly interesting for investigating the role of adaptive immunity in this infection (although sample NMRI\_2ndInf\_5dpi\_rep1 has a different profile). 
-%% GO terms in cluster 6 discuss
+(dendrogram of columns at top of Figure 2c). Immune deficient Rag1-/- mice cluster with control samples. 
+There is no clear distinction between infected and non-infected Rag1-/- samples, which confirms the immune deficiency phenotype in these mice. 
 
-Transcripts in gene clusters 3 and 4 are lowly abundant among all samples in the middle main cluster. Among those samples, the NMRI mouse samples display a trend towards high abundance in clusters 1, 2, 5 (green) and 7. Especially in the two late infection samples (7 dpi) a high transcript abundance is seen in clusters 1 and 5. The leftmost main sample cluster containing immunocompetent 5 dpi samples is characterized by low transcript abundance in cluster 6, and high abundance in cluster 7. 
+We identify a group of genes (cluster 4, Figure 2c) which change the transcriptional profile upon infection (all time-points) in immune competent mice only. In immune compromised Rag1-/- another group of genes (cluster 3, figure 2c) display the "infection profile" of immune competent mice also in control samples, indicating that these are mRNAs kept at a low abundance in a T and B cell dependent manner. Hence, these genes in some way depend on functional T and B cells also in controls (cluster 3) at the earliest time-point post infection (3 dpi, cluster 4). Gene Ontology, GO, terms enriched and regulated in cluster 3 are, e.g., "lipid modification" and "lipid metabolic process" and "protein intraciliary transport". Other enriched categories in cluster 3 are terms for regulation of different metabolic processes, for blood coagulation as well as terms containing "spinal cord", "axon" or "neuronal" regulation or development. (SI file x). We suggest that these are processes which are all intrinsically different in Rag1-/- mice compared to immune competent mice. The genes in cluster 4, which change only in immune competent mice, are highly abundant in controls including Rag1-/-. Infected immune competent mice have a lower abundance of these mRNAs, but in Rag1-/- there is no difference compared to controls. Therefore, these genes appear to be down-regulated upon infection by processes which depend on (mature) T and/or B cell activity, surprisingly also at 3 dpi. Enriched GO terms in this gene cluster include 13 terms for cytokines, particularly interleukin-1, IL-1, ("negative regulation of" and "secretion of"). Terms such as "negative regulation of viral (or inflammatory) response", "negative chemotaxis", "autophagy", "blood coagulation", "inositol phosphate-mediated signaling", and "positive regulation of calcineurin-NFAT" are also enriched in cluster 4. Inositol signaling can lead to release of calcium and calcineurin-dependent translocation of NFAT to the nucleus and activation of its target genes in T cells, but also many other cell types (reviewed by macian05).
+GO enrichment of cluster 4 also highlights particular regulation of transforming growth factor \beta, TGF\beta, epidermal growth factor, EGF, and tumor necrosis factor, TNF. TGF\beta is important for wound healing in intestinal epithelium (beck03), and EGF regulates proliferation of epithelial cells and inhibits apoptosis (suzuki10). TNF appears to be dose-dependent and capable to suppress inflammatory responses (noti10) but is also reported to regulate proliferation of epithelial cells (kaiser97). Additionally, IL-1 and IL-6 are among the enriched GO terms in cluster 4. The IL-1 receptor (type I) is similar to Toll-like receptors and IL-1 induces innate immune responses in many cell types, and influence lymphocyte activity (dinarello09). IL-6 has been shown to support repair and inhibit apoptosis after epithelial wounding (kuhn14) and it is known to be important for development of Th17 responses (ref in kuhn intro). \\\\\\\\Th17 .... Stange's work (discuss Richard). IL-6 induces the Janus kinase, JAK, and signal transducer and activator of transcription STAT3, which, among other functions, is involved in wound healing in intestinal epithelial cells (pickert09). This analysis suggests that TGF\beta, TNF, EGF, IL-1 and IL-6 are main actors in the epithelial response to \textit{E. falciformis} infection and that the response is T and B cell dependent, also at early time-points. The pronounced changes late in infection (7 dpi) also reflect the expected onset of an adaptive immune response. This is underlined by enriched GO terms in gene clusters 1 and 5. Terms such as "antigen binding" and "immunoglobulin receptor binding" (molecular function, MF), and "immune system process", "adaptive immune response"and "innate immune response" (biological process, BP) are highly enriched in cluster 5 and confirm an activated adaptive immune response at this time-point. Among the same genes, natural killer cell regulation, JAK-STAT signalling, and IL-1 and interleukin-2, IL-2 production are enriched biological processes. IL-2 is one target of NFAT signaling and as mentioned above, JAK-STAT signaling can be induced by IL-6. This indicates that the early responses in, e.g., NFAT and IL-6 regulation induce distinct mRNA abundace differences later in infection (7 dpi).  
 
-The pronounced changes later in infection reflect the expected
-onset of an adaptive immune response. This is underlined by enriched Gene Ontology, GO, terms
-in gene clusters with pronounced profiles late in infection (Figure 2c). Terms such as "antigen binding" and "immunoglobulin receptor binding" (molecular function, MF), and "immune system process" and "adaptive immune
-response" (biological process, BP) are highly enriched in Cluster 5 and confirm an activated adaptive immune response
-at this time-point. 
-
-Particular "regulation of cell death" and "regulation of apoptotic process" (BP)
-
+Taken together, clusters 3 and 4 seem to capture the difference between Rag1-/- mice and immune competent mice in this parasitic infection. Some genes are different also between control animals (Rag1-/- and NMRI, cluster 3). These do not change upon infection in mice lacking mature T and B cells. Other genes (cluster 4) for which the transcriptional profile is similar in all controls, mRNA abundance also only changes upon infection only in animals with functional maturation of T and B cells. Using GO enrichment analysis, we show that regulation of IL-1, IL-6, TNF,TGF\beta and EGF are regulated in both first and challenge infections and suggest wound healing as a common function of this regulation, especially at 7 dpi.
+ 
+\section{RNA processing is enriched in challenge infected immune competent mice} 
+Three challenge infected samples (3 dpi, 5 dpi and 7 dpi) from immune competent mice show a distinct profile in cluster 6. This cluster is highly enriched for RNA processing and splicing, as well as terms for histone and chromatin modification. 
+% daunorubicin metabolic process  --> cancer drug which prevents DNA replication by stabilizing DNA
+% doxorubicin metabolic process --> cancer drug
+ 
+ 
+%%%% INPUT
 "UDP-N-acetylglucosamine-lysosomal-enzyme" (MF)
+%%%%% here %%%%%
 
 %% This might be relevant: The DMAP interaction domain of
 %% UDP-GlcNAc:lysosomal enzyme
@@ -393,76 +393,44 @@ Particular "regulation of cell death" and "regulation of apoptotic process" (BP)
 %% lysosomal-enzyme D-mannose = UMP + lysosomal-enzyme
 %% N-acetyl-D-glucosaminyl-phospho-D-mannose
 
-General changes upon infection are a down-regulation of genes involved
-"lipid modification" or more detailed "phosphatidylinositol
-phosphorylation". These changes are similarly pronounce in the
-immunocompetent strains and Rag1-/- immunodefficient animals (cluster 3
-of fibure 2c) (see supplementary table X).  The presence of these
-changes immunocompromised animals invite to the speculation that those
-genes are independent of a potential later adaptive immune response.
-
-Changes not detectable in Rag1-/- immunodefficient animals (cluster 3
-of fibure 2c) but otherwise observed in general infection are
-characterised by and enrichment to genes involved in "positive
-regulation of calcineurin-NFAT", "blood coagulation" and "inositol
-phosphate-mediated signaling" (see supplementary table X). The
-absence of these changes in Rag1-/- mice allow us to speculate that
-those genes might be involved in a early onset of adaptive
-immune responses.
-
-
 %% Go on here if you can... 
 
-We detected further differences between infections of naive and
-challenge infected mouse hosts, especially at 7 dpi. These genes are
-characterized by...
+%We detected further differences between infections of naive and
+%challenge infected mouse hosts, especially at 7 dpi. These genes are
+%characterized by...
 %% We should't limit ourselfs to testing the clusters only! But
 %% discuss the cluster first if you got difficulties coding the
 %% enrichment tests.
 
-\section*{The life cycle of E. falciformis is characterized by major changes in mRNA abundance}
+\section*{mRNA abundance .........}
+We performed statistical tests to evaluate significant differences (FDR\<1\%) in mRNA abundance between different parasite life cycle stages, approximated by time post infection (Table 2). Between early time-points, 3 dpi and 5 dpi, 103 mRNAs were different, whereas between 3 dpi and 7 dpi 1399 mRNAs were DA, and between 5 dpi and 7 dpi 2084 mRNAs were DA (Figure 3a). This indicates that the major changes take place between 5 dpi and 7 dpi, and that variation is smaller between 3 dpi and 5 dpi. This motivated us to define 3 dpi and 5 dpi as "early infection" and 7 dpi as "late infection". Early and late infection samples were tested for DA compared to sporozoites and sporulated oocysts, resulting in 1697 and 3919 DA mRNAs, respectively.
+%% Check venn vs table2 and change in ms + code
+To evaluate this outcome further, we performed hierarchical clustering of (the union of) the DA mRNAs in the comparisons described above. 
 
-Table 2 lists pairwise sample comparisons and number of genes with
-differently abundant mRNAs per comparison. We applied hierarchical clustering on 
-\textit{E. falciformis} mRNAs which were differently abundant at different time-points 
-post infection, including comparisons with oocysts and sporozoites. 
-Upon hierarchical clustering (Figure 3c) changes throughout the parasite's intracellular life cycle 
-can be categorised into an early (3 and 5 dpi) and late (7dpi) phase. 
-Mouse immune status has no apparent influence on clustering of
-parasite samples. Sporozoites show expression profiles similar to early infection stages
-while oocysts show a distinct mRNA abundance profile (MDS plot...).
+\section*{Major transcriptional differences in the \textit{E. falciformis} life cycle are independent of mouse immune status}
+In the parasite transcriptome, we see no difference between infection in immune competent mice, or T and B cell deficient Rag1-/- mice, or between naive and challenge infected mice. This is surprising considering the measured differences in oocyst output in the same comparisons (Figure 1a), and the fact that these differences are visible in the mouse transcriptomes. On the parasite side, major patters instead seem to be determined by life cycle stages, independent of the host immune status. Distinct clusters of genes define early infection (3 dpi and 5 dpi) in which schizogony takes place, and separately, late infection (7 dpi) in which it is assumed that gametocytes are present. Extracellular (and in our experiments, in vitro) samples of sporozoites and oocysts also cluster separately and are defined by distinct gene clusters. 
 
-Parasite gene clusters shown on the left side (colour-coded and numbered 1 - 7) can be used 
-to characterise clusters of samples. Late in infection, a profile of high mRNA abundance in clusters 2 and 7 (mint green and purple) is seen. Also parasite genes in cluster 6 (blue) appear characteristic  by displaying low mRNA abundance in late stages of infection. 
- One late challenge infection sample deviates from this pattern together with an early challenge infection sample. These two samples are, apart from controls and excluded samples, the ones with the least number of detected parasite reads (1836 and 1580, respectively), which taken together suggests that infections had been cleared before sampling in these challenge infected mice.
+\section*{Early infection transcriptomes suggest parasite expansion}
+%%%% Include cluster 3!!!!!!!
+GO enrichment of the major sporozoite defining cluster with high mRNA abundance in this stage (cluster 4) proposes that different biosynthesis processes are important, as well as "maintenance of protein location in cell". Possibly, the latter is due to control of microneme protein localization as sporozoites prepare for invasion. Biosynthesis terms probably reflect preparation for asexual expansion and perhaps ATP production for motility in sporozoites, although no GO terms for motility are enriched in this cluster. In the following life cycle stages, measured 3 dpi and 5 dpi, in which several rounds of schizogony (asexual replication) take place, mRNAs in cluster 6 are abundant in all early samples (except one, discussed below). Among these "early infection" genes, several GO terms for biosynthetic acitivity are enriched, e.g., "ribosome biogenesis" and "cellular biosynthetic process", as well as terms for "gene expression" and RNA processes, including tRNAs and ncRNAs. "Cellular amino acid catabolic process" is also enriched. mRNAs in cluster 6 are low in abundance in both oocysts and late infection, whereas the sporozoite profile is less defined in this cluster. Therefore, this cluster is distinct for early infection with some features shared with invasive sporozoites. The enriched terms indicate replication and growth, highlighting the parasite's expansion in numbers on 3 dpi and 5 dpi, as supported both by previous knowledge about the life cycle and our increase in sequences from the parasite (Figure 1b). 
 
-The early infection sample cluster (12 samples in center of heatmap) is characterised by a high abundance of transcripts in clusters 3 (yellow) and 6, as well as a below average abundance in clusters 1 (pink), 2, and 5 (green). 
-Sporozoite samples have highly abundant transcripts in cluster 4 (red) and low abundance of 
-transcripts in gene cluster 7. The latter is shared with oocyst samples. The oocyst samples, 
-in addition, have low abundance of transcripts in gene clusters 2, 3, 4, 6 (and 7) and highly 
-abundant transcripts in clusters 1 and 5. 
+\section*{Gametocyte presence likely determines transcriptome late in infection}
+Two gene clusters have a distinct profile with high mRNA abundance on 7 dpi (clusters 2 and 7). Both clusters display low mRNA abundance in other life cycle stages, especially in oocysts and sporozoites. Enriched GO terms such as "movement of cell or subcellular component" and "microtubule-based movement" along with terms suggesting ATP production ("ATP generation from ADP") indicate the presence of motile and energy demanding gametocytes in these samples. Other cluster 2 terms such as "chitin metabolic process" along with enriched metabolic and biosynthetic processes and "gene expression" in cluster 7 suggests start of or preparation for encystation at 7 dpi. In addition, cluster 2 is enriched for a number of GO terms for "blood coagulation" and reflect 
+%%%(double check) 
+the presence of Thrombospondin type I domains in the protein products of cluster 2 mRNAs. Thrombospondin type 1 domains have been reported in \textit{E. tenella} microneme
+localizing proteins, MIC, e.g. MIC4 (Tomley01). MIC4 mRNA was reported in sporozoites where it localizes to the apical
+end, and in late schizonts and late oocyst stages, when sporozoites are forming. This suggests that \textit{E. falciformis} prepares for invasion already in gametocytes or during oocyst formation, however this is speculative.
 
-Taken together, sample and gene clustering indicates that genes in clusters 2, 6 and 7 might be 
-useful to characterise assumed gametocytes in 7 dpi samples. Genes in cluster 4 are candidates 
-for sporozoite specific genes, and clusters 1 and 5  for oocyst specific genes in E. falciformis.  
+\section*{Oocysts...}
+Oocysts have strong high or low mRNA abundance profiles and few intermediate abundance mRNAS. Clusters 1 and 5 contain mRNAS with high abundance in oocysts and all other clusters have low abundance in this stage. GO enrichment in cluster 1 contains only one term (adj. p-value 0.11) for "DNA-templated transcription, initiation". Cluster 5 is enriched for terms related to stress responses, "DNA repair", "protein modification process" and for "cell differentiation". Stress responses and DNA repair can be a result of storage in potassium dichromate of mouse faeces with oocysts before purification. Initiation of transcription and cell differentiation could reflect slow preparation for invasion when oocysts are taken out of storage and purified for RNA extraction. Overall, the oocyst profile in five of 7 gene clusters is characterized by below average abundance of mRNAs, as can be expected in this life cycle stage suited for long-term survival outside of the host. Taken together, sample and gene clustering indicates that genes in clusters 6 are abundant only early in infection and are candidates for merozoite specific genes, clusters 2 and 7 might be useful to characterise gametocytes. Genes in cluster 4 can be evaluated as sporozoite specific genes, and clusters 1 and 5 as oocyst specific genes in \textit{E. falciformis}.
 
-%% Mix it all well into the GO-term discussion! GO-term inferred
-%% biiology needs to be reported in connection to clutering-inferred
-%% ``sample biology''. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% comment on weird day 7 day 3 clustering
+\section*{Imperfect clustering might reflect true biological differences}
+One late challenge infection sample deviates from the "late infection pattern" and clusters with an early challenge infection sample. These two samples are, apart from controls and excluded samples (see above), the ones with the least number of detected parasite genes (1836 and 1580, respectively). This, along with the unclear transcriptional profile and the fact that they are both challenge infections in immune competent hosts, suggest that infections had been cleared before sampling. If this is the case, it raises the question of why it was cleared in these samples but not in other challenge infected immune competent mice. The answer can lie with technical problems in the experiment. Hierarchical clustering analysis in most cases does not cluster replicates together, which at a first glance suggests such problems. However, considering the strong overall patterns in the data and that these fit well with previous knowledge about this infection, it is worthwhile to consider the possibility that this imperfection reflects true biological variation between individual hosts and possible also parasites (oocysts used for infection). It is perceivable that the parasite accommodates to host variation with small differences in, e.g., host stress levels due to litter mates, draught, differences in light exposure or other factors which may vary also in a controlled animal facility. Parasite adjustment to such factors could explain the transcriptional profiles we see. We suggest that considering such possibilities might be useful for understanding the basic biology of the parasite, and as an extension, successfully fight infections in less homogeneous hosts than laboratory mice. 
 
-
-%% For these samples, the pattern is most pronounced in gene cluster 1
-%% (up), and 4 and 6 (down). Within cluster 1, the second replicate from
-%% the challenge infection has a deviant profile (compare mouse data in
-%% Figure 2). Distinct groups of genes also define sporozoites (cluster 5
-%% up) and oocysts (cluster 3 up, cluster 6 down). mRNA profiles on days
-%% 3 and 5 p.i. from all three mouse strains cluster together. These
-%% samples are distinct from oocysts, NMRI day 7 p.i., and
-%% sporozoites. Sporozoites cluster closer with days 3 and 5 than with
-%% oocysts or day 7.
-
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%		detailed gene descriptions etc below: use stuff from there
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection*{GO term enrichments in heatmap clusters}
@@ -484,18 +452,22 @@ complex, MHC, II (UniProt reference if we want to keep this... but
 does any secretion happen from oocysts...? Or is this too far-fetched
 to be interesting?).
 
+%% used thrombosp. part above
 A Thrombospondin type 1 domain-containing protein ortholog is highly
 abundant in cluster 4 (high abundance in oocysts). Thrombospondin type
 1 domains have been reported in \textit{E. tenella} microneme
 localizing proteins, MIC, e.g. MIC4 (Tomley01) In \textit{E. tenella}
 MIC4 mRNA was reported in sporozoites where it localizes to the apical
 end, and in late schizonts and late oocyst stages, when sporozoites
-are forming. (Tomley01). For the same gene, the \textit{T. gondii}
+are forming. (Tomley01). 
+%% until here
+For the same gene, the \textit{T. gondii}
 annotation is Sushi domain-containing protein, which is also the
 ortholog annotation of another gene in this cluster. In the related
 malaria parasite \textit{P. falciparum} the apical sushi protein, ASP,
 (which has a sushi domain) localizes to micronemes in merozoites but
-not other stages (OKeeffe05).  Limulus clotting factor C, Coch-5b2
+not other stages (OKeeffe05).  
+Limulus clotting factor C, Coch-5b2
 (Cochlin) and Lgl1, LCCL, (syn. F5/8 domain) domains are associated
 discoidin lectin domains and thereby with adhesion.  (Pfam entries for
 'LCCL domain' and 'Discoidin domain', May 2016).  Taken together, this
