@@ -329,26 +329,30 @@ pheatmap(cor(RC.ortho[,4:ncol(RC.ortho)], method="spearman"),
          display_numbers=TRUE, scale="none")
 dev.off()
 
-non.one.to.one <- RC.ortho.mean$Efa[duplicated(RC.ortho.mean$Efa)]
-
-RC.ortho.oneONE <- RC.ortho[!RC.ortho$Efa%in%non.one.to.one, ]
-
-pdf("Supplement/RC_correlation_Efal_Ete_Tgo_ONEONE.pdf", heigh=15, width=15, onefile=FALSE)
-pheatmap(cor(RC.ortho.oneONE[,4:ncol(RC.ortho.oneONE)], method="spearman"),
-         display_numbers=TRUE, scale="none")
-dev.off()
-
 ###
 mean.columns <- function(x){
   reps <- as.factor(gsub("_rep\\d", "", names(x)))
   y <- do.call(rbind, by(t(x), reps, colMeans))
   t(y)
 }
-  
+
 RC.ortho.mean <- as.data.frame(cbind(RC.ortho[, 1:13],
                                      mean.columns(RC.ortho[, 14:ncol(RC.ortho)])))
 
+
+
+non.one.to.one <- RC.ortho.mean$Efa[duplicated(RC.ortho.mean$Efa)]
+
+RC.ortho.oneONE <- RC.ortho[!RC.ortho$Efa%in%non.one.to.one, ]
+
 RC.ortho.mean.oneONE <- RC.ortho.mean[!RC.ortho.mean$Efa%in%non.one.to.one, ]
+
+pdf("Supplement/RC_correlation_Efal_Ete_Tgo_ONEONE.pdf", heigh=15, width=15, onefile=FALSE)
+pheatmap(cor(RC.ortho.oneONE[,4:ncol(RC.ortho.oneONE)], method="spearman"),
+         display_numbers=TRUE, scale="none")
+dev.off()
+
+
 
 pdf("Supplement/RC_mean_correlation_Efal_Ete_Tgo_MESSED.pdf", width=10, height=10, onefile=FALSE)
 pheatmap(cor(RC.ortho.mean[,4:ncol(RC.ortho.mean)], method="spearman"),
