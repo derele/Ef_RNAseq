@@ -151,4 +151,21 @@ pheatmap(Mm.cycle.diff.data,
              " mRNAs differently abundant at different dpi ")))
 dev.off()
 
+###########################
+## Check for specific genes withing clusters
+efab.clus1 <- subset(Ef.hclustered.cycle, Cluster=='1')
+efab.clus2 <- subset(Ef.hclustered.cycle, Cluster=='2')
+efab.clus3 <- subset(Ef.hclustered.cycle, Cluster=='3')
+efab.clus4 <- subset(Ef.hclustered.cycle, Cluster=='4')
+efab.clus5 <- subset(Ef.hclustered.cycle, Cluster=='5')
+efab.clus6 <- subset(Ef.hclustered.cycle, Cluster=='6')
+efab.clus7 <- subset(Ef.hclustered.cycle, Cluster=='7')
+
+write.table(efab.clus1, "Supplement/SI_genes_efCluster1.csv", sep=",")
+write.table(efab.clus2, "Supplement/SI_genes_efCluster2.csv", sep=",")
+write.table(efab.clus3, "Supplement/SI_genes_efCluster3.csv", sep=",")
+write.table(efab.clus4, "Supplement/SI_genes_efCluster4.csv", sep=",")
+write.table(efab.clus5, "Supplement/SI_genes_efCluster5.csv", sep=",")
+write.table(efab.clus6, "Supplement/SI_genes_efCluster6.csv", sep=",")
+write.table(efab.clus7, "Supplement/SI_genes_efCluster7.csv", sep=",")
 
