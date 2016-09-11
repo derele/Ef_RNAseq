@@ -1,9 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.7.25)  15 AUG 2016 16:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.9.2)  9 SEP 2016 14:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**\nonstopmode\input bmc_article.tex
-(./bmc_article.tex (./bmcart.cls
+**bmc_article.tex
+(./bmc_article.tex
+LaTeX2e <2016/03/31> patch level 3
+Babel <3.9r> and hyphenation patterns for 83 language(s) loaded.
+(./bmcart.cls
 Document Class: bmcart 2014/01/24BioMed Central class (VS)
 (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
@@ -36,8 +39,8 @@ File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2016/06/17 v0.06h Graphics/color for pdfTeX
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2016/07/10 v0.06j Graphics/color for pdfTeX
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
@@ -85,7 +88,7 @@ Package: amsthm 2015/03/04 v2.20.2
 \dth@everypar=\toks22
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2016/03/10 v2.15b AMS math features
+Package: amsmath 2016/06/28 v2.15d AMS math features
 \@mathmargin=\skip46
 
 For additional information on amsmath, use the `?' option.
@@ -150,7 +153,7 @@ LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count104
 )
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
-Package: hyperref 2016/05/21 v6.83p Hypertext links for LaTeX
+Package: hyperref 2016/06/24 v6.83q Hypertext links for LaTeX
 
 (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
 Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
@@ -210,7 +213,7 @@ Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 \Hy@pagecounter=\count106
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
-File: pd1enc.def 2016/05/21 v6.83p Hyperref: PDFDocEncoding definition (HO)
+File: pd1enc.def 2016/06/24 v6.83q Hyperref: PDFDocEncoding definition (HO)
 )
 \Hy@SavedSpaceFactor=\count107
 
@@ -256,7 +259,7 @@ LaTeX Info: Redefining \pageref on input line 6416.
 Package hyperref Message: Driver (autodetected): hpdftex.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
-File: hpdftex.def 2016/05/21 v6.83p Hyperref driver for pdfTeX
+File: hpdftex.def 2016/06/24 v6.83q Hyperref driver for pdfTeX
 \Fld@listcount=\count113
 \c@bookmark@seq@number=\count114
 
@@ -620,7 +623,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2016/06/02 v1.0s Standard LaTeX Graphics (DPC,SPQR)
+Package: graphics 2016/07/10 v1.0t Standard LaTeX Graphics (DPC,SPQR)
 
 (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
@@ -746,8 +749,164 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
 \address@aff2=\toks37
 \address@aff3=\toks38
 
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.260 \item{
+            Why Eimeria falciformis? Genome available}
+? r
+OK, entering \nonstopmode...
+
+Underfull \hbox (badness 10000) detected at line 260
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.262 \item{
+            Other apicomplexa, especially E. tenella, E. maxima, T. gondii a...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 262
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.264 \item{
+            Why is evolution of these parasites relevant/important}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 264
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.266 \item{
+            Why mouse host (e.g. compared to chicken)}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 266
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.268 \item{
+            Ef life cycle and timing}
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 268
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.270 \item{
+            Knowledge-gaps: basic biology not understood, no in vitro system,
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 270
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.273 \item{
+            We approach some of these questions by using dual RNA-seq to pro...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 273
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.276 \item{
+            Dual RNA-seq has been performed in bacteria... also in protozoan...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 276
+[][]
+ []
+
+
+! LaTeX Error: Lonely \item--perhaps a missing list environment.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.279 \item{
+            Transcriptome studies are a source of great amounts of data. Enr...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
+Underfull \hbox (badness 10000) detected at line 279
+[][]
+ []
+
+
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 313.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 305.
 
 
 
@@ -757,108 +916,48 @@ Overfull \hbox (1.0pt too wide) has occurred while \output is active
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-]
-Overfull \hbox (10.0286pt too wide) in paragraph at lines 314--323
-\OT1/cmr/m/n/10 11,479,260 (sam-ple NMRI[]sporozoites[]rep2) to 145,033,326 (NM
-RI[]2ndInf[]5dpi[]rep1).
- []
+] [2]
 
-[2]
-! Missing $ inserted.
-<inserted text> 
-                $
-l.374 (Spearman's \rho
-                       = 0.74; figure 2a). Considering both and technical
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
-
-! Missing $ inserted.
-<inserted text> 
-                $
-l.378 
-      
-I've inserted a begin-math/end-math symbol since I think
-you left one out. Proceed, with fingers crossed.
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 315.
 
 
-Underfull \hbox (badness 853) in paragraph at lines 370--378
-[]\OT1/cmr/m/n/10 The ob-served changes be-tween con-trols and 7dpi were in agr
-ee-ment with
- []
 
+Package natbib Warning: Citation `schmidt12' on page 3 undefined on input line 
+316.
 
-Underfull \hbox (badness 1205) in paragraph at lines 370--378
-\OT1/cmr/m/n/10 pre-vi-ously pub-lished mi-croarry data. Fold-Change data ob-ta
-ined from mice
- []
+[3] [4] [5]
+! Undefined control sequence.
+l.364 ...d on previously reported data on \texytit
+                                                  {T. gondii}, the authors s...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
 
+[6] [7] [8] [9] [10] (./bmc_article.bbl
 
-Overfull \hbox (519.67372pt too wide) in paragraph at lines 370--378
-\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 74; \OML/cmm/m/it/10 figure\
-OT1/cmr/m/n/10 2\OML/cmm/m/it/10 a\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 :Considerin
-gbothandtechnicaldifferencesbetweenthetowmethodsandthebiologicalchangesalongthe
-lifecyclethisconfirmstheadequacyofourmethodsforassessingthehosttranscriptome:$ 
+Package natbib Warning: Empty `thebibliography' environment on input line 11.
 
- []
-
-[3] [4] [5] [6]
-
-LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 675.
-
-
-! Package inputenc Error: Unicode char μ (U+3BC)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.715 administered in 100 $μ
-                             $L by oral gavage. During the first infection of
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[7]
-
-! Package inputenc Error: Unicode char ° (U+B0)
-(inputenc)                not set up for use with LaTeX.
-
-See the inputenc package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.736 sporocysts were incubated at 37$°
-                                        $C in DMEM containing 0.04\%
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
-[8]
+)
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 831.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 589.
 
 
 
-Overfull \hbox (1.46596pt too wide) in paragraph at lines 830--837
+Overfull \hbox (1.46596pt too wide) in paragraph at lines 588--595
  [] 
  []
 
-(./bmc_article.bbl [9pdfTeX warning (ext4): destination with the same identifie
-r (name{table.1}) has been already used, duplicate ignored
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.58 
-     ])
-Overfull \hbox (113.22627pt too wide) in paragraph at lines 1034--1073
+Overfull \hbox (113.22627pt too wide) in paragraph at lines 612--651
 []| []
  []
 
 ! Undefined control sequence.
-l.1073 ...s}[flushleft]\footnotesize\singlespacing
+l.651 ...es}[flushleft]\footnotesize\singlespacing
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -866,86 +965,71 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[10pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
- has been already used, duplicate ignored
+[11pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1092 \clearpage
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{figure.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1092 \clearpage
-                 pdfTeX warning (ext4): destination with the same identifier (n
-ame{figure.3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.1092 \clearpage
-                 ] [11]
+l.670 \clearpage
+                ] [12]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <7> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 1144
-.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 722.
+
 
 
 AED: lastpage setting LastPage
-[12
+[13
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.1167 \end{document}
-                     ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1167.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1167.
- (./bmc_article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1167.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1167.
+l.745 \end{document}
+                    ]
 
+Package natbib Warning: There were undefined citations.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 745.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 745.
+(./bmc_article.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 745.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 745.
 Package rerunfilecheck Info: File `bmc_article.out' has not changed.
-(rerunfilecheck)             Checksum: 8148D3A2764AA1065DF4800E97AB811D;1119.
+(rerunfilecheck)             Checksum: 5F70BC532E18201E952A55DBD4EDF59F;143.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1167.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 745.
  ) 
 Here is how much of TeX's memory you used:
- 7842 strings out of 493014
- 108038 string characters out of 6135690
- 228710 words of memory out of 5000000
- 11199 multiletter control sequences out of 15000+600000
- 14276 words of font info for 51 fonts, out of 8000000 for 9000
+ 7729 strings out of 493013
+ 106794 string characters out of 6135683
+ 224574 words of memory out of 5000000
+ 11106 multiletter control sequences out of 15000+600000
+ 14772 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,16n,39p,666b,530s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share
-/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public
-/amsfonts/cm/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmssi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
-/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb>
-Output written on bmc_article.pdf (12 pages, 201469 bytes).
+ 34i,16n,39p,2496b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmss17.pfb></usr/share/texlive/texmf-dist/fonts/
+type1/public/amsfonts/cm/cmss8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmss9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfo
+nts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
+i9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on bmc_article.pdf (13 pages, 207148 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
- 230 compressed objects within 3 object streams
- 82 named destinations out of 1000 (max. 500000)
- 105 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 210 PDF objects out of 1000 (max. 8388607)
+ 179 compressed objects within 2 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 17 words of extra memory for PDF output out of 10000 (max. 10000000)
 

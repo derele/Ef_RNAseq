@@ -58,7 +58,7 @@ to.test <- list(
     list(set=set.from.cluster(hcluster[["Ef"]], 2),
          type = "cluster2ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 4),
-          type = "cluster3ef", species = "Ef"),
+          type = "cluster4ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 6),
          type = "cluster6ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 3),
@@ -141,8 +141,8 @@ myt <- ttheme_default(
 
 ## Change filename and part of BPMF.ll object to export tables 
 ## (adjust size of PDF for better readability)
-pdf("~/Ef_RNAseq/Supplement/SI_GOEfcluster2_mf.pdf", width = 24, height = 48)
-oocysts1 <- grid.table(data.frame(BPMF.ll$cluster2ef$MF),
+pdf("~/Ef_RNAseq/Supplement/SI_GOMmcluster7_mf.pdf", width = 24, height = 48)
+oocysts1 <- grid.table(data.frame(BPMF.ll$cluster7mm$MF),
                                theme = myt,
                                rows = NULL,
                                cols = c("GO id", "Term", 

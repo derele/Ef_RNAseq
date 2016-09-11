@@ -196,11 +196,12 @@
 \begin{abstractbox}
 
 \begin{abstract} % abstract
-\parttitle{First part title} %if any
-Text for this section.
+%\parttitle{First part title} %if any
+Apicomplexan parasites such as Plasmodium spp., Toxoplasma gondii and Eimeria spp. cause disease in humans, livestock and wild animals. The genus Eimeria contains thousands of niche specific intracellular parasites, including several species which cause losses in poultry industries. Eimeria falciformis naturally infects the cecum of mice. Infecting one of the best studied and available animal models in biological research, E. falciformis constitutes a perfect model to investigate Eimeria parasites. However, much is still unknown about the parasite’s basic biology and no in vitro culture has been established for the full life cycle. We have performed a dual RNA-seq transcriptome study of the full life cycle in the mouse and of in vitro cultured sporozoites and oocysts. Drastic differences are seen in both parasite and host at three time-points post infection. Comparisons between immunocompetent and immunocompromised mice show differences in oocyst output as well as transcriptional differences indicated by Gene Ontology enrichments. In mouse, TGF-beta, EGF, TNF and IL-1 and IL-6 are examples of genes reacting differently depending on mouse immune status. Parasite transcriptomes have distinct profiles early and late in infection, characterized by biosynthesis and motility, respectively. Sporozoites and oocysts can also be identified by their respective transcriptional profiles. Taken together, the analysis highlights general patterns in the parasite’s life cycle and links them to biological processes. It also lays the ground for detailed analysis of specific parasitic stages and the genes relevant in them. The use of hosts with different immune competence highlights the role of adaptive and innate immunity and offers a source for in-depth analysis of these responses.
 
-\parttitle{Second part title} %if any
-Text for this section.
+
+%\parttitle{Second part title} %if any
+%Text for this section.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -256,20 +257,40 @@ Text for this section.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Introduction}
-Text and results for this section, as per the individual journal's instructions for authors. 
+\item{Why Eimeria falciformis? Genome available}
+
+\item{Other apicomplexa, especially E. tenella, E. maxima, T. gondii and Plasmodium spp.}
+
+\item{Why is evolution of these parasites relevant/important}
+
+\item{Why mouse host (e.g. compared to chicken)}
+
+\item{Ef life cycle and timing}
+
+\item{Knowledge-gaps: basic biology not understood, no in vitro system, 
+no stable tranfection reported, unknown why so niche specific and Eimeria genus so numerous}
+
+\item{We approach some of these questions by using dual RNA-seq to produce simultaneous host and parasite 
+transcriptomes throughout in vivo infection infection}
+
+\item{Dual RNA-seq has been performed in bacteria... also in protozoans? Intracellular... Improved normalization methods 
+should make analysis of reproducing (increasing in numbers and biological material) possible... we show/evaluate this}
+
+\item{Transcriptome studies are a source of great amounts of data. Enrichment tests (in general) and GO enrichment are
+useful tools to elucidate patterns in such large data... some words about GO concept}
 %\cite{koon,oreg,khar,zvai,xjon,schn,pond,smith,marg,hunn,advi,koha,mouse}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	RESULTS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  \section*{Results}
+\section*{Results}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	OVERVIEW READS PER SAMPLE, LAYOT AS EXPERIMENTAL OVERVIEW
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
- \section*{A dual transcriptomics experiment}
+\subsection*{A dual transcriptomics experiment}
 
 We performed mRNA sequencing of caecum epithelial tissue from mice infected with
 the apicomplexan parasite \textit{E. falciformis}. Oocysts and
@@ -282,32 +303,31 @@ the influence of host immune responses at early and late stages of infection. We
 design which allows to compare infections at 5 days post infection (dpi) for all experimental
 conditions (NMRI, C57BL/6 and Rag1-/- mouse strains in naive and challenge infection). Additional time-points 3 dpi and 7 dpi were analysed from NMRI mice (Figure 1d).
 
-\section*{Parasite and host dual transcriptomes can be assessed in parallel}
+\subsection*{Parasite and host dual transcriptomes can be assessed in parallel}
 In this RNA-seq experiment, each replicate sample was enriched for caecum epithelial tissue and pooled 
 from three mice. mRNA was extracted and sequencing libraries prepared. Two biological replicates were used for all but two conditions (with one and three replicates, respectively). Libraries were sequenced on several lanes of Illumina GAIIX (13 samples) and HiSeq machines (14 samples) and mapped to both mouse and parasite genomes simultaneously to avoid spurious assignments of reads in ultra conserved genomic regions. As samples and individual replicates were sequenced in batches to different depth and using different instrumentation (Table 1) we performed quality controls (additional files xyz). These confirm the absence of batch effects influencing analysis and quality of results. 
 
 Total numbers of sequenced reads as well as reads mapped to either the \textit{E. falciformis} genome or the mouse genome are indicated in Table 1 for all replicates. The number of total read mappings for individual replicates ranged from 25,362,739 (sample Rag\_1stInf\_0dpi\_rep1) to 139,749,046 (NMRI\_1stInf\_7dpi\_rep2). At the latest time-point samples, 7 dpi, the overall mRNA output of the sampled caecum tissue is dominated by parasite material with proportional mRNA abundance of 77\% (in NMRI\_1stInf\_7dpi\_rep2) and 92\% (in NMRI\_1stInf\_7dpi\_rep1). (Figure 1b). 
 
-\section*{Exclusion of samples with uncertain infection status}
+\subsection*{Exclusion of samples with uncertain infection status}
 A maximum of 92\% (sample NMRI\_1stInf\_7dpi\_rep1) and a minimum of 0.064\% (sample NMRI\_2ndInf\_3dpi\_rep2) of mapped reads could be assigned to the \textit{E. falciformis} genome in samples considered infected (Table 1). We excluded samples NMRI\_2nd\_3dpi\_rep1 and NMRI\_2nd\_5dpi\_rep2 due to low parasite contribution to the overall transcriptome. Technically, this exclusion made it possible to obtain read counts in agreement with a negative binomial distribution (see additional file x). It is also likely that the number of reads in the excluded samples would have been insufficient to fully normalise these datasets to those with the highest parasite contributions. From a biological point of view, both excluded samples are samples from challenge infection and we assume that the infection was cleared or reduced to a non-detectable level. One sample (NMRI\_1stInf\_0dpi\_rep1) was excluded because the uninfected control showed unexpected mapping of reads to the \textit{E. falciformis} genome. We consider the three excluded samples to display an uncertain state of infection.
 
-\section*{The mouse transcriptome changes upon \emph{E. falciformis} infection}
+\subsection*{The mouse transcriptome changes upon \emph{E. falciformis} infection}
 Statistical testing for differential expression between infected and uninfected mice revealed changes in mRNA abundance becoming more pronounced (containing more genes) at later time-points post infection (Table 2). For mouse, 325 mRNAs were considered differently abundant (DA; FDR < 0.01) between controls and 3 dpi, 1,804 mRNAs between controls and 5 dpi and 2,711 mRNAs between controls and 7 dpi. This lead to a combined set of 3,453 unique genes responding to infection (Figure 2bi). DA mRNAs early in infection (3 dpi and 5 dpi) were not a strict subset of genes DA later in infection (7 dpi). Instead, the transcriptional profile of the mouse changes throughout the infection. Differences between controls and 7 dpi were in agreement with previously published microarry data. Fold-change data obtained from \textit{E. falciformis} infected mice at 6 dpi on Agilent microarrays (\cite{schmidt12}) or 7 dpi (our RNA-seq data) against uninfected controls show a strong correlation (Spearman's $\rho$ = 0.74; Figure 2a). Considering both biological differences in the experiments (e.g. exact time-points for samples), and technical differences between the two methods this comparison confirms the adequacy of using dual RNA-seq for assessing the host transcriptome.
 
 
-\section*{Epithelial responses vary with mouse immune status}
-A distinct response in early infection is indicated by the number of DA mRNAs between different time-points. To further validate the pattern we performed hierarchical clustering on the (union of) mouse genes DA between different time-points post infection (Figure 2c). By hierarchical clustering of mouse samples, three main sample clusters formed (dendrogram of columns at top of Figure 2c). Immune deficient Rag1-/- mice cluster with control samples. There is no clear distinction between infected and non-infected Rag1-/- samples, which confirms the immune deficiency phenotype in these mice. 
-We identify a group of genes (cluster 4, Figure 2c) which changes transcriptional profile upon infection (all time-points of infected samples) in immune competent mice only. In immune compromised Rag1-/-, another group of genes (cluster 3, figure 2c) display the "infection profile" of immune competent mice also in control samples, indicating that these are mRNAs kept at a low abundance in healthy animals in a T and B cell dependent manner. Hence, these genes in some way depend on functional T and B cells also in controls (cluster 3) and at the earliest time-point post infection (3 dpi, cluster 4). 
-Gene Ontology, GO, terms enriched in cluster 3 are, e.g., "lipid modification" and "lipid metabolic process" and "protein intraciliary transport". Other enriched terms in cluster 3 are terms for regulation of other metabolic processes, for blood coagulation as well as terms containing "spinal cord", "axon" or "neuronal" regulation or development. (SI file x). We suggest that these are processes which are all intrinsically different in Rag1-/- mice compared to immune competent mice. The genes in cluster 4, which change only in immune competent mice, are highly abundant in controls including Rag1-/-. Infected immune competent mice have a lower abundance of these mRNAs.
- Therefore, these genes appear to be down-regulated upon infection by processes which depend on (mature) T and/or B cell activity, surprisingly also at 3 dpi. Enriched GO terms in this gene cluster include 13 terms for cytokines, particularly interleukin-1, IL-1, ("negative regulation of" and "secretion of"). Terms such as "negative regulation of viral (or inflammatory) response", "negative chemotaxis", "autophagy", "blood coagulation", "inositol phosphate-mediated signaling", and "positive regulation of calcineurin-NFAT" are also enriched in cluster 4. Inositol signaling can lead to release of calcium and calcineurin-dependent translocation of NFAT to the nucleus and activation of its target genes in T cells, but also many other cell types (reviewed by macian05). GO enrichment of cluster 4 also highlights particular regulation of transforming growth factor$\beta$, TGF$\beta$, epidermal growth factor, EGF, and tumor necrosis factor, TNF. TGF$\beta$ is important for wound healing in intestinal epithelium (beck03), and EGF regulates proliferation of epithelial cells and inhibits apoptosis (suzuki10). TNF appears to be dose-dependent and capable to suppress inflammatory responses (noti10) but is also reported to regulate proliferation of epithelial cells (kaiser97). Additionally, IL-1 and IL-6 are among the enriched GO terms in cluster 4. The IL-1 receptor (type I) is similar to Toll-like receptors and IL-1 induces innate immune responses in many cell types, and influences lymphocyte activity (dinarello09). IL-6 has been shown to support repair and inhibit apoptosis after epithelial wounding (kuhn14) and it is known to be important for development of Th17 responses (ref in kuhn intro). 
-%Th17 .... Stange's work (discuss Richard). 
-IL-6 induces the Janus kinase, JAK, and signal transducer and activator of transcription STAT3, which, among other functions, is involved in wound healing in intestinal epithelial cells (pickert09). This analysis suggests that TGF$\beta$, TNF, EGF, IL-1 and IL-6 are main actors in the epithelial response to \textit{E. falciformis} infection and that the response is T and B cell dependent, also at early time-points. Enrichment of these biological processes further indicates that hosts invest resources in intestinal healing also at early time-points of \textit{E. falciformis} infection.
- 
-The pronounced changes late in infection (7 dpi) reflect the expected onset of an adaptive immune response. This is underlined by enriched GO terms in gene clusters 1 and 5. Terms such as "antigen binding" and "immunoglobulin receptor binding" (molecular function, MF), and "immune system process", "adaptive immune response"and "innate immune response" (biological process, BP) are highly enriched in cluster 5 and confirm an activated adaptive immune response at this time-point. Among the same genes, natural killer cell regulation, JAK-STAT signalling, and IL-1 and interleukin-2, IL-2 production are enriched biological processes. IL-2 is one target of NFAT signaling and as mentioned above, JAK-STAT signaling can be induced by IL-6. This indicates that the early responses in, e.g., NFAT and IL-6 regulation induce distinct mRNA abundace differences later in infection (7 dpi).  
+\subsection*{Epithelial responses vary with mouse immune status}
+A distinct response in early infection is indicated by the number of DA mRNAs between different time-points. To validate the pattern we performed hierarchical clustering on the (union of) mouse genes DA between different time-points post infection (Figure 2c). Three main sample clusters formed (dendrogram of columns at top of Figure 2c). Immune deficient Rag1-/- mice cluster with control samples. There is no clear distinction between infected and non-infected Rag1-/- samples, which confirms the immune deficiency phenotype in these mice. 
+We identify a group of genes (cluster 4, Figure 2c) which changes transcriptional profile upon infection  in immune competent mice only. In immune compromised Rag1-/-, another group of genes (cluster 3, figure 2c) display the "infection profile" of immune competent mice also in control samples, indicating that these are mRNAs kept at a low abundance in healthy animals in a T and B cell dependent manner. Hence, these genes surprisingly appear to depend on functional T and B cells also in controls (cluster 3) and at the earliest time-point post infection (3 dpi, cluster 4). 
+Gene Ontology, GO, terms enriched in cluster 3 are, e.g., "lipid metabolic process" and "protein intraciliary transport". Other enriched terms in cluster 3 are regulation of other metabolic processes and "blood coagulation" as well as terms containing "spinal cord", "axon" or "neuronal" regulation or development. (SI file x). We suggest that these are processes which are all intrinsically different in Rag1-/- mice compared to immune competent mice. The genes in cluster 4, which change only in immune competent mice, are highly abundant in controls including Rag1-/- and appear to be down-regulated upon infection by processes which depend on (mature) T and/or B cell activity, also as early as 3 dpi. 
 
-Taken together, clusters 3 and 4 highlight the difference between Rag1-/- mice and immune competent mice in this parasitic infection. Some genes are different also between control animals (Rag1-/- and NMRI, cluster 3). These do not change upon infection in mice lacking mature T and B cells. Other genes (cluster 4) for which the transcriptional profile is similar in all controls, mRNA abundance also changes upon infection only in animals with functional maturation of T and B cells. Using GO enrichment analysis, we show that regulation of IL-1, IL-6, TNF,TGF$\beta$ and EGF are regulated in both first and challenge infections and suggest wound healing as a probably function of this regulation, especially at 7 dpi.
+\subsection*{Renewal of infected epithelium appears heavily regulated}
+Several terms enriched in cluster 4 are associated with wound healing and proliferation. 13 terms for cytokines as well as "negative regulation of viral (or inflammatory) response", "negative chemotaxis", "autophagy", "blood coagulation", "inositol phosphate-mediated signaling", and "positive regulation of calcineurin-NFAT" are enriched. mRNAS supporting these terms are less abundant in infected samples. Although speculative, several of these processes can be linked. Inositol signaling can lead to release of calcium and calcineurin-dependent translocation of NFAT to the nucleus and activation of its target genes in T cells, but also many other cell types (reviewed by macian05). Go enrichment also highlights regulation of transforming growth factor$\beta$, TGF$\beta$, epidermal growth factor, EGF, and tumor necrosis factor, TNF. TGF$\beta$ is important for wound healing in intestinal epithelium (beck03), and EGF regulates proliferation of epithelial cells and inhibits apoptosis (suzuki10). TNF is dose-dependent and can suppress inflammatory responses (noti10) and is reported to regulate proliferation of epithelial cells (kaiser97). Additionally, IL-1 and IL-6 are among the enriched GO terms in cluster 4. The IL-1 receptor (type I) is similar to Toll-like receptors and IL-1 induces innate immune responses in many cell types, and influences lymphocyte activity (dinarello09). IL-6 has been shown to support repair and inhibit apoptosis after epithelial wounding (kuhn14, probably through the Janus kinase, JAK, and signal transducer and activator of transcription STAT3 (pickert09). IL-6 is also known to be important for development of Th17 responses (ref in kuhn intro) which play an important role in responses to \textit{E. falciformis} (stange--). This analysis suggests that TGF$\beta$, TNF, EGF, IL-1 and IL-6 are main actors in the epithelial response to \textit{E. falciformis} infection and that the response is T and B cell dependent, also at early time-points. Enrichment tests suggest that hosts invest resources in intestinal healing also at early time-points of \textit{E. falciformis} infection and that functional T and B cells are needed for these responses. An alternative interpretation is that pathology is lower in Rag1-/- mice and that these responses are therefore not triggered in them. Based on unpunlished data from colleagues (talk to Stange), severe pathology in infected Rag1-/- mice makes this scenario unlikely.
+
+\subsection*{Late infection is strongly enriched for adaptive immunity} 
+The pronounced changes late in infection (7 dpi) reflect the expected onset of an adaptive immune response, undelined by enriched GO terms in gene clusters 1 and 5. Terms such as "antigen binding" and "immunoglobulin receptor binding" (molecular function, MF), and "immune system process", "adaptive immune response" and also "innate immune response" (biological process, BP) are highly enriched in cluster 5 and confirm an activated immune system and adaptive immune responses at this time-point. Among the same genes, natural killer cell regulation, JAK-STAT signalling, and IL-1 and interleukin-2, IL-2 production are enriched biological processes. IL-2 is one target of NFAT signaling and as mentioned above, JAK-STAT signaling can be induced by IL-6. It is likely that the enriched early responses in, e.g., NFAT and IL-6 regulation induce distinct mRNA abundace differences later in infection (7 dpi) and it is encouraging that these links are detected by the methods applied here. Taken together, clusters 3 and 4 highlight the difference between Rag1-/- mice and immune competent mice in this parasitic infection. Some genes are different also between control animals (Rag1-/- and NMRI, cluster 3), whereas in cluster 4 the profile is shared among all controls, including Rag1-/-. In both cases, the profile changes in immune competent mice but not in T and B cell deficient Rag1-/- mice. Using GO enrichment analysis, we show that regulation of IL-1, IL-6, TNF,TGF$\beta$ and EGF are regulated in both first and challenge infections and suggest wound healing as a probably function of this regulation, especially at 7 dpi.
  
-\section*{RNA processing is enriched in challenge infected immune competent mice} 
+\subsection*{RNA processing is enriched in challenge infected immune competent mice} 
 Three challenge infected samples (3 dpi, 5 dpi and 7 dpi) from immune competent mice show a distinct profile in cluster 6. This cluster is highly enriched for GO terms for RNA processing and splicing, as well as terms for histone and chromatin modification. \ldots
 
 Include or not?
@@ -335,28 +355,30 @@ Include or not?
 %% discuss the cluster first if you got difficulties coding the
 %% enrichment tests.
 
-\section*{Transcriptional differences in the parasite life cycle are independent of mouse immune status}
+\subsection*{Transcriptional differences in the parasite life cycle are independent of mouse immune status}
 We performed statistical tests to evaluate significant differences (FDR$<$0.01) in mRNA abundance between different parasite life cycle stages, approximated by time post infection (Table 2). Between early time-points, 3 dpi and 5 dpi, 103 mRNAs were different, whereas between 3 dpi and 7 dpi 1399 mRNAs were DA, and between 5 dpi and 7 dpi 2084 mRNAs were DA (Figure 3a). This indicates that the major changes take place between 5 dpi and 7 dpi, and that variation is smaller between 3 dpi and 5 dpi. This motivated us to define 3 dpi and 5 dpi as "early infection" and 7 dpi as "late infection". Early and late infection samples were tested for DA compared to sporozoites and sporulated oocysts, resulting in 1697 and 3919 DA mRNAs, respectively.
 %% Check venn vs table2 and change in ms + code
 To evaluate this outcome further, we performed hierarchical clustering of (the union of) the DA mRNAs in the comparisons described above and applied GO enrichment analysis of gene clusters (annotations are inferred from orthologs in other \textit{Eimeria} spp. or \textit{T. gondii}). In the parasite transcriptome, we see no difference between infection in immune competent mice, or T and B cell deficient Rag1-/- mice, or between naive and challenge infected mice. This is surprising considering the measured differences in oocyst output in the same comparisons (Figure 1a), and the fact that these differences are visible in the mouse transcriptomes. On the parasite side, major patters instead seem to be determined by life cycle stages, independent of the host immune status. Distinct clusters of genes define early infection (3 dpi and 5 dpi) in which schizogony (asexual reproduction) takes place, and separately, late infection (7 dpi) in which it is assumed that gametocytes are present. Extracellular samples of sporozoites and oocysts also cluster separately and are defined by distinct gene clusters. 
 
-\section*{Early infection transcriptomes reflect parasite expansion}
-GO enrichment of the major sporozoite defining cluster with high mRNA abundance in this stage (cluster 4) proposes that different biosynthesis processes are important, as well as "maintenance of protein location in cell". Possibly, the latter is due to control of microneme protein localization as sporozoites prepare for invasion. Biosynthesis terms probably reflect preparation for asexual expansion and perhaps ATP production for motility in sporozoites, although no GO terms for motility are enriched in this cluster. In the following intracellular life cycle stages, measured at 3 dpi and 5 dpi, in which several rounds of schizogony (asexual replication) take place, mRNAs in cluster 6 are abundant in all early samples (except one, discussed below). Among these "early infection" genes in cluster 6, several GO terms (biological process) for biosynthetic acitivity are enriched, e.g., "ribosome biogenesis" and "cellular biosynthetic process", as well as terms for "gene expression" and RNA processing, including terms for tRNAs and ncRNAs. "Cellular amino acid catabolic process" is also enriched. In cluster 3, with a similar profile as cluster 6, no GO terms are enriched. Cluster 6 is distinct in early infection with a biosynthesis profile shared with invasive sporozoites. Replication and growth-related processes being enriched highlights the parasite's expansion in numbers on 3 dpi and 5 dpi, as supported both by previous knowledge about the life cycle and our increase in sequences from the parasite (Figure 1b). 
+\subsection*{Early infection transcriptomes reflect parasite expansion}
+GO enrichment of the major sporozoite defining cluster with high mRNA abundance in this stage (cluster 4) proposes that different biosynthesis processes are important, as well as "maintenance of protein location in cell". Possibly, the latter is due to control of microneme protein localization as sporozoites prepare for invasion. Biosynthesis terms could reflect preparation for asexual expansion. n reporting the genome of \textit{E. falciformis}, two fructose-bisphosphate aldolase, FBA, paralogs were inferred (heitlinger14). Based on previously reported data on \texytit{T. gondii}, the authors speculate that localization of FBA is controlled in sporozoites in order to direct energy supply during the supposedly costly invasion. % check if FBA is in cluster 4
+Our enrichment of control of protein localization support the idea that control over energy supply and probably other functions is important in the invasive stage.
+In the following intracellular life cycle stages, measured at 3 dpi and 5 dpi, in which several rounds of schizogony (asexual replication) take place, mRNAs in cluster 6 are abundant in all early samples (except one, discussed below). Among these "early infection" genes in cluster 6, several GO terms (biological process) for biosynthetic acitivity are enriched, e.g., "ribosome biogenesis" and "cellular biosynthetic process", as well as terms for "gene expression" and RNA processing, including terms for tRNAs and ncRNAs. "Cellular amino acid catabolic process" is also enriched. In cluster 3, with a similar profile as cluster 6, no GO terms are enriched. Cluster 6 is distinct in early infection with a biosynthesis profile shared with invasive sporozoites. Replication and growth-related processes being enriched highlights the parasite's expansion in numbers on 3 dpi and 5 dpi, as supported both by previous knowledge about the life cycle and our increase in sequences from the parasite (Figure 1b). 
 
-\section*{Gametocytes likely determine transcriptome late in infection}
+\subsection*{Gametocytes likely determine transcriptome late in infection}
 Two gene clusters have a distinct profile with high mRNA abundance on 7 dpi (clusters 2 and 7). Both clusters display low mRNA abundance in other life cycle stages, especially in oocysts and sporozoites. Enriched GO terms such as "movement of cell or subcellular component" and "microtubule-based movement" along with terms suggesting ATP production ("ATP generation from ADP") indicate the presence of motile and energy demanding gametocytes in these samples. Other cluster 2 terms such as "chitin metabolic process" along with enriched metabolic and biosynthetic processes and "gene expression" in cluster 7 suggests ongoing encystation at 7 dpi, fitting the timing of oocyst output which peaks at 8-9 dpi. In addition, cluster 2 is enriched for a number of GO terms for "blood coagulation" and reflect 
 %%%(double check) 
 the presence of Thrombospondin type I domains in the protein products of cluster 2 mRNAs. Thrombospondin type 1 domains have been reported in \textit{E. tenella} microneme localizing proteins, MIC, e.g. MIC4 (Tomley01). MIC4 mRNA was reported in sporozoites where it localizes to the apical end, and in late schizonts and late oocyst stages, when sporozoites are forming. This suggests that \textit{E. falciformis} prepares for invasion already in gametocytes or during oocyst formation, however this is speculative.
 
-\section*{Oocysts are characterized by stress responses and differentiation}
+\subsection*{Oocysts are characterized by stress responses and differentiation}
 Clusters 1 and 5 contain mRNAs with high abundance in oocysts and all other clusters have low abundance in this stage. GO enrichment in cluster 1 contains only one term (adj. p-value 0.11) for "DNA-templated transcription, initiation". Cluster 5 is enriched for terms related to stress responses, "DNA repair", "protein modification process" and for "cell differentiation". Stress responses and DNA repair can be a result of storage in potassium dichromate of mouse faeces with oocysts before purification. Initiation of transcription and cell differentiation probably reflects (slow) preparation for invasion when oocysts are taken out of storage and purified for RNA extraction. Overall, the oocyst profile in five out of seven gene clusters is characterized by below average abundance of mRNAs, as can be expected in this life cycle stage which endures long-term survival outside the host. Taken together, sample and gene clustering indicates that genes in clusters 6 are abundant only early in infection and are candidates for merozoite specific genes, whereas clusters 2 and 7 might be useful to characterise gametocytes. Genes in cluster 4 can be considered sporozoite specific, and clusters 1 and 5 as oocyst specific genes in \textit{E. falciformis}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% comment on weird day 7 day 3 clustering
-\section*{Imperfect clustering might reflect true biological differences}
+\subsection*{Imperfect clustering might reflect true biological differences}
 In parasite data, one late challenge infection sample deviates from the "late infection pattern" and clusters with an early challenge infection sample. These two samples are, apart from controls and excluded samples (see above), the ones with the least number of detected parasite genes (1836 and 1580, respectively). This, along with the unclear transcriptional profile and the fact that they are both challenge infections in immune competent hosts, suggest that infections had been cleared before sampling. If this is the case, it raises the question of why it was cleared in these samples but not in other challenge infected immune competent mice. The answer can be technical problems in the experiment. However, other patterns suggest a different interpretation. Hierarchical clustering analysis in most cases does not cluster replicates together, which at a first glance suggests such problems. On the other hand, very distinct samples such as oocysts and sporozoites do cluster as replicates. Also, considering the early/late infection patterns in the parasite data and that these fit well with previous knowledge about this infection (asynchronous schizogony and gametocyte formation at 7 dpi), it is worthwhile to consider whether replicate separation reflects true biological variation between hosts and possibly also parasites (oocysts used for infection). It is perceivable that the parasite accommodates to host variation with small differences in, e.g., host stress levels due to litter mates, draught, differences in ght exposure or other factors which may vary also in a controlled animal facility. Parasite adjustment to such factors could explain the transcriptional profiles we see, with overall patterns but replicate separation. We suggest that considering such possibilities is useful for interpreting results and understanding basic biology of the parasite, and, in extension better understand infections in less homogeneous hosts than laboratory mice. 
 
-\section*{Evolutionary conservation in life cycle-characteristic gene groups}
+\subsection*{Evolutionary conservation in life cycle-characteristic gene groups}
 To gain insight about the conservation status of life stage-specific gene groups in 
 \textit{E. falciformis}, we tested gene clusters in Figure 3c for enrichment of gene orthologs which 
 are present in other species. Groups analyzed for orthologs are: i) one category with \textit{E. falciformis} only ("Efalci"), ii) one category of 10 apicomplexan parasites ("Api") (see xxx), iii) one category of Api but excluding \textit{Cryprosporidium hominis} ("Api minus C.h."), iv) one catogory with three \textit{Eimeria} species: \textit{E. falciformis, E. maxima} and \textit{E. tenella} ("Eimeria"), and v) one conserved group containing a broad range of species with, e.g., \textit{Saccharomyces cerevisiae} and \textit{Arabidopsis thaliana} ("conserved"). 
@@ -375,8 +397,8 @@ Our analysis interestingly does not detect any influence of mouse immune status 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %	METHODS
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Methods}
-\subsection{Mice and infection procedure}
+\section*{Methods}
+\subsection*{Mice and infection procedure}
 Three strains of mice were used in our experiments: NMRI (Charles
 River Laboratories, Sulzfeld, Germany), C57BL/6 (), and Rag1-/- on
 C57BL/6 background (gift from Susanne Hartmann, FU?).  Animal
@@ -397,7 +419,7 @@ visual inspection of fur. For the second infection, 1500 sporulated
 oocysts were applied by oral gavage. Three mice were used as
 non-second infection control, referred to as day 0, second infection.
 
-\subsection{Oocyst purification for infection and sequencing}
+\subsection*{Oocyst purification for infection and sequencing}
 Sporulated oocysts were purified by flotation from feces stored in
 potassium dichromate and administered orally in 100 $\mu$L tapwater. One
 \textit{E. falciformis} isolate, \textit{E. falciformis} Bayer
@@ -405,14 +427,14 @@ Haberkorn 1970, was used for all infections and parasite samples. The
 strain is maintained through passage in NMRI mice in our facilities as
 described elsewhere (schmid12).
 
-\subsection{Sporozoite isolation}
+\subsection*{Sporozoite isolation}
 Sporozoites were isolated from sporocysts by excystment. For this,
 sporocysts were incubated at 37\newcommand{\degree}C in DMEM containing 0.04\%
 tauroglycocholate (MP Biomedicals) and 0.25\% trypsin (Applichem) for
 30 min. Sporozoites were purified by the method of Schmatz et al
 (schmatz--).
 
-\subsection{RNA extraction}
+\subsection*{RNA extraction}
 Total RNA was isolated from infected epithelial cells, sporozoites and
 sporulated oocysts using Trizol according to the manufacturer’s
 protocol (Invitrogen). High quality \emph{what is the meaning of 'high
@@ -421,7 +443,7 @@ Illumina’s TruSeq RNA Sample Preparation guide. Sporozoites were stored in 1 m
 RNA-isolation. Total RNA was isolated using the PureLink RNA Mini Kit
 (Invitrogen) and reverse transcribed into cDNA.
 
-\subsection{Sequencing, sequence quality assessment and alignment}
+\subsection*{Sequencing, sequence quality assessment and alignment}
 cDNA samples were sequenced by either GAIIX or Illumina Hiseq 2000 as
 specified in SI xx (both unstranded). A fastq\_quality\_filter
 (FASTQ-toolkit, version 0.0.14, available at
@@ -431,7 +453,7 @@ phred score of 10 was applied. We further set q = 60. These settings
 require that nine out of ten bases or more are correct in at least
 60\% of the bases for each read.
 
-\subsection{Alignment and reference genomes}
+\subsection*{Alignment and reference genomes}
 We used the published \textit{Mus musculus} mm10 assembly (Genome
 Reference Consortium Mouse Build 38, GCA\_000001635.2) as reference
 genome including annotations for mouse data. The
@@ -448,7 +470,7 @@ requires bam files to be processed by Tablemaker (Frazee15), in our
 case used with -qW -G specified. Tablemaker in turn makes use of
 Cufflinks (version 2.1.1, Trapnell10).
 
-\subsection{Differential mRNA abundance, data normalisation and sample exclusions}
+\subsection*{Differential mRNA abundance, data normalisation and sample exclusions}
 Count data was normalized using the R-package edgeR (version 3.14.0;
 cite) with the upperquartile normalisation method. Briefly, genes with
 zero coverage in all samples (libraries) are removed and normalisation
@@ -462,7 +484,7 @@ then fits a generalized linear model (GLM with a negative binomial
 link function) for each gene (glmFit) and then performs likelihood
 ratio tests for models w or w/o focal factor (glmLRT).
 
-\subsection{Selection of differentially abundant mRNAs and hierarchical clustering}
+\subsection*{Selection of differentially abundant mRNAs and hierarchical clustering}
 A selection of differently abundant mRNAs are used for hierarchical
 clustering of \textit{E. falciformis} life cycle relevant genes. In
 each comparison (see Table 3), the union of the at most 500 genes
@@ -481,22 +503,6 @@ All analyses were performed in R (cite R-core). Complete scripts are
 available at https://github.com/derele/Ef\_RNAseq.git tagged as version
 1.0.
 %% We will make this available as a github webpage!!!
-
-\setlength{\tabcolsep}{10pt}
-\begin{table}[H]
-\small
-\begin{center}
-\caption{Genes used for hierarchical clustering of mRNAs differently abundant depending on time p.i..}
-\begin{tabular}{*3l}    \toprule
-	\textit{Data description} & \emph{E. falciformis} genes & Mouse genes	\\ \midrule
-	Sum of 1st infection NMRI sample differences	& 4 & 8052 \\ 
-	(including oocysts and sporozoites if appl.)	\\	
-	Used in hierarchical clustering (heatmap)  	& 1618 & 1313 \\ 	\bottomrule	
-\hline
-\end{tabular}
-\end{center}
-%\end{adjustwidth}
-\end{table}
 
 
 
@@ -571,6 +577,28 @@ This project was funded by..... Totta Kasemo is funded by the German Research Fo
 
 %% Use of \listoftables is discouraged.
 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\setlength{\tabcolsep}{10pt}
+\begin{table}[H]
+\small
+\begin{center}
+\caption{Genes used for hierarchical clustering of mRNAs differently abundant depending on time p.i..}
+\begin{tabular}{*3l}    \toprule
+	\textit{Data description} & \emph{E. falciformis} genes & Mouse genes	\\ \midrule
+	Sum of 1st infection NMRI sample differences	& 4 & 8052 \\ 
+	(including oocysts and sporozoites if appl.)	\\	
+	Used in hierarchical clustering (heatmap)  	& 1618 & 1313 \\ 	\bottomrule	
+\hline
+\end{tabular}
+\end{center}
+%\end{adjustwidth}
+\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \newcommand{\bcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
@@ -594,7 +622,7 @@ NMRI\_2ndInf\_0dpi\_rep1 & GAII & 2 & 108,937,797 & 70,489,674 & 247 & 0.0004 & 
   \rowcolor{LightCyan}
   NMRI\_2ndInf\_3dpi\_rep1 & hiseq & 3 & 57,934,016 & 40,544,287 & 4,803 & 0.0118 & 95 \\ 
   \rowcolor{LightCyan}
-  NMRI\_2ndInf\_5dpi\_rep2 & hiseq &  63,965,539 & 48,289,181 & 10,941 & 0.0227 & 407 \\ 
+  NMRI\_2ndInf\_5dpi\_rep2 & hiseq & x & 63,965,539 & 48,289,181 & 10,941 & 0.0227 & 407 \\ 
   \rowcolor{LightRed}
   NMRI\_1stInf\_0dpi\_rep1 & GAII & 1 & 82,364,585 & 55,176,243 & 17,954 & 0.0325 & 701 \\ 
   NMRI\_2ndInf\_3dpi\_rep2 & hiseq & 3 & 65,548,826 & 46,171,909 & 29,548 & 0.0640 & 1,580 \\ 
@@ -620,7 +648,7 @@ NMRI\_2ndInf\_0dpi\_rep1 & GAII & 2 & 108,937,797 & 70,489,674 & 247 & 0.0004 & 
   NMRI\_1stInf\_7dpi\_rep2 & GAII & 1 & 139,749,046 & 21,699,324 & 73,539,445 & 77.2159 & 5,943 \\ 
    \hline
 \end{tabular}
-\begin{tablenotes}[flushleft]\footnotesize \singlespacing
+\begin{tablenotes}[flushleft]\footnotesize\singlespacing
 \item{*} sample names are given as a$)$ mouse strain b$)$ first or challenge
   infection c$)$ days post infection (dpi) and d$)$ replicate number
   seperated by undersocre . \\
