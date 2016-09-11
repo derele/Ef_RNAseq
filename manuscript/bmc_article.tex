@@ -197,7 +197,7 @@
 
 \begin{abstract} % abstract
 %\parttitle{First part title} %if any
-Apicomplexan parasites such as Plasmodium spp., Toxoplasma gondii and Eimeria spp. cause disease in humans, livestock and wild animals. The genus Eimeria contains thousands of niche specific intracellular parasites, including several species which cause losses in poultry industries. Eimeria falciformis naturally infects the cecum of mice. Infecting one of the best studied and available animal models in biological research, E. falciformis constitutes a perfect model to investigate Eimeria parasites. However, much is still unknown about the parasite’s basic biology and no in vitro culture has been established for the full life cycle. We have performed a dual RNA-seq transcriptome study of the full life cycle in the mouse and of in vitro cultured sporozoites and oocysts. Drastic differences are seen in both parasite and host at three time-points post infection. Comparisons between immunocompetent and immunocompromised mice show differences in oocyst output as well as transcriptional differences indicated by Gene Ontology enrichments. In mouse, TGF-beta, EGF, TNF and IL-1 and IL-6 are examples of genes reacting differently depending on mouse immune status. Parasite transcriptomes have distinct profiles early and late in infection, characterized by biosynthesis and motility, respectively. Sporozoites and oocysts can also be identified by their respective transcriptional profiles. Taken together, the analysis highlights general patterns in the parasite’s life cycle and links them to biological processes. It also lays the ground for detailed analysis of specific parasitic stages and the genes relevant in them. The use of hosts with different immune competence highlights the role of adaptive and innate immunity and offers a source for in-depth analysis of these responses.
+Apicomplexan parasites such as \textit{Plasmodium} spp., \textit{Toxoplasma gondii} and \textit{Eimeria} spp. cause disease in humans, livestock and wild animals. The genus \textit{Eimeria} contains thousands of niche specific intracellular parasites, including several species which cause losses in poultry industries. \textit{Eimeria falciformis} naturally infects the cecum of mice. Infecting one of the best studied and available animal models in biological research, \textit{E. falciformis} constitutes a perfect model to investigate \textit{Eimeria} parasites. However, much is still unknown about the parasite’s basic biology and no in vitro culture has been established for the full life cycle. We have performed a dual RNA-seq transcriptome study of the full life cycle in the mouse and of in vitro cultured sporozoites and oocysts. Drastic differences are seen in both parasite and host at three time-points post infection. Comparisons between immunocompetent and immunocompromised mice show differences in oocyst output as well as transcriptional differences indicated by Gene Ontology, GO, enrichments. In mouse, TGF-beta, EGF, TNF and IL-1 and IL-6 are examples of genes reacting differently depending on mouse immune status. Parasite transcriptomes have distinct profiles early and late in infection, characterized by biosynthesis and motility, respectively. Sporozoites and oocysts can also be identified by their respective transcriptional profiles. Taken together, the analysis highlights general patterns in the parasite’s life cycle and links them to biological processes. It also lays the ground for detailed analysis of specific parasitic stages and the genes relevant in them. The use of hosts with different immune competence highlights the role of adaptive and innate immunity and offers a source for in-depth analysis of these responses.
 
 
 %\parttitle{Second part title} %if any
@@ -257,34 +257,25 @@ Apicomplexan parasites such as Plasmodium spp., Toxoplasma gondii and Eimeria sp
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section*{Introduction}
-\item{Why Eimeria falciformis? Genome available}
+\textit{Eimeria falciformis} is an intracellular parasite in the phylum Apicomplexa. There are several thousands of apicomplexan species, including \textit{Toxoplasma gondii}, causative agent of toxoplasmosis, \textit{Plasmodium} spp., causing malaria and \textit{Cryptosporidium} spp, which cause cryptosporidosis. Coccidiosis is a disease in livestock and wildlife caused by coccidian parasites such as \textit{Eimeria} spp., including several economically problematic chicken parasites, e.g., \textit{E. tenella} (cite?). A useful model for studying \textit{Eimeria} spp. is \textit{E. falciformis}, which naturally infects wild mice, \textit{Mus musculus}, and laboratory mice. 
 
-\item{Other apicomplexa, especially E. tenella, E. maxima, T. gondii and Plasmodium spp.}
+\textit{Eimeria} spp. infect the gut and are highly niche specific within parts and cell types of the intestines (cite?). There, these monoxenous parasites go through asexual (schizogony) and sexual reproduction which results in hosts releasing high numbers of resistant oocysts. (cite?) When a mouse ingests \textit{E. falciformis} oocysts, one sporulated oocyst releases eight infective sporozoites inside the host, which can infect epithelial crypt cells of the caecum and colon. Within the epithelium, so called merozoite stages form in several rounds of schizogony. (mesfin78) Parasite numbers increase drastically during schizogony. Oocysts are first detected in faeces on day six to seven after infection (cite?), and it peaks on day eight to nine p.i. Oocysts are not detectable after day 13-15 p.i. Oocysts form as merozoites differentiate into gametes, which fuse and form a zygote. Immature, unsporulated oocysts are shed into the environment where they mature into sporulated, infective oocysts.. (cite?)
 
-\item{Why is evolution of these parasites relevant/important}
+Studies on host responses to this infection have shown that in \textit{E. falciformis} infection in laboratory mice, IFNy plays an important role and is upregulated. (schmid14, more...?). In IFNy deficient (or receptor deficient) mice, oocyst output is reduced but at the expense of the host, which displays larger weight losses and intestinal pathology in this model. In the IFNy defincient model, the phenotype was recovered by blocking IL-17A and IL-22 signalling, whereas only blocking IL-22 signalling recovered the oocyst shedding but had no effect on weight loss. (stange12) (should we bring up acquired immunity topic here?)
 
-\item{Why mouse host (e.g. compared to chicken)}
+These studies demonstrate the complex relationships between parasite and host, e.g., exemplifying that larger pathology in the host is not necessarily beneficial for the parasite, which is then less successful in producing oocysts. Several studies address host parasite interactions in apicomplexan parasites (e.g. walkerxx, hehlxx, reidxx, schmid14), but often with a strong focus on either host or parasite. In Plasmodium, reidberrimanxx have used large datasets to correlate host and parasite transciptional changes and protein domain information to infer host-parasite interactions at the molecular level. To our knowledge, in \textit{Eimeria} spp., no studies with simultaneous host and parasite data have been reported. 
 
-\item{Ef life cycle and timing}
+By applying dual RNA-seq and producing host and parasite transcriptomes from the same samples and tissue, we provide a first dataset which allows analysis of host and parasite mRNA profiles at several time-points post infection. Not only can we for the first time provide transcriptomes for the full parasite life cycle. In addition, having host transcriptome data from the same samples, we analyse biological (Gene Ontology, GO) processes in both species and discuss possible interactions of interest. This is particularly useful since the mouse is such a well annotated organism. 
+Using the mouse model, we also had the possibility to include a mouse strain which lack a gene for maturation of T and B receptors, Recombination-activating gene 1, Rag1. Both strains were evaluated for re-infection after recovery. This design allows a full comparison of infections between immune competent mice and mice with severely limited adaptive immunity, and analysis of how these differences affect the parasite transcriptomes and reproductive success. We contextualize the parasite data by looking for enrichment of \textit{E. falciformis} specific genes, apicomplexa generic genes or widely conserved genes at different life cycle stages. We also correlate our RNA-seq data with published transcriptomes from \textit{E. tenella} and \textit{T. gondii}. 
 
-\item{Knowledge-gaps: basic biology not understood, no in vitro system, 
-no stable tranfection reported, unknown why so niche specific and Eimeria genus so numerous}
-
-\item{We approach some of these questions by using dual RNA-seq to produce simultaneous host and parasite 
-transcriptomes throughout in vivo infection infection}
-
-\item{Dual RNA-seq has been performed in bacteria... also in protozoans? Intracellular... Improved normalization methods 
-should make analysis of reproducing (increasing in numbers and biological material) possible... we show/evaluate this}
-
-\item{Transcriptome studies are a source of great amounts of data. Enrichment tests (in general) and GO enrichment are
-useful tools to elucidate patterns in such large data... some words about GO concept}
+Taken together, the present study provides the first full life cycle transcriptome of an Eimeria spp. which naturally infects the research model M. musculus. In addition to providing a description of changes in the life cycle, we present the matching host transcriptomes and the host biological processes which take place during infection. This data is a source for in depth analyses and hypothesis testing of apicomplexan parasite infections in one of the best annotated model animals at hand. 
 %\cite{koon,oreg,khar,zvai,xjon,schn,pond,smith,marg,hunn,advi,koha,mouse}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%	RESULTS
+%	RESULTS & DISCUSSION
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section*{Results}
+\section*{Results and Discussion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% 	OVERVIEW READS PER SAMPLE, LAYOT AS EXPERIMENTAL OVERVIEW
@@ -361,7 +352,7 @@ We performed statistical tests to evaluate significant differences (FDR$<$0.01) 
 To evaluate this outcome further, we performed hierarchical clustering of (the union of) the DA mRNAs in the comparisons described above and applied GO enrichment analysis of gene clusters (annotations are inferred from orthologs in other \textit{Eimeria} spp. or \textit{T. gondii}). In the parasite transcriptome, we see no difference between infection in immune competent mice, or T and B cell deficient Rag1-/- mice, or between naive and challenge infected mice. This is surprising considering the measured differences in oocyst output in the same comparisons (Figure 1a), and the fact that these differences are visible in the mouse transcriptomes. On the parasite side, major patters instead seem to be determined by life cycle stages, independent of the host immune status. Distinct clusters of genes define early infection (3 dpi and 5 dpi) in which schizogony (asexual reproduction) takes place, and separately, late infection (7 dpi) in which it is assumed that gametocytes are present. Extracellular samples of sporozoites and oocysts also cluster separately and are defined by distinct gene clusters. 
 
 \subsection*{Early infection transcriptomes reflect parasite expansion}
-GO enrichment of the major sporozoite defining cluster with high mRNA abundance in this stage (cluster 4) proposes that different biosynthesis processes are important, as well as "maintenance of protein location in cell". Possibly, the latter is due to control of microneme protein localization as sporozoites prepare for invasion. Biosynthesis terms could reflect preparation for asexual expansion. n reporting the genome of \textit{E. falciformis}, two fructose-bisphosphate aldolase, FBA, paralogs were inferred (heitlinger14). Based on previously reported data on \texytit{T. gondii}, the authors speculate that localization of FBA is controlled in sporozoites in order to direct energy supply during the supposedly costly invasion. % check if FBA is in cluster 4
+GO enrichment of the major sporozoite defining cluster with high mRNA abundance in this stage (cluster 4) proposes that different biosynthesis processes are important, as well as "maintenance of protein location in cell". Possibly, the latter is due to control of microneme protein localization as sporozoites prepare for invasion. Biosynthesis terms could reflect preparation for asexual expansion. n reporting the genome of \textit{E. falciformis}, two fructose-bisphosphate aldolase, FBA, paralogs were inferred (heitlinger14). Based on previously reported data on \textit{T. gondii}, the authors speculate that localization of FBA is controlled in sporozoites in order to direct energy supply during the supposedly costly invasion. % check if FBA is in cluster 4
 Our enrichment of control of protein localization support the idea that control over energy supply and probably other functions is important in the invasive stage.
 In the following intracellular life cycle stages, measured at 3 dpi and 5 dpi, in which several rounds of schizogony (asexual replication) take place, mRNAs in cluster 6 are abundant in all early samples (except one, discussed below). Among these "early infection" genes in cluster 6, several GO terms (biological process) for biosynthetic acitivity are enriched, e.g., "ribosome biogenesis" and "cellular biosynthetic process", as well as terms for "gene expression" and RNA processing, including terms for tRNAs and ncRNAs. "Cellular amino acid catabolic process" is also enriched. In cluster 3, with a similar profile as cluster 6, no GO terms are enriched. Cluster 6 is distinct in early infection with a biosynthesis profile shared with invasive sporozoites. Replication and growth-related processes being enriched highlights the parasite's expansion in numbers on 3 dpi and 5 dpi, as supported both by previous knowledge about the life cycle and our increase in sequences from the parasite (Figure 1b). 
 
@@ -518,10 +509,10 @@ available at https://github.com/derele/Ef\_RNAseq.git tagged as version
   The authors declare that they have no competing interests.
 
 \section*{Author's contributions}
-Animal and parasite experiments: Simone Spork, experimental design: Richard Lucius, Simone Spork, Emanuel Heitlinger, RNA sequecing: Christoph Dieterich, data anylsis: Emanuel Heitlinger, Totta Kasemo, text: Totta Kasemo, Emanuel Heilinger, Simone Spork (all?).
+Animal and parasite experiments: Simone Spork, experimental design: Richard Lucius, Simone Spork, Emanuel Heitlinger, RNA sequecing: Christoph Dieterich, data anylsis: Emanuel Heitlinger, Totta Kasemo, text: all?
 
 \section*{Acknowledgements}
-This project was funded by..... Totta Kasemo is funded by the German Research Foundation (DFG) program GRK4026: Parasite Infections: From Experimental Models to Natural Systems. 
+This project was funded by..... Totta Kasemo's PhD project is funded by the German Research Foundation (DFG) program GRK4026: \textit{Parasite Infections: From Experimental Models to Natural Systems}. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%                  The Bibliography                       %%
 %%                                                         %%
@@ -668,7 +659,7 @@ NMRI\_2ndInf\_0dpi\_rep1 & GAII & 2 & 108,937,797 & 70,489,674 & 247 & 0.0004 & 
 %% information
 
 \clearpage
-\section{mRNA abundance differences between different experimental groups}
+\section*{mRNA abundance differences between different experimental groups}
 \setlength{\tabcolsep}{8pt}
 \begin{table}[H]
 \small
