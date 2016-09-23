@@ -1,0 +1,78 @@
+library(ggplot2)
+library(pheatmap)
+library(doParallel) # more flexible than the library parallel
+
+## raw count data
+Mm.nRC <- read.table("output_data/Mm_norm_counts.csv", sep=",")
+Ef.nRC <- read.table("output_data/Ef_norm_counts.csv", sep=",")
+
+both.col <- intersect(colnames(Mm.nRC), colnames(Ef.nRC))
+
+nRC <- rbind(Mm.nRC[, both.col], Ef.nRC[, both.col])
+
+get.scaled.and.clustered <- function(data){
+    rMeans <- rowMeans(data)
+    rSD <- apply(data, 1, sd)
+    scaled.data <- scale(t(data), rMeans, rSD)
+    ## NAs for whenever tehere is no variance/sd need to be removed
+    scaled.data <- scaled.data [, apply(scaled.data, 2, function(x) all(!is.na(x) ))]
+    hclustered <- hclust(as.dist(t(1-abs(cor(scaled.data, method="spearman")))))
+    return(hclustered)
+}
+
+nRC.clusters <- get.scaled.and.clustered(nRC)
+
+nRC.cuttree <- as.data.frame(cutree(nRC.clusters, k=1000))
+names(nRC.cuttree) <- "cluster"
+nRC.cuttree$cluster <- paste("CL", nRC.cuttree$cluster, sep="_")
+
+nRC.cuttree$species <- ifelse(grepl("^ENSMUS", rownames(nRC.cuttree)), "Mm", "Ef")
+
+spec.no <- tapply(nRC.cuttree$species, nRC.cuttree$cluster, function(x) {
+    cbind(Mm=length(x[x%in%"Mm"]),
+          Ef=length(x[x%in%"Ef"]))
+})
+
+
+sp.per.cluster <- as.data.frame(do.call(rbind, spec.no))
+sp.per.cluster$cluster <- paste("CL", 1:nrow(boo), sep="_")
+
+ggplot(sp.per.cluster, aes(Mm, Ef)) + geom_jitter() #+ scale_x_log10() + scale_y_log10()
+
+## arbitrary thresholds for coexpression
+sp.per.cluster.co <- sp.per.cluster[sp.per.cluster$Mm>5&sp.per.cluster$Ef>3,]
+
+nRC.cuttree.co <- nRC.cuttree[nRC.cuttree$cluster%in%sp.per.cluster.co$cluster, ]
+
+nRC.co <- nRC[rownames(nRC)%in%rownames(nRC.cuttree.co), ]
+
+pheatmap(nRC.co, scale="row",
+         annotation_row = nRC.cuttree.co,
+         cutree_rows = 7, 
+         show_rownames = F
+         )
+
+## Reid and Berriman approach: We randomized all profiles and
+## calculated the Pearson correlation coefficient between every
+## interspecific pair of genes. We repeated this 10^5 times and
+## calculated the P-value as the number of times a randomized pair of
+## genes profiles were correlated at least as well as the real
+## profiles, divided by 10^5
+
+Cors <- cor(t(Mm.nRC[, both.col]), t(Ef.nRC[, both.col]))
+
+registerDoParallel(cores=20)
+
+n.reps <- 5*10^4
+
+randCors.b <-
+    foreach(icount(n.reps), .combine="+") %dopar% {
+        rand.col <- sample(both.col, length(both.col))
+        RC <- cor(t(Mm.nRC[, rand.col]),
+                  t(Ef.nRC[, both.col]))
+        abs(RC)>abs(Cors)
+    }
+
+end.p <- randCors.b/n.reps
+
+all.x <- apply(end.p, 2, function(x) sum(x<0.01))
