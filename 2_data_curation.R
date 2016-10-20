@@ -220,5 +220,8 @@ table.tex <- xtable(table.cleaned, align = c("l", "l", "l", "l", "l", "l", "l", 
 print(table.tex, type = "latex", file = "tables/Table1_ReadCounts.tex", include.rownames = F,
       format.args = list(big.mark = ",", decimal.mark = "."))
 
+print(table.tex, type = "html", file = "tables/Table1_ReadCounts.html", include.rownames = F,
+      format.args = list(big.mark = ",", decimal.mark = "."))
+
 
 

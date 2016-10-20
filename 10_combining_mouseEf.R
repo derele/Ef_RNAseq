@@ -66,18 +66,23 @@ registerDoParallel(cores=20)
 outer.reps <- 5000
 inner.reps <- 100
 
+## uncomment for testing
+## outer.reps <- 10
+## inner.reps <- 20
 
 ## sum up parallel the numbers the random correlation values are
 ## bigger than the real correlations
 parallel.RnB <- function(inner.reps){
     randCors <-
         foreach(icount(inner.reps), .combine="+") %dopar% {
-            rm(list=ls())
             rand.col <- sample(both.col, length(both.col))
             RC <- cor(t(Mm.nRC[, rand.col]),
                       t(Ef.nRC[, both.col]))        
             res <- abs(RC)>abs(Cors)
-            gc()
+            ## avoid an accumulation of NAs for In cor(t(Mm.nRC[,
+            ## both.col]), t(Ef.nRC[, both.col])) : the standard
+            ## deviation is zero
+            res[is.na(res)] <- TRUE
             return(res)
         }
     return(randCors)
@@ -86,13 +91,14 @@ parallel.RnB <- function(inner.reps){
 
 ## a large number of non-parallelized chunks. Putting everything in
 ## the parallel function would eat up memory
-RnB <- matrix()
+RnB <- matrix(0, nrow=nrow(Cors), ncol=ncol(Cors))
 for(i in 1:outer.reps){
     ## sum each result with what has been there before
-    RnB <- do.call(sum, list(RnB, parallel.RnB(inner.reps)))
+    RnB.new <- parallel.RnB(inner.reps)
     print(paste("finished outer rep", i))
+    RnB <- RnB + RnB.new
 }
 
-RnB.final <- RnB.sum / (outer.reps*inner.reps)
+RnB.final <- RnB / (outer.reps*inner.reps)
 
-all.x <- apply(RnB.final, 2, function(x) sum(x<0.01))
+all.x <- apply(RnB.final, 2, function(x) sum(x==0))
