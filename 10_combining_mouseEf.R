@@ -99,6 +99,18 @@ for(i in 1:outer.reps){
     RnB <- RnB + RnB.new
 }
 
+
+file.RnB <- paste("//home/heitlinger/RnB_",
+                  round(as.vector(Sys.time())), ".Rdata", sep="")
+
+save(RnB, file = file.RnB)
+
+
 RnB.final <- RnB / (outer.reps*inner.reps)
 
-all.x <- apply(RnB.final, 2, function(x) sum(x==0))
+prod.file.RnB <- paste("//home/heitlinger/RnB_Prod_",
+                       round(as.vector(Sys.time())), ".Rdata", sep="")
+
+save(RnB.final, file = prod.file.RnB)
+
+## all.x <- apply(RnB.final, 2, function(x) sum(x==0))
