@@ -42,6 +42,7 @@ palette.colors <- brewer.pal(8, "Dark2")
 my.colors.ooc <- palette.colors[c(1,2,8)]
 
 pdf("figures/Figure1a_oocystCounts.pdf", width=12, height=8)
+png("figures/Figure1a_oocystCounts.png", width=1200, height=800)
 all.oocysts.line +
     geom_point(data=oocyst.summary, 
                aes(Day_pi, Cmean)) +

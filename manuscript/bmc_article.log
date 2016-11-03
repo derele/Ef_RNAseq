@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.9.2)  9 SEP 2016 14:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/Debian) (preloaded format=pdflatex 2016.9.2)  11 SEP 2016 17:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -749,164 +749,13 @@ LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
 \address@aff2=\toks37
 \address@aff3=\toks38
 
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 200.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.260 \item{
-            Why Eimeria falciformis? Genome available}
-? r
-OK, entering \nonstopmode...
-
-Underfull \hbox (badness 10000) detected at line 260
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.262 \item{
-            Other apicomplexa, especially E. tenella, E. maxima, T. gondii a...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 262
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.264 \item{
-            Why is evolution of these parasites relevant/important}
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 264
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.266 \item{
-            Why mouse host (e.g. compared to chicken)}
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 266
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.268 \item{
-            Ef life cycle and timing}
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 268
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.270 \item{
-            Knowledge-gaps: basic biology not understood, no in vitro system,
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 270
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.273 \item{
-            We approach some of these questions by using dual RNA-seq to pro...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 273
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.276 \item{
-            Dual RNA-seq has been performed in bacteria... also in protozoan...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 276
-[][]
- []
-
-
-! LaTeX Error: Lonely \item--perhaps a missing list environment.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.279 \item{
-            Transcriptome studies are a source of great amounts of data. Enr...
-
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-Underfull \hbox (badness 10000) detected at line 279
-[][]
- []
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <8> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 305.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 263.
 
 
 
@@ -916,100 +765,81 @@ Overfull \hbox (1.0pt too wide) has occurred while \output is active
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] [2]
+] [2] [3]
 
-LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 315.
+Package natbib Warning: Citation `schmidt12' on page 4 undefined on input line 
+307.
+
+[4] [5] [6] [7] [8] [9] [10] [11]
+
+LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <7> not available
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 515.
 
 
-
-Package natbib Warning: Citation `schmidt12' on page 3 undefined on input line 
-316.
-
-[3] [4] [5]
-! Undefined control sequence.
-l.364 ...d on previously reported data on \texytit
-                                                  {T. gondii}, the authors s...
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[6] [7] [8] [9] [10] (./bmc_article.bbl
+(./bmc_article.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 11.
 
 )
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <9> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 589.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 580.
 
 
 
-Overfull \hbox (1.46596pt too wide) in paragraph at lines 588--595
+Overfull \hbox (1.46596pt too wide) in paragraph at lines 579--586
  [] 
  []
 
 
-Overfull \hbox (113.22627pt too wide) in paragraph at lines 612--651
+Overfull \hbox (113.22627pt too wide) in paragraph at lines 603--642
 []| []
  []
 
 ! Undefined control sequence.
-l.651 ...es}[flushleft]\footnotesize\singlespacing
+l.642 ...es}[flushleft]\footnotesize\singlespacing
                                                   
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-[11pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
+? r
+OK, entering \nonstopmode...
+[12pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.670 \clearpage
-                ] [12]
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <7> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 722.
-
-
-
+l.661 \clearpage
+                ] [13] 
 AED: lastpage setting LastPage
-[13
+[14
 
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has
  been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.745 \end{document}
+l.736 \end{document}
                     ]
 
 Package natbib Warning: There were undefined citations.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 745.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 745.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 736.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 736.
 (./bmc_article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 745.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 745.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 736.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 736.
 Package rerunfilecheck Info: File `bmc_article.out' has not changed.
-(rerunfilecheck)             Checksum: 5F70BC532E18201E952A55DBD4EDF59F;143.
+(rerunfilecheck)             Checksum: ED3CDF9133C37D676C26CC0D4896F289;44.
 
 
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 745.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 736.
  ) 
 Here is how much of TeX's memory you used:
  7729 strings out of 493013
- 106794 string characters out of 6135683
+ 106792 string characters out of 6135683
  224574 words of memory out of 5000000
- 11106 multiletter control sequences out of 15000+600000
+ 11105 multiletter control sequences out of 15000+600000
  14772 words of font info for 52 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,16n,39p,2496b,465s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1026,10 +856,10 @@ nts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
 m/cmssi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss
 i9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on bmc_article.pdf (13 pages, 207148 bytes).
+Output written on bmc_article.pdf (14 pages, 213684 bytes).
 PDF statistics:
- 210 PDF objects out of 1000 (max. 8388607)
- 179 compressed objects within 2 object streams
- 62 named destinations out of 1000 (max. 500000)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 212 PDF objects out of 1000 (max. 8388607)
+ 180 compressed objects within 2 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 9 words of extra memory for PDF output out of 10000 (max. 10000000)
 

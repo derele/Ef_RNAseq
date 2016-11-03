@@ -74,19 +74,33 @@ RC.table$p.Ef.reads <- round(RC.table$c.Ef.reads/RC.table$c.mapping.counts*100, 
 
 ## plotting parasite percentage of reads
 
-pdf("figures/Figure1b_Ef.percentage.pdf")
-ggplot(RC.table, aes(x = dpi, y = p.Ef.reads,
+#pdf("figures/Figure1b_Ef.percentage.pdf")
+#png("figures/Figure1b_Ef.percentage.png")
+
+## If plot title is wanted:
+#my.title <- expression(paste("Fraction of total ", italic("Eimeria"), " sequences per sample"))
+my.ylab <- expression(paste("Percentage of reads mapping to ", italic("Eimeria"), " genome"))
+
+fig1c <- ggplot(RC.table[RC.table$mouse.strain %in% "NMRI", ], 
+       aes(x = dpi, y = p.Ef.reads,
                      color=challenged, shape=strain)) +
-    geom_jitter(size=4, width=0.35, alpha=0.6)+
+    geom_jitter(size=4, width=0.55, alpha=0.6)+
     scale_y_log10(breaks = scales::trans_breaks("log10", function(x) 10^x),
-                  labels = scales::trans_format("log10", scales::math_format(10^.x)))+
+                  labels = scales::trans_format("log10", scales::math_format(10^.x))) +
     annotation_logticks(sides="lr") +
-    ylab(label="Percentage of reads mapping to Eimeria genome") +
-    xlab(label="Time after infection") +
-    ggtitle("Eimeria fraction of total sequences per sample") +
-    theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
-    theme_bw()
-dev.off()
+    #ggtitle(my.title) +
+    theme_bw() +
+    theme(axis.text.x = element_text(hjust = 0.5, size = 14),
+          axis.title.x = element_text(size = 16),
+          axis.text.y = element_text(size = 14),
+          axis.title.y = element_text(size = 16),
+          title = element_text(size = 20)) +
+    #theme_bw() +
+    theme(legend.key = element_blank()) +
+    ylab(label = my.ylab) +
+    xlab(label = "Time after infection")
+#dev.off()
+ggsave(filename = "figures/Figure1c_Ef.NMRI.percentage.svg", height = 12, width = 12, plot = fig1c)
 
 ## taking a minimum of 5 reads as evidence of expression
 RC.table$c.Ef.genes <- colSums(All.RC

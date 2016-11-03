@@ -169,3 +169,51 @@ write.table(efab.clus5, "Supplement/SI_genes_efCluster5.csv", sep=",")
 write.table(efab.clus6, "Supplement/SI_genes_efCluster6.csv", sep=",")
 write.table(efab.clus7, "Supplement/SI_genes_efCluster7.csv", sep=",")
 
+####################################
+## check for surface antigen genes in Eimeria clusters (SAG-genes)
+####################################
+
+## gene IDs
+sag.genes <- c("EfaB_PLUS_193.g6",
+               "EfaB_PLUS_49504.g2703",
+               "EfaB_PLUS_25458.g2090",
+               "EfaB_PLUS_17089.g1451",
+               "EfaB_PLUS_3222.g332",
+               "EfaB_MINUS_7048.g636",
+               "EfaB_MINUS_56725.g2963",
+               "EfaB_PLUS_7048.g677",
+               "EfaB_PLUS_2074.g242",
+               "EfaB_MINUS_22450.g1915",
+               "EfaB_MINUS_7048.g637",
+               "EfaB_MINUS_6743.g610")
+
+sag.check <- subset(efab.clus1, row.names(efab.clus1) %in% sag.genes)
+sag.check <- rbind(sag.check, subset(efab.clus2, row.names(efab.clus2) %in% sag.genes))
+sag.check <- rbind(sag.check, subset(efab.clus3, row.names(efab.clus3) %in% sag.genes))
+sag.check <- rbind(sag.check, subset(efab.clus4, row.names(efab.clus4) %in% sag.genes))
+sag.check <- rbind(sag.check, subset(efab.clus5, row.names(efab.clus5) %in% sag.genes))
+sag.check <- rbind(sag.check, subset(efab.clus6, row.names(efab.clus6) %in% sag.genes))
+sag.check <- rbind(sag.check, subset(efab.clus7, row.names(efab.clus7) %in% sag.genes))
+
+################### ROPs #####################
+
+rop.genes <- c("EfaB_MINUS_17096.g1521",	
+               "EfaB_MINUS_32658.g2475",	
+               "EfaB_MINUS_42996.g2710",
+               "EfaB_MINUS_720.g57",
+               "EfaB_PLUS_15899.g1411",		
+               "EfaB_PLUS_24117.g1969",
+               "EfaB_PLUS_33184.g2393",
+               "EfaB_PLUS_47595.g2679",
+               "EfaB_PLUS_7742.g778",
+               "EfaB_PLUS_8664.g829")
+
+rop.check <- subset(efab.clus1, row.names(efab.clus1) %in% rop.genes)
+rop.check <- rbind(rop.check, subset(efab.clus2, row.names(efab.clus2) %in% rop.genes))
+rop.check <- rbind(rop.check, subset(efab.clus3, row.names(efab.clus3) %in% rop.genes))
+rop.check <- rbind(rop.check, subset(efab.clus4, row.names(efab.clus4) %in% rop.genes))
+rop.check <- rbind(rop.check, subset(efab.clus5, row.names(efab.clus5) %in% rop.genes))
+rop.check <- rbind(rop.check, subset(efab.clus6, row.names(efab.clus6) %in% rop.genes))
+rop.check <- rbind(rop.check, subset(efab.clus7, row.names(efab.clus7) %in% rop.genes))
+
+
