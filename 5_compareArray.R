@@ -100,14 +100,17 @@ RNAseq.Array.logFC <- merge(Array.logFC[,c("ensembl_id", "X24h", "X144h")],
 
 cor(RNAseq.Array.logFC[, -1], method="spearman")[,1:2]
 
-pdf("figures/Figure2a_Array144vsRNAseqN7.pdf", onefile = FALSE)
-ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +
+#pdf("figures/SI_1_Array144vsRNAseqN7.pdf", onefile = FALSE)
+array.comarison <- ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +
   geom_point(alpha=0.8) +
   stat_density2d(aes(fill=..level..), size=2, geom="polygon") +
   scale_fill_gradient(low = "yellow", high = "red") +
   scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
   stat_smooth() +
-  theme_bw()
-dev.off()
+  theme_bw(20) +
+  xlab("Microarray data 6 dpi") +
+  ylab("RNA-seq data 7dpi")
+ggsave("figures/SI_1_Array144vsRNAseqN7.svg", height = 12, width = 12, plot = array.comarison)
+#dev.off()
 
 
