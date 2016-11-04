@@ -100,7 +100,7 @@ for(i in 1:outer.reps){
 }
 
 
-file.RnB <- paste("//home/heitlinger/RnB_",
+file.RnB <- paste("//home/ele/RnB_",
                   round(as.vector(Sys.time())), ".Rdata", sep="")
 
 save(RnB, file = file.RnB)
@@ -108,9 +108,19 @@ save(RnB, file = file.RnB)
 
 RnB.final <- RnB / (outer.reps*inner.reps)
 
-prod.file.RnB <- paste("//home/heitlinger/RnB_Prod_",
+prod.file.RnB <- paste("/home/ele/RnB_Prod_",
                        round(as.vector(Sys.time())), ".Rdata", sep="")
 
 save(RnB.final, file = prod.file.RnB)
 
 ## all.x <- apply(RnB.final, 2, function(x) sum(x==0))
+
+foo <- (RnB.final==0)
+
+bar <- apply(foo, 2, any)
+Ef.genes.ineracting <- colnames(RnB)[bar]
+
+baz <- apply(foo, 1, any)
+Mm.genes.ineracting <- rownames(RnB)[baz]
+
+
