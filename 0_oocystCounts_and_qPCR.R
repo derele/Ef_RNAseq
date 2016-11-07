@@ -95,7 +95,7 @@ qpcr18S <- ggplot(subset(stats.qpcr, stats.qpcr$gene %in% "Ef18S"),
                      breaks = c(0, 2, 4, 8, 16, 32),
                      limits = c(0, 32)) +
   scale_x_continuous("Day post infection", breaks = seq(0,8,1)) +
-  theme_bw(20) +
+  theme_bw(32) + #needs to be bigger than oocyst plot
   theme(legend.key = element_blank(),
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())
