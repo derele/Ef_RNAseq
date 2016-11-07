@@ -110,7 +110,7 @@ array.comarison <- ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +
   theme_bw(20) +
   xlab("Microarray data 6 dpi") +
   ylab("RNA-seq data 7dpi")
-ggsave("figures/SI_1_Array144vsRNAseqN7.svg", height = 12, width = 12, plot = array.comarison)
+ggsave("Supplement/SI_Array144vsRNAseqN7.svg", height = 12, width = 12, plot = array.comarison)
 #dev.off()
 
 

@@ -76,7 +76,7 @@ Mm.hclustered.strain <- get.cluster.tree.df(Mm.comp.rag.diff.data, 4)
 
 write.table(Mm.hclustered.cycle, "output_data/Mm_hclustered_cycle.csv", sep=",")
 
-pdf("Supplement/Ef1st2ndHeatmap.pdf",
+pdf("Supplement/SI_Ef1st2ndHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf
 pheatmap(Ef.first2nd.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -105,9 +105,9 @@ pheatmap(Ef.cycle.diff.data,
          )
 dev.off()
 
-
+##############################################
 ## Mouse plotting
-pdf("Supplement//MmStrainHeatmap.pdf",
+pdf("Supplement/SI_MmStrainHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
 pheatmap(Mm.comp.rag.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -122,7 +122,7 @@ pheatmap(Mm.comp.rag.diff.data,
              " mRNAs differently abundant in different mouse strains")))
 dev.off()
 
-pdf("Supplement/Mm1st2ndHeatmap.pdf",
+pdf("Supplement/SI_Mm1st2ndHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
 pheatmap(Mm.first2nd.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 
@@ -137,7 +137,7 @@ pheatmap(Mm.first2nd.diff.data,
 dev.off()
 
 
-pdf("figures/Figure2c_MmLifecycleHeatmap.pdf",
+pdf("figures/Figure2b_MmLifecycleHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
 pheatmap(Mm.cycle.diff.data,
          color = brewer.pal(n = 11, name = "BrBG"), 

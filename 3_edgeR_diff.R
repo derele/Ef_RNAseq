@@ -86,6 +86,12 @@ Ef.contrasts <- makeContrasts(
         (C57BL6.1stInf.5dpi-C57BL6.2ndInf.5dpi),
     R5.1stvsR52ndVSN5.1stvsN52nd = (Rag.1stInf.5dpi-Rag.2ndInf.5dpi)-
         (NMRI.1stInf.5dpi-NMRI.2ndInf.5dpi),	#21
+##### the below is not working when Ef.1st.pass.model is produced yet ## intracellular versus extracellular stages 
+    #NIntracell.vs.spo = ((NMRI.1stInf.3dpi - NMRI.1stInf.5dpi) + 
+    #                      (NMRI.1stInf.3dpi - NMRI.1stInf.7dpi) + 
+    #                       (NMRI.1stInf.5dpi - NMRI.1stInf.7dpi)) -
+    #  (NMRI.sporozoites),
+    #NIntracell.vs.oocy = () - (NMRI.oocysts),
     levels=Ef.design)
 
 
@@ -157,7 +163,7 @@ get.my.models <- function (RC, cutoff, group,
                        })
     names(top.list) <- colnames(contrasts)
     gene.list <- lapply(top.list, function(x) {
-                            rownames(x[x$FDR<0.01,]) ######### CHANGE FDR!!!!!!!!!!
+                            rownames(x[x$FDR<0.01,]) ######### CHANGE FDR here
                         })
     return(list(ALL.top, top.list, gene.list, DGEList))
 }
@@ -170,7 +176,7 @@ Mm.1st.pass.model <- get.my.models(Mm.RC, cutoff=1000,
                                    design=Mm.design,
                                    norm="upperquartile")
 
-Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=10,    ########## P R O B L E M ############
+Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=10,
                                    group = Ef.pData$grouped,
                                    contrasts=Ef.contrasts,
                                    design=Ef.design,
@@ -276,7 +282,7 @@ Ef.early.Ooc <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsOoc", "N5vsOo
 
 Ef.infection.LCFull.difference <-
     venn.diagram(c(Ef.1st.pass.model[[3]][c("N7vsSp", "N7vsOo", "SpvsOo")],
-#                   early.late=list(Ef.early.late),
+                   early.late=list(Ef.early.late),
                    early.spo=list(Ef.early.spo),
                    early.Ooc=list(Ef.early.Ooc)), 
                  filename=NULL)
@@ -285,9 +291,20 @@ devSVG("figures/Figure3aii_vennEfCycleFull.svg")
 grid.draw(Ef.infection.LCFull.difference)
 dev.off()
 
+########## extracellular stages (separate) versus intracellular stages
 
+##### check code - is it pltting what I want? ######## ########## ########### ###########
 
+Ef.intracellular <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsN5", "N3vsN7", "N5vsN7")])))
+Ef.spo.intra <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsSpo", "N5vsSpo", "N7vsSpo")])))
+Ef.oocy.intra <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsOo", "N5vsOo", "N7vsOo")])))
 
-
-
+Ef.intra.vs.extracellular <- venn.diagram(c(Ef.1st.pass.model[[3]]["SpvsOo"],
+                              IntracellularDifferences = list(Ef.intracellular),
+                              SporozoitesVSIntracellular = list(Ef.spo.intra),
+                              OocystsVSIntracellular = list(Ef.oocy.intra)),
+                            filename = NULL)
+devSVG("Supplement/SI_FigEf_IntracellularVSExtracellular.svg")
+grid.draw(Ef.intra.vs.extracellular)
+dev.off()
 
