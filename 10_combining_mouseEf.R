@@ -71,7 +71,7 @@ load("/SAN/Eimeria_Totta/RnB_Prod_1478263755.Rdata")
 is.zero <- (RnB.final==0)
 
 is.zero.all.cols <- apply(is.zero, 2, any)
-Ef.genes.ineracting <- colnames(RnB)[is.zero.all.cols]
+Ef.genes.ineracting <- colnames(RnB)[is.zero.all.cols] ## TYPO interacting/ineracting
 
 is.zero.all.rows <- apply(is.zero, 1, any)
 Mm.genes.ineracting <- rownames(RnB)[is.zero.all.rows]
@@ -82,7 +82,7 @@ Mm.genes.ineracting <- rownames(RnB)[is.zero.all.rows]
 ##     rMeans <- rowMeans(data)
 ##     rSD <- apply(data, 1, sd)
 ##     scaled.data <- scale(t(data), rMeans, rSD)
-##     ## NAs for whenever tehere is no variance/sd need to be removed
+##     ## NAs for whenever there is no variance/sd need to be removed
 ##     scaled.data <- scaled.data [, apply(scaled.data, 2, function(x) all(!is.na(x) ))]
 ##     hclustered <- hclust(as.dist(t(1-abs(cor(scaled.data, method="spearman")))))
 ##     return(hclustered)
@@ -121,7 +121,7 @@ Mm.genes.ineracting <- rownames(RnB)[is.zero.all.rows]
 ##          )
 
 ######## producing visual output
-# make df:s with Ef and Mm data
+## make df:s with Ef and Mm data
 interactions.per.Ef.gene <- data.frame(apply(is.zero, 2, sum))
 interactions.per.Mm.gene <- data.frame(apply(is.zero, 1, sum))
 
@@ -166,8 +166,20 @@ ggsave(file = "Supplement/SI_Mm.interaction.distribution.svg",
 ######### NAs should not be plotted by geom_histogram, but seem to be. How do we get rid of these?
 #########
 
+### Take out all interacting genes AND how many interactions they have
+## Eimeria and mouse
+interacting.genes.Ef <- subset(interactions.per.Ef.gene, !is.na(interactions.per.Ef.gene$Count))
+interacting.genes.Mm <- subset(interactions.per.Mm.gene, !is.na(interactions.per.Mm.gene$Count))
 
 
 
-
-
+########################## Network visualization attempt ####################################
+library(graph)
+library(Rgraphviz)
+edges <- list(a=list(edges=2:3),
+              b=list(edges=2:3),
+              c=list(edges=c(2,4)),
+              d=list(edges=1))
+g <- new("graphNEL", nodes=letters[1:4], edgeL=edges,
+         edgemode="directed")
+plot(g)
