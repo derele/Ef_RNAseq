@@ -64,8 +64,8 @@ both.col <- intersect(colnames(Mm.nRC), colnames(Ef.nRC))
 
 ## save(RnB.final, file = prod.file.RnB)
 
-load("output_data/RnB_1478263654.Rdata")
-load("output_data/RnB_Prod_1478263755.Rdata")
+load("/SAN/Eimeria_Totta/RnB_1478263654.Rdata")
+load("/SAN/Eimeria_Totta/RnB_Prod_1478263755.Rdata")
 
 
 is.zero <- (RnB.final==0)
