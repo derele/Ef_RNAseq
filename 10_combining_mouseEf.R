@@ -119,3 +119,55 @@ Mm.genes.ineracting <- rownames(RnB)[is.zero.all.rows]
 ##          cutree_rows = 7, 
 ##          show_rownames = F
 ##          )
+
+######## producing visual output
+# make df:s with Ef and Mm data
+interactions.per.Ef.gene <- data.frame(apply(is.zero, 2, sum))
+interactions.per.Mm.gene <- data.frame(apply(is.zero, 1, sum))
+
+interactions.per.Ef.gene <- tibble::rownames_to_column(interactions.per.Ef.gene, "gene")
+interactions.per.Mm.gene <- tibble::rownames_to_column(interactions.per.Mm.gene, "gene")
+
+colnames(interactions.per.Ef.gene)[2] <- "Count" # otherwise problems with zero.replacement in next step
+colnames(interactions.per.Mm.gene)[2] <- "Count"
+
+## replace zero with NA for easier exclusion from histogram
+interactions.per.Ef.gene[interactions.per.Ef.gene == 0] <- NA
+interactions.per.Mm.gene[interactions.per.Mm.gene == 0] <- NA
+
+## efalci
+ef.interactions.dist <- ggplot(interactions.per.Ef.gene, 
+                               aes(x = as.numeric(interactions.per.Ef.gene[,2]))) +
+  geom_histogram(bins = 60) +
+  theme_bw(20) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()) +
+  scale_y_log10() +
+  scale_x_continuous("Number of interactions") +
+  ggtitle("Interactions per Eimeria gene")
+ggsave(file = "Supplement/SI_Ef.interaction.distribution.svg", 
+       height = 10, width = 12, plot = ef.interactions.dist)
+
+
+## mouse
+mm.interactions.dist <- ggplot(interactions.per.Mm.gene, 
+                               aes(x = as.numeric(interactions.per.Mm.gene[,2]))) +
+  geom_histogram(bins = 60) +
+  theme_bw(20) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank()) +
+  scale_y_log10() +
+  scale_x_continuous("Number of interactions") +
+  ggtitle("Interactions per mouse gene")
+ggsave(file = "Supplement/SI_Mm.interaction.distribution.svg", 
+       height = 10, width = 12, plot = mm.interactions.dist)
+
+#########
+######### NAs should not be plotted by geom_histogram, but seem to be. How do we get rid of these?
+#########
+
+
+
+
+
+
