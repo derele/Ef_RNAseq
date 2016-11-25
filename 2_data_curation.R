@@ -230,10 +230,11 @@ names(table.cleaned) <- sub("^c.Ef.genes$", "# E. falciformis genes", names(tabl
 ## EXPORT to Latex format
 table.tex <- xtable(table.cleaned, align = c("l", "l", "l", "l", "l", "l", "l", "l", "l"),
                     digits = c(0, 0, 0, 0, 0, 0, 0, 4, 0))
+## for LaTeX output
+#print(table.tex, type = "latex", file = "tables/Table1_ReadCounts.tex", include.rownames = F,
+#      format.args = list(big.mark = ",", decimal.mark = "."))
 
-print(table.tex, type = "latex", file = "tables/Table1_ReadCounts.tex", include.rownames = F,
-      format.args = list(big.mark = ",", decimal.mark = "."))
-
+## for HTML output and usage in e.g. Word, Open Office...
 print(table.tex, type = "html", file = "tables/Table1_ReadCounts.html", include.rownames = F,
       format.args = list(big.mark = ",", decimal.mark = "."))
 
