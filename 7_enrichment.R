@@ -49,7 +49,7 @@ set.from.cluster <- function(hcluster, number){
 ######## Clustering #############
 to.test <- list(
     ## Eimeria
-    list(set=set.from.cluster(hcluster[["Ef"]], 1),
+    list(set=set.from.cluster(hcluster[["Ef"]], 1),  # no enriched MF terms
          type = "cluster1ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 5),
          type = "cluster5ef", species = "Ef"),
@@ -61,7 +61,7 @@ to.test <- list(
           type = "cluster4ef", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 6),
          type = "cluster6ef", species = "Ef"),
-    list(set=set.from.cluster(hcluster[["Ef"]], 3),
+    list(set=set.from.cluster(hcluster[["Ef"]], 3),   # no enriched BP terms
          type = "cluster3ef", species = "Ef"),
     ## Mouse
     list(set=set.from.cluster(hcluster[["Mm"]], 6),
@@ -72,8 +72,8 @@ to.test <- list(
           type="cluster3mm", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 4),
           type="cluster4mm", species="Mm"),
-    #list (set=set.from.cluster(hcluster[["Mm"]], 1), # no enriched terms
-    #      type="cluster1mm", species="Mm"),
+    list (set=set.from.cluster(hcluster[["Mm"]], 1),
+          type="cluster1mm", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 2),
           type="cluster2mm", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 7),
@@ -141,8 +141,8 @@ myt <- ttheme_default(
 
 ## Change filename and part of BPMF.ll object to export tables 
 ## (adjust size of PDF for better readability)
-pdf("~/Ef_RNAseq/Supplement/SI_GOMmcluster7_mf.pdf", width = 24, height = 48)
-oocysts1 <- grid.table(data.frame(BPMF.ll$cluster7mm$MF),
+pdf("~/Ef_RNAseq/Supplement/SI_4_GO-enrichments-per-cluster/SI_GOFfcluster3_bp.pdf", width = 24, height = 32)
+grid.table(data.frame(BPMF.ll$cluster1ef$MF),
                                theme = myt,
                                rows = NULL,
                                cols = c("GO id", "Term", 

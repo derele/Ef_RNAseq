@@ -153,6 +153,7 @@ dev.off()
 
 ###########################
 ## Check for specific genes withing clusters
+## EIMERIA
 efab.clus1 <- subset(Ef.hclustered.cycle, Cluster=='1')
 efab.clus2 <- subset(Ef.hclustered.cycle, Cluster=='2')
 efab.clus3 <- subset(Ef.hclustered.cycle, Cluster=='3')
@@ -161,6 +162,17 @@ efab.clus5 <- subset(Ef.hclustered.cycle, Cluster=='5')
 efab.clus6 <- subset(Ef.hclustered.cycle, Cluster=='6')
 efab.clus7 <- subset(Ef.hclustered.cycle, Cluster=='7')
 
+## MOUSE
+## Check for specific genes withing clusters of Eimeria life-cycle-dep. genes
+ensmus.clus1 <- subset(Mm.hclustered.cycle, Cluster=='1')
+ensmus.clus2 <- subset(Mm.hclustered.cycle, Cluster=='2')
+ensmus.clus3 <- subset(Mm.hclustered.cycle, Cluster=='3')
+ensmus.clus4 <- subset(Mm.hclustered.cycle, Cluster=='4')
+ensmus.clus5 <- subset(Mm.hclustered.cycle, Cluster=='5')
+ensmus.clus6 <- subset(Mm.hclustered.cycle, Cluster=='6')
+ensmus.clus7 <- subset(Mm.hclustered.cycle, Cluster=='7')
+
+## Write to files EIMERIA
 write.table(efab.clus1, "Supplement/SI_genes_efCluster1.csv", sep=",")
 write.table(efab.clus2, "Supplement/SI_genes_efCluster2.csv", sep=",")
 write.table(efab.clus3, "Supplement/SI_genes_efCluster3.csv", sep=",")
@@ -168,6 +180,16 @@ write.table(efab.clus4, "Supplement/SI_genes_efCluster4.csv", sep=",")
 write.table(efab.clus5, "Supplement/SI_genes_efCluster5.csv", sep=",")
 write.table(efab.clus6, "Supplement/SI_genes_efCluster6.csv", sep=",")
 write.table(efab.clus7, "Supplement/SI_genes_efCluster7.csv", sep=",")
+
+
+## Write to files MOUSE
+write.table(ensmus.clus1, "Supplement/SI_genes_MmCluster1.csv", sep=",")
+write.table(ensmus.clus2, "Supplement/SI_genes_MmCluster2.csv", sep=",")
+write.table(ensmus.clus3, "Supplement/SI_genes_MmCluster3.csv", sep=",")
+write.table(ensmus.clus4, "Supplement/SI_genes_MmCluster4.csv", sep=",")
+write.table(ensmus.clus5, "Supplement/SI_genes_MmCluster5.csv", sep=",")
+write.table(ensmus.clus6, "Supplement/SI_genes_MmCluster6.csv", sep=",")
+write.table(ensmus.clus7, "Supplement/SI_genes_MmCluster7.csv", sep=",")
 
 ####################################
 ## check for surface antigen genes in Eimeria clusters (SAG-genes)
