@@ -128,50 +128,60 @@ interactions.per.Mm.gene <- data.frame(apply(is.zero, 1, sum))
 interactions.per.Ef.gene <- tibble::rownames_to_column(interactions.per.Ef.gene, "gene")
 interactions.per.Mm.gene <- tibble::rownames_to_column(interactions.per.Mm.gene, "gene")
 
-colnames(interactions.per.Ef.gene)[2] <- "Count" # otherwise problems with zero.replacement in next step
-colnames(interactions.per.Mm.gene)[2] <- "Count"
+colnames(interactions.per.Ef.gene)[2] <- "Count per gene" # otherwise problems with zero.replacement in next step
+colnames(interactions.per.Mm.gene)[2] <- "Count per gene"
 
 ## replace zero with NA for easier exclusion from histogram
 interactions.per.Ef.gene[interactions.per.Ef.gene == 0] <- NA
 interactions.per.Mm.gene[interactions.per.Mm.gene == 0] <- NA
 
-## efalci
-ef.interactions.dist <- ggplot(interactions.per.Ef.gene, 
-                               aes(x = as.numeric(interactions.per.Ef.gene[,2]))) +
-  geom_histogram(bins = 60) +
-  theme_bw(20) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank()) +
-  scale_y_log10() +
-  scale_x_continuous("Number of interactions") +
-  ggtitle("Interactions per Eimeria gene")
-ggsave(file = "Supplement/SI_Ef.interaction.distribution.svg", 
-       height = 10, width = 12, plot = ef.interactions.dist)
 
+## Data prep for plotting
+## efalci
+df.ef <- na.omit(interactions.per.Ef.gene)
+df.ef <- df.ef[with(df.ef, order(df.ef$`Count per gene`)), ]
+df.ef$rownums <- nrow(df.ef):1
 
 ## mouse
-mm.interactions.dist <- ggplot(interactions.per.Mm.gene, 
-                               aes(x = as.numeric(interactions.per.Mm.gene[,2]))) +
-  geom_histogram(bins = 60) +
+df.mm <- na.omit(interactions.per.Mm.gene)
+df.mm <- df.mm[with(df.mm, order(df.mm$`Count per gene`)), ]
+df.mm$rownums <- nrow(df.mm):1
+
+## plot mouse and parasite densities together
+ef.plot <- ggplot(df.ef, aes(x=df.ef$rownums, y=df.ef$`Count per gene`)) +
+  geom_bar(stat = "identity", size = 1, colour= "#e19e2e") +
   theme_bw(20) +
   theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank()) +
-  scale_y_log10() +
-  scale_x_continuous("Number of interactions") +
+        panel.grid.minor = element_blank(),
+        axis.text.x = element_blank()) +
+  ylab("Count per gene") +
+  scale_x_discrete("Genes") +
+  ggtitle("Interactions per parasite gene")
+ggsave(file = "Supplement/SI_Ef.interaction.distribution.svg", 
+       height = 10, width = 12, plot = ef.plot)
+
+mm.plot <- ggplot(df.mm, aes(x=df.mm$rownums, y=df.mm$`Count per gene`)) +
+  geom_bar(stat="identity", size = 1, colour="dark green") +
+  theme_bw(20) +
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        axis.text.x = element_blank()) +
+  ylab("Count per gene") +
+  scale_x_discrete("Genes") +
   ggtitle("Interactions per mouse gene")
 ggsave(file = "Supplement/SI_Mm.interaction.distribution.svg", 
-       height = 10, width = 12, plot = mm.interactions.dist)
-
-#########
-######### NAs should not be plotted by geom_histogram, but seem to be. How do we get rid of these?
-#########
+       height = 10, width = 12, plot = mm.plot)
+#dev.off()
 
 ### Take out all interacting genes AND how many interactions they have
 ## Eimeria and mouse
-interacting.genes.Ef <- subset(interactions.per.Ef.gene, !is.na(interactions.per.Ef.gene$Count))
-interacting.genes.Mm <- subset(interactions.per.Mm.gene, !is.na(interactions.per.Mm.gene$Count))
+interacting.genes.Ef <- subset(interactions.per.Ef.gene, !is.na(interactions.per.Ef.gene$`Count per gene`))
+interacting.genes.Mm <- subset(interactions.per.Mm.gene, !is.na(interactions.per.Mm.gene$`Count per gene`))
 
+head(sort(interacting.genes.Ef[,2], decreasing = TRUE), n = 850)
 
+## or access specific numer of interactions by: df.ef[max(df.ef[,3]),]
+## in this case the highest number
 
 ########################## Network visualization attempt ####################################
 library(graph)
