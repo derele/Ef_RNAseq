@@ -17,6 +17,7 @@ gene2GO[["Mm"]] <- by(annotation.frame, annotation.frame$ensembl_id,
 gene2GO[["Mm"]] <- gene2GO[["Mm"]][names(gene2GO[["Mm"]])%in%
                                    unique(Mm.DE.test$gene)]
 
+## EIMERIA
 go_Ef <- read.csv("data/12864_2014_6777_GO-annot.csv")
 
 gene2GO[["Ef"]] <- by(go_Ef, go_Ef$gene, function(x) as.character(x$go))
@@ -101,7 +102,7 @@ gene.table.topGO <- function(TOGO.list, pval=0.01){
     return(all[all$p.value<pval,])
 }
 
-## Subset BPMF.ll by e.g. BPMF.ll$sporoz$BP (another $Term will give only annotated terms)
+## Subset BPMF.ll by e.g. BPMF.ll$clusterxx1$BP (another $Term will give only annotated terms)
 BPMF.ll <- lapply(to.test, function (x){
           set = x[[1]]
           type = x[[2]]
@@ -141,8 +142,8 @@ myt <- ttheme_default(
 
 ## Change filename and part of BPMF.ll object to export tables 
 ## (adjust size of PDF for better readability)
-pdf("~/Ef_RNAseq/Supplement/SI_4_GO-enrichments-per-cluster/SI_GOFfcluster3_bp.pdf", width = 24, height = 32)
-grid.table(data.frame(BPMF.ll$cluster1ef$MF),
+pdf("~/Ef_RNAseq/Supplement/SI_4_GO-enrichments-per-cluster/SI_GOMmcluster2_mf.pdf", width = 24, height = 10)
+grid.table(data.frame(BPMF.ll$cluster2mm$BP),
                                theme = myt,
                                rows = NULL,
                                cols = c("GO id", "Term", 
@@ -168,28 +169,56 @@ clusterMF <- BPMF.ll[[4]][[2]][[1]]
 clusterBP <- BPMF.ll[[4]][[1]][[1]]
 clusterBPMF <- append(clusterBP, clusterMF) # appends unique GO:terms
 
+
+
 ## Get ancestor annotations
+get.Ef.ancestors <- function(){
 frame.data <-  data.frame(cbind(GOIDs=as.character(go_Ef$go),
                                 evi="ND", genes=as.character(go_Ef$gene)))
+frame <- GOFrame(frame.data, organism="Eimeria falciformis")
+allFrame <- GOAllFrame(frame)
+getGOFrameData(allFrame)
+}
 
-frame=GOFrame(frame.data, organism="Eimeria falciformis")
-
-allFrame=GOAllFrame(frame)
-
-go_Ef_all <- getGOFrameData(allFrame)
-
-## Get genes names contributing to specific GO-term in specific cluster
-genes.from.subset <-
-    as.character(unique(go_Ef_all[go_Ef_all$go_id%in%clusterBPMF, 3])) 
-sign.genes <-
-    genes.from.subset[genes.from.subset%in%names(hcluster[["Ef"]])
-                      [hcluster[["Ef"]]%in%4]] 
-
-## ALL  genes in each cluster (adj. cluster number)
-all.GOgenes.in.cluster <-
-    names(hcluster[["Ef"]])[hcluster[["Ef"]]%in%1]
+go_Ef_all <- get.Ef.ancestors()
 
 
+get.Mm.ancestors <- function(){
+  frame.data <-  data.frame(cbind(GOIDs=as.character(annotation.frame$go_id),
+                                  evi="ND", 
+                                  genes=as.character(annotation.frame$ensembl_id)))
+  frame <- GOFrame(frame.data, organism="Mus musculus")
+  allFrame <- GOAllFrame(frame)
+  getGOFrameData(allFrame)
+}
+
+go_Mm_all <- get.Mm.ancestors()
 
 
+## helper functions
+get.gene.4.go.Ef <- function (goterm){
+  y <- go_Ef_all[go_Ef_all$go_id%in%goterm, "gene_id"]
+  unique(y[y%in%exp.universe[["Ef"]]])
+}
+
+get.gene.4.go.Mm <- function (goterm){
+  y <- go_Mm_all[go_Mm_all$go_id%in%goterm, "gene_id"]
+  unique(y[y%in%exp.universe[["Mm"]]])
+}
+
+## use this for both mouse and eimeria; speciffy org if not Mm
+get.genes.4.heatclus <- function(org="Mm", clust){
+  rownames(hcluster[[org]])[hcluster[[org]]$Cluster==clust]
+}
+
+## execute function to get genes responsible for specific GO-term enrichments
+get.go.set.Ef <- function(GO, clus){
+  all <- get.gene.4.go.Ef(GO)
+  all[all%in%get.genes.4.heatclus("Ef", clus)]
+}
+
+get.go.set.Mm <- function(GO, clus){
+  all <- get.gene.4.go.Mm(GO)
+  all[all%in%get.genes.4.heatclus("Mm", clus)]
+}
 
