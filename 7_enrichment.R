@@ -268,6 +268,15 @@ cluster.p.TMHMM <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
     list(ft$estimate, ft$p.value)
 })
 
+### Cluster 5 (oocysts) enriched for transmembrane signal
+table(Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], 5),
+      Ef.tested.universe %in% SigTMHMM)
+
+cluster.5.Membrane.genes <- Ef.tested.universe[
+    Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], 5) &
+    Ef.tested.universe %in% SigTMHMM]
+
+write.csv(cluster.5.Membrane.genes, "data/Cluster_5_Membrane.txt")
 
 SigClus <- data.frame(rbind(do.call(rbind, cluster.p.SigP),
                             do.call(rbind, cluster.p.SigP_euk),
