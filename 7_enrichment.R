@@ -25,6 +25,9 @@ gene2GO[["Ef"]] <- by(go_Ef, go_Ef$gene, function(x) as.character(x$go))
 gene2GO[["Ef"]] <- gene2GO[["Ef"]][names(gene2GO[["Ef"]])%in%
                                    unique(Ef.DE.test$gene)]
 
+interpro_Ef <- read.csv("data/12864_2014_6777_interpro_EfaB.csv")
+
+
 ##  get the universe of genes which were tested at all:
 exp.universe <- list()
 exp.universe[["Mm"]] <- names(gene2GO[["Mm"]])
@@ -222,3 +225,58 @@ get.go.set.Mm <- function(GO, clus){
   all[all%in%get.genes.4.heatclus("Mm", clus)]
 }
 
+Ef.tested.universe <- unique(Ef.DE.test$gene)
+
+IPR <- read.delim("data/ipr_proteins.fa.tsv", header=FALSE,
+                  as.is=TRUE)
+
+SigP_euk <- IPR$V1[IPR$V4%in%c("SignalP_EUK")]
+
+SigP <- IPR$V1[IPR$V4%in%c("SignalP_EUK",
+                           "SignalP_GRAM_NEGATIVE",
+                           "SignalP_GRAM_POSITIVE")]
+
+SigTMHMM <- IPR$V1[IPR$V4%in%c("TMHMM")]
+
+get.unique.SigP.genes <- function(x){
+    u <- unname(unlist(sapply(x, strsplit, "\\|")))
+    u <- unique(gsub(".t\\d+", "", u))
+    gsub("NODE_", "EfaB_", u)
+}
+
+SigP_euk <- get.unique.SigP.genes(SigP_euk)
+SigP <- get.unique.SigP.genes(SigP)
+SigTMHMM <- get.unique.SigP.genes(SigTMHMM)
+
+cluster.p.SigP <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
+    ft <- fisher.test(Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], x),
+                      Ef.tested.universe %in% SigP)
+    list(ft$estimate, ft$p.value)
+})
+
+
+cluster.p.SigP_euk <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
+    ft <- fisher.test(Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], x),
+                   Ef.tested.universe %in% SigP_euk)
+     list(ft$estimate, ft$p.value)
+})
+
+
+cluster.p.TMHMM <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
+    ft <- fisher.test(Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], x),
+                      Ef.tested.universe %in% SigTMHMM)
+    list(ft$estimate, ft$p.value)
+})
+
+
+SigClus <- data.frame(rbind(do.call(rbind, cluster.p.SigP),
+                            do.call(rbind, cluster.p.SigP_euk),
+                            do.call(rbind, cluster.p.TMHMM)))
+
+names(SigClus) <- c("odds.ratio", "p.value")
+
+SigClus$cluster <- 1:7
+
+SigClus$test <- rep(c("SigP", "SigP_euk", "TMHMM"), each=7)
+
+SigClus$adj.p <- p.adjust(SigClus$p.value, method="BH")
