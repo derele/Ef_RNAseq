@@ -17,6 +17,45 @@ phen.data <- read.csv("data/Oocysts_output_weight_SS_longdata.csv")
 ## here just a hack to take the first occurence of a ID at a time point
 phen.data <- phen.data[!duplicated(phen.data[, c("Day_pi", "Mouse_ID", "Infection_No")]), ]
 
+
+## overall output for statistical tests
+## reduce to 10dpi to have all strains up to the same day
+phen.data[phen]
+
+oocyst.sums <- ddply(phen.data, c("Mouse_strain", "Mouse_ID", "Infection_No"), summarize,
+                     N    =  sum(!is.na(Oocysts_feces)),
+                     Csum    =  sum(Oocysts_feces))
+
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"1"],
+            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
+                             oocyst.sums$Infection_No%in%"1"]
+            )    
+## ns
+
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"2"],
+            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
+                             oocyst.sums$Infection_No%in%"2"]
+            )    
+## ns
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"1"],
+            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"2"]
+            )    
+## significant !!!
+
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
+                             oocyst.sums$Infection_No%in%"1"],
+            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
+                             oocyst.sums$Infection_No%in%"2"]
+            )    
+## Rag has also a reduced output in secondary !!! not significant
+## though... but you know you can't statistically show absence of diff
+
+
+
 oocyst.summary <- ddply(phen.data, c("Mouse_strain", "Day_pi", "Infection_No"), summarize,
                         N    =  sum(!is.na(Oocysts_feces)),
                         Cmean = mean(Oocysts_feces, na.rm=TRUE),
