@@ -183,33 +183,6 @@ Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=10,
                                    norm="upperquartile")
 
 
-get.RUVed.data <- function(RC, cutoff, group){
-    ## use the expression set and the filtering decided on before
-    keep <- rowSums(RC)>cutoff
-    RUVset <- newSeqExpressionSet(RC[keep,])
-    RUVset <- betweenLaneNormalization(RUVset, which="upper")
-    RUVs(RUVset, rownames(RUVset), k=1, makeGroups(group))
-}
-
-Mm.RUVset.groups <- get.RUVed.data(Mm.RC, cutoff = 3000,
-                                   Mm.pData$grouped)
-
-Ef.RUVset.groups <- get.RUVed.data(Ef.RC, cutoff = 100,
-                                   Ef.pData$grouped)
-
-Mm.RUVg.model <- get.my.models(normCounts(Mm.RUVset.groups),
-                               cutoff=1000, ## no further cut off
-                               group = Mm.pData$grouped,
-                               contrasts=Mm.contrasts,
-                               design=Mm.design, norm=NULL)
-
-Ef.RUVg.model <- get.my.models(normCounts(Ef.RUVset.groups),
-                               cutoff=100, ## no further cut off
-                               group = Ef.pData$grouped,
-                               contrasts=Ef.contrasts,
-                               design=Ef.design, norm=NULL)
-
-
 Mm.DE.test <- do.call(rbind, Mm.1st.pass.model[[2]])
 Mm.DE.test$contrast <- gsub("(.*)\\.(ENSMUS.*?)$", "\\1", rownames(Mm.DE.test))
 Mm.DE.test$gene <- gsub("(.*)\\.(ENSMUS.*?)$", "\\2", rownames(Mm.DE.test))
