@@ -148,5 +148,37 @@ ggsave(file = "figures/Figure1b_qPCR18S.svg", height = 12, width = 11, plot = qp
 #dev.off()
 
 
+############################## WEIGHT LOSS ###########################
+weight.summary <- ddply(phen.data, c("Mouse_strain", "Day_pi", "Infection_No"), summarize,
+                        N    =  sum(!is.na(Normalized_weight)),
+                        Cmean = mean(Normalized_weight, na.rm=TRUE),
+                        Csd =   sd(Normalized_weight, na.rm=TRUE),
+                        Cse =   Csd/sqrt(N))
+
+##### Plotting SI_weight loss mice
+weight.mice <- ggplot(phen.data,
+                           aes(Day_pi, Normalized_weight, color=Mouse_strain)) +
+  facet_wrap(~Infection_No, labeller = labeller(Infection_No = my.labels)) + 
+  geom_point(data=weight.summary, aes(Day_pi, Cmean)) +
+  geom_line(data=weight.summary, aes(Day_pi, Cmean), size = 0.7) +
+  geom_errorbar(data=weight.summary, aes(x=Day_pi, y=Cmean, ymin=Cmean-Cse, ymax=Cmean+Cse), 
+                size=1,
+                width = 0.3) +
+  scale_color_manual(values = my.colors.ooc) +
+  scale_y_continuous("Normalized weight", 
+                     labels = comma, 
+                     breaks = c(80, 85, 90, 95, 100, 105, 110, 115)) +
+  scale_x_continuous("Day post infection",
+                     breaks = c(0, 3, 5, 7, 9, 11, 13, 15)) + 
+  theme_bw(20) +
+  theme(legend.key = element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank())
+#ggtitle("Oocyst counts in first and second infection")
+ggsave(file = "Supplement/SI_2_infection_phenotype_raw-data/Figure_Mouse_weight_changes.svg", 
+       height = 8, width = 12, plot = weight.mice)
+#dev.off()
+
+
 
 
