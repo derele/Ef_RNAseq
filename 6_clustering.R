@@ -76,19 +76,6 @@ Mm.hclustered.strain <- get.cluster.tree.df(Mm.comp.rag.diff.data, 4)
 
 write.table(Mm.hclustered.cycle, "output_data/Mm_hclustered_cycle.csv", sep=",")
 
-pdf("Supplement/SI_Ef1st2ndHeatmap.pdf",
-    height = 8, width = 8, onefile = FALSE) # onefile command to hack away empty page in pdf
-pheatmap(Ef.first2nd.diff.data,
-         color = brewer.pal(n = 11, name = "BrBG"), 
-         scale = "row",
-         cluster_rows = T,
-         cluster_cols = T,
-         annotation_row = Ef.hclustered.first.second,
-         cutree_rows = 7, 
-         show_rownames = F,
-         main = expression(paste(italic("E. falciformis"),
-             " mRNAs differently abundant between 1st and 2nd infection")))
-dev.off()
 
 pdf("figures/Figure3b_EfLifecycleHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
@@ -107,36 +94,6 @@ dev.off()
 
 ##############################################
 ## Mouse plotting
-pdf("Supplement/SI_MmStrainHeatmap.pdf",
-    height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
-pheatmap(Mm.comp.rag.diff.data,
-         color = brewer.pal(n = 11, name = "BrBG"), 
-         scale = "row",
-         cluster_rows = T,
-         cluster_cols = T,
-         annotation_row = Mm.hclustered.strain,
-         ## annotation_names_row = F,
-         cutree_rows = 4, 
-         show_rownames = F,
-         main = expression(paste(italic("M. musculus"),
-             " mRNAs differently abundant in different mouse strains")))
-dev.off()
-
-pdf("Supplement/SI_Mm1st2ndHeatmap.pdf",
-    height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
-pheatmap(Mm.first2nd.diff.data,
-         color = brewer.pal(n = 11, name = "BrBG"), 
-         scale = "row",
-         cluster_rows = T,
-         cluster_cols = T,
-         annotation_row = Mm.hclustered.first.second,
-         cutree_rows = 4, 
-         show_rownames = F,
-         main = expression(paste(italic("M. musculus"),
-             " mRNAs differently abundant in 1st and2nd infection")))
-dev.off()
-
-
 pdf("figures/Figure2b_MmLifecycleHeatmap.pdf",
     height = 8, width = 8, onefile = FALSE) # onefile to rm empty page in pdf
 pheatmap(Mm.cycle.diff.data,

@@ -107,10 +107,10 @@ array.comarison <- ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +
   scale_fill_gradient(low = "yellow", high = "red") +
   scale_alpha(range = c(0.00, 0.95), guide = FALSE) +
   stat_smooth() +
-  theme_bw(20) +
+  theme_bw(20, size = 20) +
   xlab("Microarray data 6 dpi") +
   ylab("RNA-seq data 7dpi")
-ggsave("Supplement/SI_Array144vsRNAseqN7.svg", height = 12, width = 12, plot = array.comarison)
+ggsave("Supplement/SI_5_QC_arrayCorrelation_MDS/SI_Array144vsRNAseqN7.svg", height = 12, width = 12, plot = array.comarison)
 #dev.off()
 
 

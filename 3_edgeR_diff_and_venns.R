@@ -212,8 +212,6 @@ by(Ef.DE.test, Ef.DE.test$contrast, function (x) table(x$FDR<0.01))
 
 ## they are consistent 
 
-
-
 ########### MOUSE #################
 Mm.infection.difference <-
     venn.diagram(Mm.1st.pass.model[[3]][c("N3vs0", "N5vs0", "N7vs0")],
@@ -221,19 +219,6 @@ Mm.infection.difference <-
 
 devSVG("figures/Figure2a_vennMmInfection.svg")
 grid.draw(Mm.infection.difference)
-dev.off()
-
-############
-Mm.infection <- unique(unname(unlist(Mm.1st.pass.model[[3]][c("N3vs0", "N5vs0", "N7vs0")])))
-
-
-Mm.infection.LC.difference <-
-    venn.diagram(c(Mm.1st.pass.model[[3]][c("N5vsN7", "N3vsN7")],
-                   upon.infection=list(Mm.infection)),
-                 filename=NULL)
-
-devSVG("Supplement/SI_vennMm_EfCycle.svg")
-grid.draw(Mm.infection.LC.difference)
 dev.off()
 
 ########## EIMERIA ##################
@@ -244,37 +229,5 @@ Ef.infection.LCInteral.difference <-
 
 devSVG("figures/Figure3a_vennEfCycleInternal.svg")
 grid.draw(Ef.infection.LCInteral.difference)
-dev.off()
-
-Ef.early.late <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsN7", "N5vsN7")])))
-Ef.early.spo <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsSpo", "N5vsSpo")])))
-Ef.early.Ooc <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsOoc", "N5vsOo")])))
-
-Ef.infection.LCFull.difference <-
-    venn.diagram(c(Ef.1st.pass.model[[3]][c("N7vsSp", "N7vsOo", "SpvsOo")],
-                   #early.late=list(Ef.early.late),
-                   early.spo=list(Ef.early.spo),
-                   early.Ooc=list(Ef.early.Ooc)), 
-                 filename=NULL)
-
-devSVG("Supplement/SI_vennEfCycleFull.svg")
-grid.draw(Ef.infection.LCFull.difference)
-dev.off()
-
-########## extracellular stages (separate) versus intracellular stages
-
-##### check code - is it pltting what I want? ######## ########## ########### ###########
-
-Ef.intracellular <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsN5", "N3vsN7", "N5vsN7")])))
-Ef.spo.intra <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsSpo", "N5vsSpo", "N7vsSpo")])))
-Ef.oocy.intra <- unique(unname(unlist(Ef.1st.pass.model[[3]][c("N3vsOo", "N5vsOo", "N7vsOo")])))
-
-Ef.intra.vs.extracellular <- venn.diagram(c(Ef.1st.pass.model[[3]]["SpvsOo"],
-                              IntracellularDifferences = list(Ef.intracellular),
-                              SporozoitesVSIntracellular = list(Ef.spo.intra),
-                              OocystsVSIntracellular = list(Ef.oocy.intra)),
-                            filename = NULL)
-devSVG("Supplement/SI_FigEf_IntracellularVSExtracellular.svg")
-grid.draw(Ef.intra.vs.extracellular)
 dev.off()
 

@@ -324,11 +324,6 @@ get.ortholog.RC <- function(){
 RC.ortho <- get.ortholog.RC()
 RC.ortho[is.na(RC.ortho)] <- 0
 
-pdf("Supplement/RC_correlation_Efal_Ete_Tgo_MESSED.pdf", heigh=15, width=15, onefile=FALSE)
-pheatmap(cor(RC.ortho[,4:ncol(RC.ortho)], method="spearman"),
-         display_numbers=TRUE, scale="none")
-dev.off()
-
 ###
 mean.columns <- function(x){
   reps <- as.factor(gsub("_rep\\d", "", names(x)))
@@ -347,19 +342,8 @@ RC.ortho.oneONE <- RC.ortho[!RC.ortho$Efa%in%non.one.to.one, ]
 
 RC.ortho.mean.oneONE <- RC.ortho.mean[!RC.ortho.mean$Efa%in%non.one.to.one, ]
 
-pdf("Supplement/RC_correlation_Efal_Ete_Tgo_ONEONE.pdf", heigh=15, width=15, onefile=FALSE)
-pheatmap(cor(RC.ortho.oneONE[,4:ncol(RC.ortho.oneONE)], method="spearman"),
-         display_numbers=TRUE, scale="none")
-dev.off()
 
-
-
-pdf("Supplement/RC_mean_correlation_Efal_Ete_Tgo_MESSED.pdf", width=10, height=10, onefile=FALSE)
-pheatmap(cor(RC.ortho.mean[,4:ncol(RC.ortho.mean)], method="spearman"),
-         display_numbers=TRUE, scale="none")
-dev.off()
-
-pdf("figures/Figure4a_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.pdf", width=10, height=10, onefile=FALSE)
+pdf("figures/Figure4_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.pdf", width=10, height=10, onefile=FALSE)
 pheatmap(cor(RC.ortho.mean.oneONE[,4:ncol(RC.ortho.mean.oneONE)], method="spearman"),
          display_numbers=TRUE, scale="none")
 dev.off()
