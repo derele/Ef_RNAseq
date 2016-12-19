@@ -1,6 +1,7 @@
 library(ggplot2)
 library(pheatmap)
 library(doParallel) # more flexible than the library parallel
+library(RSvgDevice)
 
 ## raw count data
 Mm.nRC <- read.table("output_data/Mm_norm_counts.csv", sep=",")
@@ -67,7 +68,6 @@ both.col <- intersect(colnames(Mm.nRC), colnames(Ef.nRC))
 load("/SAN/Eimeria_Totta/RnB_1478263654.Rdata")
 load("/SAN/Eimeria_Totta/RnB_Prod_1478263755.Rdata")
 
-
 is.zero <- (RnB.final==0)
 
 is.zero.all.cols <- apply(is.zero, 2, any)
@@ -76,120 +76,52 @@ Ef.genes.ineracting <- colnames(RnB)[is.zero.all.cols] ## TYPO interacting/inera
 is.zero.all.rows <- apply(is.zero, 1, any)
 Mm.genes.ineracting <- rownames(RnB)[is.zero.all.rows]
 
-## nRC <- rbind(Mm.nRC[, both.col], Ef.nRC[, both.col])
+## the interaction network for later
+inter.net <- is.zero[is.zero.all.rows, is.zero.all.cols]
 
-## get.scaled.and.clustered <- function(data){
-##     rMeans <- rowMeans(data)
-##     rSD <- apply(data, 1, sd)
-##     scaled.data <- scale(t(data), rMeans, rSD)
-##     ## NAs for whenever there is no variance/sd need to be removed
-##     scaled.data <- scaled.data [, apply(scaled.data, 2, function(x) all(!is.na(x) ))]
-##     hclustered <- hclust(as.dist(t(1-abs(cor(scaled.data, method="spearman")))))
-##     return(hclustered)
-## }
-
-## nRC.clusters <- get.scaled.and.clustered(nRC)
-
-## nRC.cuttree <- as.data.frame(cutree(nRC.clusters, k=1000))
-## names(nRC.cuttree) <- "cluster"
-## nRC.cuttree$cluster <- paste("CL", nRC.cuttree$cluster, sep="_")
-
-## nRC.cuttree$species <- ifelse(grepl("^ENSMUS", rownames(nRC.cuttree)), "Mm", "Ef")
-
-## spec.no <- tapply(nRC.cuttree$species, nRC.cuttree$cluster, function(x) {
-##     cbind(Mm=length(x[x%in%"Mm"]),
-##           Ef=length(x[x%in%"Ef"]))
-## })
-
-
-## sp.per.cluster <- as.data.frame(do.call(rbind, spec.no))
-## sp.per.cluster$cluster <- paste("CL", 1:nrow(boo), sep="_")
-
-## ggplot(sp.per.cluster, aes(Mm, Ef)) + geom_jitter() #+ scale_x_log10() + scale_y_log10()
-
-## ## arbitrary thresholds for coexpression
-## sp.per.cluster.co <- sp.per.cluster[sp.per.cluster$Mm>5&sp.per.cluster$Ef>3,]
-
-## nRC.cuttree.co <- nRC.cuttree[nRC.cuttree$cluster%in%sp.per.cluster.co$cluster, ]
-
-## nRC.co <- nRC[rownames(nRC)%in%rownames(nRC.cuttree.co), ]
-
-## pheatmap(nRC.co, scale="row",
-##          annotation_row = nRC.cuttree.co,
-##          cutree_rows = 7, 
-##          show_rownames = F
-##          )
-
-######## producing visual output
-## make df:s with Ef and Mm data
 interactions.per.Ef.gene <- data.frame(apply(is.zero, 2, sum))
+names(interactions.per.Ef.gene) <- "num.interactions"
+interactions.per.Ef.gene$from.to <- "Ef.to.Mm"
+
 interactions.per.Mm.gene <- data.frame(apply(is.zero, 1, sum))
+names(interactions.per.Mm.gene) <- "num.interactions"
+interactions.per.Mm.gene$from.to <- "Mm.to.Ef"
 
-interactions.per.Ef.gene <- tibble::rownames_to_column(interactions.per.Ef.gene, "gene")
-interactions.per.Mm.gene <- tibble::rownames_to_column(interactions.per.Mm.gene, "gene")
+interactions.per.gene <- rbind(interactions.per.Ef.gene,
+                               interactions.per.Mm.gene)
 
-colnames(interactions.per.Ef.gene)[2] <- "Count per gene" # otherwise problems with zero.replacement in next step
-colnames(interactions.per.Mm.gene)[2] <- "Count per gene"
-
-## replace zero with NA for easier exclusion from histogram
-interactions.per.Ef.gene[interactions.per.Ef.gene == 0] <- NA
-interactions.per.Mm.gene[interactions.per.Mm.gene == 0] <- NA
-
-
-## Data prep for plotting
-## efalci
-df.ef <- na.omit(interactions.per.Ef.gene)
-df.ef <- df.ef[with(df.ef, order(df.ef$`Count per gene`)), ]
-df.ef$rownums <- nrow(df.ef):1
-
-## mouse
-df.mm <- na.omit(interactions.per.Mm.gene)
-df.mm <- df.mm[with(df.mm, order(df.mm$`Count per gene`)), ]
-df.mm$rownums <- nrow(df.mm):1
 
 ## plot mouse and parasite densities together
-ef.plot <- ggplot(df.ef, aes(x=df.ef$rownums, y=df.ef$`Count per gene`)) +
-  geom_bar(stat = "identity", size = 1, colour= "#e19e2e") +
-  theme_bw(20) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.x = element_blank()) +
-  ylab("Count per gene") +
-  scale_x_discrete("Genes") +
-  ggtitle("Interactions per parasite gene")
-ggsave(file = "Supplement/SI_Ef.interaction.distribution.svg", 
-       height = 10, width = 12, plot = ef.plot)
+devSVG(file = "figures/Figure5a_dis.svg", height = 5, width = 6)
+ggplot(interactions.per.gene, aes(x=num.interactions, y=..count..,
+                                  color=from.to))+
+    geom_freqpoly(stat="bin", binwidth=1)+
+    scale_y_sqrt("Times reported", breaks=seq(0, 100, by=10)^2)+
+    scale_x_sqrt("Number of interactions", breaks=seq(0, 35, by=5)^2) +
+    ggtitle("Interactions per gene") +
+    theme_bw()
+dev.off()
 
-mm.plot <- ggplot(df.mm, aes(x=df.mm$rownums, y=df.mm$`Count per gene`)) +
-  geom_bar(stat="identity", size = 1, colour="dark green") +
-  theme_bw(20) +
-  theme(panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank(),
-        axis.text.x = element_blank()) +
-  ylab("Count per gene") +
-  scale_x_discrete("Genes") +
-  ggtitle("Interactions per mouse gene")
-ggsave(file = "Supplement/SI_Mm.interaction.distribution.svg", 
-       height = 10, width = 12, plot = mm.plot)
-#dev.off()
 
-### Take out all interacting genes AND how many interactions they have
-## Eimeria and mouse
-interacting.genes.Ef <- subset(interactions.per.Ef.gene, !is.na(interactions.per.Ef.gene$`Count per gene`))
-interacting.genes.Mm <- subset(interactions.per.Mm.gene, !is.na(interactions.per.Mm.gene$`Count per gene`))
+library(ggnet)
+library(sna)
+library(intergraph)
 
-head(sort(interacting.genes.Ef[,2], decreasing = TRUE), n = 850)
 
-## or access specific numer of interactions by: df.ef[max(df.ef[,3]),]
-## in this case the highest number
+net <- network(inter.net, directed = FALSE,
+               matrix.type = "bipartite")
 
-########################## Network visualization attempt ####################################
-library(graph)
-library(Rgraphviz)
-edges <- list(a=list(edges=2:3),
-              b=list(edges=2:3),
-              c=list(edges=c(2,4)),
-              d=list(edges=1))
-g <- new("graphNEL", nodes=letters[1:4], edgeL=edges,
-         edgemode="directed")
-plot(g)
+col <- c("actor" = "red", "event" = "blue")
+
+pdf("figures/test.pdf")
+ggnet2(net, color = "mode", palette = col, size=0.5,
+       edge.alpha = 0.5, edge.width = 0.5)
+dev.off()
+
+
+rownames(hcluster[["Ef"]])
+
+pdf("figures/test.pdf")
+ggnet2(net, color = "mode", palette = col, size=0.5,
+       edge.alpha = 0.5, edge.width = 0.5)
+dev.off()

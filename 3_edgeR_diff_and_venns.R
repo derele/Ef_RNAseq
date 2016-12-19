@@ -4,7 +4,6 @@ library(RSvgDevice)
 library(statmod)
 library(edgeR)
 library(GGally)
-library(RUVSeq)
 library(reshape)
 library(plyr)
 library(gridExtra)
@@ -183,33 +182,6 @@ Ef.1st.pass.model <- get.my.models(Ef.RC, cutoff=10,
                                    norm="upperquartile")
 
 
-get.RUVed.data <- function(RC, cutoff, group){
-    ## use the expression set and the filtering decided on before
-    keep <- rowSums(RC)>cutoff
-    RUVset <- newSeqExpressionSet(RC[keep,])
-    RUVset <- betweenLaneNormalization(RUVset, which="upper")
-    RUVs(RUVset, rownames(RUVset), k=1, makeGroups(group))
-}
-
-Mm.RUVset.groups <- get.RUVed.data(Mm.RC, cutoff = 3000,
-                                   Mm.pData$grouped)
-
-Ef.RUVset.groups <- get.RUVed.data(Ef.RC, cutoff = 100,
-                                   Ef.pData$grouped)
-
-Mm.RUVg.model <- get.my.models(normCounts(Mm.RUVset.groups),
-                               cutoff=1000, ## no further cut off
-                               group = Mm.pData$grouped,
-                               contrasts=Mm.contrasts,
-                               design=Mm.design, norm=NULL)
-
-Ef.RUVg.model <- get.my.models(normCounts(Ef.RUVset.groups),
-                               cutoff=100, ## no further cut off
-                               group = Ef.pData$grouped,
-                               contrasts=Ef.contrasts,
-                               design=Ef.design, norm=NULL)
-
-
 Mm.DE.test <- do.call(rbind, Mm.1st.pass.model[[2]])
 Mm.DE.test$contrast <- gsub("(.*)\\.(ENSMUS.*?)$", "\\1", rownames(Mm.DE.test))
 Mm.DE.test$gene <- gsub("(.*)\\.(ENSMUS.*?)$", "\\2", rownames(Mm.DE.test))
@@ -230,11 +202,9 @@ write.table(cpm(Ef.1st.pass.model[[4]]), "output_data/Ef_norm_counts.csv", sep="
 
 
 ## how many genes are regulated:
-cbind(melt(lapply(Mm.1st.pass.model[[3]], length)),
-      melt(lapply(Mm.RUVg.model[[3]], length)))[,c(1,3,4)]
+melt(lapply(Mm.1st.pass.model[[3]], length))
 
-cbind(melt(lapply(Ef.1st.pass.model[[3]], length)),
-      melt(lapply(Ef.RUVg.model[[3]], length)), by = "L1")[,c(1,3,4)]
+melt(lapply(Ef.1st.pass.model[[3]], length))
 
 ## test for consistency with suppl file data:
 by(Mm.DE.test, Mm.DE.test$contrast, function (x) table(x$FDR<0.01))
