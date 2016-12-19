@@ -18,13 +18,12 @@ phen.data <- read.csv("data/Oocysts_output_weight_SS_longdata.csv")
 phen.data <- phen.data[!duplicated(phen.data[, c("Day_pi", "Mouse_ID", "Infection_No")]), ]
 
 
-## overall output for statistical tests
-## reduce to 10dpi to have all strains up to the same day
-phen.data[phen]
+## overall oocyst output (sum) to be compared with statistical tests
 
 oocyst.sums <- ddply(phen.data, c("Mouse_strain", "Mouse_ID", "Infection_No"), summarize,
                      N    =  sum(!is.na(Oocysts_feces)),
-                     Csum    =  sum(Oocysts_feces))
+                     Csum    =  sum(Oocysts_feces),
+                     mean = mean(Oocysts_feces))
 
 wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
                              oocyst.sums$Infection_No%in%"1"],
@@ -42,6 +41,13 @@ wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
 wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
                              oocyst.sums$Infection_No%in%"1"],
             oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"2"]
+            )    
+## significant !!!
+
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"NMRI"&
+                             oocyst.sums$Infection_No%in%"1"],
+            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"NMRI"&
                              oocyst.sums$Infection_No%in%"2"]
             )    
 ## significant !!!
