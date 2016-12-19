@@ -106,26 +106,29 @@ gene.table.topGO <- function(TOGO.list, pval=0.01){
 }
 
 ## Subset BPMF.ll by e.g. BPMF.ll$clusterxx1$BP (another $Term will give only annotated terms)
-BPMF.ll <- lapply(to.test, function (x){
-          set = x[[1]]
-          type = x[[2]]
-          species = x[[3]]
-          g2G = gene2GO[[species]] # gene2GO object created in 3_annotations script
-          ## creates first part of filename for each cluster
-          file.path=("Supplement/tex/cluster")
-          BPMF.l <- lapply(c("MF", "BP"), function (onto){
-              res <- TOGO.all.onto(onto, exp.universe[[species]],
-                                   set, g2G)
-              file.detail= paste(onto, "_",
-                                 species, "_", type, ".tex", sep="")
-              capture.output(print(xtable(gene.table.topGO(res)),
-                                   include.rownames=FALSE,
-                                   file=paste(file.path, file.detail, sep="")))
-              return(gene.table.topGO(res))
-          })
-          names(BPMF.l) <- c("MF", "BP")
-          return(type=BPMF.l)
-})
+
+test.GO.control.list <- function (x){
+    set = x[[1]]
+    type = x[[2]]
+    species = x[[3]]
+    g2G = gene2GO[[species]] # gene2GO object created in 3_annotations script
+    ## creates first part of filename for each cluster
+    file.path=("Supplement/tex/cluster")
+    BPMF.l <- lapply(c("MF", "BP"), function (onto){
+        res <- TOGO.all.onto(onto, exp.universe[[species]],
+                             set, g2G)
+        file.detail= paste(onto, "_",
+                           species, "_", type, ".tex", sep="")
+        capture.output(print(xtable(gene.table.topGO(res)),
+                             include.rownames=FALSE,
+                             file=paste(file.path, file.detail, sep="")))
+        return(gene.table.topGO(res))
+    })
+    names(BPMF.l) <- c("MF", "BP")
+    return(type=BPMF.l)
+}
+
+BPMF.ll <- lapply(to.test, test.GO.control.list)
 
 names(BPMF.ll) <- unlist(lapply(to.test, "[[", 2))
 
@@ -289,3 +292,46 @@ SigClus$cluster <- 1:7
 SigClus$test <- rep(c("SigP", "SigP_euk", "TMHMM"), each=7)
 
 SigClus$adj.p <- p.adjust(SigClus$p.value, method="BH")
+
+
+## interaction clusters ... R&B 
+interA.p.Cluster <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
+    ft <- fisher.test(Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], x),
+                      Ef.tested.universe %in% Ef.genes.ineracting)
+    list(ft$estimate, ft$p.value)
+})
+
+cbind(do.call(rbind, interA.p.Cluster), Cluster=1:7)
+
+fisher.test(Ef.tested.universe %in% SigTMHMM,
+            Ef.tested.universe %in% Ef.genes.ineracting)
+
+fisher.test(Ef.tested.universe %in% SigP_euk,
+            Ef.tested.universe %in% Ef.genes.ineracting)
+
+fisher.test(Ef.tested.universe %in% SigP,
+            Ef.tested.universe %in% Ef.genes.ineracting)
+
+Clus.7dpi <- rownames(hcluster[["Ef"]])[hcluster[["Ef"]]$Cluster==2]
+
+Inter.DE <- Ef.genes.ineracting[Ef.genes.ineracting%in%Clus.7dpi]
+
+
+## underrepresentation of genes in interacting
+fisher.test(Ef.tested.universe %in% SigP,
+            Ef.tested.universe %in% Inter.DE)
+
+table(Ef.tested.universe %in% SigP,
+      Ef.tested.universe %in% Inter.DE)
+
+to.test.2 <- list(
+    ## Eimeria
+    list(set=Inter.DE,  
+         type = "Interacting7dpi", species = "Ef"),
+    list(set=Ef.genes.ineracting,  
+         type = "Interacting", species = "Ef")
+)
+
+BPMF.inter.ll <- lapply(to.test.2, test.GO.control.list)
+
+names(BPMF.inter.ll) <- unlist(lapply(to.test.2, "[[", 2))
