@@ -296,6 +296,19 @@ SigClus$test <- rep(c("SigP", "SigP_euk", "TMHMM"), each=7)
 SigClus$adj.p <- p.adjust(SigClus$p.value, method="BH")
 
 
+
+############### R&B
+## load the full products in RnB.final
+load("/SAN/Eimeria_Totta/RnB_Prod_1478263755.Rdata")
+
+is.zero <- (RnB.final==0)
+
+is.zero.all.cols <- apply(is.zero, 2, any)
+Ef.genes.interacting <- colnames(RnB.final)[is.zero.all.cols] 
+
+is.zero.all.rows <- apply(is.zero, 1, any)
+Mm.genes.interacting <- rownames(RnB.final)[is.zero.all.rows]
+
 ## interaction clusters ... R&B 
 Ef.interA.p.Cluster <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
     ft <- fisher.test(Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], x),

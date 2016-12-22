@@ -65,16 +65,19 @@ both.col <- intersect(colnames(Mm.nRC), colnames(Ef.nRC))
 
 ## save(RnB.final, file = prod.file.RnB)
 
-load("/SAN/Eimeria_Totta/RnB_1478263654.Rdata")
+## the raw values are not needed 
+## ## load("/SAN/Eimeria_Totta/RnB_1478263654.Rdata")
+
+## just load the products in RnB.final
 load("/SAN/Eimeria_Totta/RnB_Prod_1478263755.Rdata")
 
 is.zero <- (RnB.final==0)
 
 is.zero.all.cols <- apply(is.zero, 2, any)
-Ef.genes.interacting <- colnames(RnB)[is.zero.all.cols] 
+Ef.genes.interacting <- colnames(RnB.final)[is.zero.all.cols] 
 
 is.zero.all.rows <- apply(is.zero, 1, any)
-Mm.genes.interacting <- rownames(RnB)[is.zero.all.rows]
+Mm.genes.interacting <- rownames(RnB.final)[is.zero.all.rows]
 
 ## the interaction network for later
 inter.net <- is.zero[is.zero.all.rows, is.zero.all.cols]
@@ -120,8 +123,8 @@ flat <- rbind(flat.RnB, flat.DE.RnB)
 devSVG(file = "figures/Figure5a_distributionRnB.svg", height = 5, width = 6)
 ggplot(flat, aes(x=RnB, y=..count.., color=kind)) + 
     geom_density()+
-    scale_y_continuous("ISIGEM score")+
-    scale_x_continuous("Count of reports") +
+    scale_y_continuous("Count of reports")+
+    scale_x_continuous("ISIGEM score") +
     ggtitle("Distribution of ISIGEM scores") +
     theme_bw()
 dev.off()
@@ -133,8 +136,10 @@ ggplot(interactions.per.gene, aes(x=num.interactions, y=..count..,
                                   color=from.to))+
     geom_freqpoly(stat="bin", binwidth=1)+
     scale_y_sqrt("Times reported", breaks=seq(0, 100, by=10)^2)+
-    scale_x_sqrt("Number of interactions", breaks=seq(0, 35, by=5)^2) +
+    scale_x_sqrt("Number of interactions",
+                 breaks=seq(0, 35, by=5)^2, limits=(c(0, NA))) +
     ggtitle("Interactions per gene") +
+    scale_color_manual(values=c("#e19e2e", "#006400")) +
     theme_bw()
 dev.off()
 
@@ -143,13 +148,13 @@ library(ggnet)
 library(sna)
 library(intergraph)
 
-col <- c("actor" = "red", "event" = "blue")
+col <- c("actor" = "#006400", "event" = "#e19e2e")
 
 net <- network(inter.net, directed = FALSE,
                matrix.type = "bipartite")
 
-devSVG("figures/Figure5c_interactionNet.svg")
+pdf("figures/Figure5c_interactionNet.pdf")
 ggnet2(net, color = "mode", palette = col, size=0.5,
-       edge.alpha = 0.5, edge.width = 0.5)
+       edge.alpha = 0.2, edge.width = 0.3)
 dev.off()
 
