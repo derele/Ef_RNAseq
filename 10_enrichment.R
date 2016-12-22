@@ -355,7 +355,7 @@ Clust.Enrich <- rbind(Mm.interA.p.Cluster, Ef.interA.p.Cluster)
 table.clust.tex <- xtable(Clust.Enrich, digits=c(NA, 0, 2, 2, -2, NA, -2))
 
 print(table.clust.tex,
-      type = "html", file = "tables/Table_ISIGM_Cluster.html", include.rownames = F,
+      type = "html", file = "tables/Table4_ISIGM_Cluster.html", include.rownames = F,
       format.args = list(big.mark = ",", decimal.mark = "."))
 
 ## here the quantitative insight into this:
