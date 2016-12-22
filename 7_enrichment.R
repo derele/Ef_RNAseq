@@ -2,6 +2,7 @@ library(topGO)
 library(xtable)
 library(gridExtra) #  for color theme function
 library(grid)      # for color theme function
+library(reshape)
 
 annotation.frame <- read.table("output_data/annotation_data.csv", sep=",")
 
@@ -229,6 +230,7 @@ get.go.set.Mm <- function(GO, clus){
 }
 
 Ef.tested.universe <- unique(Ef.DE.test$gene)
+Mm.tested.universe <- unique(Mm.DE.test$gene)
 
 IPR <- read.delim("data/ipr_proteins.fa.tsv", header=FALSE,
                   as.is=TRUE)
@@ -295,40 +297,89 @@ SigClus$adj.p <- p.adjust(SigClus$p.value, method="BH")
 
 
 ## interaction clusters ... R&B 
-interA.p.Cluster <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
+Ef.interA.p.Cluster <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
     ft <- fisher.test(Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], x),
-                      Ef.tested.universe %in% Ef.genes.ineracting)
+                      Ef.tested.universe %in% Ef.genes.interacting)
     list(ft$estimate, ft$p.value)
 })
 
-cbind(do.call(rbind, interA.p.Cluster), Cluster=1:7)
+Ef.interA.p.Cluster <- data.frame(cbind(do.call(rbind, Ef.interA.p.Cluster),
+                                        Cluster=1:7))
+names(Ef.interA.p.Cluster) <- c("odds ratio", "p.value", "Cluster")
+Ef.interA.p.Cluster$FDR <- p.adjust(Ef.interA.p.Cluster$p.value, method="BH")
+
+## this table could be reported, but better just the two significant values
+Ef.interA.p.Cluster
+
+
+## interaction clusters ... R&B 
+Mm.interA.p.Cluster <- lapply(unique(hcluster[["Mm"]]$Cluster), function(x){
+    ft <- fisher.test(Mm.tested.universe %in% set.from.cluster(hcluster[["Mm"]], x),
+                      Mm.tested.universe %in% Mm.genes.interacting)
+    list(ft$estimate, ft$p.value)
+})
+
+Mm.interA.p.Cluster <- data.frame(cbind(do.call(rbind, Mm.interA.p.Cluster), Cluster=1:7))
+names(Mm.interA.p.Cluster) <- c("odds ratio", "p.value", "Cluster")
+Mm.interA.p.Cluster$FDR <- p.adjust(Mm.interA.p.Cluster$p.value, method="BH")
+
+## this table could be reported, but better just the tow significant values
+Mm.interA.p.Cluster
+
+
+## here the quantitative insight into this:
+RnB.cluster.scores <-
+    lapply(unique(hcluster[["Mm"]]$Cluster), function(x){
+        lapply(unique(hcluster[["Ef"]]$Cluster), function(y){
+            Clus.set.Ef <- set.from.cluster(hcluster[["Ef"]], y)
+            Clus.set.Mm <- set.from.cluster(hcluster[["Mm"]], x)
+            RnB.clus <- RnB.final[Clus.set.Mm, Clus.set.Ef]
+            as.vector(RnB.clus)
+        })
+    })
+
+isigem.cluster.in.cluster <- melt(RnB.cluster.scores)
+names(isigem.cluster.in.cluster) <- c("ISIGEM.Score", "EfExpCluster", "MmExpCluster")
+isigem.cluster.in.cluster$EfExpCluster <-
+    as.factor(paste0("EfCluster",
+                     isigem.cluster.in.cluster$EfExpCluster))
+isigem.cluster.in.cluster$MmExpCluster <-
+    as.factor(paste0("MmCluster",
+                     isigem.cluster.in.cluster$MmExpCluster))
+
+## plotting the quantitative view on ISIGM scores
+devSVG("figures/Figure5d_IsigemClusterInCluster.svg")
+ggplot(isigem.cluster.in.cluster, aes(ISIGEM.Score, ..count.., colour=MmExpCluster)) +
+    geom_density() +
+    facet_wrap(~EfExpCluster) +
+    theme_bw()
+dev.off()
 
 fisher.test(Ef.tested.universe %in% SigTMHMM,
-            Ef.tested.universe %in% Ef.genes.ineracting)
+            Ef.tested.universe %in% Ef.genes.interacting)
 
 fisher.test(Ef.tested.universe %in% SigP_euk,
-            Ef.tested.universe %in% Ef.genes.ineracting)
+            Ef.tested.universe %in% Ef.genes.interacting)
 
 fisher.test(Ef.tested.universe %in% SigP,
-            Ef.tested.universe %in% Ef.genes.ineracting)
+            Ef.tested.universe %in% Ef.genes.interacting)
+## all NS
+
 
 Clus.7dpi <- rownames(hcluster[["Ef"]])[hcluster[["Ef"]]$Cluster==2]
 
-Inter.DE <- Ef.genes.ineracting[Ef.genes.ineracting%in%Clus.7dpi]
+Inter.DE <- Ef.genes.interacting[Ef.genes.interacting%in%Clus.7dpi]
 
 
 ## underrepresentation of genes in interacting
 fisher.test(Ef.tested.universe %in% SigP,
             Ef.tested.universe %in% Inter.DE)
 
-table(Ef.tested.universe %in% SigP,
-      Ef.tested.universe %in% Inter.DE)
-
 to.test.2 <- list(
     ## Eimeria
     list(set=Inter.DE,  
          type = "Interacting7dpi", species = "Ef"),
-    list(set=Ef.genes.ineracting,  
+    list(set=Ef.genes.interacting,  
          type = "Interacting", species = "Ef")
 )
 

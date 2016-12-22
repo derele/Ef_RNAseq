@@ -71,10 +71,10 @@ load("/SAN/Eimeria_Totta/RnB_Prod_1478263755.Rdata")
 is.zero <- (RnB.final==0)
 
 is.zero.all.cols <- apply(is.zero, 2, any)
-Ef.genes.ineracting <- colnames(RnB)[is.zero.all.cols] ## TYPO interacting/ineracting
+Ef.genes.interacting <- colnames(RnB)[is.zero.all.cols] 
 
 is.zero.all.rows <- apply(is.zero, 1, any)
-Mm.genes.ineracting <- rownames(RnB)[is.zero.all.rows]
+Mm.genes.interacting <- rownames(RnB)[is.zero.all.rows]
 
 ## the interaction network for later
 inter.net <- is.zero[is.zero.all.rows, is.zero.all.cols]
@@ -90,9 +90,45 @@ interactions.per.Mm.gene$from.to <- "Mm.to.Ef"
 interactions.per.gene <- rbind(interactions.per.Ef.gene,
                                interactions.per.Mm.gene)
 
+## the clusters to compare 
+hcluster <- list()
+hcluster[["Mm"]] <- read.table("output_data/Mm_hclustered_cycle.csv", sep=",",
+                               header=TRUE)
+hcluster[["Ef"]] <- read.table("output_data/Ef_hclustered_cycle.csv", sep=",",
+                               header=TRUE)
 
-## plot mouse and parasite densities together
-devSVG(file = "figures/Figure5a_dis.svg", height = 5, width = 6)
+
+set.seed(242)
+values.RnB <- as.vector(RnB.final)
+flat.RnB <- sample(values.RnB, 100000)
+
+flat.RnB <- as.data.frame(flat.RnB)
+names(flat.RnB) <- "RnB"
+flat.RnB$kind <- "overall"
+
+values.DE.RnB <- as.vector(RnB.final[rownames(hcluster[["Mm"]]),
+                                     rownames(hcluster[["Ef"]])])
+flat.DE.RnB <- sample(values.DE.RnB, 100000)
+
+flat.DE.RnB <- as.data.frame(flat.DE.RnB)
+names(flat.DE.RnB) <- "RnB"
+flat.DE.RnB$kind <- "DE mRNAs"
+
+flat <- rbind(flat.RnB, flat.DE.RnB)
+
+
+devSVG(file = "figures/Figure5a_distributionRnB.svg", height = 5, width = 6)
+ggplot(flat, aes(x=RnB, y=..count.., color=kind)) + 
+    geom_density()+
+    scale_y_continuous("ISIGEM score")+
+    scale_x_continuous("Count of reports") +
+    ggtitle("Distribution of ISIGEM scores") +
+    theme_bw()
+dev.off()
+
+
+## plot mouse and parasite of howe often zero is observed together
+devSVG(file = "figures/Figure5b_zeroDist.svg", height = 5, width = 6)
 ggplot(interactions.per.gene, aes(x=num.interactions, y=..count..,
                                   color=from.to))+
     geom_freqpoly(stat="bin", binwidth=1)+
@@ -107,21 +143,13 @@ library(ggnet)
 library(sna)
 library(intergraph)
 
+col <- c("actor" = "red", "event" = "blue")
 
 net <- network(inter.net, directed = FALSE,
                matrix.type = "bipartite")
 
-col <- c("actor" = "red", "event" = "blue")
-
-pdf("figures/test.pdf")
+devSVG("figures/Figure5c_interactionNet.svg")
 ggnet2(net, color = "mode", palette = col, size=0.5,
        edge.alpha = 0.5, edge.width = 0.5)
 dev.off()
 
-
-rownames(hcluster[["Ef"]])
-
-pdf("figures/test.pdf")
-ggnet2(net, color = "mode", palette = col, size=0.5,
-       edge.alpha = 0.5, edge.width = 0.5)
-dev.off()
