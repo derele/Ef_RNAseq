@@ -311,34 +311,52 @@ Mm.genes.interacting <- rownames(RnB.final)[is.zero.all.rows]
 
 ## interaction clusters ... R&B 
 Ef.interA.p.Cluster <- lapply(unique(hcluster[["Ef"]]$Cluster), function(x){
+    cluster.set <- set.from.cluster(hcluster[["Ef"]], x)
+    n.cluster <- length(cluster.set)
+    N.genes.interacting <- length(cluster.set[cluster.set %in% Ef.genes.interacting])
+    perc.genes.interacting <- (N.genes.interacting/n.cluster)*100
     ft <- fisher.test(Ef.tested.universe %in% set.from.cluster(hcluster[["Ef"]], x),
                       Ef.tested.universe %in% Ef.genes.interacting)
-    list(ft$estimate, ft$p.value)
+    list(length(cluster.set), perc.genes.interacting, ft$estimate, ft$p.value)
 })
 
 Ef.interA.p.Cluster <- data.frame(cbind(do.call(rbind, Ef.interA.p.Cluster),
-                                        Cluster=1:7))
-names(Ef.interA.p.Cluster) <- c("odds ratio", "p.value", "Cluster")
+                                        Cluster=paste("E.falciformis", 1:7)))
+                                  
+names(Ef.interA.p.Cluster) <- c("N cluster", "% interacting",
+                                "odds ratio", "p.value", "Cluster")
 Ef.interA.p.Cluster$FDR <- p.adjust(Ef.interA.p.Cluster$p.value, method="BH")
 
-## this table could be reported, but better just the two significant values
+## this table could be reported, but better just the tow significant values
 Ef.interA.p.Cluster
 
-
-## interaction clusters ... R&B 
 Mm.interA.p.Cluster <- lapply(unique(hcluster[["Mm"]]$Cluster), function(x){
+    cluster.set <- set.from.cluster(hcluster[["Mm"]], x)
+    n.cluster <- length(cluster.set)
+    N.genes.interacting <- length(cluster.set[cluster.set %in% Mm.genes.interacting])
+    perc.genes.interacting <- (N.genes.interacting/n.cluster)*100
     ft <- fisher.test(Mm.tested.universe %in% set.from.cluster(hcluster[["Mm"]], x),
                       Mm.tested.universe %in% Mm.genes.interacting)
-    list(ft$estimate, ft$p.value)
+    list(length(cluster.set), perc.genes.interacting, ft$estimate, ft$p.value)
 })
 
-Mm.interA.p.Cluster <- data.frame(cbind(do.call(rbind, Mm.interA.p.Cluster), Cluster=1:7))
-names(Mm.interA.p.Cluster) <- c("odds ratio", "p.value", "Cluster")
+Mm.interA.p.Cluster <- data.frame(cbind(do.call(rbind, Mm.interA.p.Cluster),
+                                        Cluster=paste("Mouse", 1:7)))
+                                  
+names(Mm.interA.p.Cluster) <- c("N cluster", "% interacting",
+                                "odds ratio", "p.value", "Cluster")
 Mm.interA.p.Cluster$FDR <- p.adjust(Mm.interA.p.Cluster$p.value, method="BH")
 
 ## this table could be reported, but better just the tow significant values
 Mm.interA.p.Cluster
 
+Clust.Enrich <- rbind(Mm.interA.p.Cluster, Ef.interA.p.Cluster)
+
+table.clust.tex <- xtable(Clust.Enrich, digits=c(NA, 0, 2, 2, -2, NA, -2))
+
+print(table.clust.tex,
+      type = "html", file = "tables/Table_ISIGM_Cluster.html", include.rownames = F,
+      format.args = list(big.mark = ",", decimal.mark = "."))
 
 ## here the quantitative insight into this:
 RnB.cluster.scores <-
