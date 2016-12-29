@@ -4,6 +4,7 @@ library(reshape)
 library(ggplot2)
 library(gridExtra)
 library(RSvgDevice)
+library(xtable)
 
 Ef.nRC <- read.table("output_data/Ef_norm_counts.csv", sep=",", header=TRUE)
 Ef.nRC <- matrix(unlist(Ef.nRC), nrow=nrow(Ef.nRC), ncol=ncol(Ef.nRC),
@@ -141,6 +142,14 @@ write.table(gene.cluster.category, "output_data/gene_family_category.csv", sep="
 
 
 ## testing for overrepresentation in conservating grouping
+hcluster <- list()
+hcluster[["Mm"]] <- read.table("output_data/Mm_hclustered_cycle.csv", sep=",",
+                               header=TRUE)
+hcluster[["Ef"]] <- read.table("output_data/Ef_hclustered_cycle.csv", sep=",",
+                               header=TRUE)
+###
+
+
 lots.of.f <- lapply(unique(gene.cluster.category$grouping), function (cons.group){
     inner <-
         lapply(unique(hcluster[["Ef"]]$Cluster), function (hier.cluster){
@@ -253,7 +262,7 @@ names(Hehl.RC)[2:ncol(Hehl.RC)] <-
     paste("Hehl", names(Hehl.RC)[2:ncol(Hehl.RC)], sep=".")
 
 ID.toxo <- read.delim("data/ID_mapping_toxo.txt")
-Tg.prev <- strsplit(as.character(X.ID.toxo$Previous.ID.s..), ", ")
+Tg.prev <- strsplit(as.character(ID.toxo$X.Previous.ID.s..), ", ")
 Tg.prev <- lapply(Tg.prev, function (x) grep("^TGME49_\\d", x, value=TRUE))
 Tg.prev <- lapply(Tg.prev, "[", 1)
 Tg.prev <- unlist(Tg.prev)
@@ -285,7 +294,7 @@ RC.ortho <- get.ortholog.RC()
 
 ## A version with replicates not collapsed and also the non 1:1:1
 ## paralogs includedl.. MESSED
-pdf("Supplement/RC_correlation_Efal_Ete_Tgo_MESSED.pdf", heigh=15, width=15, onefile=FALSE)
+devSVG("Supplement/RC_correlation_Efal_Ete_Tgo_MESSED.svg", heigh=15, width=15, onefile=FALSE)
 pheatmap(cor(RC.ortho[,4:ncol(RC.ortho)], method="spearman"),
          display_numbers=TRUE, scale="none")
 dev.off()
@@ -308,7 +317,7 @@ RC.ortho.oneONE <- RC.ortho[!RC.ortho$Efa%in%non.one.to.one, ]
 RC.ortho.mean.oneONE <- RC.ortho.mean[!RC.ortho.mean$Efa%in%non.one.to.one, ]
 
 ## The figure
-pdf("figures/Figure4a_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.pdf", width=10, height=10, onefile=FALSE)
+devSVG("figures/Figure4a_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.svg", width=10, height=10, onefile=FALSE)
 pheatmap(cor(RC.ortho.mean.oneONE[,4:ncol(RC.ortho.mean.oneONE)], method="spearman"),
          display_numbers=TRUE, scale="none")
 dev.off()
