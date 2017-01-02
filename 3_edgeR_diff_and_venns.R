@@ -210,8 +210,30 @@ melt(lapply(Ef.1st.pass.model[[3]], length))
 by(Mm.DE.test, Mm.DE.test$contrast, function (x) table(x$FDR<0.01))
 by(Ef.DE.test, Ef.DE.test$contrast, function (x) table(x$FDR<0.01))
 
-## they are consistent 
+Mm.FDR0.01 <- by(Mm.DE.test, Mm.DE.test$contrast, function (x) nrow(x[x$FDR<0.01, ]))
+Mm.FDR0.01 <- cbind(Mm.FDR0.01)
 
+<<<<<<< HEAD
+=======
+Ef.FDR0.01 <- by(Ef.DE.test, Ef.DE.test$contrast, function (x) nrow(x[x$FDR<0.01, ]))
+Ef.FDR0.01 <- cbind(Ef.FDR0.01)
+
+test.FDR0.01 <- merge(Ef.FDR0.01, Mm.FDR0.01, by=0, all=TRUE)
+rownames(test.FDR0.01) <- test.FDR0.01$Row.names
+test.FDR0.01$Row.names <- NULL
+
+test.FDR0.01 <- test.FDR0.01[rowSums(test.FDR0.01, na.rm=TRUE)>10, ] 
+
+test.FDR0.01 <- test.FDR0.01[order(test.FDR0.01$Mm.FDR0.01, test.FDR0.01$Ef.FDR0.01,
+                               decreasing=TRUE), ]
+
+test.FDR.tabl <- xtable(test.FDR0.01, digits=c(NA, 0, 0))
+
+print(test.FDR.tabl,
+      type = "html", file = "tables/Table2_DE_tests.html", include.rownames = T,
+      format.args = list(big.mark = ",", decimal.mark = "."))
+
+>>>>>>> eae77d8ec6f7d15c795e0566f69add5338ec957a
 ########### MOUSE #################
 Mm.infection.difference <-
     venn.diagram(Mm.1st.pass.model[[3]][c("N3vs0", "N5vs0", "N7vs0")],

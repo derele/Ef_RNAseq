@@ -4,6 +4,7 @@ library(reshape)
 library(ggplot2)
 library(gridExtra)
 library(RSvgDevice)
+library(xtable)
 
 Ef.nRC <- read.table("output_data/Ef_norm_counts.csv", sep=",", header=TRUE)
 Ef.nRC <- matrix(unlist(Ef.nRC), nrow=nrow(Ef.nRC), ncol=ncol(Ef.nRC),
@@ -141,6 +142,14 @@ write.table(gene.cluster.category, "output_data/gene_family_category.csv", sep="
 
 
 ## testing for overrepresentation in conservating grouping
+hcluster <- list()
+hcluster[["Mm"]] <- read.table("output_data/Mm_hclustered_cycle.csv", sep=",",
+                               header=TRUE)
+hcluster[["Ef"]] <- read.table("output_data/Ef_hclustered_cycle.csv", sep=",",
+                               header=TRUE)
+###
+
+
 lots.of.f <- lapply(unique(gene.cluster.category$grouping), function (cons.group){
     inner <-
         lapply(unique(hcluster[["Ef"]]$Cluster), function (hier.cluster){
@@ -158,34 +167,25 @@ names(lots.of.f) <- unique(gene.cluster.category$grouping)
 
 lots.of.f <- melt(lots.of.f)
 lots.of.f <- reshape(lots.of.f, idvar = c("L2", "L1"), timevar="L3", direction="wide")
-lots.of.f$FDR <- round(p.adjust(lots.of.f$value.p.value, method="BH"), 4)
-lots.of.f[ lots.of.f[, "FDR"]<0.01, ]
+lots.of.f$FDR <- p.adjust(lots.of.f$value.p.value, method="BH")
 
 lots.signif <- lots.of.f[ lots.of.f[, "FDR"]<0.01, ]
-lots.signif$value.p.value <- NULL ## rm p-value column for figure
+names(lots.signif) <- c("Ef_Cluster", "conservation", "p-value", "odds.ratio", "FDR")
 
-## function to control colors in table below
-myt <- ttheme_default(
-  base_size = 18,
-  padding = unit(c(6, 6), "mm"),
-  # Use hjust and x to left justify the text
-  # Alternate the row fill colours
-  core = list(fg_params=list(col="dark green"), #, hjust = 1, x=1),
-              bg_params=list(fill=c("white", "light gray"))),
-  
-  # Change column header to white text and red background
-  colhead = list(fg_params=list(col="dark green"),
-                 bg_params=list(fill="gray"))
-)
+tabl.lots <-
+    xtable(lots.signif[, c("Ef_Cluster", "conservation",
+                           "odds.ratio", "p-value", "FDR")],
+           digits=c(NA, NA, NA, 2, -2, -2))
 
-#devSVG("~/Ef_RNAseq/tables/Table2_conservationClusters.svg")
-pdf("~/Ef_RNAseq/tables/Table2_conservationClusters.pdf", width = 12, height = 8)
-lots.signi.table <- grid.table(data.frame(lots.signif),
-           theme = myt,
-           rows = NULL,
-           cols = c("Cluster", "Conservation", "Ratio", "FDR"))
-dev.off()
-           
+print(tabl.lots,
+      type = "html", file = "tables/Table3_Conserv_Cluster.html", include.rownames = F,
+      format.args = list(big.mark = ",", decimal.mark = "."))
+
+
+
+#################################################
+## Ortholog expression analysis############
+#########################################
 
 ## new 2016: Get for every cluster the E. falciformis and E. tenella gene
 get.all.pairedE.orthos <- function (){
@@ -240,71 +240,40 @@ get.all.pairedT.orthos <- function (){
 
 all.orthologs <- merge(all.orthologs, get.all.pairedT.orthos(), all.x=TRUE)
 
-## read the Tenella data of Walker et al. 
-Walker.data <- read.csv("data/12864_2015_1298_MOESM3_ESM.csv", skip=1)
+## downloaded from ToxoDB v. 28
+## Walker data
+Walker.RC <- read.delim("data/Walker_profiles.min.pct")
+names(Walker.RC) <- c("Ete", "Walker.Gametocytes",
+                      "Walker.Merozoites", "Walker.Sporozoites")
+Walker.RC <- merge(Walker.RC, all.orthologs)
 
-names(Walker.data)[5:8] <- paste(names(Walker.data)[5:8], "GamVsMer", sep=".")
-names(Walker.data) <- gsub("\\.1", "\\.GamVsSpor", names(Walker.data))
 
-Walker.data <- Walker.data[, c("gene.ID", "gametocyte", "merozoite", "sporozoite")]
+## More from Reid et al via ToxoDB 28
+Reid.RC <- read.delim("data/Reid_profiles.min.pct")
+names(Reid.RC)[1] <- "Ete"
+names(Reid.RC)[2:ncol(Reid.RC)] <-
+    paste("Reid", names(Reid.RC)[2:ncol(Reid.RC)], sep=".")
+Reid.RC <- merge(Reid.RC, all.orthologs)
 
-Walker.data <- merge(all.orthologs, Walker.data, by.x="Ete", by.y="gene.ID")
 
-Walker.RC <- Walker.data[, c("Efa", "Ete", "Tgo", "gametocyte", "merozoite", "sporozoite")]
-names(Walker.RC) <-  c("Efa", "Ete", "Tgo", "Walker.Gam", "Walker.Mer", "Walker.Spo")
+Hehl.RC <- read.delim("data/Hehl_profiles.min.pct")
+names(Hehl.RC)[1] <- "Tgo_Now"
+names(Hehl.RC)[2:ncol(Hehl.RC)] <-
+    paste("Hehl", names(Hehl.RC)[2:ncol(Hehl.RC)], sep=".")
 
-## log2 transform to make it compatible with ToxoDB
-Walker.RC[,c("Walker.Gam", "Walker.Mer", "Walker.Spo")] <-
-    log2(Walker.RC[,c("Walker.Gam", "Walker.Mer", "Walker.Spo")])
+ID.toxo <- read.delim("data/ID_mapping_toxo.txt")
+Tg.prev <- strsplit(as.character(ID.toxo$X.Previous.ID.s..), ", ")
+Tg.prev <- lapply(Tg.prev, function (x) grep("^TGME49_\\d", x, value=TRUE))
+Tg.prev <- lapply(Tg.prev, "[", 1)
+Tg.prev <- unlist(Tg.prev)
+Tgo <- gsub("<br>", "", Tg.prev)
+Tg.link <- as.data.frame(cbind(as.character(ID.toxo$X.Gene.ID.), Tgo))
 
-Walker.RC[is.na(Walker.RC)] <- 0
+Hehl.RC <- merge(Hehl.RC, Tg.link, by.x = "Tgo_Now", by.y = "V1")
+Hehl.RC$Tgo_Now <- NULL
+Hehl.RC <- Hehl.RC[!is.na(Hehl.RC$Tgo),]
 
-## More from Reid et al via ToxoDB (tedious manual downloads)
-read.Reid.data <- function(){
-    OOvsMer <- read.delim("data/OO_vs_Mer.txt")
-    OOvsMer <- OOvsMer[, -ncol(OOvsMer)]
-    names(OOvsMer) <- c("Ete", "FC.OOvsMer", "Reid.Mer", "Reid.Ooc")
-    OOvsspOO <- read.delim("data/OO_vs_spOO.txt")
-    OOvsspOO <- OOvsspOO[, -ncol(OOvsspOO)]
-    names(OOvsspOO) <- c("Ete", "FC.OOvsspOO", "Reid.spOoc", "Reid.Ooc")
-    OOvsSp <- read.delim("data/OO_vs_SP.txt")
-    OOvsSp <- OOvsSp[, -ncol(OOvsSp)]
-    names(OOvsSp) <- c("Ete", "FC.OOvsSp", "Reid.Sp", "Reid.Ooc")
-    foo <- merge(OOvsMer, OOvsspOO, by="Ete")
-    bar <- merge(foo, OOvsSp, by="Ete")
-    bar <- bar[, !grepl("\\.x$|\\.y$", names(bar))]
-    return(bar)
-}
-
-Reid.data <- read.Reid.data()
-Reid.data <- merge(Reid.data, all.orthologs, by="Ete")
-
-Reid.RC <- Reid.data[, c("Efa", "Ete", "Tgo", "Reid.Mer","Reid.spOoc", "Reid.Sp", "Reid.Ooc")]
-
-## Data from Hehl lab on toxo in the cat
-read.Hehl.data <- function(){
-    Tg7vs3 <- read.delim("data/Tg7vs3.txt")
-    Tg7vs3 <- Tg7vs3[, -ncol(Tg7vs3)]
-    names(Tg7vs3) <- c("Tgo", "FC.Tg7vs3", "Hehl.Tg3", "Hehl.Tg7", "prev")
-    Tg7vsTach <- read.delim("data/Tg7vsTach.txt")
-    ## remove also the previous id column and the unnecessary product col
-    Tg7vsTach <- Tg7vsTach[, -c((ncol(Tg7vsTach)-2):ncol(Tg7vsTach))]
-    names(Tg7vsTach) <- c("Tgo", "FC.Tg7vsTach", "Hehl.TgTach", "Hehl.Tg7")
-    bar <- merge(Tg7vs3, Tg7vsTach, by="Tgo")
-    bar <- bar[, !grepl("\\.y$", names(bar))]
-    foo <- strsplit(as.character(bar$prev), ", ")
-    foobar <- lapply(foo, function (x) grep("^TGME49_", x, value=TRUE))
-    ### discard where we have multiple or no previous ids mathich our ids
-    bar <- bar[unlist(lapply(foobar, function (x) length(x)==1)), ]
-    foobar <- foobar[unlist(lapply(foobar, function (x) length(x)==1))]
-    bar$Tgo <- unlist(foobar)
-    return(bar[, !names(bar)%in%"prev"])
-}
-
-Hehl.data <- read.Hehl.data()
-Hehl.data <- merge(all.orthologs, Hehl.data, by="Tgo")
-
-Hehl.RC <- Hehl.data[, c("Efa", "Ete", "Tgo", "Hehl.Tg3", "Hehl.Tg7.x", "Hehl.TgTach")]
+Hehl.RC <- merge(Hehl.RC, all.orthologs)
 
 ## Work with normalized counts
 get.ortholog.RC <- function(){
@@ -313,17 +282,26 @@ get.ortholog.RC <- function(){
     Ef.counts <- as.data.frame(Ef.counts)
     Ef.counts$Efa <- rownames(Ef.counts)
     foo <- merge(Hehl.RC, Ef.counts)
-    bar <- merge(Reid.RC, Walker.RC)
-    bar <- unique(bar)
-    foobar <- merge(bar, foo)
-    foobar[, 3:ncol(foobar)] <- apply(foobar[, 3:ncol(foobar)], 2,
-                                      function (x) as.numeric(as.character(x)))
-    return(foobar)
+    foo <- merge(foo, Walker.RC)
+    foo <- merge(foo, Reid.RC)
+    bar <- unique(foo)
+    bar[, 3:ncol(bar)] <- apply(bar[, 3:ncol(bar)], 2,
+                                function (x) as.numeric(as.character(x)))
+    return(bar)
 }
 
 RC.ortho <- get.ortholog.RC()
-RC.ortho[is.na(RC.ortho)] <- 0
 
+<<<<<<< HEAD
+=======
+## A version with replicates not collapsed and also the non 1:1:1
+## paralogs includedl.. MESSED
+devSVG("Supplement/RC_correlation_Efal_Ete_Tgo_MESSED.svg", heigh=15, width=15, onefile=FALSE)
+pheatmap(cor(RC.ortho[,4:ncol(RC.ortho)], method="spearman"),
+         display_numbers=TRUE, scale="none")
+dev.off()
+
+>>>>>>> eae77d8ec6f7d15c795e0566f69add5338ec957a
 ###
 mean.columns <- function(x){
   reps <- as.factor(gsub("_rep\\d", "", names(x)))
@@ -335,17 +313,26 @@ RC.ortho.mean <- as.data.frame(cbind(RC.ortho[, 1:13],
                                      mean.columns(RC.ortho[, 14:ncol(RC.ortho)])))
 
 
-
 non.one.to.one <- RC.ortho.mean$Efa[duplicated(RC.ortho.mean$Efa)]
 
 RC.ortho.oneONE <- RC.ortho[!RC.ortho$Efa%in%non.one.to.one, ]
 
 RC.ortho.mean.oneONE <- RC.ortho.mean[!RC.ortho.mean$Efa%in%non.one.to.one, ]
 
+<<<<<<< HEAD
 
 pdf("figures/Figure4_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.pdf", width=10, height=10, onefile=FALSE)
+=======
+## The figure
+devSVG("figures/Figure4a_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.svg", width=10, height=10, onefile=FALSE)
+>>>>>>> eae77d8ec6f7d15c795e0566f69add5338ec957a
 pheatmap(cor(RC.ortho.mean.oneONE[,4:ncol(RC.ortho.mean.oneONE)], method="spearman"),
          display_numbers=TRUE, scale="none")
 dev.off()
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> eae77d8ec6f7d15c795e0566f69add5338ec957a
 
