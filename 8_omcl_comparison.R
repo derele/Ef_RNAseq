@@ -292,17 +292,7 @@ get.ortholog.RC <- function(){
 
 RC.ortho <- get.ortholog.RC()
 
-<<<<<<< HEAD
-=======
-## A version with replicates not collapsed and also the non 1:1:1
-## paralogs includedl.. MESSED
-devSVG("Supplement/RC_correlation_Efal_Ete_Tgo_MESSED.svg", heigh=15, width=15, onefile=FALSE)
-pheatmap(cor(RC.ortho[,4:ncol(RC.ortho)], method="spearman"),
-         display_numbers=TRUE, scale="none")
-dev.off()
 
->>>>>>> eae77d8ec6f7d15c795e0566f69add5338ec957a
-###
 mean.columns <- function(x){
   reps <- as.factor(gsub("_rep\\d", "", names(x)))
   y <- do.call(rbind, by(t(x), reps, colMeans))
@@ -319,20 +309,13 @@ RC.ortho.oneONE <- RC.ortho[!RC.ortho$Efa%in%non.one.to.one, ]
 
 RC.ortho.mean.oneONE <- RC.ortho.mean[!RC.ortho.mean$Efa%in%non.one.to.one, ]
 
-<<<<<<< HEAD
 
 pdf("figures/Figure4_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.pdf", width=10, height=10, onefile=FALSE)
-=======
+
 ## The figure
-devSVG("figures/Figure4a_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.svg", width=10, height=10, onefile=FALSE)
->>>>>>> eae77d8ec6f7d15c795e0566f69add5338ec957a
+#devSVG("figures/Figure4a_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.svg", width=10, height=10, onefile=FALSE)
 pheatmap(cor(RC.ortho.mean.oneONE[,4:ncol(RC.ortho.mean.oneONE)], method="spearman"),
          display_numbers=TRUE, scale="none")
 dev.off()
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> eae77d8ec6f7d15c795e0566f69add5338ec957a
 
