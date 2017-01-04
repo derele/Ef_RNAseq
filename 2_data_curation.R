@@ -132,26 +132,26 @@ r.c.s.l <-
 
 #####################################################
 density.plots <-
-    lapply(seq_along(r.c.s.l),
-           function(i){
-               ggplot(r.c.s.l[[i]],
-                      aes(value, ..density..)) + 
-                   stat_density(geom="line") +
-                   facet_wrap(~X2)+ 	# makes gray box on top of each plot
-		   scale_x_log10("Read counts (log10)",
+  lapply(seq_along(r.c.s.l),
+         function(i){
+             ggplot(r.c.s.l[[i]],
+                    aes(value, ..density..)) + 
+                 stat_density(geom="line") +
+                 facet_wrap(~X2)+ 	# makes gray box on top of each plot
+		  scale_x_log10("Read counts (log10)",
 			labels = scales::trans_format("log10",
-                                                      scales::math_format(10^.x))) +
-	   	   theme(axis.text = element_text(size = 16),
-			 axis.line = element_line(colour = "black", size=2),
-			 plot.title = element_text(size = 20),
-			 axis.title.x = element_text(size = 20),
-			 axis.title.y = element_text(size = 20),
-			 panel.background = element_blank(),
-			 panel.grid.major = element_blank(),
-			 panel.grid.minor = element_blank()) +
-                   ggtitle(paste("Cutoff =",
-                               names(r.c.s.l)[[i]]))
-           })
+			         scales::math_format(10^.x))) + 
+      theme(axis.text = element_text(size = 16),
+			  axis.line = element_line(colour = "black", size=2),
+			  plot.title = element_text(size = 20),
+			  axis.title.x = element_text(size = 20),
+			  axis.title.y = element_text(size = 20),
+			  panel.background = element_blank(),
+			  panel.grid.major = element_blank(),
+			  panel.grid.minor = element_blank()) +
+     ggtitle(paste("Cutoff =",
+                   names(r.c.s.l)[[i]]))
+         })
 
 pdf("Supplement/distributionsMm.pdf", width = 27, height = 21)
 do.call(grid.arrange, c(density.plots, list(nrow=2)))

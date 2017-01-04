@@ -383,7 +383,11 @@ devSVG("figures/Figure5d_IsigemClusterInCluster.svg")
 ggplot(isigem.cluster.in.cluster, aes(ISIGEM.Score, ..count.., colour=MmExpCluster)) +
     geom_density() +
     facet_wrap(~EfExpCluster) +
-    theme_bw()
+    theme_bw(20) +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          legend.title = element_blank(),
+          legend.position = c(0.65, 0.8))
 dev.off()
 
 fisher.test(Ef.tested.universe %in% SigTMHMM,

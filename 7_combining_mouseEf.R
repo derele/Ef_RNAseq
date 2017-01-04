@@ -103,11 +103,11 @@ hcluster[["Ef"]] <- read.table("output_data/Ef_hclustered_cycle.csv", sep=",",
 
 set.seed(242)
 values.RnB <- as.vector(RnB.final)
-flat.RnB <- sample(values.RnB, 100000)
+flat.RnB <- sample(values.RnB, 100000) # select a number of interactions to plot distribution
 
 flat.RnB <- as.data.frame(flat.RnB)
 names(flat.RnB) <- "RnB"
-flat.RnB$kind <- "overall"
+flat.RnB$kind <- "Overall"
 
 values.DE.RnB <- as.vector(RnB.final[rownames(hcluster[["Mm"]]),
                                      rownames(hcluster[["Ef"]])])
@@ -115,38 +115,50 @@ flat.DE.RnB <- sample(values.DE.RnB, 100000)
 
 flat.DE.RnB <- as.data.frame(flat.DE.RnB)
 names(flat.DE.RnB) <- "RnB"
-flat.DE.RnB$kind <- "DE mRNAs"
+flat.DE.RnB$kind <- "DA mRNAs"
 
 flat <- rbind(flat.RnB, flat.DE.RnB)
 
-
+## y = counts or density? 
 devSVG(file = "figures/Figure5a_distributionRnB.svg", height = 5, width = 6)
-ggplot(flat, aes(x=RnB, y=..count.., color=kind)) + 
-    geom_density()+
-    scale_y_continuous("Count of reports")+
+ggplot(flat, aes(x=RnB, y =..count.., color=kind)) + 
+    geom_density() +
+    geom_hline(color = "white", yintercept = 0) + # puts white line over ugly line parallel to x-axis
+    scale_y_continuous("Density") +
     scale_x_continuous("ISIGEM score") +
     ggtitle("Distribution of ISIGEM scores") +
-    theme_bw()
-dev.off()
+    scale_color_manual(values=c("#e19e2e", "#006400")) +
+    theme_bw(20) +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          legend.title = element_blank(),
+          legend.position = c(0.8, 0.8))
+    dev.off()
 
 
 ## plot mouse and parasite of howe often zero is observed together
 devSVG(file = "figures/Figure5b_zeroDist.svg", height = 5, width = 6)
 ggplot(interactions.per.gene, aes(x=num.interactions, y=..count..,
-                                  color=from.to))+
-    geom_freqpoly(stat="bin", binwidth=1)+
-    scale_y_sqrt("Times reported", breaks=seq(0, 100, by=10)^2)+
+                                  color=from.to)) +
+    geom_freqpoly(stat="bin", binwidth=1) +
+    scale_y_sqrt("Times reported", breaks=seq(0, 100, by=10)^2) +
     scale_x_sqrt("Number of interactions",
                  breaks=seq(0, 35, by=5)^2, limits=(c(0, NA))) +
     ggtitle("Interactions per gene") +
-    scale_color_manual(values=c("#e19e2e", "#006400")) +
-    theme_bw()
+    scale_color_manual(values=c("#e19e2e", "#006400"),
+                       breaks=c("Ef.to.Mm", "Mm.to.Ef"),
+                       labels=c("Parasite to mouse", "Mouse to parasite")) +
+    theme_bw(20) +
+    theme(panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+          legend.title = element_blank(),
+          legend.position = c(0.65, 0.8))
 dev.off()
 
 
-library(ggnet)
+library(ggnet) #install from github with  devtools::install_github("briatte/ggnet")
 library(sna)
-library(intergraph)
+library(intergraph) # install by devtools::install_github("mbojan/intergraph")
 
 col <- c("actor" = "#006400", "event" = "#e19e2e")
 
@@ -158,3 +170,4 @@ ggnet2(net, color = "mode", palette = col, size=0.5,
        edge.alpha = 0.2, edge.width = 0.3)
 dev.off()
 
+## Figure 5d produced....?
