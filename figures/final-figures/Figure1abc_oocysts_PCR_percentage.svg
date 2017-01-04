@@ -15,7 +15,7 @@
    id="svg2"
    version="1.1"
    inkscape:version="0.48.5 r10040"
-   sodipodi:docname="New document 1">
+   sodipodi:docname="Figure1abc_oocysts_PCR_percentage.svg">
   <defs
      id="defs4" />
   <sodipodi:namedview
@@ -26,7 +26,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.35"
-     inkscape:cx="838.5137"
+     inkscape:cx="844.22799"
      inkscape:cy="917.12036"
      inkscape:document-units="px"
      inkscape:current-layer="g3460"
@@ -45,7 +45,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -59,7 +59,7 @@
        inkscape:label="ink_ext_XXXXXX"
        id="g3364" />
     <g
-       transform="matrix(1.1961048,0,0,-1.1961048,98.656222,1046.7465)"
+       transform="matrix(1.1961048,0,0,-1.1961048,98.656222,1032.7465)"
        inkscape:label="ink_ext_XXXXXX"
        id="g3460">
       <g
@@ -76,7 +76,29 @@
              width="1" />
         </g>
       </g>
-    </g>
+      <rect
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:#319f31;stroke-width:1;stroke-miterlimit:4;stroke-opacity:0;stroke-dasharray:none"
+         id="rect3019"
+         width="62.857143"
+         height="908.57141"
+         x="94.285713"
+         y="879.37146"
+         transform="matrix(0.83604714,0,0,-0.83604714,-82.481252,1542.6294)" />
+      <flowRoot
+         xml:space="preserve"
+         id="flowRoot3009"
+         style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
+         transform="matrix(0,0.83604714,0.83604714,0,-937.2414,1093.3269)"><flowRegion
+           id="flowRegion3011"><rect
+             id="rect3013"
+             width="1105.7142"
+             height="60.000015"
+             x="-1305.7142"
+             y="1119.3715" /></flowRegion><flowPara
+           id="flowPara3015"
+           style="font-size:36px">Percentage of reads mapping to <flowSpan
+   style="font-size:36px;font-style:italic;-inkscape-font-specification:Sans Italic"
+   id="flowSpan3017">E. falciformis</flowSpan> genome</flowPara></flowRoot>    </g>
     <flowRoot
        xml:space="preserve"
        id="flowRoot3421"
@@ -96,7 +118,7 @@
      inkscape:label="Oocysts"
      transform="translate(0,350.7999)">
     <g
-       transform="matrix(1.8198911,0,0,-1.8198911,28.30486,523.03056)"
+       transform="matrix(1.8198911,0,0,-1.8198911,28.30486,495.03056)"
        inkscape:label="ink_ext_XXXXXX"
        id="g3053">
       <g
@@ -118,7 +140,7 @@
        xml:space="preserve"
        id="flowRoot3376"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="translate(1290.0511,-1363.1555)"><flowRegion
+       transform="translate(1290.0511,-1391.1555)"><flowRegion
          id="flowRegion3378"><rect
            id="rect3380"
            width="222.23357"
@@ -133,7 +155,7 @@
      inkscape:label="PCR"
      transform="translate(0,350.7999)">
     <g
-       transform="matrix(1.1869446,0,0,-1.1869446,1027.0891,861.61604)"
+       transform="matrix(1.1869446,0,0,-1.1869446,1027.0891,833.61604)"
        inkscape:label="ink_ext_XXXXXX"
        id="g3286">
       <g
@@ -157,7 +179,7 @@
        xml:space="preserve"
        id="flowRoot3411"
        style="font-size:40px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;font-family:Sans"
-       transform="translate(-4,-352.22847)"><flowRegion
+       transform="translate(-4,-362.22847)"><flowRegion
          id="flowRegion3413"><rect
            id="rect3415"
            width="137.38075"
