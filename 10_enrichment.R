@@ -372,22 +372,40 @@ RnB.cluster.scores <-
 isigem.cluster.in.cluster <- melt(RnB.cluster.scores)
 names(isigem.cluster.in.cluster) <- c("ISIGEM.Score", "EfExpCluster", "MmExpCluster")
 isigem.cluster.in.cluster$EfExpCluster <-
-    as.factor(paste0("EfCluster",
+    as.factor(paste0("E. falciformis cluster ",
                      isigem.cluster.in.cluster$EfExpCluster))
 isigem.cluster.in.cluster$MmExpCluster <-
     as.factor(paste0("MmCluster",
                      isigem.cluster.in.cluster$MmExpCluster))
 
+library(RColorBrewer)
+library(scales)
+
 ## plotting the quantitative view on ISIGM scores
-devSVG("figures/Figure5d_IsigemClusterInCluster.svg")
+devSVG("figures/Figure5d_IsigemClusterInCluster.svg", height = 9, width = 11)
 ggplot(isigem.cluster.in.cluster, aes(ISIGEM.Score, ..count.., colour=MmExpCluster)) +
     geom_density() +
+    geom_hline(color = "white", yintercept = 0) + # puts white line over ugly line parallel to x-axis
     facet_wrap(~EfExpCluster) +
+    xlab("ISIGEM score") +
+    scale_y_continuous(labels = comma, 
+                       breaks = c(0, 500000, 1000000, 1500000),
+                       limits = c(0, 1600000)) +
+    ylab("Density") +
     theme_bw(20) +
     theme(panel.grid.major = element_blank(),
           panel.grid.minor = element_blank(),
           legend.title = element_blank(),
-          legend.position = c(0.65, 0.8))
+          legend.position = c(0.82, 0.13)) +
+    scale_color_manual(values = c("#ff81f2", "#00dcaf", "#e0b400", "#ff9289", "#70cf07", "#00d1ff", "#c0a6ff"),
+#same colors as clusters in figure 2a, ordered from 1 to 7
+                   breaks = c("MmCluster1", "MmCluster2", "MmCluster3", 
+                            "MmCluster4", "MmCluster5", "MmCluster6",
+                            "MmCluster7"),
+                   labels = c("Mouse cluster 1", "Mouse cluster 2", 
+                              "Mouse cluster 3", "Mouse cluster 4", 
+                              "Mouse cluster 5", "Mouse cluster 6",
+                              "Mouse cluster 7"))
 dev.off()
 
 fisher.test(Ef.tested.universe %in% SigTMHMM,
