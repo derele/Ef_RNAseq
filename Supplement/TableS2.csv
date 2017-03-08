@@ -1,0 +1,210 @@
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_1" "BP" "GO:0006352" "DNA-templated transcription, initiation" 10 4 0.81 0.0058 0.1121
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_5" "MF" "GO:0016538" "cyclin-dependent protein serine/threonin..." 4 4 0.59 0.00046 0.046
+"Ef_cluster_5" "MF" "GO:0004672" "protein kinase activity" 126 31 18.53 0.00181 0.0558
+"Ef_cluster_5" "MF" "GO:0003684" "damaged DNA binding" 8 5 1.18 0.00256 0.0558
+"Ef_cluster_5" "MF" "GO:0032553" "ribonucleotide binding" 554 100 81.46 0.0081 0.0558
+"Ef_cluster_5" "MF" "GO:0046914" "transition metal ion binding" 224 46 32.94 0.00824 0.0558
+"Ef_cluster_5" "MF" "GO:0005524" "ATP binding" 468 86 68.81 0.00906 0.0558
+"Ef_cluster_5" "MF" "GO:0032559" "adenyl ribonucleotide binding" 468 86 68.81 0.00906 0.0558
+"Ef_cluster_5" "MF" "GO:0001882" "nucleoside binding" 550 99 80.87 0.00922 0.0558
+"Ef_cluster_5" "MF" "GO:0001883" "purine nucleoside binding" 550 99 80.87 0.00922 0.0558
+"Ef_cluster_5" "MF" "GO:0032549" "ribonucleoside binding" 550 99 80.87 0.00922 0.0558
+"Ef_cluster_5" "MF" "GO:0032550" "purine ribonucleoside binding" 550 99 80.87 0.00922 0.0558
+"Ef_cluster_5" "MF" "GO:0032555" "purine ribonucleotide binding" 550 99 80.87 0.00922 0.0558
+"Ef_cluster_5" "MF" "GO:0035639" "purine ribonucleoside triphosphate bindi..." 550 99 80.87 0.00922 0.0558
+"Ef_cluster_5" "MF" "GO:0030554" "adenyl nucleotide binding" 469 86 68.96 0.00961 0.0558
+"Ef_cluster_5" "MF" "GO:0017076" "purine nucleotide binding" 551 99 81.02 0.00975 0.0558
+"Ef_cluster_5" "MF" "GO:0003677" "DNA binding" 157 34 23.08 0.00999 0.0558
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_5" "BP" "GO:0006281" "DNA repair" 39 15 5.94 0.00029 0.0097
+"Ef_cluster_5" "BP" "GO:0006974" "cellular response to DNA damage stimulus" 39 15 5.94 0.00029 0.0097
+"Ef_cluster_5" "BP" "GO:0033554" "cellular response to stress" 39 15 5.94 0.00029 0.0097
+"Ef_cluster_5" "BP" "GO:0051716" "cellular response to stimulus" 97 27 14.76 0.00072 0.018
+"Ef_cluster_5" "BP" "GO:0006259" "DNA metabolic process" 90 25 13.7 0.00119 0.0238
+"Ef_cluster_5" "BP" "GO:0050896" "response to stimulus" 121 30 18.42 0.00287 0.0436
+"Ef_cluster_5" "BP" "GO:0006950" "response to stress" 62 18 9.44 0.00347 0.0436
+"Ef_cluster_5" "BP" "GO:0030154" "cell differentiation" 3 3 0.46 0.00349 0.0436
+"Ef_cluster_5" "BP" "GO:0006468" "protein phosphorylation" 133 31 20.24 0.00675 0.075
+"Ef_cluster_5" "BP" "GO:0006464" "cellular protein modification process" 202 43 30.75 0.00866 0.0787
+"Ef_cluster_5" "BP" "GO:0036211" "protein modification process" 202 43 30.75 0.00866 0.0787
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_7" "MF" "GO:0005198" "structural molecule activity" 124 58 16.59 1.1e-20 0
+"Ef_cluster_7" "MF" "GO:0003735" "structural constituent of ribosome" 103 52 13.78 1.7e-20 0
+"Ef_cluster_7" "MF" "GO:0031177" "phosphopantetheine binding" 4 4 0.54 0.00032 0.008
+"Ef_cluster_7" "MF" "GO:0072341" "modified amino acid binding" 4 4 0.54 0.00032 0.008
+"Ef_cluster_7" "MF" "GO:0016491" "oxidoreductase activity" 143 33 19.13 0.00078 0.0156
+"Ef_cluster_7" "MF" "GO:0033218" "amide binding" 8 5 1.07 0.00165 0.0227
+"Ef_cluster_7" "MF" "GO:0016746" "transferase activity, transferring acyl ..." 46 14 6.15 0.00189 0.0227
+"Ef_cluster_7" "MF" "GO:0016875" "ligase activity, forming carbon-oxygen b..." 42 13 5.62 0.0023 0.0227
+"Ef_cluster_7" "MF" "GO:0016876" "ligase activity, forming aminoacyl-tRNA ..." 42 13 5.62 0.0023 0.0227
+"Ef_cluster_7" "MF" "GO:0004298" "threonine-type endopeptidase activity" 12 6 1.61 0.0025 0.0227
+"Ef_cluster_7" "MF" "GO:0070003" "threonine-type peptidase activity" 12 6 1.61 0.0025 0.0227
+"Ef_cluster_7" "MF" "GO:0004812" "aminoacyl-tRNA ligase activity" 41 12 5.48 0.00561 0.0468
+"Ef_cluster_7" "MF" "GO:0000049" "tRNA binding" 4 3 0.54 0.00856 0.0658
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_7" "BP" "GO:0006518" "peptide metabolic process" 181 73 29.53 9.2e-17 0
+"Ef_cluster_7" "BP" "GO:0043603" "cellular amide metabolic process" 181 73 29.53 9.2e-17 0
+"Ef_cluster_7" "BP" "GO:0006412" "translation" 175 71 28.55 1.9e-16 0
+"Ef_cluster_7" "BP" "GO:0043043" "peptide biosynthetic process" 177 71 28.87 4e-16 0
+"Ef_cluster_7" "BP" "GO:0043604" "amide biosynthetic process" 177 71 28.87 4e-16 0
+"Ef_cluster_7" "BP" "GO:1901564" "organonitrogen compound metabolic proces..." 291 93 47.47 1e-13 0
+"Ef_cluster_7" "BP" "GO:1901566" "organonitrogen compound biosynthetic pro..." 237 81 38.66 1.2e-13 0
+"Ef_cluster_7" "BP" "GO:0044271" "cellular nitrogen compound biosynthetic ..." 334 90 54.49 1.5e-08 0
+"Ef_cluster_7" "BP" "GO:0009059" "macromolecule biosynthetic process" 325 88 53.02 1.9e-08 0
+"Ef_cluster_7" "BP" "GO:0034645" "cellular macromolecule biosynthetic proc..." 324 87 52.85 3.7e-08 0
+"Ef_cluster_7" "BP" "GO:1901576" "organic substance biosynthetic process" 427 105 69.66 1.4e-07 0
+"Ef_cluster_7" "BP" "GO:0044249" "cellular biosynthetic process" 431 105 70.31 2.5e-07 0
+"Ef_cluster_7" "BP" "GO:0009058" "biosynthetic process" 446 106 72.76 9e-07 0
+"Ef_cluster_7" "BP" "GO:0044267" "cellular protein metabolic process" 423 101 69 1.6e-06 0
+"Ef_cluster_7" "BP" "GO:0010467" "gene expression" 351 86 57.26 4.7e-06 0
+"Ef_cluster_7" "BP" "GO:0034641" "cellular nitrogen compound metabolic pro..." 557 117 90.86 0.00018 0.0011
+"Ef_cluster_7" "BP" "GO:0019538" "protein metabolic process" 520 110 84.83 0.00025 0.0015
+"Ef_cluster_7" "BP" "GO:0006807" "nitrogen compound metabolic process" 587 120 95.76 0.00054 0.003
+"Ef_cluster_7" "BP" "GO:0006414" "translational elongation" 15 7 2.45 0.00562 0.0296
+"Ef_cluster_7" "BP" "GO:0008152" "metabolic process" 1224 216 199.67 0.00698 0.0349
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_2" "MF" "GO:0003777" "microtubule motor activity" 32 13 3.59 1.7e-05 0.0017
+"Ef_cluster_2" "MF" "GO:0003774" "motor activity" 43 14 4.83 0.00014 0.0053
+"Ef_cluster_2" "MF" "GO:0008061" "chitin binding" 4 4 0.45 0.00016 0.0053
+"Ef_cluster_2" "MF" "GO:0009055" "electron carrier activity" 25 9 2.81 0.001 0.025
+"Ef_cluster_2" "MF" "GO:0046933" "proton-transporting ATP synthase activit..." 9 5 1.01 0.00149 0.0271
+"Ef_cluster_2" "MF" "GO:0016903" "oxidoreductase activity, acting on the a..." 13 6 1.46 0.00165 0.0271
+"Ef_cluster_2" "MF" "GO:0005509" "calcium ion binding" 72 17 8.09 0.0019 0.0271
+"Ef_cluster_2" "MF" "GO:0036442" "hydrogen-exporting ATPase activity" 10 5 1.12 0.0027 0.03
+"Ef_cluster_2" "MF" "GO:0046961" "proton-transporting ATPase activity, rot..." 10 5 1.12 0.0027 0.03
+"Ef_cluster_2" "MF" "GO:0019829" "cation-transporting ATPase activity" 11 5 1.24 0.0045 0.0409
+"Ef_cluster_2" "MF" "GO:0044769" "ATPase activity, coupled to transmembran..." 11 5 1.24 0.0045 0.0409
+"Ef_cluster_2" "MF" "GO:0022853" "active ion transmembrane transporter act..." 26 8 2.92 0.00585 0.045
+"Ef_cluster_2" "MF" "GO:0042625" "ATPase coupled ion transmembrane transpo..." 26 8 2.92 0.00585 0.045
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_2" "BP" "GO:0005975" "carbohydrate metabolic process" 62 21 6.88 9.2e-07 1e-04
+"Ef_cluster_2" "BP" "GO:0009144" "purine nucleoside triphosphate metabolic..." 32 14 3.55 2.1e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0009199" "ribonucleoside triphosphate metabolic pr..." 32 14 3.55 2.1e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0009205" "purine ribonucleoside triphosphate metab..." 32 14 3.55 2.1e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0009141" "nucleoside triphosphate metabolic proces..." 33 14 3.66 3.2e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0046034" "ATP metabolic process" 29 13 3.22 3.5e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0006163" "purine nucleotide metabolic process" 38 15 4.22 4.2e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0072521" "purine-containing compound metabolic pro..." 39 15 4.33 6.2e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0006928" "movement of cell or subcellular componen..." 40 15 4.44 9e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0044699" "single-organism process" 527 85 58.48 9.9e-06 1e-04
+"Ef_cluster_2" "BP" "GO:0042278" "purine nucleoside metabolic process" 36 14 4 1.1e-05 1e-04
+"Ef_cluster_2" "BP" "GO:0046128" "purine ribonucleoside metabolic process" 36 14 4 1.1e-05 1e-04
+"Ef_cluster_2" "BP" "GO:0009150" "purine ribonucleotide metabolic process" 37 14 4.11 1.6e-05 1e-04
+"Ef_cluster_2" "BP" "GO:0019693" "ribose phosphate metabolic process" 42 15 4.66 1.8e-05 1e-04
+"Ef_cluster_2" "BP" "GO:0009259" "ribonucleotide metabolic process" 38 14 4.22 2.3e-05 2e-04
+"Ef_cluster_2" "BP" "GO:0007017" "microtubule-based process" 48 16 5.33 2.5e-05 2e-04
+"Ef_cluster_2" "BP" "GO:0009126" "purine nucleoside monophosphate metaboli..." 34 13 3.77 2.9e-05 2e-04
+"Ef_cluster_2" "BP" "GO:0009167" "purine ribonucleoside monophosphate meta..." 34 13 3.77 2.9e-05 2e-04
+"Ef_cluster_2" "BP" "GO:0009119" "ribonucleoside metabolic process" 39 14 4.33 3.3e-05 2e-04
+"Ef_cluster_2" "BP" "GO:0009161" "ribonucleoside monophosphate metabolic p..." 35 13 3.88 4.2e-05 2e-04
+"Ef_cluster_2" "BP" "GO:0009117" "nucleotide metabolic process" 56 17 6.21 5.6e-05 3e-04
+"Ef_cluster_2" "BP" "GO:0009123" "nucleoside monophosphate metabolic proce..." 36 13 4 5.9e-05 3e-04
+"Ef_cluster_2" "BP" "GO:0032501" "multicellular organismal process" 6 5 0.67 8.7e-05 4e-04
+"Ef_cluster_2" "BP" "GO:0044707" "single-multicellular organism process" 6 5 0.67 8.7e-05 4e-04
+"Ef_cluster_2" "BP" "GO:1901135" "carbohydrate derivative metabolic proces..." 75 20 8.32 9.5e-05 4e-04
+"Ef_cluster_2" "BP" "GO:0044723" "single-organism carbohydrate metabolic p..." 33 12 3.66 0.00011 4e-04
+"Ef_cluster_2" "BP" "GO:0007018" "microtubule-based movement" 38 13 4.22 0.00011 4e-04
+"Ef_cluster_2" "BP" "GO:0006753" "nucleoside phosphate metabolic process" 59 17 6.55 0.00012 4e-04
+"Ef_cluster_2" "BP" "GO:0009116" "nucleoside metabolic process" 45 14 4.99 2e-04 7e-04
+"Ef_cluster_2" "BP" "GO:1901657" "glycosyl compound metabolic process" 45 14 4.99 2e-04 7e-04
+"Ef_cluster_2" "BP" "GO:0006022" "aminoglycan metabolic process" 5 4 0.55 0.00067 0.0018
+"Ef_cluster_2" "BP" "GO:0006030" "chitin metabolic process" 5 4 0.55 0.00067 0.0018
+"Ef_cluster_2" "BP" "GO:0007596" "blood coagulation" 5 4 0.55 0.00067 0.0018
+"Ef_cluster_2" "BP" "GO:0007599" "hemostasis" 5 4 0.55 0.00067 0.0018
+"Ef_cluster_2" "BP" "GO:0009611" "response to wounding" 5 4 0.55 0.00067 0.0018
+"Ef_cluster_2" "BP" "GO:0042060" "wound healing" 5 4 0.55 0.00067 0.0018
+"Ef_cluster_2" "BP" "GO:0050817" "coagulation" 5 4 0.55 0.00067 0.0018
+"Ef_cluster_2" "BP" "GO:0050878" "regulation of body fluid levels" 5 4 0.55 0.00067 0.0018
+"Ef_cluster_2" "BP" "GO:0055086" "nucleobase-containing small molecule met..." 70 17 7.77 0.00108 0.0028
+"Ef_cluster_2" "BP" "GO:0044763" "single-organism cellular process" 394 61 43.72 0.00136 0.0033
+"Ef_cluster_2" "BP" "GO:0006165" "nucleoside diphosphate phosphorylation" 17 7 1.89 0.00137 0.0033
+"Ef_cluster_2" "BP" "GO:0006091" "generation of precursor metabolites and ..." 27 9 3 0.00166 0.004
+"Ef_cluster_2" "BP" "GO:0006040" "amino sugar metabolic process" 6 4 0.67 0.00184 0.0042
+"Ef_cluster_2" "BP" "GO:1901071" "glucosamine-containing compound metaboli..." 6 4 0.67 0.00184 0.0042
+"Ef_cluster_2" "BP" "GO:0046939" "nucleotide phosphorylation" 18 7 2 0.00203 0.0045
+"Ef_cluster_2" "BP" "GO:0019637" "organophosphate metabolic process" 87 19 9.65 0.00217 0.0045
+"Ef_cluster_2" "BP" "GO:0006096" "glycolytic process" 14 6 1.55 0.00241 0.0045
+"Ef_cluster_2" "BP" "GO:0006757" "ATP generation from ADP" 14 6 1.55 0.00241 0.0045
+"Ef_cluster_2" "BP" "GO:0009135" "purine nucleoside diphosphate metabolic ..." 14 6 1.55 0.00241 0.0045
+"Ef_cluster_2" "BP" "GO:0009179" "purine ribonucleoside diphosphate metabo..." 14 6 1.55 0.00241 0.0045
+"Ef_cluster_2" "BP" "GO:0009185" "ribonucleoside diphosphate metabolic pro..." 14 6 1.55 0.00241 0.0045
+"Ef_cluster_2" "BP" "GO:0016052" "carbohydrate catabolic process" 14 6 1.55 0.00241 0.0045
+"Ef_cluster_2" "BP" "GO:0044724" "single-organism carbohydrate catabolic p..." 14 6 1.55 0.00241 0.0045
+"Ef_cluster_2" "BP" "GO:0046031" "ADP metabolic process" 14 6 1.55 0.00241 0.0045
+"Ef_cluster_2" "BP" "GO:0009132" "nucleoside diphosphate metabolic process" 19 7 2.11 0.00291 0.0053
+"Ef_cluster_2" "BP" "GO:0044710" "single-organism metabolic process" 325 51 36.07 0.00295 0.0053
+"Ef_cluster_2" "BP" "GO:0006090" "pyruvate metabolic process" 15 6 1.66 0.00365 0.0064
+"Ef_cluster_2" "BP" "GO:0019362" "pyridine nucleotide metabolic process" 20 7 2.22 0.00407 0.0068
+"Ef_cluster_2" "BP" "GO:0046496" "nicotinamide nucleotide metabolic proces..." 20 7 2.22 0.00407 0.0068
+"Ef_cluster_2" "BP" "GO:0072524" "pyridine-containing compound metabolic p..." 20 7 2.22 0.00407 0.0068
+"Ef_cluster_2" "BP" "GO:0006733" "oxidoreduction coenzyme metabolic proces..." 21 7 2.33 0.00554 0.0091
+"Ef_cluster_2" "BP" "GO:0065008" "regulation of biological quality" 38 10 4.22 0.00648 0.0105
+"Ef_cluster_2" "BP" "GO:0009142" "nucleoside triphosphate biosynthetic pro..." 13 5 1.44 0.00975 0.0148
+"Ef_cluster_2" "BP" "GO:0009145" "purine nucleoside triphosphate biosynthe..." 13 5 1.44 0.00975 0.0148
+"Ef_cluster_2" "BP" "GO:0009201" "ribonucleoside triphosphate biosynthetic..." 13 5 1.44 0.00975 0.0148
+"Ef_cluster_2" "BP" "GO:0009206" "purine ribonucleoside triphosphate biosy..." 13 5 1.44 0.00975 0.0148
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_4" "MF" "GO:0016773" "phosphotransferase activity, alcohol gro..." 163 29 17.36 0.003 0.1412
+"Ef_cluster_4" "MF" "GO:0003824" "catalytic activity" 1318 162 140.33 0.0033 0.1412
+"Ef_cluster_4" "MF" "GO:0005543" "phospholipid binding" 13 5 1.38 0.0083 0.1412
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_4" "BP" "GO:0006506" "GPI anchor biosynthetic process" 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0006661" "phosphatidylinositol biosynthetic proces..." 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0009247" "glycolipid biosynthetic process" 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0032507" "maintenance of protein location in cell" 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0045185" "maintenance of protein location" 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0046467" "membrane lipid biosynthetic process" 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0051220" "cytoplasmic sequestering of protein" 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0051235" "maintenance of location" 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0051651" "maintenance of location in cell" 4 3 0.44 0.0049 0.0544
+"Ef_cluster_4" "BP" "GO:0043412" "macromolecule modification" 229 37 25.41 0.0078 0.06
+"Ef_cluster_4" "BP" "GO:1902578" "single-organism localization" 52 12 5.77 0.0091 0.06
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_6" "MF" "GO:0003676" "nucleic acid binding" 485 155 110.85 1.7e-07 0
+"Ef_cluster_6" "MF" "GO:0004386" "helicase activity" 90 40 20.57 3.2e-06 2e-04
+"Ef_cluster_6" "MF" "GO:0008026" "ATP-dependent helicase activity" 60 28 13.71 3.4e-05 8e-04
+"Ef_cluster_6" "MF" "GO:0070035" "purine NTP-dependent helicase activity" 60 28 13.71 3.4e-05 8e-04
+"Ef_cluster_6" "MF" "GO:0005488" "binding" 1845 451 421.67 0.0011 0.022
+"Ef_cluster_6" "MF" "GO:1901363" "heterocyclic compound binding" 1018 263 232.66 0.0021 0.0329
+"Ef_cluster_6" "MF" "GO:0097159" "organic cyclic compound binding" 1019 263 232.89 0.0023 0.0329
+"Ef_cluster_6" "MF" "GO:0042623" "ATPase activity, coupled" 108 37 24.68 0.0039 0.0487
+"Ef_cluster_6" "MF" "GO:0016887" "ATPase activity" 129 42 29.48 0.0061 0.0678
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_6" "BP" "GO:0016070" "RNA metabolic process" 239 85 49.13 3.3e-09 0
+"Ef_cluster_6" "BP" "GO:0090304" "nucleic acid metabolic process" 324 100 66.61 5.6e-07 0
+"Ef_cluster_6" "BP" "GO:0046483" "heterocycle metabolic process" 420 121 86.34 1.6e-06 0
+"Ef_cluster_6" "BP" "GO:0006725" "cellular aromatic compound metabolic pro..." 421 121 86.55 1.8e-06 0
+"Ef_cluster_6" "BP" "GO:1901360" "organic cyclic compound metabolic proces..." 422 121 86.75 2.1e-06 0
+"Ef_cluster_6" "BP" "GO:0006139" "nucleobase-containing compound metabolic..." 404 116 83.05 3.7e-06 1e-04
+"Ef_cluster_6" "BP" "GO:0010467" "gene expression" 351 100 72.16 3.7e-05 4e-04
+"Ef_cluster_6" "BP" "GO:0006396" "RNA processing" 70 29 14.39 3.9e-05 4e-04
+"Ef_cluster_6" "BP" "GO:0034641" "cellular nitrogen compound metabolic pro..." 557 146 114.51 4e-05 4e-04
+"Ef_cluster_6" "BP" "GO:0018130" "heterocycle biosynthetic process" 158 53 32.48 4e-05 4e-04
+"Ef_cluster_6" "BP" "GO:1901362" "organic cyclic compound biosynthetic pro..." 160 53 32.89 6e-05 5e-04
+"Ef_cluster_6" "BP" "GO:0006807" "nitrogen compound metabolic process" 587 151 120.67 8.6e-05 7e-04
+"Ef_cluster_6" "BP" "GO:0019438" "aromatic compound biosynthetic process" 156 51 32.07 0.00013 0.001
+"Ef_cluster_6" "BP" "GO:0034654" "nucleobase-containing compound biosynthe..." 140 46 28.78 0.00025 0.0018
+"Ef_cluster_6" "BP" "GO:0034660" "ncRNA metabolic process" 79 29 16.24 5e-04 0.0033
+"Ef_cluster_6" "BP" "GO:0044271" "cellular nitrogen compound biosynthetic ..." 334 91 68.66 0.00061 0.0038
+"Ef_cluster_6" "BP" "GO:0044237" "cellular metabolic process" 905 212 186.05 0.00087 0.0051
+"Ef_cluster_6" "BP" "GO:0034470" "ncRNA processing" 36 16 7.4 0.00092 0.0051
+"Ef_cluster_6" "BP" "GO:0032774" "RNA biosynthetic process" 105 35 21.59 0.00107 0.0056
+"Ef_cluster_6" "BP" "GO:0008033" "tRNA processing" 21 11 4.32 0.00114 0.0057
+"Ef_cluster_6" "BP" "GO:0044249" "cellular biosynthetic process" 431 111 88.6 0.00139 0.0066
+"Ef_cluster_6" "BP" "GO:0006351" "transcription, DNA-templated" 103 34 21.17 0.00154 0.0067
+"Ef_cluster_6" "BP" "GO:0097659" "nucleic acid-templated transcription" 103 34 21.17 0.00154 0.0067
+"Ef_cluster_6" "BP" "GO:0006399" "tRNA metabolic process" 62 23 12.75 0.00164 0.0068
+"Ef_cluster_6" "BP" "GO:1901565" "organonitrogen compound catabolic proces..." 6 5 1.23 0.00179 0.0072
+"Ef_cluster_6" "BP" "GO:0044260" "cellular macromolecule metabolic process" 706 169 145.14 0.00207 0.008
+"Ef_cluster_6" "BP" "GO:0022613" "ribonucleoprotein complex biogenesis" 29 13 5.96 0.00255 0.0091
+"Ef_cluster_6" "BP" "GO:0042254" "ribosome biogenesis" 29 13 5.96 0.00255 0.0091
+"Ef_cluster_6" "BP" "GO:0009987" "cellular process" 1158 259 238.06 0.00286 0.0099
+"Ef_cluster_6" "BP" "GO:0009058" "biosynthetic process" 446 112 91.69 0.00365 0.0122
+"Ef_cluster_6" "BP" "GO:0044085" "cellular component biogenesis" 56 20 11.51 0.00545 0.0176
+"Ef_cluster_6" "BP" "GO:0009063" "cellular amino acid catabolic process" 5 4 1.03 0.00737 0.0219
+"Ef_cluster_6" "BP" "GO:0043170" "macromolecule metabolic process" 810 187 166.52 0.00742 0.0219
+"Ef_cluster_6" "BP" "GO:1901576" "organic substance biosynthetic process" 427 106 87.78 0.00744 0.0219
+"gene_group" "Ontology" "GO.ID" "Term" "Annotated" "Significant" "Expected" "p.value" "adj.p"
+"Ef_cluster_3" "MF" "GO:0003676" "nucleic acid binding" 485 29 15.7 0.00033 0.033

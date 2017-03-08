@@ -55,36 +55,36 @@ set.from.cluster <- function(hcluster, number){
 to.test <- list(
     ## Eimeria
     list(set=set.from.cluster(hcluster[["Ef"]], 1),  # no enriched MF terms
-         type = "cluster1ef", species = "Ef"),
+         type = "Ef_cluster_1", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 5),
-         type = "cluster5ef", species = "Ef"),
+         type = "Ef_cluster_5", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 7),
-         type = "cluster7ef", species = "Ef"),
+         type = "Ef_cluster_7", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 2),
-         type = "cluster2ef", species = "Ef"),
+         type = "Ef_cluster_2", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 4),
-          type = "cluster4ef", species = "Ef"),
+          type = "Ef_cluster_4", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 6),
-         type = "cluster6ef", species = "Ef"),
+         type = "Ef_cluster_6", species = "Ef"),
     list(set=set.from.cluster(hcluster[["Ef"]], 3),   # no enriched BP terms
-         type = "cluster3ef", species = "Ef"),
+         type = "Ef_cluster_3", species = "Ef"),
     ## Mouse
     list(set=set.from.cluster(hcluster[["Mm"]], 6),
-         type="cluster6mm", species="Mm"),
+         type="Mm_cluster_6", species="Mm"),
     list(set=set.from.cluster(hcluster[["Mm"]], 5),
-         type="cluster5mm", species="Mm"),
+         type="Mm_cluster_5", species="Mm"),
     list(set=set.from.cluster(hcluster[["Mm"]], 3),
-          type="cluster3mm", species="Mm"),
+          type="Mm_cluster_3", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 4),
-          type="cluster4mm", species="Mm"),
+          type="Mm_cluster_4", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 1),
-          type="cluster1mm", species="Mm"),
+          type="Mm_cluster_1", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 2),
-          type="cluster2mm", species="Mm"),
+          type="Mm_cluster_2", species="Mm"),
     list (set=set.from.cluster(hcluster[["Mm"]], 7),
-          type="cluster7mm", species="Mm"),
-    list (set=set.from.DE(Mm.DE.test, "N5vsN7"),
-          type="DE_N5vsN7", species="Mm")
+          type="Mm_cluster_7", species="Mm") ##,
+##    list (set=set.from.DE(Mm.DE.test, "N5vsN7"),
+##          type="DE_N5vsN7", species="Mm")
     )
 
 TOGO.all.onto <- function (ontology, allgenes, gene.set, annot) {
@@ -118,11 +118,14 @@ test.GO.control.list <- function (x){
     BPMF.l <- lapply(c("MF", "BP"), function (onto){
         res <- TOGO.all.onto(onto, exp.universe[[species]],
                              set, g2G)
-        file.detail= paste(onto, "_",
-                           species, "_", type, ".tex", sep="")
-        capture.output(print(xtable(gene.table.topGO(res)),
-                             include.rownames=FALSE,
-                             file=paste(file.path, file.detail, sep="")))
+        file.detail= paste0("output_data/Table", species, ".csv")
+        Gtable <- gene.table.topGO(res)
+        if(nrow(Gtable)>0){
+            Gtable <- cbind(type, onto, Gtable)
+            colnames(Gtable)[1:2] <- c("gene_group", "Ontology")
+            write.table(Gtable, file.detail, append = TRUE,
+                        row.names=FALSE)
+        }
         return(gene.table.topGO(res))
     })
     names(BPMF.l) <- c("MF", "BP")
@@ -130,6 +133,9 @@ test.GO.control.list <- function (x){
 }
 
 BPMF.ll <- lapply(to.test, test.GO.control.list)
+
+### file TableMm.csv -> Table S1
+### file TableEf.csv -> Table S2
 
 names(BPMF.ll) <- unlist(lapply(to.test, "[[", 2))
 
@@ -372,40 +378,18 @@ RnB.cluster.scores <-
 isigem.cluster.in.cluster <- melt(RnB.cluster.scores)
 names(isigem.cluster.in.cluster) <- c("ISIGEM.Score", "EfExpCluster", "MmExpCluster")
 isigem.cluster.in.cluster$EfExpCluster <-
-    as.factor(paste0("E. falciformis cluster ",
+    as.factor(paste0("EfCluster",
                      isigem.cluster.in.cluster$EfExpCluster))
 isigem.cluster.in.cluster$MmExpCluster <-
     as.factor(paste0("MmCluster",
                      isigem.cluster.in.cluster$MmExpCluster))
 
-library(RColorBrewer)
-library(scales)
-
 ## plotting the quantitative view on ISIGM scores
-devSVG("figures/Figure5d_IsigemClusterInCluster.svg", height = 9, width = 11)
+devSVG("figures/Figure5d_IsigemClusterInCluster.svg")
 ggplot(isigem.cluster.in.cluster, aes(ISIGEM.Score, ..count.., colour=MmExpCluster)) +
     geom_density() +
-    geom_hline(color = "white", yintercept = 0) + # puts white line over ugly line parallel to x-axis
     facet_wrap(~EfExpCluster) +
-    xlab("ISIGEM score") +
-    scale_y_continuous(labels = comma, 
-                       breaks = c(0, 500000, 1000000, 1500000),
-                       limits = c(0, 1600000)) +
-    ylab("Density") +
-    theme_bw(20) +
-    theme(panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-          legend.title = element_blank(),
-          legend.position = c(0.82, 0.13)) +
-    scale_color_manual(values = c("#ff81f2", "#00dcaf", "#e0b400", "#ff9289", "#70cf07", "#00d1ff", "#c0a6ff"),
-#same colors as clusters in figure 2a, ordered from 1 to 7
-                   breaks = c("MmCluster1", "MmCluster2", "MmCluster3", 
-                            "MmCluster4", "MmCluster5", "MmCluster6",
-                            "MmCluster7"),
-                   labels = c("Mouse cluster 1", "Mouse cluster 2", 
-                              "Mouse cluster 3", "Mouse cluster 4", 
-                              "Mouse cluster 5", "Mouse cluster 6",
-                              "Mouse cluster 7"))
+    theme_bw()
 dev.off()
 
 fisher.test(Ef.tested.universe %in% SigTMHMM,
