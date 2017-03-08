@@ -98,7 +98,13 @@ RNAseq.Array.logFC <- merge(Array.logFC[,c("ensembl_id", "X24h", "X144h")],
                             Mm.DE.FC, 
                             by.x = "ensembl_id", by.y = "gene")
 
+
+RNAseq.Array.logFC <- unique(RNAseq.Array.logFC)
+
 cor(RNAseq.Array.logFC[, -1], method="spearman")[,1:2]
+
+cor.test(RNAseq.Array.logFC[, "logFC.N7vs0" ],
+         RNAseq.Array.logFC[, "X144h",], method="spearman", exact = FALSE)
 
 #pdf("figures/SI_1_Array144vsRNAseqN7.pdf", onefile = FALSE)
 array.comarison <- ggplot(RNAseq.Array.logFC, aes(X144h, logFC.N7vs0)) +
