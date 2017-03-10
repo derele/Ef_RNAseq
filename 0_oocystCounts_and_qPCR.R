@@ -11,7 +11,6 @@ library(stringr)
 library(RSvgDevice)
 library(RColorBrewer)
 
-setwd("~/Ef_RNAseq/")
 phen.data <- read.csv("data/Oocysts_output_weight_SS_longdata.csv")
 
 ## here just a hack to take the first occurence of a ID at a time point
@@ -25,38 +24,47 @@ oocyst.sums <- ddply(phen.data, c("Mouse_strain", "Mouse_ID", "Infection_No"), s
                      Csum    =  sum(Oocysts_feces),
                      mean = mean(Oocysts_feces))
 
-wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
-                             oocyst.sums$Infection_No%in%"1"],
-            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
-                             oocyst.sums$Infection_No%in%"1"]
             )    
-## ns
 
-wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
-                             oocyst.sums$Infection_No%in%"2"],
-            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
-                             oocyst.sums$Infection_No%in%"2"]
-            )    
-## ns
-wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
-                             oocyst.sums$Infection_No%in%"1"],
-            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
-                             oocyst.sums$Infection_No%in%"2"]
-            )    
-## significant !!!
+## Phenotyping of infections in wild-type mice showed drastically
+## decreased oocyst output (Figure 1 a) in immunocompetent challenged
+## hosts compared to naïve animals (Mann–Whitney test, in NMRI, n =
+## 12, U = 32, p = 0.004; in C57BL6, n = 24, U= 111, p = 0.008).
 
 wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"NMRI"&
                              oocyst.sums$Infection_No%in%"1"],
             oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"NMRI"&
                              oocyst.sums$Infection_No%in%"2"]
             )    
-## significant !!!
+
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"1"],
+            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"2"]
+            )    
+
+##################################################################
+
+## ALL NS:
+
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"1"],
+            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
+                             oocyst.sums$Infection_No%in%"1"])    
+
+
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+                             oocyst.sums$Infection_No%in%"2"],
+            oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
+                             oocyst.sums$Infection_No%in%"2"])
 
 wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
                              oocyst.sums$Infection_No%in%"1"],
             oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
-                             oocyst.sums$Infection_No%in%"2"]
-            )    
+                             oocyst.sums$Infection_No%in%"2"])    
+
+
+
 ## Rag has also a reduced output in secondary !!! not significant
 ## though... but you know you can't statistically show absence of diff
 
@@ -117,35 +125,61 @@ stats.qpcr <- merge(stats.qpcr, long.qpcr)
 ## Cool that we have so much qPCR data: find those genes in RNAseq data and 
 ## plot together?
 
+
+stats.qpcr$dpi.minus <- stats.qpcr$dpi-3
+stats.qpcr$inf <- ifelse(stats.qpcr$inf==1, "naive", "challgenge")
+
+qPCR.lm <- lm(norm.value ~ dpi.minus + inf, data=subset(stats.qpcr, dpi.minus>=0))
+
+summary(qPCR.lm)
+
 ## create colors for Figure 1b
 palette.colors2 <- brewer.pal(11, "BrBG")
 my.colors.qpcr <- palette.colors2[c(3,9)]
-my.ylab <- expression(paste(italic("Eimeria"), " 18S fold change by qPCR"))
+my.ylab <- expression(paste(" D-ct of " italic("Eimeria"), "18S vs. mouse index" , ))
 
 ##### Plotting figure 1b
 qpcr18S <- ggplot(subset(stats.qpcr, stats.qpcr$gene %in% "Ef18S"), 
-       aes(x = dpi, y = norm.value.mean, col = factor(inf))) +
-  #ggtitle("Eimeria 18S by qPCR") +
-  labs(color = "Infection No.") +
-  ## to get rid of label, rm aes(), but then size is not controlled. How fix this? ################ HERE ####################
-  geom_errorbar(aes(ymin = norm.value.mean - norm.value.sd,
-                    ymax = norm.value.mean + norm.value.sd,
-                    width = 0.3)) +
-  geom_point() + #aes(alpha = 0.7)) +
-  geom_line(size = 1) +
-  scale_color_manual(values = my.colors.qpcr) +
-  ##  (delta-delta-ct): put in figure legend
-  scale_y_continuous(my.ylab, 
-                     labels = math_format(2^.x), 
-                     breaks = c(0, 2, 4, 8, 16, 32),
-                     limits = c(0, 32)) +
-  scale_x_continuous("Day post infection", breaks = seq(0,8,1)) +
-  theme_bw(32) + #needs to be bigger than oocyst plot
-  theme(legend.key = element_blank(),
-        panel.grid.major = element_blank(),
-        panel.grid.minor = element_blank())
-ggsave(file = "figures/Figure1b_qPCR18S.svg", height = 12, width = 11, plot = qpcr18S)
+                  aes(x = dpi, y = norm.value.mean, col = factor(inf))) +
+    labs(color = "") +
+    geom_errorbar(aes(ymin = norm.value.mean - norm.value.sd,
+                      ymax = norm.value.mean + norm.value.sd,
+                      width = 0.7)) +
+    geom_point() + 
+    scale_color_manual(values = my.colors.qpcr) +
+    ##  (delta-delta-ct): put in figure legend
+    scale_y_continuous(my.ylab, 
+                       labels = math_format(2^.x), 
+                       breaks = seq(0, 32, by=4),
+                       limits = c(0, 32)) +
+    scale_x_continuous("Day post infection (dpi)", breaks = seq(0,8,1)) +
+    theme_bw(32) + #needs to be bigger than oocyst plot
+    theme(legend.key = element_blank(),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank()) +
+    geom_segment(aes(x = 3, y = coef(qPCR.lm)[[1]], 
+                     xend = 7, yend = coef(qPCR.lm)[[1]] + (coef(qPCR.lm)[[2]]*4)),
+                 color = my.colors.qpcr[[1]])+
+    geom_segment(aes(x = 3, y = coef(qPCR.lm)[[1]] + coef(qPCR.lm)[[3]], 
+                     xend = 7, yend = coef(qPCR.lm)[[1]]+ coef(qPCR.lm)[[3]] + 
+                                   (coef(qPCR.lm)[[2]]*4)),
+                 color = my.colors.qpcr[[2]])
+
+
+ggsave(file = "figures/Figure1b_qPCR18S.pdf", height = 12, width = 16, plot = qpcr18S)
 #dev.off()
+
+## log2 fold change is
+coef(qPCR.lm)[3]
+
+## fold change on a non-log2 scale
+2^coef(qPCR.lm)[3]
+
+## and 8 fold more per dpi
+2^coef(qPCR.lm)
+
+## The percentage parasites found in challenge compared to naive
+100/2^coef(qPCR.lm)[[3]]
 
 
 ############################## WEIGHT LOSS ###########################
