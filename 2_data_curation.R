@@ -86,11 +86,9 @@ pdf("figures/Figure1d_Ef.NMRI.percentage.pdf", height = 14, width = 25)
 ggplot(RC.table[RC.table$mouse.strain %in% "NMRI", ], 
        aes(x = dpi, y = p.Ef.reads,
                      color=challenged, shape=strain)) +
-    geom_jitter(size=6, width=0.55, alpha=0.6)+
-    scale_y_log10(breaks = scales::trans_breaks("log10", function(x) 10^x),
-                  labels = scales::trans_format("log10", scales::math_format(10^.x))) +
+    geom_point(size=6)+
+    scale_y_log10(labels = scales::trans_format("log10", scales::math_format(10^.x))) +
     annotation_logticks(sides="lr") +
-    #ggtitle(my.title) +
     theme_bw(32) +
     theme(axis.text.x = element_text(hjust = 0.5), #, size = 32),
           axis.title.x = element_text(size = 32),

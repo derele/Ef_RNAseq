@@ -64,7 +64,7 @@ dev.off()
 
 ## ALL NS:
 
-wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+lwilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
                              oocyst.sums$Infection_No%in%"1"],
             oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
                              oocyst.sums$Infection_No%in%"1"])    
