@@ -82,8 +82,8 @@ RC.table$p.Ef.reads <- round(RC.table$c.Ef.reads/RC.table$c.mapping.counts*100, 
 #my.title <- expression(paste("Fraction of total ", italic("Eimeria"), " sequences per sample"))
 my.ylab <- expression(paste("Percentage of reads mapping to", italic("Eimeria"), " genome"))
 
-devSVG("figures/Figure1d_Ef.NMRI.percentage.svg", height = 14, width = 25)
-fig1c <- ggplot(RC.table[RC.table$mouse.strain %in% "NMRI", ], 
+pdf("figures/Figure1d_Ef.NMRI.percentage.pdf", height = 14, width = 25)
+ggplot(RC.table[RC.table$mouse.strain %in% "NMRI", ], 
        aes(x = dpi, y = p.Ef.reads,
                      color=challenged, shape=strain)) +
     geom_jitter(size=6, width=0.55, alpha=0.6)+
