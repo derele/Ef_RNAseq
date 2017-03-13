@@ -53,6 +53,7 @@ plotMDS(Mm.RC, labels = Mm.pData$challenged, col.axis = "#474747",
         ylab = "Fold change, dimension 2", mgp = c(2,1,0))
 title("Infection, mouse", line = 0.7)
 
+
 ####### EIMERIA ##########################################################
 pdf("Supplement/SI_5_QC_arrayCorrelation_MDS/MDS_Eimeria.pdf")
 par(mfrow = c(2,2), mai = c(0.6, 0.5, 0.4, 0.4))
