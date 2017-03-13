@@ -50,7 +50,7 @@ wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
 oocyst.sums$Mouse_strain <- factor(oocyst.sums$Mouse_strain,
                                    levels=c("NMRI", "C57BL6", "Rag"))
 
-pdf("figures/Figure1b_oocystSums.pdf", width=12, height=8)
+pdf("figures/Figure1b_oocystSums.pdf", width=8, height=6)
 ggplot(oocyst.sums, aes(infection, Csum)) +
     geom_boxplot()+
     facet_wrap(~Mouse_strain) +
