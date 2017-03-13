@@ -24,7 +24,11 @@ oocyst.sums <- ddply(phen.data, c("Mouse_strain", "Mouse_ID", "Infection_No"), s
                      Csum    =  sum(Oocysts_feces),
                      mean = mean(Oocysts_feces))
 
-            )    
+oocyst.sums$infection <- ifelse(oocyst.sums$Infection_No==1, "naive", "challenge")
+
+oocyst.sums$infection <- factor(oocyst.sums$infection,
+                          levels=c("naive", "challenge"))
+
 
 ## Phenotyping of infections in wild-type mice showed drastically
 ## decreased oocyst output (Figure 1 a) in immunocompetent challenged
@@ -42,6 +46,19 @@ wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
             oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
                              oocyst.sums$Infection_No%in%"2"]
             )    
+
+oocyst.sums$Mouse_strain <- factor(oocyst.sums$Mouse_strain,
+                                   levels=c("NMRI", "C57BL6", "Rag"))
+
+pdf("figures/Figure1b_oocystSums.pdf", width=12, height=8)
+ggplot(oocyst.sums, aes(infection, Csum)) +
+    geom_boxplot()+
+    facet_wrap(~Mouse_strain) +
+    theme_bw()
+dev.off()
+       
+
+
 
 ##################################################################
 
@@ -68,8 +85,6 @@ wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
 ## Rag has also a reduced output in secondary !!! not significant
 ## though... but you know you can't statistically show absence of diff
 
-
-
 oocyst.summary <- ddply(phen.data, c("Mouse_strain", "Day_pi", "Infection_No"), summarize,
                         N    =  sum(!is.na(Oocysts_feces)),
                         Cmean = mean(Oocysts_feces, na.rm=TRUE),
@@ -79,7 +94,6 @@ oocyst.summary <- ddply(phen.data, c("Mouse_strain", "Day_pi", "Infection_No"), 
 ## create colors for Figure 1a
 palette.colors <- brewer.pal(8, "Dark2")
 my.colors.ooc <- palette.colors[c(1,2,8)]
-#pdf("figures/Figure1a_oocystCounts.pdf", width=12, height=8)
 
 #labels for facet grid for Figure 1a
 my.labels <- c("1" = "1st infection", "2" = "2nd infection")
@@ -131,14 +145,18 @@ stats.qpcr$inf <- ifelse(stats.qpcr$inf==1, "naive", "challgenge")
 
 qPCR.lm <- lm(norm.value ~ dpi.minus + inf, data=subset(stats.qpcr, dpi.minus>=0))
 
+## qPCR.lm <- lm(norm.value ~ dpi.minus + inf + (dpi.minus * inf), data=subset(stats.qpcr, dpi.minus>=0))
+
 summary(qPCR.lm)
 
-## create colors for Figure 1b
+coef(qPCR.lm)
+
+## create colors for Figure 1c
 palette.colors2 <- brewer.pal(11, "BrBG")
 my.colors.qpcr <- palette.colors2[c(3,9)]
-my.ylab <- expression(paste(" D-ct of " italic("Eimeria"), "18S vs. mouse index" , ))
+my.ylab <- expression(paste(" D-ct of ", italic("Eimeria"), "18S vs. mouse index" , ))
 
-##### Plotting figure 1b
+##### Plotting figure 1c
 qpcr18S <- ggplot(subset(stats.qpcr, stats.qpcr$gene %in% "Ef18S"), 
                   aes(x = dpi, y = norm.value.mean, col = factor(inf))) +
     labs(color = "") +
@@ -166,7 +184,7 @@ qpcr18S <- ggplot(subset(stats.qpcr, stats.qpcr$gene %in% "Ef18S"),
                  color = my.colors.qpcr[[2]])
 
 
-ggsave(file = "figures/Figure1b_qPCR18S.pdf", height = 12, width = 16, plot = qpcr18S)
+ggsave(file = "figures/Figure1c_qPCR18S.pdf", height = 12, width = 16, plot = qpcr18S)
 #dev.off()
 
 ## log2 fold change is
