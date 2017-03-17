@@ -31,7 +31,7 @@ Ef.table <- Ef.pData[order(Ef.pData$sample), ]
 #################################################################
 # MDS CLUSTERING, EIMERIA and MOUSE
 ######## MOUSE #########################################################
-pdf("Supplement/SI_5_QC_arrayCorrelation_MDS/MDS_Mouse.pdf")
+pdf("Supplement/FigureS1_MDS_Mouse.pdf")
 par(mfrow = c(2,2), mai = c(0.6, 0.5, 0.4, 0.4))
 plotMDS(Mm.RC, labels = Mm.pData$batch, col.axis = "#474747",
         xlab = "Fold change, dimension 1",
@@ -52,10 +52,10 @@ plotMDS(Mm.RC, labels = Mm.pData$challenged, col.axis = "#474747",
         xlab = "Fold change, dimension 1",
         ylab = "Fold change, dimension 2", mgp = c(2,1,0))
 title("Infection, mouse", line = 0.7)
-
+dev.off()
 
 ####### EIMERIA ##########################################################
-pdf("Supplement/SI_5_QC_arrayCorrelation_MDS/MDS_Eimeria.pdf")
+pdf("Supplement/FigureS1_MDS_Eimeria.pdf")
 par(mfrow = c(2,2), mai = c(0.6, 0.5, 0.4, 0.4))
 plotMDS(Ef.RC, labels = Ef.pData$batch,
         xlab = "Fold change, dimension 1",
@@ -77,3 +77,4 @@ plotMDS(Ef.RC, labels = Ef.pData$challenged,
         xlab = "Fold change, dimension 1",
         ylab = "Fold change, dimension 2", mgp = c(2,1,0))
 title("Infection, Ef", line = 0.7)
+dev.off()

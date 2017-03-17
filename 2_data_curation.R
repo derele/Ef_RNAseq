@@ -151,7 +151,7 @@ density.plots <-
                    names(r.c.s.l)[[i]]))
          })
 
-pdf("Supplement/distributionsMm.pdf", width = 27, height = 21)
+pdf("Supplement/FigureS2_distributionsMm.pdf", width = 27, height = 21)
 do.call(grid.arrange, c(density.plots, list(nrow=2)))
 dev.off()
 
@@ -194,7 +194,7 @@ density.plots <-
                                names(r.c.s.l)[[i]]))
            })
                
-pdf("Supplement/distributionsEf.pdf", width = 27, height = 21)
+pdf("Supplement/FigureS2_distributionsEf.pdf", width = 27, height = 21)
 do.call(grid.arrange, c(density.plots, list(nrow=2)))
 dev.off()
 

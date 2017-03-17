@@ -311,9 +311,6 @@ RC.ortho.mean.oneONE <- RC.ortho.mean[!RC.ortho.mean$Efa%in%non.one.to.one, ]
 
 
 pdf("figures/Figure4_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.pdf", width=10, height=10, onefile=FALSE)
-
-## The figure
-#devSVG("figures/Figure4a_RC_mean_correlation_Efal_Ete_Tgo_ONEONE.svg", width=10, height=10, onefile=FALSE)
 pheatmap(cor(RC.ortho.mean.oneONE[,4:ncol(RC.ortho.mean.oneONE)], method="spearman"),
          display_numbers=TRUE, scale="none")
 dev.off()

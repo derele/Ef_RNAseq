@@ -64,7 +64,7 @@ dev.off()
 
 ## ALL NS:
 
-lwilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
+wilcox.test(oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"C57BL6"&
                              oocyst.sums$Infection_No%in%"1"],
             oocyst.sums$Csum[oocyst.sums$Mouse_strain%in%"Rag"&
                              oocyst.sums$Infection_No%in%"1"])    
@@ -227,7 +227,7 @@ weight.mice <- ggplot(phen.data,
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank())
 #ggtitle("Oocyst counts in first and second infection")
-ggsave(file = "Supplement/SI_2_infection_phenotype_raw-data/Figure_Mouse_weight_changes.svg", 
+ggsave(file = "Supplement/FigureS4.svg", 
        height = 8, width = 12, plot = weight.mice)
 #dev.off()
 

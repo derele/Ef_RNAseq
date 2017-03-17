@@ -8,6 +8,7 @@ library(reshape)
 library(plyr)
 library(gridExtra)
 library(VennDiagram)
+library(xtable)
 
 ## We know from 2_data_curation.R that we want to exclude:
 excluded.samples <- c("NMRI_2ndInf_3dpi_rep1",
@@ -213,8 +214,6 @@ by(Ef.DE.test, Ef.DE.test$contrast, function (x) table(x$FDR<0.01))
 Mm.FDR0.01 <- by(Mm.DE.test, Mm.DE.test$contrast, function (x) nrow(x[x$FDR<0.01, ]))
 Mm.FDR0.01 <- cbind(Mm.FDR0.01)
 
-<<<<<<< HEAD
-=======
 Ef.FDR0.01 <- by(Ef.DE.test, Ef.DE.test$contrast, function (x) nrow(x[x$FDR<0.01, ]))
 Ef.FDR0.01 <- cbind(Ef.FDR0.01)
 
@@ -233,7 +232,6 @@ print(test.FDR.tabl,
       type = "html", file = "tables/Table2_DE_tests.html", include.rownames = T,
       format.args = list(big.mark = ",", decimal.mark = "."))
 
->>>>>>> eae77d8ec6f7d15c795e0566f69add5338ec957a
 ########### MOUSE #################
 Mm.infection.difference <-
     venn.diagram(Mm.1st.pass.model[[3]][c("N3vs0", "N5vs0", "N7vs0")],
