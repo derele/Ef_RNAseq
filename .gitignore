@@ -43,3 +43,5 @@ figures/Figure1a_oocystCounts.pdf
 figures/Figure1b_Ef.percentage.pdf
 
 
+*.swp
+.swp

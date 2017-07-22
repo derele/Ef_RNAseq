@@ -145,7 +145,7 @@ get.my.models <- function (RC, cutoff, group,
                            design, contrasts,
                            norm="upperquartile"){
     keep <- rowSums(RC)>cutoff
-    DGEList <- DGEList(RC[keep,])
+    DGEList <- DGEList(RC[keep,], group=group)
     if(!is.null(norm)){
         DGEList <- calcNormFactors(DGEList, method=norm )
     }
@@ -251,3 +251,20 @@ devSVG("figures/Figure3a_vennEfCycleInternal.svg")
 grid.draw(Ef.infection.LCInteral.difference)
 dev.off()
 
+###
+groups <- apply(Mm.contrasts[, 1:14], 2, function (x) names(x[x!=0]))
+groups <- gsub("\\.", "_", groups)
+
+pdf("Supplement/allMA.pdf", width=12, height=18)
+par(mfrow=c(7,4))
+sapply(colnames(groups), function (x){
+    plotSmear(Mm.1st.pass.model[[4]],
+              pair = c(groups[1, x], groups[2, x]), de.tags=Mm.1st.pass.model[[3]][[x]],
+              main ="Mouse")})
+groups <- apply(Ef.contrasts[, 1:14], 2, function (x) names(x[x!=0]))
+groups <- gsub("\\.", "_", groups)
+sapply(colnames(groups), function (x){
+    plotSmear(Ef.1st.pass.model[[4]],
+              pair = c(groups[1, x], groups[2, x]), de.tags=Ef.1st.pass.model[[3]][[x]],
+              main = "E. falciformis")})
+dev.off()
